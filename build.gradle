@@ -1,0 +1,102 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '2.7.17'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.project'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//추가 디펜던시
+	// 1. JSTL 사용
+	// https://mvnrepository.com/artifact/javax.servlet/jstl
+	implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+	// 2. 내장 톰캣이 jsp파일을 템플릿으로 사용할 수 있게해주는 jsp템플릿엔진
+	// https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.58'
+    
+    
+    //  RESTful API를 구축을 위해 3번과 4번이 필요.
+    // 3. json 데이터 처리용. JSONObject 객체 생성 =>  import org.json.JSONObject;
+    // https://mvnrepository.com/artifact/org.json/json
+	implementation 'org.json:json:20231013'
+	// 4. 안드로이드 휴대폰이 아닌곳에서도 안드로이드의 기능을 사용할수 있게
+	// https://mvnrepository.com/artifact/net.morimekta.utils/android-util
+	implementation 'net.morimekta.utils:android-util:3.0.1'	
+	
+	
+	// DB 연결
+	// 1. 마이바티스
+	// https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+	implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.2.2'
+	// 2. mysql 컨
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
+	// 3. jdbc 드라이버
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.6.4'
+	
+	
+	//inject 주입
+	// https://mvnrepository.com/artifact/javax.inject/javax.inject
+	implementation group: 'javax.inject', name: 'javax.inject', version: '1'
+	
+	
+	//스프링 시큐리티
+	// 1. 시큐리리 -필터 사용을 위한
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+	//implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.3.12.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	// 2. 시큐리티 태그 라이브러리
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
+	implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.3.13.RELEASE'
+	
+	
+	//웹소켓 통신 - 채팅을 위해 1번 ~ 번
+	// 1번 ~ 4번 jackson 관련 DI
+	//1. https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.15.3'
+	//2. https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.3'
+	//3. https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
+	implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.15.3'
+	//4. https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
+	implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.15.3'
+	
+	
+	// 5~7번 웹소켓 DI
+	//5. https://mvnrepository.com/artifact/org.java-websocket/Java-WebSocket
+	implementation group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.5.4'
+	//6. https://mvnrepository.com/artifact/org.springframework/spring-websocket
+	implementation group: 'org.springframework', name: 'spring-websocket', version: '5.2.25.RELEASE'
+	//7. https://mvnrepository.com/artifact/org.springframework/spring-messaging
+	implementation group: 'org.springframework', name: 'spring-messaging', version: '5.2.25.RELEASE'
+	
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

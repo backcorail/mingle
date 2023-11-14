@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mingle.test.UserMapper">
+    <insert id="userInsert"  >
+		insert into muser( username, password, email, role, oauth )  
+		values (#{username}, #{password}, #{email}, #{role}, #{oauth})
+	</insert>
+	<select id="nameCheck" resultType="String">
+		select email from muser where username = #{username}
+	</select>
+</mapper>
