@@ -27,7 +27,7 @@ let index = {
 		let tData = this.getValue();
 		$.ajax({
 			type: "GET",
-			url: "/user",
+			url: "/mingle/user",
 			data: tData, // 제이쿼리가 키-밸류값으로 변경해준다.
 			success: function(r) {
 				//console.log("requestGet 리턴 확인");
@@ -44,7 +44,7 @@ let index = {
 		let tData = this.getValue();
 		$.ajax({
 			type: "POST",
-			url: "/user",
+			url: "/mingle/user",
 			data: JSON.stringify(tData), // http body 데이터
 			contentType: "application/json; charset=UTF-8",
 			dataType: "json",
@@ -63,7 +63,7 @@ let index = {
 		let tData = this.getValue();
 		$.ajax({
 			type: "PUT",
-			url: "/user",
+			url: "/mingle/user",
 			data: JSON.stringify(tData), // http body 데이터
 			contentType: "application/json; charset=UTF-8",
 			dataType: "json",
@@ -82,7 +82,7 @@ let index = {
 		let tData = this.getValue();
 		$.ajax({
 			type: "DELETE",
-			url: "/user",
+			url: "/mingle/user",
 			data: JSON.stringify(tData), // http body 데이터
 			contentType: "application/json; charset=UTF-8",
 			dataType: "json",
