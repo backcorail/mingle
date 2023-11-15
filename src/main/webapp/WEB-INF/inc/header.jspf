@@ -6,31 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./css/init_mingle.css">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
+
 <body>
 <!-- 페이지 상단 -->
+<div class="wrapper">
 <header>
-	<div> <a href="/campus/" >멀캠</a> </div>
-	<nav class="topmenu">
-		<ul>
-			<!-- 1-1. 로그인 상태가 아님 -->
-			<c:if test="${ logStatus =='' || logStatus !='Y'}">		
-				<li><a href="/campus/users/login">로그인</a></li>
-				<li><a href="/campus/users/usersForm">회원가입</a></li>
-			</c:if>
-			
-			<!-- 1-2. 로그인 상태임 -->
-			<c:if test="${ logStatus !='' && logStatus =='Y'}">
-				<li><a href="/campus/users/logout">로그아웃</a></li>
-				<li><a href="">회원정보수정</a></li>
-			</c:if>
-			
-			<li><a href="/campus/board/list">게시판</a></li>
-
-			<!-- 자료실 만들기 -->
-			<li><a href="/campus/data/list">자료실</a></li>
-		</ul>
-	</nav>
-	
+	<nav>header</nav>	
 </header>

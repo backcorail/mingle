@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 깃헙패키지 생성용 xml 파일 
+mybatis.mapper에 파일생성후 삭제  -->
 <mapper namespace="com.project.mingle.test.UserMapper">
     <insert id="userInsert"  >
 		insert into muser( username, password, email, role, oauth )  
