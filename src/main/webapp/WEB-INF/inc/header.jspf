@@ -10,14 +10,12 @@
 <link rel="stylesheet" href="/mingle/css/header.css">
 <link rel="stylesheet" href="/mingle/css/footer.css">
 
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Keania+One&family=Nosifer&display=swap&family=Fira+Sans:ital,wght@1,900&display=swap&family=Orbitron&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="/mingle/js/header.js"></script>
 <script src="/mingle/js/footer.js"></script>
-
 
 </head>
 <body>
@@ -27,17 +25,16 @@
 	<div id="headerDiv">
 		<!-- <div id="btn_tabMenu" onclick="toggleBtn()">hello</div> -->
 		<!-- left button -->
-
 		<img src="/mingle/img/home/btn_more.png" class="btn-1" onclick="toggleBtn()"/>
-
 		<!-- left button -->
 		<a href="/mingle/home" id="header_logo">mingle</a>
-		<div id="header_loginArea">
+		<div id="header_loginArea"> 
+
 			<c:if test="${logStatus=='' || logStatus !='Y'}">
 		        <a href="#" id="btn_login">Login/Sign-up</a>
 		    </c:if>
 		    <c:if test="${logStatus!='' && logStatus == 'Y'}">
-		    	<div>
+		    	<div id="mypageLogout">
 		    		<img src="#" id="profile"/>
 		    		<a href="#" id="btn_mypage">Mypage</a>
 		    		<a href="#" id="logout">Logout</a>
