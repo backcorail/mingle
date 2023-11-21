@@ -6,14 +6,63 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/init_mingle.css">
-
+<link rel="stylesheet" href="/mingle/css/init_mingle.css">
+<link rel="stylesheet" href="/mingle/css/header.css">
+<link rel="stylesheet" href="/mingle/css/footer.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Keania+One&family=Nosifer&display=swap&family=Fira+Sans:ital,wght@1,900&display=swap&family=Orbitron&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/mingle/js/header.js"></script>
+<script src="/mingle/js/footer.js"></script>
 </head>
-
 <body>
 <!-- 페이지 상단 -->
 <div class="wrapper">
 <header>
-	<nav>header</nav>	
+	<div id="headerDiv">
+		<!-- <div id="btn_tabMenu" onclick="toggleBtn()">hello</div> -->
+		<!-- left button -->
+		<img src="./img/home/btn_more.png" class="btn-1" onclick="toggleBtn()"/>
+		<!-- left button -->
+		<a href="/mingle/home" id="header_logo">mingle</a>
+		<div id="header_loginArea">
+			<c:if test="${logStatus=='' || logStatus !='Y'}">
+		        <a href="#" id="btn_login">Login/Sign-up</a>
+		    </c:if>
+		    <c:if test="${logStatus!='' && logStatus == 'Y'}">
+		    	<div>
+		    		<img src="#" id="profile"/>
+		    		<a href="#" id="btn_mypage">Mypage</a>
+		    		<a href="#" id="logout">Logout</a>
+		    	</div>
+		    </c:if>
+	    </div>
+    </div>
+    <div id="tabMenu_header">
+	    <div id="tabMenu_header_content">
+	    	<div class="area_tabMenu" id="area_tabMenu_1" onmouseover="showSubMenu(1)" onmouseout="showSubHidden(1)">
+		    	<a href="#" class="title_tabMenu">STYLE</a>
+		    	<ul class="subtitle_tabMenu" id="subMenu_1">
+					<li><a href="#">ranking</a></li>
+					<li><a href="#">style</a></li>
+					<li><a href="#">trend</a></li>
+					<li><a href="#">request</a></li>
+				</ul>
+	    	</div>
+	    	<div class="area_tabMenu" id="area_tabMenu_2" onmouseover="showSubMenu(2)" onmouseout="showSubHidden(2)">
+		    	<a href="#" class="title_tabMenu">RECELL</a>
+				<ul class="subtitle_tabMenu" id="subMenu_2">
+					<li><a href="#">men</a></li>
+					<li><a href="#">women</a></li>
+					<li><a href="#">shoes</a></li>
+					<li><a href="#">bag</a></li>
+					<li><a href="#">other</a></li>
+				</ul>
+	    	</div>
+	    	<div class="area_tabMenu">
+	    		<a href="cody" class="title_tabMenu">CODY</a>
+	    	</div>
+		</div>
+	</div>
 </header>

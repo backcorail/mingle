@@ -49,20 +49,20 @@ h1,h2,h3,h4,p,ul,li{
     /* flex-메인축 순서를 유지한채로 센터정렬
     margin: 0 auto; 와 동일 */    
     align-items: center;
-
-    height: 100vh;
-    width: 100%;
-    /* min-width: 1340px */
-    
+    height:100vh;
+    /*width: 100%;*/
+    min-width:1340px;
+       
     /* 테스트용 색깔 변수 */
-    background-color: var(--test-wrap);
+    /* background-color: var(--test-wrap); */
 }
 
 header {
     width: 1280px;
     /* 테스트용 색깔 변수 */
-    background-color: var(--test-header);
+    /* background-color: var(--test-header); */
 }
+
 header > nav{
     width: 100%;
 }
@@ -91,7 +91,7 @@ footer {
 /* 1. a태그 가상선택자 */
 a:link{
     text-decoration: none;
-    /* color: blue; */
+	/* color: blue; */
 }
 a:visited {
     text-decoration: none;
