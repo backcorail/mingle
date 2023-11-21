@@ -6,15 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/init_mingle.css">
-<link rel="stylesheet" href="./css/header.css">
-<link rel="stylesheet" href="./css/footer.css">
+<link rel="stylesheet" href="/mingle/css/init_mingle.css">
+<link rel="stylesheet" href="/mingle/css/header.css">
+<link rel="stylesheet" href="/mingle/css/footer.css">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Keania+One&family=Nosifer&display=swap&family=Fira+Sans:ital,wght@1,900&display=swap&family=Orbitron&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="/mingle/js/header.js"></script>
 <script src="/mingle/js/footer.js"></script>
+
 </head>
 <body>
 <!-- 페이지 상단 -->
@@ -27,6 +29,7 @@
 		<!-- left button -->
 		<a href="/mingle/home" id="header_logo">mingle</a>
 		<div id="header_loginArea"> 
+
 			<c:if test="${logStatus=='' || logStatus !='Y'}">
 		        <a href="#" id="btn_login">Login/Sign-up</a>
 		    </c:if>
@@ -61,7 +64,7 @@
 				</ul>
 	    	</div>
 	    	<div class="area_tabMenu">
-	    		<a href="#" class="title_tabMenu">CODY</a>
+	    		<a href="cody" class="title_tabMenu">CODY</a>
 	    	</div>
 		</div>
 	</div>
