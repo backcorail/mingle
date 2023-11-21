@@ -10,7 +10,7 @@ public class IndexControllerTest {
 	
 	@GetMapping({"/",""})
 	public String index() {
-		System.out.println("index :  테트스" );
+		System.out.println("index :  테스트" );
 		return "test/index";
 	}
 }
