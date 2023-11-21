@@ -10,12 +10,14 @@
 <link rel="stylesheet" href="/mingle/css/header.css">
 <link rel="stylesheet" href="/mingle/css/footer.css">
 
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Keania+One&family=Nosifer&display=swap&family=Fira+Sans:ital,wght@1,900&display=swap&family=Orbitron&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="/mingle/js/header.js"></script>
 <script src="/mingle/js/footer.js"></script>
+
 
 </head>
 <body>
@@ -25,6 +27,7 @@
 	<div id="headerDiv">
 		<!-- <div id="btn_tabMenu" onclick="toggleBtn()">hello</div> -->
 		<!-- left button -->
+
 		<img src="/mingle/img/home/btn_more.png" class="btn-1" onclick="toggleBtn()"/>
 
 		<!-- left button -->
@@ -64,7 +67,7 @@
 				</ul>
 	    	</div>
 	    	<div class="area_tabMenu">
-	    		<a href="#" class="title_tabMenu">CODY</a>
+	    		<a href="cody" class="title_tabMenu">CODY</a>
 	    	</div>
 		</div>
 	</div>

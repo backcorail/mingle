@@ -3,7 +3,6 @@
 
 <link rel="stylesheet" href="/mingle/css/resell_main.css">
 <script src="/mingle/js/resell.js"></script>
-
 	
 <div class="test"></div>
 <div class="test2"></div>

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+
 @RequestMapping("/style")
 public class StyleController {
 
@@ -36,4 +37,5 @@ public class StyleController {
 		
 		return "style/style_trend";
 	}
+
 }
