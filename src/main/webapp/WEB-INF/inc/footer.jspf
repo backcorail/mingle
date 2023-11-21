@@ -1,8 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <footer>
-	copyright@멀캠
+	<div id="area_footer">
+		<div id="areaTop_footer">
+			<div id="areaTop_left"><a href="/mingle/home" id="footer_logo">mingle</a></div>
+			<div id="areaTop_middle">
+				<div><a href="">Price</a></div>
+				<div><a href="">About</a></div>
+				<div><a href="">Support</a></div>
+				<div><a href="">Features</a></div>
+			</div>
+			<div id="areaTop_right">
+				<div id="areaTop_right_wrapper">
+					<div><a href=""><img src="./img/home/icon_instagram.png"></a></div>
+					<div><a href=""><img src="./img/home/icon_facebook.png"></a></div>
+					<div><a href=""><img src="./img/home/icon_twitter.png"></a></div>
+				</div>
+			</div>
+		</div>
+		<div id="areaBottom_footer">
+			<div id="areaBottom_annotation">Copyright @2020-2023 mingle 저작권법의 보호를 받습니다.</div>
+		</div>
+	</div>
+	<div id="area_sideBtn">
+		<div class="areaBtn_sideBtn" id="yellow_chat_btn"><button id="chat_btn"><img src="./img/home/icon_message.png"></button></div>
+		<div class="areaBtn_sideBtn"><button id="cart_btn"><img src="./img/home/icon_shopBag.png"></button></div>
+		<div class="areaBtn_sideBtn"><a id="moveTop_btn" href="#"><img src="./img/home/icon_top.png"/></a></div>
+	</div>
 </footer>
 </div>
 </body>
