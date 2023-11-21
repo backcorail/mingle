@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<link rel="stylesheet" href="/mingle/css/resell_main.css">
+<script src="/mingle/js/resell.js"></script>
 
-<link rel="stylesheet" href="./css/resell_main.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-<script src="./js/resell_javascript.js"></script>
 	
 <div class="test"></div>
 <div class="test2"></div>
@@ -14,7 +13,7 @@
 	<ul class="resell_top">
 		<li class="resell_search">
 			<form>
-				<input type="text" value="여기에 검색어 입력.">
+				<input type="text" id="search_bar">
 			</form>
 			<img src="/mingle/img/resell/magnifier.png">
 		</li>
@@ -98,5 +97,17 @@
 				<div class="recell_time"></div>
 			</div>
 		</c:forEach>
+
+		<!-- 페이지수 -->
+		<div class="page_select">
+			<div>◀</div>
+			<div class="page_numbering">
+				<c:forEach var="n" begin="1" end="5">
+					<a href="" class="page_box">${n}</a>
+				</c:forEach>
+			</div>
+			<div>▶</div>
+		</div>
 	</div>
 </div>
+

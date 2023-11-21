@@ -2,6 +2,8 @@ header{
 	width: 100%;
     z-index: 50;
     position: fixed;
+    min-width: 1340px;
+    top:0;
 }
 #headerDiv{
 	display: flex;
@@ -51,6 +53,20 @@ header{
 	color:#FFD600;
 	border-bottom: solid 3px #FFD600;
 }
+
+#mypageLogout{
+	width: 250px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#profile{
+	width: 50px;
+	height:50px;
+	border-radius: 100%;
+	background: white;
+}
+
 #tabMenu_header{
 	display:none;
 	position:absolute;
@@ -89,7 +105,4 @@ header{
 }
 .subtitle_tabMenu a{
 	font-family: 'Orbitron', sans-serif;
-}
-.page{
-	margin-top: 90px;
 }
