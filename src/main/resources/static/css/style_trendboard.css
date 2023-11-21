@@ -1,8 +1,9 @@
+@charset "UTF-8";
 
 .board_list_now {
 	display : flex;
 	width : 800px;
-	/*height : auto;*/
+	height : auto;
 	justify-content: space-between;
 	flex-wrap: wrap;
 }
@@ -10,7 +11,7 @@
 .board_list_week {
 	display : flex;
 	width : 800px;
-	/*height : auto;*/
+	height : auto;
 	
 }
 

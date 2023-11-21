@@ -3,6 +3,7 @@
 
 <link rel="stylesheet" href="/mingle/css/resell_main.css">
 <script src="/mingle/js/resell.js"></script>
+
 	
 <div class="test"></div>
 <div class="test2"></div>
@@ -96,7 +97,7 @@
 				<div class="recell_time"></div>
 			</div>
 		</c:forEach>
-		
+
 		<!-- 페이지수 -->
 		<div class="page_select">
 			<div>◀</div>
@@ -109,5 +110,4 @@
 		</div>
 	</div>
 </div>
-
 

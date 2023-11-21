@@ -12,7 +12,6 @@ public class ResellController {
 	public String resellMain() {
 		return "resell/resell_main";
 	}
-	
 	@GetMapping("/board")
 	public String resell_board() {
 		return "resell/resell_board";
