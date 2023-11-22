@@ -27,6 +27,7 @@
 			</c:forEach>
 		</div>
 		<button class ="moreview">더보기</button>
+
 	</div>
 	
 	<!-- 주간 랭킹 -->
