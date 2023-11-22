@@ -4,8 +4,8 @@
 <link rel="stylesheet" href="/mingle/css/style_ranking.css">
 <script src="/mingle/js/style_ranking.js"></script>
 
-<!-- 실시간 랭킹 -->
 <div class="all_select">
+  <!-- 실시간 랭킹 -->
 	<div class="board-wrap">
 		<a class="board-name">🔥 실시간 랭킹</a>
 		<div class="board_list_now">
@@ -25,6 +25,7 @@
 			</c:forEach>
 		</div>
 		<button class ="moreview">더보기</button>
+
 
 	</div>
 	
