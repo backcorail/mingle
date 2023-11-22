@@ -2,8 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 	<link rel="stylesheet" href="/mingle/css/home.css">
-	<link href="https://fonts.googleapis.com/css2?amily=Vina+Sans&display=swap&family=Poppins:ital@1&display=swap&family=Nanum+Pen+Script&display=swap&family=Kanit:ital,wght@1,500&family=DM+Sans:opsz@9..40&family=Noto+Sans+KR:wght@300" rel="stylesheet">
-	<script src="./js/home.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap&family=Montserrat:wght@700&display=swap&family=Montserrat&display=swap&family=Vina+Sans&display=swap&family=Poppins:ital@1&display=swap&family=Nanum+Pen+Script&display=swap&family=Kanit:ital,wght@1,500&family=DM+Sans:opsz@9..40&family=Noto+Sans+KR:wght@300" rel="stylesheet">
+	<script src="/mingle/js/home.js"></script>
 </head>
 <div id="page_home">
 	<!-- banner -->
@@ -20,7 +20,7 @@
 		<div id="text_homeBanner">Welcome to my world!!!</div>
 	</div>
 	<!-- main -->
-	<ul id="category_homeRecell">
+	<ul id="category_homeResell">
 		<li id="men_HC">
 			<a href="">
 				<div class="main-content" id="main-content">
@@ -44,7 +44,7 @@
 					      <stop offset="5%" stop-color="white"/>
 					    </linearGradient>
 					    <pattern id="wave" x="0" y="0" width="120" height="20" patternUnits="userSpaceOnUse">
-					      <path id="wavePath" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" mask="url(#mask)" fill="url(#gradient)"> 
+					      <path id="wavePath" d="M-700 100 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" mask="url(#mask)" fill="url(#gradient)"> 
 					        <animateTransform
 					            attributeName="transform"
 					            begin="0s"
@@ -62,18 +62,79 @@
 				</div>
 			</a>
 		</li>
-		<li id="shoes_HC">
-			<div id="body_shoes_HC">
-				<span>S</span><span>H</span><span>O</span><span>E</span><span>S</span>
-			</div>
+		<li id="bag_HC">
+			<a href="">
+				<h1 id="h1_bag_HC"><span>B</span><span>A</span><span>G</span></h1>
+			</a>
 		</li>
-		<li id="bag_HC">Bag</li>
-		<li id="other_HC">Other</li>
+		<li id="shoes_HC">
+			<a href="">
+				<div id="body_shoes_HC">
+					<div class="container">
+					  <svg viewBox="0 0 960 300">
+					    <symbol id="s-text">
+					      <text text-anchor="middle" x="50%" y="80%">SHOES</text>
+					    </symbol>
+					
+					    <g class = "g-ants">
+					      <use xlink:href="#s-text" class="text-copy"></use>
+					      <use xlink:href="#s-text" class="text-copy"></use>
+					      <use xlink:href="#s-text" class="text-copy"></use>
+					      <use xlink:href="#s-text" class="text-copy"></use>
+					      <use xlink:href="#s-text" class="text-copy"></use>
+					    </g>
+					  </svg>
+					</div>
+				</div>
+			</a>
+		</li>
+		<li id="other_HC">
+			<section class='section'>
+			    <div class='masthead-image' id='master-container'>
+			        <div class='content center'>
+			            <h1 id='master'>
+			              <div>How about</div>
+			              <div id='master-container-scroller'>
+			                <div class='master-container-scroller_item'>
+			                  <a class='cta-link' href='#'>CAP</a>.
+			                </div>
+			                <div class='master-container-scroller_item'>
+			                  <a class='cta-link' href='#'>Fedora</a>.
+			                </div>
+			                <div class='master-container-scroller_item'>
+			                  <a class='cta-link' href='#'>Gloves</a>.
+			                </div>
+			                <div class='master-container-scroller_item'>
+			                  <a class='cta-link' href='#'>Scarf</a>.
+			                </div>
+			                <div class='master-container-scroller_item'>
+			                  <a class='cta-link' href='#'>Watch</a>.
+			                </div>
+			                <div class='master-container-scroller_item'>
+			                  <a class='cta-link' href='#'>Necklace</a>.
+			                </div>
+			                <div class='master-container-scroller_item'>
+			                  <a class='cta-link' href='#'>Ring</a>.
+			                </div>
+			                <div class='master-container-scroller_item'>
+			                  <a class='cta-link' href='#'>Bracelet</a>.
+			                </div>
+			                <div class='master-container-scroller_item'>
+			                  <a class='cta-link' href='#'>Mask</a>.
+			                </div>
+			                <div class='master-container-scroller_item'>Trooper.</div>
+			              </div>
+			              <div>Today?</div>
+			            </h1>
+			        </div>
+			    </div>
+			</section>
+		</li>
 	</ul>
 	<div id="homeContent">
 		<div class="area_homeContent">
 			<div class="area_ListContent">
-				<div class="homeTitle">Recell items</div> 
+				<div class="homeTitle">Resell items</div> 
 				<div class="homeSubtitle">리셀 상품</div>
 				<!-- List -->
 				<div id="area_List_home">
@@ -128,13 +189,26 @@
 						</a>
 					</div>
 				</div>
-				<a href="#" class="homeMore">더보기</a>
+				<a href="#" class="homeMore">
+					<div class="buttons">
+					    <button class="btn-hover color-8">more</button>
+					</div>
+				</a>
 			</div>
 			<div class="area_advContnet" id="adv_cody">
 				<div class="topArea_adv"><img src="/mingle/img/home/main_banner_cody.jpg" id="bannerImg_cody"/></div>
 				<div class="bottomArea_adv">
-					<div id="homeContentTitle_cody">오늘 뭐 입지 고민될때?</div>
-					<a href="#" id="homeContentLink_cody">옷 추천받기</a> 
+					<div id="homeContentTitle_cody">
+						<link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
+						<div class="shadow">오늘 뭐 입지 고민될때?</div>
+					</div>
+					<div class="adv_homeLink">
+						<div class="row columns">
+					      <ul class="menu align-center expanded text-center SMN_effect-11">
+					        <li><a href="" data-hover="cody next>"><span id="homeContentLink_cody">cody next></span></a></li>
+					      </ul>
+					    </div>
+					</div> 
 				</div>
 			</div>
 		</div>
@@ -187,13 +261,23 @@
 					</div>
 					
 				</div>
-				<a href="#" class="homeMore">더보기</a>
+				<a href="#" class="homeMore">
+					<div class="buttons">
+					    <button class="btn-hover color-8">more</button>
+					</div>
+				</a>
 			</div>
 			<div class="area_advContnet" id="adv_style">
 				<div class="topArea_adv"><img src="/mingle/img/home/banner_style_3.jpg" id="bannerImg_style"/></div>
 				<div class="bottomArea_adv">
 					<div id="homeContentTitle_style">트렌디한 힙합 패션 정보는?</div>
-					<a href="#" id="homeContentLink_style">STYLE 바로가기</a> 
+					<div class="adv_homeLink">
+						<div class="row columns">
+					      <ul class="menu align-center expanded text-center SMN_effect-11">
+					        <li><a href="" data-hover="style next>"><span id="homeContentLink_style">style next></span></a></li>
+					      </ul>
+					    </div>
+					</div> 
 				</div>
 			</div>
 		</div>
