@@ -109,7 +109,7 @@
 }
 
 /*main content*/
-#category_homeRecell{
+#category_homeresell{
 	width: 1340px;
 	height: 140px;
 	margin: 0 auto;
@@ -117,7 +117,7 @@
 	justify-content: space-between;
 	align-items: center;
 }
-#category_homeRecell li{
+#category_homeresell li{
 	width: 263px;
 	height: 110px;
 	border-radius: 7px;
@@ -1253,7 +1253,7 @@
 	width: 100%;
 	
 }
-.homePost_recell{
+.homePost_resell{
 	width: 261px;
 	height: auto;
 }
@@ -1263,7 +1263,7 @@
 	border-radius: 10px;
 	background: ghostwhite;
 }
-.homePostTitle_recell{
+.homePostTitle_resell{
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 16px;
 	font-weight: 10;
@@ -1275,13 +1275,13 @@
 	display: flex;
 	justify-content: space-between;
 }
-.homePostPrice_recell{
+.homePostPrice_resell{
 	font-family: 'Abril Fatface', serif;
 	color: #56CCF2;
 	font-weight: bold;
 	font-size: 25px;
 }
-.homePostTime_recell{
+.homePostTime_resell{
 	font-family: 'Nanum Pen Script', cursive;
 	font-size: 25px;
 }

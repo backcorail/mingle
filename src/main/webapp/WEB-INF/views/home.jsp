@@ -20,7 +20,7 @@
 		<div id="text_homeBanner">Welcome to my world!!!</div>
 	</div>
 	<!-- main -->
-	<ul id="category_homeResell">
+	<ul id="category_homeresell">
 		<li id="men_HC">
 			<a href="">
 				<div class="main-content" id="main-content">
@@ -138,53 +138,53 @@
 				<div class="homeSubtitle">리셀 상품</div>
 				<!-- List -->
 				<div id="area_List_home">
-					<div class="homePost_recell">
+					<div class="homePost_resell">
 						<a href="">
-							<img src="" class="homePostImg_recell"/>
-							<div class="homePostTitle_recell">불꽃 핫바지 조거 트레이닝 팬츠</div>
+							<img src="" class="homePostImg_resell"/>
+							<div class="homePostTitle_resell">불꽃 핫바지 조거 트레이닝 팬츠</div>
 							<div class="textBottom_homePost">
-								<div class="homePostPrice_recell">25000</div>
-								<div class="homePostTime_recell">2023.05.10</div>
+								<div class="homePostPrice_resell">25000</div>
+								<div class="homePostTime_resell">2023.05.10</div>
 							</div>
 						</a>
 					</div>
-					<div class="homePost_recell">
+					<div class="homePost_resell">
 						<a href="">
-							<img src="" class="homePostImg_recell"/>
-							<div class="homePostTitle_recell">불꽃 핫바지 조거 트레이닝 팬츠</div>
+							<img src="" class="homePostImg_resell"/>
+							<div class="homePostTitle_resell">불꽃 핫바지 조거 트레이닝 팬츠</div>
 							<div class="textBottom_homePost">
-								<div class="homePostPrice_recell">25000</div>
-								<div class="homePostTime_recell">2023.05.10</div>
+								<div class="homePostPrice_resell">25000</div>
+								<div class="homePostTime_resell">2023.05.10</div>
 							</div>
 						</a>
 					</div>
-					<div class="homePost_recell">
+					<div class="homePost_resell">
 						<a href="">
-							<img src="" class="homePostImg_recell"/>
-							<div class="homePostTitle_recell">불꽃 핫바지 조거 트레이닝 팬츠</div>
+							<img src="" class="homePostImg_resell"/>
+							<div class="homePostTitle_resell">불꽃 핫바지 조거 트레이닝 팬츠</div>
 							<div class="textBottom_homePost">
-								<div class="homePostPrice_recell">25000</div>
-								<div class="homePostTime_recell">2023.05.10</div>
+								<div class="homePostPrice_resell">25000</div>
+								<div class="homePostTime_resell">2023.05.10</div>
 							</div>
 						</a>
 					</div>
-					<div class="homePost_recell">
+					<div class="homePost_resell">
 						<a href="">
-							<img src="" class="homePostImg_recell"/>
-							<div class="homePostTitle_recell">불꽃 핫바지 조거 트레이닝 팬츠</div>
+							<img src="" class="homePostImg_resell"/>
+							<div class="homePostTitle_resell">불꽃 핫바지 조거 트레이닝 팬츠</div>
 							<div class="textBottom_homePost">
-								<div class="homePostPrice_recell">25000</div>
-								<div class="homePostTime_recell">2023.05.10</div>
+								<div class="homePostPrice_resell">25000</div>
+								<div class="homePostTime_resell">2023.05.10</div>
 							</div>
 						</a>
 					</div>
-					<div class="homePost_recell">
+					<div class="homePost_resell">
 						<a href="">
-							<img src="" class="homePostImg_recell"/>
-							<div class="homePostTitle_recell">불꽃 핫바지 조거 트레이닝 팬츠</div>
+							<img src="" class="homePostImg_resell"/>
+							<div class="homePostTitle_resell">불꽃 핫바지 조거 트레이닝 팬츠</div>
 							<div class="textBottom_homePost">
-								<div class="homePostPrice_recell">25000</div>
-								<div class="homePostTime_recell">2023.05.10</div>
+								<div class="homePostPrice_resell">25000</div>
+								<div class="homePostTime_resell">2023.05.10</div>
 							</div>
 						</a>
 					</div>
