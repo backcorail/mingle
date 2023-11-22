@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+.wrapper {
+	padding-top:110px;
+}
 
 /* 메인 부분 */
 .resell_main {
