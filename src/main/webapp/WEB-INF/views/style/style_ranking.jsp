@@ -7,6 +7,7 @@
 
 <!-- 실시간 랭킹 -->
 <!-- 반복문 수정 -->
+<!-- TEST 중입니다. -->
 <div class="all_select">
 	<div class="board-wrap">
 		<a class="board-name">🔥 실시간 랭킹</a>
