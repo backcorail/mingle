@@ -1,14 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <link rel="stylesheet" href="/mingle/css/style_ranking.css">
 <script src="/mingle/js/style_ranking.js"></script>
 
-<!-- 실시간 랭킹 -->
-<!-- 반복문 수정 -->
-<!-- TEST 중입니다. -->
 <div class="all_select">
+  <!-- 실시간 랭킹 -->
 	<div class="board-wrap">
 		<a class="board-name">🔥 실시간 랭킹</a>
 		<div class="board_list_now">

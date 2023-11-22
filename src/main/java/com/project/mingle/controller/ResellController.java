@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 
-@RequestMapping("/recell")
+@RequestMapping("/resell")
 
 public class ResellController {
 	
