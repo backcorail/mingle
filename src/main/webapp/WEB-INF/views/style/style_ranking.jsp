@@ -7,6 +7,7 @@
 
 <!-- 실시간 랭킹 -->
 <!--  겁나 모르겟다. ㅋ-->
+<!-- adfasdfasdf -->
 <div class="page">
 <div class="board-wrap">
 <div class="board-name">🔥 실시간 랭킹</div>
