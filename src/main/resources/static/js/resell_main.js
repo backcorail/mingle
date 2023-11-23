@@ -1,14 +1,3 @@
-/*
-$(document).click(function() {
-	anime({
-    	targets:".test",
-    	translateX: 250
-	});
-	$(".test2").css("transform",'translateX(250px)');
-	//$(".category1").css("transform",'translateY(250px)');
-});
-*/
-
 
 $(document).ready(function() {
 	// 하위 카테고리 숨기기
@@ -32,6 +21,7 @@ $(document).ready(function() {
         $(this).addClass("active");
     });
     
+    // 검색창 애니메이션
     $(".resell_search>img").click(function() {
 		var width_change = parseInt($("#search_bar").css("width"), 10);
 		if(width_change == 38) {

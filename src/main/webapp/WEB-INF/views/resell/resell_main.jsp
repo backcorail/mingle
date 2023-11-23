@@ -2,10 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <link rel="stylesheet" href="/mingle/css/resell_main.css">
-<script src="/mingle/js/resell.js"></script>
-	
-<div class="test"></div>
-<div class="test2"></div>
+<script src="/mingle/js/resell_main.js"></script>
 
 <!-- 위쪽 카테고리 선택부분 -->
 <div>
