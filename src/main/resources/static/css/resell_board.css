@@ -1,12 +1,63 @@
 @charset "UTF-8";
 
 .wrapper {
-	padding-top:110px;
+	padding-top:100px;
 }
 
 .resell_board_top {
 	display:flex;
+	width:1280px;
 }
+.resell_top {
+	width:1280px;
+	display:flex;
+	justify-content:right;
+	text-align:center;
+	margin-bottom:20px;
+}
+.resell_top>li {
+	width:100px;
+	text-align:center;
+	margin-top:10px;
+	padding-bottom:5px;
+}
+.resell_search {
+	position:relative;
+}
+
+
+/* 상단 밑줄 애니메이션 */
+.choose {
+	cursor: pointer;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	transition: all 0.3s ease-in-out;
+}
+.choose::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background-color: #FFC107;
+    transition: width 0.3s ease-in-out;
+}
+.choose.active::before {
+    width: 100%;
+    transform: translateX(-50%);
+}
+.choose:hover {
+	color:#FFC107;
+}
+
+
+
+
+
+
 
 .resell_board_img {
 	width:600px;
@@ -14,34 +65,32 @@
 	justify-content: flex-end;
 }
 
-.resell_left_img {
+.resell_mini_img {
 	display:flex;
 	flex-direction: column;
 }
 
-.resell_left_img > img {
+.resell_mini_img img {
 	width:65px;
 	height:65px;
-	margin:0 15px 20px;
+	margin:0 15px 10px;
 	border-radius:5px;
+	cursor: pointer;
 }
 
-.resell_right_img {
+.resell_main_img {
 	display:flex;
 	flex-wrap: wrap;
 	justify-content: flex-end;
 }
 
 .main_img {
-	width:520px;
-	height:520px;
+	width:500px;
+	height:500px;
 	border-radius:10px;
 	margin-bottom:10px;
 }
-.center_line {
-	border:1px solid lightgray;
-	margin:0 20px;
-}
+
 .select_img {
 	width:50px;
 	height:50px;
@@ -61,21 +110,73 @@
 .resell_board_info li {
 	width:600px;
 }
-.blank {
-	height:30px;
+.resell_board_info li:nth-child(1) {
+	display:flex;
+}
+.purchase_price {
+	width:300px;
+}
+/* 구매가 글자 */
+.purchase_price>div:nth-child(1) {
+	font-size:1.2em;
+	font-weight:bold;
+}
+/* 가격 변수 */
+.purchase_price>div:nth-child(2) {
+	font-size:1.6em;
+	font-weight:bold;
+	color:dodgerblue;
+}
+.modify_remove {
+	width:300px;
+	display:flex;
+	justify-content: flex-end;
+}
+/* 수정, 삭제 글자 */
+.modify_remove>div {
+	width:60px;
+	/*font-weight:bold;*/
+	font-size:20px;
+	color:gray;
+}
+.modify_remove>div:hover {
+	color:blue;
+	cursor:pointer;
+}
+.resell_item_name {
+	height:135px;
+	display:flex;
+	line-height:24px;
+	flex-direction: column;
+}
+.resell_item_name>div:nth-child(1) {
+	font-size:0.8em;
+	font-weight:bold;
+}
+.resell_item_name>div:nth-child(2) {
+	font-size:0.8em;
 }
 
-.buy_button {
+.buy_button>button {
 	width:600px;
 	height:60px;
 	border:none;
 	border-radius:10px;
 	box-shadow:0px 5px 10px gray;
 	font-size:1em;
+	background-color:#FFC107;
+	font-size:1.2em;
+	font-weight:bold;
+	color:white;
+	cursor: pointer;
 }
-
-.resell_item_name {
-	height:100px;
+.resell_locate>div {
+	font-weight:bold;
+	font-size:1.2em;
+}
+.resell_addr>div {
+	color:gray;
+	font-size:0.9em;
 }
 
 .resell_map {
@@ -84,15 +185,11 @@
 	background:lightgray;
 	border-radius:10px;
 	box-shadow:0px 5px 10px gray;
+	overflow:hidden;
 }
 
 
-/* 중간 선 */
-.middle_line {
-	border:1px solid lightgray;
-	margin:20px 0;
-	width:1280px;
-}
+
 
 
 /* 중간 설명 부분 */
@@ -109,4 +206,66 @@
 }
 .resell_board_bottom_text {
 	height:300px;
+	width:100%;
+	background:lightgray;
+}
+
+
+
+/* 댓글 부분 */
+.resell_reply {
+	width:1280px;
+}
+.resell_reply_main {
+	display:flex;
+	justify-content: space-between;
+}
+.resell_reply_main>button {
+	width:200px;
+	font-size:1.2em;
+	border-radius:10px;
+	border:none;
+	box-shadow:0px 5px 10px gray;
+	background:#FFC107;
+}
+.resell_reply_each {
+	display:flex;
+}
+.resell_reply_each>img {
+	width:50px;
+	height:50px;
+}
+.resell_reply_each>div {
+	width:1200px;
+	margin:0 10px;
+}
+.resell_reply_each>div>div {
+	display:flex;
+    justify-content: space-between;
+}
+.resell_reply_each>div:nth-child(3) {
+	display:flex;
+	justify-content: space-between;
+}
+
+
+
+/* 기타 */
+.opacity {
+	opacity: 0.3;
+}
+/* 공백줄 */
+.blank_line {
+	height:20px;
+}
+/* 세로선 */
+.column_line {
+	border:1px solid lightgray;
+	margin:0 40px;
+}
+/* 가로선 */
+.row_line {
+	border:1px solid lightgray;
+	margin:20px 0;
+	width:1280px;
 }
