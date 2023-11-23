@@ -6,7 +6,6 @@
 
 .resell_board_top {
 	display:flex;
-	
 }
 
 .resell_board_img {
@@ -39,7 +38,6 @@
 	border-radius:10px;
 	margin-bottom:10px;
 }
-
 .center_line {
 	border:1px solid lightgray;
 	margin:0 20px;
@@ -47,7 +45,7 @@
 .select_img {
 	width:50px;
 	height:50px;
-	
+	margin-left:20px;
 }
 
 
@@ -96,3 +94,19 @@
 	width:1280px;
 }
 
+
+/* 중간 설명 부분 */
+.resell_board_bottom {
+	width:1280px;
+	height:1000px;
+	display:flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.resell_board_bottom img {
+	width:400px;
+}
+.resell_board_bottom_text {
+	height:300px;
+}
