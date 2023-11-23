@@ -61,9 +61,8 @@ h1,h2,h3,h4,p,ul,li{
 header {
     width: 1280px;
     /* 테스트용 색깔 변수 */
-    /* background-color: var(--test-header); */
+    background-color: var(--test-header);
 }
-
 header > nav{
     width: 100%;
 }
@@ -92,7 +91,7 @@ footer {
 /* 1. a태그 가상선택자 */
 a:link{
     text-decoration: none;
-	/* color: blue; */
+    /* color: blue; */
 }
 a:visited {
     text-decoration: none;
