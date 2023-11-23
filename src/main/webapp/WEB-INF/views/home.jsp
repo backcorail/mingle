@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 	<link rel="stylesheet" href="/mingle/css/home.css">
-	<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Shadows+Into+Light&display=swap&family=Lobster&display=swap&family=Montserrat:wght@700&display=swap&family=Montserrat&display=swap&family=Vina+Sans&display=swap&family=Poppins:ital@1&display=swap&family=Nanum+Pen+Script&display=swap&family=Kanit:ital,wght@1,500&family=DM+Sans:opsz@9..40&family=Noto+Sans+KR:wght@300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap&family=Abril+Fatface&family=Shadows+Into+Light&display=swap&family=Lobster&display=swap&family=Montserrat:wght@700&display=swap&family=Montserrat&display=swap&family=Vina+Sans&display=swap&family=Poppins:ital@1&display=swap&family=Nanum+Pen+Script&display=swap&family=Kanit:ital,wght@1,500&family=DM+Sans:opsz@9..40&family=Noto+Sans+KR:wght@300" rel="stylesheet">
 	<script src="/mingle/js/home.js"></script>
 </head>
 <div id="page_home">
@@ -209,7 +209,7 @@
 				<div class="bottomArea_adv">
 					<div id="homeContentTitle_cody">
 						<link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
-						<div class="shadow">"What should i wear today?"rl</div>
+						<div class="shadow">"What should i wear today?"</div>
 					</div>
 					<div class="adv_homeLink">
 						<div class="row columns">
@@ -229,46 +229,58 @@
 				<div class="homeSubtitle"">#일주일 코디 배틀</div>
 				<div id="homePost_style">
 					<div class="homePostImg_style">
-						<img src="/mingle/img/home/img_homeList_style.jpg"/>
-						<div class="onContent_img">
-							<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-							<div class="homePostImg_userid_style">@d3fi5g</div>
-						</div>
+						<a href="">
+							<img src="/mingle/img/home/img_homeList_style.jpg"/>
+							<div class="onContent_img">
+								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
+								<div class="homePostImg_userid_style">@d3fi5g</div>
+							</div>
+						</a>
 					</div>
 					<div class="homePostImg_style">
-						<img src="/mingle/img/home/img_homeList_style.jpg"/>
-						<div class="onContent_img">
-							<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-							<div class="homePostImg_userid_style">@d3fi5g</div>
-						</div>
+						<a href="">
+							<img src="/mingle/img/home/img_homeList_style.jpg"/>
+							<div class="onContent_img">
+								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
+								<div class="homePostImg_userid_style">@d3fi5g</div>
+							</div>
+						</a>
 					</div>
 					<div class="homePostImg_style">
-						<img src="/mingle/img/home/img_homeList_style.jpg"/>
-						<div class="onContent_img">
-							<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-							<div class="homePostImg_userid_style">@d3fi5g</div>
-						</div>
+						<a href="">
+							<img src="/mingle/img/home/img_homeList_style.jpg"/>
+							<div class="onContent_img">
+								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
+								<div class="homePostImg_userid_style">@d3fi5g</div>
+							</div>
+						</a>
 					</div>
 					<div class="homePostImg_style">
-						<img src="/mingle/img/home/img_homeList_style.jpg"/>
-						<div class="onContent_img">
-							<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-							<div class="homePostImg_userid_style">@d3fi5g</div>
-						</div>
+						<a href="">
+							<img src="/mingle/img/home/img_homeList_style.jpg"/>
+							<div class="onContent_img">
+								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
+								<div class="homePostImg_userid_style">@d3fi5g</div>
+							</div>
+						</a>
 					</div>
 					<div class="homePostImg_style">
-						<img src="/mingle/img/home/img_homeList_style.jpg"/>
-						<div class="onContent_img">
-							<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-							<div class="homePostImg_userid_style">@d3fi5g</div>
-						</div>
+						<a href="">
+							<img src="/mingle/img/home/img_homeList_style.jpg"/>
+							<div class="onContent_img">
+								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
+								<div class="homePostImg_userid_style">@d3fi5g</div>
+							</div>
+						</a>
 					</div>
 					<div class="homePostImg_style">
-						<img src="/mingle/img/home/img_homeList_style.jpg"/>
-						<div class="onContent_img">
-							<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-							<div class="homePostImg_userid_style">@d3fi5g</div>
-						</div>
+						<a href="">
+							<img src="/mingle/img/home/img_homeList_style.jpg"/>
+							<div class="onContent_img">
+								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
+								<div class="homePostImg_userid_style">@d3fi5g</div>
+							</div>
+						</a>
 					</div>
 					
 				</div>

@@ -30,9 +30,6 @@
 	height: 100vh;
 	background: black;
 }
-#banner_body{
-  background: rgba(218,218,218,1);
-}
 
 #banner_body a{
   color: #111
@@ -110,9 +107,9 @@
   position: absolute;
   bottom: 5px;
   width: 100%;
-  height: 100px;
-  text-align: center;
+  height: 100px; 
   color: white;
+  text-align: center;
 }
 #text_homeBanner:hover{
 	transform: scale(0.93) translate(0, 20px);
@@ -1313,12 +1310,12 @@
 }
 
 .btn-hover {
-    width: 150px;
-    font-size: 25px;
+    width: 90px;
+    font-size: 20px;
     font-weight: bold;
     color: #fff;
     cursor: pointer;
-    height: 45px;
+    height: 37px;
     text-align:center;
     border: none;
     background-size: 300% 100%;
@@ -1443,17 +1440,19 @@
 }
 .homePostImg_style{
 	width: 220px;
-	height: 358px;
-	display: flex;
+	height: 300px;
 	border-radius: 10px;
 }
-.homePostImg_style>img{
+.homePostImg_style>a{
+	display: flex;
+}
+.homePostImg_style>a>img{
 	width: 220px;
-	height: 358px;
+	height: 300px;
 	border-radius: 10px;
 }
 .onContent_img{
-	height: 358px;
+	height: 300px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -1474,7 +1473,7 @@
 
 /*banner_style*/
 #advStyle{
-	background: url("/mingle/img/home/advStyle_bg.jpg");
+	background: url("/mingle/img/home/advStyle_bg_2.png");
 	width: 100%;
 	height: 550px;
 	display: flex;
@@ -1482,17 +1481,16 @@
 }
 
 #advStyle_TEXT{
-	font-family: 'Abril Fatface', serif;
+	font-family: 'Shadows Into Light', cursive;
 	font-size: 150px;
 	font-weight: bold;
-	background: linear-gradient(to right, rgb(128, 0, 255) 20%, rgb(0, 255, 255) 50%, rgba(255,214,0,1) 80%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	color: white;
+	text-shadow: 4px 4px 10px gray;
 }
 #advStyle_TEXT span{
 	margin-left: 30px;
 }
 #homeContentLink_style{
-	color: rgb(255, 255, 128);
-	text-shadow: 2px 2px 10px gray;
+	color : rgb(128, 255, 255);
+	text-shadow: 4px 4px 10px rgb(0, 0, 255);
 }
