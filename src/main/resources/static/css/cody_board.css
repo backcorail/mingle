@@ -1,18 +1,42 @@
-.codiboard{
-	width: 100%;
-	height: 100%;
+@charset "UTF-8";
+.wrapper {
+	padding-top:90px;
 }
+.codyboard_background{
+	width: 100%;
+	height: 120%;
+	display:flex;
+	background-size: 100%;
+}
+
+.codyboard{
+	display:flex;
+	width: 1280px;
+	
+}
+
+
 h4{color:#FF1493;}
+
 .weather{
-	position: absolute;
-	left:15%;
+	display:flex;
+	
+	left:250px;
 	top: 200px;
 	width: 100px;
 	height: 200px;
 	text-align:center;
+	flex-direction: column;
+	margin-bottom: 0px;
+}
+
+.weather span{
+	color:#FF1493;
+	font-size: 15px;
 }
 
 .today{
+	width: 100px;
 	height: 180px;
 	background-color: white;
 	border-radius:10px;
@@ -22,7 +46,7 @@ h4{color:#FF1493;}
 
 .codiTap{
 	position: absolute;
-	left:23%;
+	left:460px;
 	top: 80px;
 	margin-top: 70px;
 	
@@ -44,7 +68,7 @@ h4{color:#FF1493;}
 
 .slide{
 	position: absolute;
-	left:50%;
+	left:1000px;
 	top: 150px;
 	width: 900px;
 	height: 100px;
@@ -52,7 +76,7 @@ h4{color:#FF1493;}
 }
 .slide2{
 	position: absolute;
-	left:50%;
+	left:1000px;
 	top: 150px;
 	width: 900px;
 	height: 100px;
@@ -60,7 +84,7 @@ h4{color:#FF1493;}
 }
 .slide3{
 	position: absolute;
-	left:50%;
+	left:1000px;
 	top: 150px;
 	width: 900px;
 	height: 100px;
@@ -68,7 +92,7 @@ h4{color:#FF1493;}
 }
 .slide4{
 	position: absolute;
-	left:50%;
+	left:1000px;
 	top: 150px;
 	width: 900px;
 	height: 100px;
@@ -106,4 +130,8 @@ h4{color:#FF1493;}
 	float:left;	
     margin-top: 37px;
 }
+
+.homeBtn{}
+
+
 
