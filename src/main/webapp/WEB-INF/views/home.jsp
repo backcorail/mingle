@@ -10,11 +10,11 @@
 	<div id="background_homeBanner">
 		<div id="banner_body">
 			<a href="#" class="photo">
-			  <h1>FASHION</h1>
-			    <img src="/mingle/img/home/main_banner.png"/>
+			  <img src="/mingle/img/home/main_banner.png"/>
 			  <div class="glow-wrap">
 			    <i class="glow"></i>
 			  </div>
+			  <div></div>
 			</a>
 		</div>
 		<div id="text_homeBanner">Welcome to my world!!!</div>
@@ -290,15 +290,29 @@
 					</div>
 				</a>
 			</div>
+	<!--
+			<hr style="width:1340px;">
+		
+	<div id="area_homeStyle">
+		<div id="leftArea_homeStyle">
+			<video src="/mingle/img/home/style_bg.mp4" muted autoplay loop></video>
+			<div>비오는 날씨에 입기좋은 나일론 팬츠 스타일링 보러가기</div>
+		</div>
+		<div id="rightArea_homeStyle">
+		</div>
+	</div>
+	-->
 	<!-- adv contnet -->
-			<div class="area_advContnet" id="advStyle">
-				<div id="advStyle_TEXT" data-text="TAKE IT TO">TAKE<span>IT</span><span>TO</span><br><span>THE</span><span>NEXT</span><span>LEVEL</span></div>
-				<div id="adv_homeLink_style">
-					<div class="row columns">
-				      <ul class="menu align-center expanded text-center SMN_effect-11">
-				        <li><a href="" data-hover="style next>"><span id="homeContentLink_style">style next></span></a></li>
-				      </ul>
-				    </div>
+			<div id="advStyle_body">
+				<div id="advStyle">
+					<div id="advStyle_TEXT" data-text="TAKE IT TO">TAKE<span>IT</span><span>TO</span><br><span>THE</span><span>NEXT</span><span>LEVEL</span></div>
+					<div id="adv_homeLink_style">
+						<div class="row columns">
+					      <ul class="menu align-center expanded text-center SMN_effect-11">
+					        <li><a href="" data-hover="style next>"><span id="homeContentLink_style">style next></span></a></li>
+					      </ul>
+					    </div>
+					</div>
 				</div>
 			</div>
 		</div>
