@@ -5,20 +5,31 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'IAMAPLAYER';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/IAMAPLAYER.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'HakgyoansimGaeulsopungB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimGaeulsopungB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
 /*__________________*/
+/*home*/
 #page_home{
 	width: 100%;
 }
 
-/*home*/
+/*banner*/
 #background_homeBanner{
 	margin: 0 auto;
 	width: 100%;
 	height: 100vh;
 	background: black;
 }
-
-/*banner*/
 #banner_body{
   background: rgba(218,218,218,1);
 }
@@ -1363,11 +1374,11 @@
 }
 /*adv 제목 효과*/
 .shadow{
-  font-family:Mr Dafoe, sans-serif;
-  color: rgb(64, 0, 128);
-  font-size: 48px;
+  font-family: 'IAMAPLAYER';
+  color: rgb(0, 0, 0);
+  font-size: 80px;
   text-align:center;
-  text-shadow: 0 -3px 0 rgb(192, 192, 192),
+  text-shadow: 0 -3px 0 rgb(255, 128, 128),
     0 6px 8px rgba(0,0,0,.4),
     0 9px 10px rgba(0,0,0,.15),
     0 30px 10px rgba(0,0,0,.18),
@@ -1377,7 +1388,7 @@
 
 /*adv 링크 효과*/
 .adv_homeLink{
-	margin-top: 100px;
+	margin-top: 50px;
 }
 .menu a {
   color: rgba(255, 255, 255, 0.8);
@@ -1391,7 +1402,7 @@
   text-transform: uppercase;
 }
 .SMN_effect-11 a:before {
-  color: #fff;
+  color: rgb(255, 255, 255);
   content: attr(data-hover);
   position: absolute;
   opacity: 0;
@@ -1412,7 +1423,15 @@
   opacity: 1;
 }
 #homeContentLink_cody{
-	color: #56CCF2;
+	background: rgb(0, 0, 0);
+	background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(131,58,180,1) 50%, rgba(255,214,0,1) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-shadow: 0 -3px 0 rgb(255, 128, 128),
+    0 6px 8px rgba(0,0,0,.4),
+    0 9px 10px rgba(0,0,0,.15),
+    0 30px 10px rgba(0,0,0,.18),
+    0 15px 10px rgba(0,0,0,.21);
 }
 
 
@@ -1454,17 +1473,26 @@
 }
 
 /*banner_style*/
-#adv_style{
-	background: #FFB400;
-}
-#bannerImg_style{
-	width: 441px;
+#advStyle{
+	background: url("/mingle/img/home/advStyle_bg.jpg");
+	width: 100%;
 	height: 550px;
+	display: flex;
+	align-items: center;
 }
-#homeContentTitle_style{
-	font-size: 48px;
+
+#advStyle_TEXT{
+	font-family: 'Abril Fatface', serif;
+	font-size: 150px;
 	font-weight: bold;
+	background: linear-gradient(to right, rgb(128, 0, 255) 20%, rgb(0, 255, 255) 50%, rgba(255,214,0,1) 80%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+#advStyle_TEXT span{
+	margin-left: 30px;
 }
 #homeContentLink_style{
-	color: #BD00FF;
+	color: rgb(255, 255, 128);
+	text-shadow: 2px 2px 10px gray;
 }
