@@ -13,8 +13,8 @@
 		</div>
 		<div class="resell_right_img">
 			<img class="main_img" src="/mingle/img/resell/sample.jpg">
-			<img class="select_img" src="/mingle/img/resell/magnifier.png">
-			<img class="select_img" src="/mingle/img/resell/magnifier.png">
+			<img class="select_img" src="/mingle/img/resell/icon_heart.png">
+			<img class="select_img" src="/mingle/img/resell/icon_shopBag.png">
 		</div>
 	</div>
 	<div class="center_line"></div>
@@ -37,3 +37,13 @@
 	</div>
 </div>
 <div class="middle_line"></div>
+<div class="resell_board_bottom">
+	<div class="resell_board_bottom_img">
+		<img src="/mingle/img/resell/sample.jpg">
+		<img src="/mingle/img/resell/sample.jpg">
+		<img src="/mingle/img/resell/sample.jpg">
+	</div>
+	<div class="resell_board_bottom_text">
+	(여기가 물품 설명글)
+	</div>
+</div>
