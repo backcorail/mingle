@@ -95,6 +95,10 @@ dependencies {
 	//7. https://mvnrepository.com/artifact/org.springframework/spring-messaging
 	implementation group: 'org.springframework', name: 'spring-messaging', version: '5.2.25.RELEASE'
 	
+	//jsoup 의존성 추가
+	// https://mvnrepository.com/artifact/org.jsoup/jsoup
+	implementation 'org.jsoup:jsoup:1.15.3'
+	
 }
 
 tasks.named('test') {
