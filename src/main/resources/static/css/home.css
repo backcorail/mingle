@@ -17,7 +17,11 @@
     font-weight: 700;
     font-style: normal;
 }
-/*__________________*/
+/*사이드 버튼 숨기기*/
+#area_sideBtn{
+	display: none;
+}
+
 /*home*/
 #page_home{
 	width: 100%;
