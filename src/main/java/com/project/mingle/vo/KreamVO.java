@@ -1,4 +1,5 @@
-/*
+package com.project.mingle.vo;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -7,8 +8,7 @@ import lombok.ToString;
 @Builder
 @ToString
 public class KreamVO{
-    private String image;
-    private String subject;
-    private String url;
+    private String item_image;
+    private String item_name;
+    private String item_price;
 }
-*/
