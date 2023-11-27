@@ -401,11 +401,11 @@
 			<div class="div-090"></div>
 			<div class="div-line1-b1 Yaldevi-SB-20y">본인 실명을 입력해주세요. 사용자는 닉네임으로 표시됩니다.</div>
 
-			<!-- 이름 -->
+			<!-- 이름 
 			<div class="div-680"></div>
 			<div class="Yaldevi-SemiBold-20g">*이름</div>
 			<input id="userpwd" name="userpwd" type="password" class="in-txt">
-
+			-->
 			<!-- 닉네임 -->
 			<div class="div-225"></div>
 			<div class="Yaldevi-SemiBold-20g">*닉네임</div>

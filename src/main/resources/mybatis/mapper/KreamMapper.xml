@@ -9,7 +9,7 @@ mybatis.mapper에 파일생성후 삭제  -->
 	    insert into item (item_name, item_image, item_price)
 	    values 
 	    <foreach collection="kreamlist" item="kream" separator=",">
-	        (#{kream.item_name}, #{kream.item_images}, #{kream.item_price})
+	        (#{kream.item_name}, #{kream.item_image}, #{kream.item_price})
 	    </foreach>
 	</insert>
 </mapper>
