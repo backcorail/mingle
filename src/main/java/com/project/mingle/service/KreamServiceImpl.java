@@ -31,11 +31,14 @@ public class KreamServiceImpl implements KreamService{
 		        Elements contents = document.select(".product_item");
 		        for (Element content : contents) {
 		            KreamVO kream = KreamVO.builder()
+//		            		.item_images(content.select("img").attr("abs:src")) // 이미지
 		            		.item_image(content.select("img").attr("abs:src")) // 이미지
 		                    .item_name(content.select(".info_box .name").text())		// 제목
 		                    .item_price(content.select(".price .num").text())		// 가격
 		                    .build();
 		            kreamList.add(kream);
+		            System.out.println(content.select("img").attr("abs:src"));
+		            System.out.println(content.select(".info_box .name").text());
 		            System.out.println(content.select(".price .num").text());
 		         }
 		       
@@ -48,7 +51,7 @@ public class KreamServiceImpl implements KreamService{
     }
 
 	@Override
-	public int kreamInsert(KreamVO vo) {
-		return mapper.kreamInsert(vo);
+	public int kreamInsert(List<KreamVO> kreamlist) {
+		return mapper.kreamInsert(kreamlist);
 	}
 }

@@ -20,10 +20,11 @@ public class KreamController {
         this.service = service;
     }
 
-    @GetMapping("/")
-    public String Kream(KreamVO vo, Model model) throws Exception{
+    @GetMapping("")
+    public String Kream( Model model) throws Exception{
+    	System.out.println("크립요청");
         List<KreamVO> kreamList = service.getKreamDatas();
-        int result = service.kreamInsert(vo);
+        int result = service.kreamInsert(kreamList);
         System.out.println(result+"hello");
         model.addAttribute("kreams", kreamList);
         
