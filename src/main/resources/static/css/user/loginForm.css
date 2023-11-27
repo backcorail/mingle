@@ -1,0 +1,550 @@
+@font-face {
+  font-family : 'Yaldevi-ExtraLight';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/Yaldevi-ExtraLight.ttf')
+}
+@font-face {
+  font-family : 'Yaldevi-SemiBold';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/Yaldevi-SemiBold.ttf')
+}
+@font-face {
+  font-family : 'Yaldevi-Bold';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/Yaldevi-Bold.ttf')
+}
+
+@font-face {
+  font-family : 'KeaniaOne-Regular';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/KeaniaOne-Regular.ttf')
+}
+@font-face {
+  font-family : 'Kanit-Regular';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/Kanit-Regular.ttf')
+}
+
+@font-face {
+  font-family : 'ABeeZee-Regular';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/ABeeZee-Regular.ttf')
+}
+:root{
+  --default-size : 1;
+}
+html{ font-size: 17px; }
+body{ font-size: 1rem; }
+
+body{
+  font-family: 'Yaldevi', 'NanumSquare', 'sans-serif' , 'San Francisco';
+}
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+
+  /*헤더 공간 확보*/
+  margin-top: 90px;
+}
+.container{      
+  width: 56rem;
+  height: 35.25rem;
+  border-radius: 1rem;
+  background-image: url('/mingle/img/user/rectangle-2020.png');
+  background-size: contain;
+}
+.div-main-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 37.05rem;
+  height: 35.25rem;
+  border-radius: 1rem 0rem 0rem 1rem;
+  background: #ffffff;
+}
+.blank-102{
+  height: 5.1rem;
+}
+/* mibgle */
+.div-main-form .div-logo{
+  width: 10.15rem;
+  color: #000000;
+  text-align: center;
+  font: 400 3.2rem 'KeaniaOne-Regular';
+}
+.blank-22{
+  height: 1.1rem;
+}
+/*  Mixing various fashions into one */
+.div-main-form .div-tile-desc{
+  width: 17.7rem;
+  height: 1.2rem;
+  color: #000000;
+  text-align: center;
+  font: 400 1.2rem 'Kanit-Regular';
+}
+.blank-20{
+  height: 1rem;
+}
+.div-main-form .div-login-outline{
+  width: 24.19905rem;
+  height: 10.35rem;
+}
+
+/* 아이디  */
+.div-main-form .div-id-text{
+  width: 4.1rem;
+  height: 1.2rem;
+  color: #000000;
+  font: 1000 0.75rem 'Yaldevi-Bold';
+}
+.in-txt{
+  width: 100%;
+  border: none;
+  border-bottom: 0.2rem solid #FFB400;
+  height: 2.05rem;
+  font: 600 1.25rem "Yaldevi-SemiBold";
+}
+.in-txt:focus{
+  outline:none;
+}
+.in-txt::placeholder{
+  color: #afafaf;
+}
+
+/* 비밀번호 */
+.div-main-form .div-pwd-text{
+  width: 4.1rem;
+  height: 1.2rem;
+  color: #000000;
+  font: 1000 0.75rem 'Yaldevi-Bold';
+}
+/* 로그인 용.div-main-form */
+.btn-login{
+  width: 24.2rem;
+  height: 3.75rem;
+  border-radius:0.25rem;
+  border-style: none;
+
+  background: #ffd600;
+  
+  color: #ffffff;
+  text-align: center;
+  font: 600 1rem "Yaldevi-SemiBold";
+}
+.btn-login:hover{
+  cursor: pointer;
+  background: #f7e175;
+}
+/* 회원가입 용  */
+.btn-login2{
+  width: 100%;
+  height: 2.75rem;
+  border-radius:0.25rem;
+  border-style: none;
+
+  background: #ffd600;
+  
+  color: #ffffff;
+  text-align: center;
+  font: 600 1rem "Yaldevi-SemiBold";
+}
+.btn-login2:hover{
+  cursor: pointer;
+  background: #f7e175;
+}
+
+.btn-login3{
+  width: 24.2rem;
+  height: 2.75rem;
+  border-radius:0.25rem;
+  border-style: none;
+
+  background: #ffd600;
+  
+  color: #ffffff;
+  text-align: center;
+  font: 600 1rem "Yaldevi-SemiBold";
+}
+.btn-login3:hover{
+  cursor: pointer;
+  background: #f7e175;
+}
+
+.btn-login26{
+  width: 26rem;
+  height: 2.75rem;
+  border-radius:0.25rem;
+  border-style: none;
+
+  background: #ffd600;
+  
+  color: #ffffff;
+  text-align: center;
+  font: 600 1rem "Yaldevi-SemiBold";
+}
+.btn-login26:hover{
+  cursor: pointer;
+  background: #f7e175;
+}
+
+/* 회원가입 비밀번호 아이디 찾기 */
+.div-main-form .ul-user-option{
+  width: 24.19905rem;
+  display: flex;
+  justify-content: space-evenly
+}
+.div-main-form .ul-user-option li{
+  height: 1.35rem;
+  color: #707070;
+  text-align: center;
+  font: 200 0.8rem "Yaldevi-ExtraLight";
+}
+.div-main-form .ul-user-option li input{
+  border-style: none;
+  background-color:#ffffff;
+}
+.div-main-form .ul-user-option li input:hover{
+  cursor: pointer;
+  color: #FFB400;
+}
+.div-main-form .ul-user-option div{
+  height: 1.35rem;
+  border-left: 0.1rem solid #ffd600;
+}
+.blank-41{
+  height: 2.05rem
+}
+
+
+/*  or Sign Up Using */
+.txt-sns-login{
+  color: #d8d8d8;
+  text-align: center;
+  font: 400 0.75rem "ABeeZee-Regular";
+}
+.blank-27{
+  height: 1.35rem;
+}
+
+.ul-sns-list{
+  display: flex;
+}
+.ul-sns-list li{
+  padding: 0.55rem;
+}
+.ul-sns-list li img{
+  width: 2.55rem;
+  height: 2.55rem;
+  margin: 0.55rem;
+}
+.blank-56{
+  height: 2.8rem;
+}
+/* 회원가입 모달 hidden */
+
+.sign-modal-containder{
+  width: 36.4rem;
+  height: 41.3rem;
+
+  padding: 3.8rem 4rem 4.3rem 4rem;
+  border-radius: 0.5rem;
+  background: #FFF;
+  box-shadow: 0px 0px 15px 0px #FFD600;
+}
+
+.div-line1-b1-Fw2{
+  width: 26rem;
+  height: 1.3rem;
+}
+
+
+.div-line1-b1-Fw{
+  width: 24.2rem;
+  height: 1.3rem;
+}
+.div-line2-b1-Fw{
+  width: 24.2rem;
+  height: 2.6rem;
+  word-break: break-all;
+}
+.div-line2-b1{
+  width: 18.75rem;
+  height: 2.6rem;
+}
+.div-line1-b2-FW{
+  width: 24.2rem;
+  height: 2.6rem;
+}
+.div-line1-b2-noW{
+  height: 2.65rem;
+}
+.div-line1-b2{
+  width: 18.75rem;
+  height: 2.65rem;
+}
+.div-line2-b2{
+  width: 18.75rem;
+  height: 5.3rem;
+}
+.div-bt-area{
+  height: 1.4rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.div-btn-area{
+  width: 16.55rem;
+  height: 2.3rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.btn-back{
+  width: 6.8rem;
+  height: 2.3rem;
+  border-radius: 0.25rem;
+  border-style: none;
+  background: #FF5959;
+}
+.btn-back:hover{
+  cursor: pointer;
+  background: #FF7959;
+}
+.btn-next{
+  width: 6.8rem;
+  height: 2.3rem;
+  border-radius: 0.25rem;
+  border-style: none;
+  background: #56CCF2;
+}
+.btn-next:hover{
+  cursor: pointer;
+  background: #56eCF2;
+}
+
+.btn-ok{
+  width: 6.8rem;
+  height: 2.3rem;
+  border-radius: 0.25rem;
+  border-style: none;
+  background: #FFB400;
+}
+.btn-ok:hover{
+  cursor: pointer;
+  background: #FFd400;
+}
+
+
+
+/* 인증번호 */
+.div-input-num-area{
+  width: 100%;
+  height: 3.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.div-input-num-area input{
+  width:  3.8rem;
+  height: 3.8rem;
+  
+  border-radius: 0.5rem;
+  border: 3px solid #000;
+  background: #FFF;
+
+  text-align: center;
+  font-size: 3rem;
+  line-height: 3rem;
+
+}
+/* 인증번호 2*/
+.div-input-num-area-34{
+  width: 100%;
+  height: 3.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.div-input-num-area-34 input{
+  width:  3.4rem;
+  height: 3.4rem;
+  
+  border-radius: 0.5rem;
+  border: 3px solid #000;
+  background: #FFF;
+
+  text-align: center;
+  font-size: 3rem;
+  line-height: 3rem;
+
+}
+
+/*  비밀번호 5회 캡차 적용 구간  */
+.div-login-outline2{
+  width: 24.19905rem;
+}
+.div-chapcha-are{
+  width: 24.2rem;
+  height: 5rem;
+}
+
+.div-inner-full{
+  width: 24.2rem;
+}
+
+/* 아이디 찾기 마지막 확인 */
+.div-userid-show-area{
+  width: 24.2rem;
+  height: 4.05rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.5rem;
+  background: #D9D9D9;
+
+}
+/* 비밀번호 변경하기 마지막 */
+.div-pwd-alret{
+  width: 24.2rem;
+  height: 0.9rem;
+  
+  /* 비밀번호가 일치하지 않습니다. 다시 입력해주세요. */
+  /* 비밀번호가 같습니다. 현재비밀번호와 다르게 입력해주세요. */
+  font: 600 0.75rem "Yaldevi-SemiBold", sans-serif;
+  text-align: right;
+  color: #D05A5A;
+  line-height: 0.9rem;
+}
+.div-pwd-alret2{
+  width: 10.1rem;
+  height: 0.9rem;
+  
+  /* 비밀번호가 일치하지 않습니다. 다시 입력해주세요. */
+  /* 비밀번호가 같습니다. 현재비밀번호와 다르게 입력해주세요. */
+  font: 600 0.75rem "Yaldevi-SemiBold", sans-serif;
+  text-align: right;
+  color: #D05A5A;
+  line-height: 0.9rem;
+}
+
+/* 비밀번호 변경 확인 */
+.div-edit-pawd-area{
+  width: 30.35rem;
+  height: 12.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+
+}
+.blank-35{
+  height: 1.75rem
+}
+.div-020{  height: 0.20rem; }
+.div-035{  height: 0.35rem; }
+.div-050{  height: 0.50rem; }
+.div-050{  height: 0.50rem; }
+.div-065{  height: 0.65rem; }
+.div-070{  height: 0.70rem; }
+.div-080{  height: 0.80rem; }
+.div-085{  height: 0.85rem; }
+.div-090{  height: 0.90rem; }
+.div-100{  height: 1.00rem; }
+.div-110{  height: 1.10rem; }
+.div-130{  height: 1.30rem; }
+.div-145{  height: 1.45rem; }
+.div-160{  height: 1.60rem; }
+.div-175{  height: 1.75rem; }
+.div-180{  height: 1.80rem; }
+.div-210{  height: 2.10rem; }
+.div-215{  height: 2.15rem; }
+.div-220{  height: 2.20rem; }
+.div-225{  height: 2.25rem; }
+.div-245{  height: 2.45rem; }
+.div-300{  height: 3.00rem; }
+.div-345{  height: 3.45rem; }
+.div-392{  height: 3.92rem; }
+.div-415{  height: 4.15rem; }
+.div-435{  height: 4.35rem; }
+.div-535{  height: 5.35rem; }
+.div-680{  height: 6.80rem; }
+.div-720{  height: 7.20rem; }
+.div-1010{  height: 10.10rem; }
+.div-1295{  height: 12.95rem; }
+/* 버튼용 */
+.Yaldevi-SB-20w-btn{  
+  color: #FFFFFF;
+  font: 600 0.75rem "Yaldevi-SemiBold", sans-serif;
+}
+
+.Yaldevi-SB-20g-A{
+  height: 1.05rem;
+  color: #4AD295;
+  font: 600 0.75rem "Yaldevi-SemiBold", sans-serif;
+  line-height: 1.05rem;
+  text-align: left;
+}
+.Yaldevi-SB-20r-A{
+  height: 1.05rem;
+  color: #D05A5A;
+  font: 600 0.75rem "Yaldevi-SemiBold", sans-serif;
+  line-height: 1.05rem;
+  text-align: left;
+}
+
+.Yaldevi-SB-C-20y{
+  height: 1.4rem;
+  color: #fecb02;
+  font: 600 1rem "Yaldevi-SemiBold", sans-serif;
+  line-height: 1.4rem;
+  text-align: center;
+}
+.Yaldevi-SB-20y{
+  height: 1.4rem;
+  color: #fecb02;
+  font: 600 1rem "Yaldevi-SemiBold", sans-serif;
+  line-height: 1.4rem;
+  text-align: left;
+}
+.Yaldevi-SB-24{
+  height: 1.6rem;
+  color: #000000;
+  font: 600 1.2rem "Yaldevi-SemiBold", sans-serif;
+  line-height: 1.6rem;
+  text-align: left;
+}
+
+.Yaldevi-SemiBold-20g{
+  height: 1.4rem;
+  color: #afafaf;
+  font: 600 1rem "Yaldevi-SemiBold", sans-serif;
+  line-height: 1.4rem;
+  text-align: left;
+}
+
+.Yaldevi-SB-C-40y{
+  color: #fecb02;
+  font: 600 2rem "Yaldevi-SemiBold", sans-serif;
+  line-height: 2.65rem;
+  text-align: center;
+}
+
+.Yaldevi-SemiBold-40y{
+  color: #fecb02;
+  font: 600 2rem "Yaldevi-SemiBold", sans-serif;
+  line-height: 2.65rem;
+  text-align: left;
+}
+
+
+
