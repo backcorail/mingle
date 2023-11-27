@@ -10,7 +10,6 @@
 	<div class="style_title_container">
 		<h2 class="style_title">STYLE</h2>
 		<!-- 제목 -->
-
 	</div>
 	<div id="style_tabs">
 		<ul class="style_tabs_list">

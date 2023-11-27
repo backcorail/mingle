@@ -5,29 +5,37 @@
     font-weight: normal;
     font-style: normal;
 }
-/*__________________*/
+@font-face {
+    font-family: 'IAMAPLAYER';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/IAMAPLAYER.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'HakgyoansimGaeulsopungB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimGaeulsopungB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+/*사이드 버튼 숨기기*/
+#area_sideBtn{
+	display: none;
+}
+
+/*home*/
 #page_home{
 	width: 100%;
 }
 
-/*home*/
+/*banner*/
 #background_homeBanner{
 	margin: 0 auto;
-	width: 100%;
 	height: 100vh;
 	background: black;
 }
 
-/*banner*/
-#banner_body{
-  background: rgba(218,218,218,1);
-}
-
-#banner_body a{
-  color: #111
-}
-
 .photo{
+  height:70vh;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -36,7 +44,7 @@
 }
 
 .photo img{
-  width: 1000px;
+  height:70vh;
   object-fit: cover;
   box-shadow: 10px 15px 25px 0 rgba(0,0,0,.2);
   display: block;
@@ -79,29 +87,17 @@
   margin-top: 0;
 }
 
-#banner_body h1{
-  position: absolute;
-  z-index: 1;
-  transform: translate(200%, -25%);
-  font-family: 'Montserrat', sans-serif;
-  margin: 0;/*200*/
-  line-height: 1.2;
-  color: white;
-  font-size: 80px;
-  text-shadow: 4px 4px 4px gray;
-  width: auto;
-}
 
 /*text*/
 #text_homeBanner{
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 3vh;
   position: absolute;
   bottom: 5px;
   width: 100%;
-  height: 100px;
-  text-align: center;
+  height: 100px; 
   color: white;
+  text-align: center;
 }
 #text_homeBanner:hover{
 	transform: scale(0.93) translate(0, 20px);
@@ -109,7 +105,7 @@
 }
 
 /*main content*/
-#category_homeRecell{
+#category_homeresell{
 	width: 1340px;
 	height: 140px;
 	margin: 0 auto;
@@ -117,7 +113,7 @@
 	justify-content: space-between;
 	align-items: center;
 }
-#category_homeRecell li{
+#category_homeresell li{
 	width: 263px;
 	height: 110px;
 	border-radius: 7px;
@@ -1253,7 +1249,7 @@
 	width: 100%;
 	
 }
-.homePost_recell{
+.homePost_resell{
 	width: 261px;
 	height: auto;
 }
@@ -1263,7 +1259,7 @@
 	border-radius: 10px;
 	background: ghostwhite;
 }
-.homePostTitle_recell{
+.homePostTitle_resell{
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 16px;
 	font-weight: 10;
@@ -1275,13 +1271,13 @@
 	display: flex;
 	justify-content: space-between;
 }
-.homePostPrice_recell{
+.homePostPrice_resell{
 	font-family: 'Abril Fatface', serif;
 	color: #56CCF2;
 	font-weight: bold;
 	font-size: 25px;
 }
-.homePostTime_recell{
+.homePostTime_resell{
 	font-family: 'Nanum Pen Script', cursive;
 	font-size: 25px;
 }
@@ -1302,12 +1298,12 @@
 }
 
 .btn-hover {
-    width: 150px;
-    font-size: 25px;
+    width: 90px;
+    font-size: 20px;
     font-weight: bold;
     color: #fff;
     cursor: pointer;
-    height: 45px;
+    height: 37px;
     text-align:center;
     border: none;
     background-size: 300% 100%;
@@ -1363,11 +1359,11 @@
 }
 /*adv 제목 효과*/
 .shadow{
-  font-family:Mr Dafoe, sans-serif;
-  color: rgb(64, 0, 128);
-  font-size: 48px;
+  font-family: 'IAMAPLAYER';
+  color: rgb(0, 0, 0);
+  font-size: 80px;
   text-align:center;
-  text-shadow: 0 -3px 0 rgb(192, 192, 192),
+  text-shadow: 0 -3px 0 rgb(255, 128, 128),
     0 6px 8px rgba(0,0,0,.4),
     0 9px 10px rgba(0,0,0,.15),
     0 30px 10px rgba(0,0,0,.18),
@@ -1377,7 +1373,7 @@
 
 /*adv 링크 효과*/
 .adv_homeLink{
-	margin-top: 100px;
+	margin-top: 50px;
 }
 .menu a {
   color: rgba(255, 255, 255, 0.8);
@@ -1391,7 +1387,7 @@
   text-transform: uppercase;
 }
 .SMN_effect-11 a:before {
-  color: #fff;
+  color: rgb(255, 255, 255);
   content: attr(data-hover);
   position: absolute;
   opacity: 0;
@@ -1412,7 +1408,15 @@
   opacity: 1;
 }
 #homeContentLink_cody{
-	color: #56CCF2;
+	background: rgb(0, 0, 0);
+	background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(131,58,180,1) 50%, rgba(255,214,0,1) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-shadow: 0 -3px 0 rgb(255, 128, 128),
+    0 6px 8px rgba(0,0,0,.4),
+    0 9px 10px rgba(0,0,0,.15),
+    0 30px 10px rgba(0,0,0,.18),
+    0 15px 10px rgba(0,0,0,.21);
 }
 
 
@@ -1424,17 +1428,19 @@
 }
 .homePostImg_style{
 	width: 220px;
-	height: 358px;
-	display: flex;
+	height: 300px;
 	border-radius: 10px;
 }
-.homePostImg_style>img{
+.homePostImg_style>a{
+	display: flex;
+}
+.homePostImg_style>a>img{
 	width: 220px;
-	height: 358px;
+	height: 300px;
 	border-radius: 10px;
 }
 .onContent_img{
-	height: 358px;
+	height: 300px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -1454,17 +1460,28 @@
 }
 
 /*banner_style*/
-#adv_style{
-	background: #FFB400;
-}
-#bannerImg_style{
-	width: 441px;
+#advStyle_body{
+	background: url("/mingle/img/home/advStyle_bg_2.png");
+	width: 100%;
 	height: 550px;
 }
-#homeContentTitle_style{
-	font-size: 48px;
+#advStyle{
+	width: 1340px;
+	margin: 0 auto;
+	display: flex;
+}
+
+#advStyle_TEXT{
+	font-family: 'Shadows Into Light', cursive;
+	font-size: 150px;
 	font-weight: bold;
+	color: white;
+	text-shadow: 4px 4px 10px gray;
+}
+#advStyle_TEXT span{
+	margin-left: 30px;
 }
 #homeContentLink_style{
-	color: #BD00FF;
+	color : rgb(128, 255, 255);
+	text-shadow: 4px 4px 10px rgb(0, 0, 255);
 }

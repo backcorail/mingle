@@ -2,10 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <link rel="stylesheet" href="/mingle/css/resell_main.css">
-<script src="/mingle/js/resell.js"></script>
-	
-<div class="test"></div>
-<div class="test2"></div>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap&family=Nanum+Pen+Script&display=swap&family=Abril+Fatface&family=Kanit:ital,wght@1,500&family=Noto+Sans+KR:wght@300" rel="stylesheet">
+<script src="/mingle/js/resell_main.js"></script>
 
 <!-- 위쪽 카테고리 선택부분 -->
 <div>
@@ -23,7 +21,7 @@
 		<li id="choose_other" class="choose"><h3>Other</h3></li>
 	</ul>
 </div>
-
+<hr style="1px solid black">
 <div class="resell_main">
 <!-- 왼쪽 탭 부분 -->
 	<div class="resell_left">
@@ -32,7 +30,7 @@
 		<div class="resell_left_top">
 			<div class="resell_left_topic">
 				<h2>TOP</h2>
-				<div id="moreView1" class="moreView">...</div>
+				<img src="/mingle/img/resell/btn_more_resell.png" id="moreView1" class="moreView"/>
 			</div>
 			<ul id="category1" class="category">
 				<li>맨투맨/스웨트 셔츠</li>
@@ -42,7 +40,7 @@
 				<li>반소매 티셔츠</li>
 				<li>민소매 티셔츠</li>
 				<li>스포츠 상의</li>
-				<li>셔츤</li>
+				<li>셔츠</li>
 			</ul>
 		</div>
 		
@@ -50,7 +48,7 @@
 		<div class="resell_left_bottom">
 			<div class="resell_left_topic">
 				<h2>BOTTOM</h2>
-				<div id="moreView2" class="moreView">...</div>
+				<img src="/mingle/img/resell/btn_more_resell.png" id="moreView2" class="moreView"/>
 			</div>
 			<ul id="category2" class="category">
 				<li>데님팬츠</li>
@@ -68,7 +66,7 @@
 		<div class="resell_left_outer">
 			<div class="resell_left_topic">
 				<h2>OUTER</h2>
-				<div id="moreView3" class="moreView">...</div>
+				<img src="/mingle/img/resell/btn_more_resell.png" id="moreView3" class="moreView"/>
 			</div>
 			<ul id="category3" class="category">
 				<li>후드 집업</li>
@@ -84,15 +82,22 @@
 				<li>나일론/코치 재킷</li>
 			</ul>
 		</div>
+		
+		<!-- 글작성 부분 -->
+        <div class="write_recell">
+			<a  href="" class="button_container">
+			  	<button class="btn_write_recell"><span>fill out</span></button>
+			</a>
+	 	</div>   
 	</div>
 	
 	<!-- 리셀 부분 -->
 	<div class="resell_list">
-		<c:forEach var="n" begin="1" end="12">
+		<c:forEach var="n" begin="1" end="16">
 			<div class="list_box">
 				<img src="/mingle/img/resell/sample.jpg"/>
 				<a href="">평상복의류(흰색)</a>
-				<div class="recell_price">가격 : 50,000원</div>
+				<div class="recell_price">50000</div>
 				<div class="recell_time"></div>
 			</div>
 		</c:forEach>
