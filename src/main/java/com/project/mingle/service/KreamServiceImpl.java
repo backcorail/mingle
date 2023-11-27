@@ -22,7 +22,7 @@ public class KreamServiceImpl implements KreamService{
 	
     private static String News_URL = "https://kream.co.kr/?tab=home_men";
 
-    @PostConstruct
+    // @PostConstruct 일단 무조건 실행 어노테이션
     public List<KreamVO> getKreamDatas(){
         List<KreamVO> kreamList = new ArrayList<>();
         try {
