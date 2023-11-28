@@ -20,6 +20,15 @@
 	margin-top: 300px;
 }
 
+#date{
+	color: lightgrey;
+	font-size: 18px;
+}
+
+.min_temperature{color:#56CCF2}
+
+.max_temperature{color:#FF5959}
+
 .weather span{
 	color:#FF1493;
 	font-size: 15px;
@@ -89,13 +98,14 @@
 
 .rightBtn{
 	float:left;	
-    margin-top: 37px;
+    margin-top: 63px;
     margin-right: 20px;
+    transform: scaleX(-1);
 }
 
 .leftBtn{
 	float:left;	
-    margin-top: 37px;
+    margin-top: 63px;
 }
 
 @font-face{
