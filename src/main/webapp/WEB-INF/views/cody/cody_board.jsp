@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/mingle/css/cody_board.css">
+<script src="/mingle/js/cody_board.js"></script>
+
 <div class="codyboard_background" style="background-image:url('/mingle/img/cody/day_sunny/background.png');">
 	<div class="weather">
 		<span>오늘의 날씨</span>
 		<div class="today" id="today">
-		<h1>수</h1>
-		<a>11.08</a><br>
-		<img src="/mingle/img/cody/day_sunny/icon_sunny.png" style="width:50px;height:50px;"/><br>
-		<a style="color:#56CCF2">3°</a><a style="color:#D8D8D8">/</a><a style="color:#FF5959">9°</a><br>
+		<h1 id="dateName"></h1>
+		<a id="date"></a><br>
+		<img id="weather_Icon" style="width:60px;height:60px;"/><br>
+		<a id="min_temperature" class="min_temperature"></a><a style="color:#D8D8D8">/</a><a id="max_temperature" class="max_temperature"></a><br>
 		<a></a>
 		</div>
 	</div>
@@ -69,4 +71,4 @@
 		</div>
 	</div>
 </div>
-<input type="button" class="homeBtn" value="Main"/>
+<input type="button" class="homeBtn" name="homeBtn" value="Main" onclick="location.href='/mingle'" >

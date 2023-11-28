@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 깃헙패키지 생성용 xml 파일 
+mybatis.mapper에 파일생성후 삭제  -->
+<!-- insert into item (item_name, item_images, item_price)  -->
+<mapper namespace="com.project.mingle.mapper.KreamMapper">
+	<insert id="kreamInsert">
+	    insert into item (item_name, item_image, item_price)
+	    values 
+	    <foreach collection="kreamlist" item="kream" separator=",">
+	        (#{kream.item_name}, #{kream.item_image}, #{kream.item_price})
+	    </foreach>
+	</insert>
+</mapper>

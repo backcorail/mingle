@@ -45,7 +45,7 @@
     <div id="tabMenu_header">
 	    <div id="tabMenu_header_content">
 	    	<div class="area_tabMenu" id="area_tabMenu_1" onmouseover="showSubMenu(1)" onmouseout="showSubHidden(1)">
-		    	<a href="/mingle/style/main" class="title_tabMenu">STYLE</a>
+		    	<a href="/mingle/style" class="title_tabMenu">STYLE</a>
 		    	<ul class="subtitle_tabMenu" id="subMenu_1">
 					<li><a href="/mingle/style/ranking">ranking</a></li>
 					<li><a href="/mingle/style/styles">style</a></li>
@@ -59,7 +59,7 @@
 					<li><a href="#">men</a></li>
 					<li><a href="#">women</a></li>
 					<li><a href="#">shoes</a></li>
-					<li><a href="#">bag</a></li>
+					<li><a href="/mingle/kream">bag</a></li>
 					<li><a href="#">other</a></li>
 				</ul>
 	    	</div>
