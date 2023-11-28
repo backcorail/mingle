@@ -21,11 +21,11 @@
 				<input id="userpwd" name="userpwd" type="password" class="in-txt" placeholder="예)qwert0987654">
 			</div>
 			<!-- 로그인 버튼 -->
+			<div class="div-020"></div>
+			<input id="btn-main-login" class="btn-login" type="button" value="로그인">
 
 			<!-- 회원가입 / 비밀 번호 / 아이디 찾기-->
 			<!-- <div class="blank-35"></div> -->
-			<div class="div-020"></div>
-			<input id="btn-login" class="btn-login" type="button" value="로그인">
 			<div class="blank-20"></div>
 			<ul class="ul-user-option">
 				<li><input type="button" value="회원가입" class="btn-joinform"></li>
@@ -343,7 +343,7 @@
 			<input id="join-userid" name="join-userid" type="text" class="in-txt">
 			<!-- 아이디 중복검사 -->
 			<div class="div-085"></div>
-			<input type="hidden" name="chk" id="chk" value="N">
+			<input type="hidden" name="chk" id="idchk" value="N">
 			<input id="btn-id-dcheck" class="btn-login2" type="button" value="아이디 중복 검사">
 			<!-- 비밀번호 -->
 			<div class="div-085"></div>
@@ -353,7 +353,7 @@
 			<div class="div-085"></div>
 			<div class="div-bt-area">
 				<div class="Yaldevi-SemiBold-20g">*비밀번호확인</div>
-				<div id="joinpwd-yes-no-text" class="div-pwd-alret2 Yaldevi-SB-20r-A">사용불가능한 아이디 입니다.</div>
+				<div id="joinpwd-yes-no-text" class="div-pwd-alret2 Yaldevi-SB-20r-A">비밀번호가 다릅니다. 다시입력해주세요</div>
 			</div>
 			<input id="join-userpwd-re" name="join-userpwd-re" type="text" class="in-txt">
 			<!-- 전화번호 -->
@@ -363,7 +363,8 @@
 			<!-- btn 취소 /  확인 -->
 			<div class="div-435"></div>
 			<div class="div-btn-area">
-				<input id="btn-modal-cancle" class="btn-back Yaldevi-SB-20w-btn" type="button" value="취소"> <input id="btn-next-tel" class="btn-next Yaldevi-SB-20w-btn" type="button" value="확인">
+				<input id="btn-modal-cancle" class="btn-back Yaldevi-SB-20w-btn" type="button" value="취소"> 
+				<input id="btn-next-tel" class="btn-next Yaldevi-SB-20w-btn" type="button" value="확인">
 			</div>
 		</div>
 		<!-- 가입창 모달-회원정보 입력 끝111 -->
@@ -379,7 +380,7 @@
 			<div class="div-720"></div>
 			<div class="div-bt-area">
 				<div class="Yaldevi-SemiBold-20g"></div>
-				<div class="div-id-alret Yaldevi-SB-20r-A">입력하신 번호가 다릅니다. 다시 입력해주세요.</div>
+				<div id="joinotp-no-text" class="div-id-alret Yaldevi-SB-20r-A">입력하신 번호가 다릅니다. 다시 입력해주세요.</div>
 			</div>
 			<div class="div-input-num-area">
 				<input class="joinotp1" type="text" maxlength="1"> <input class="joinotp2" type="text" maxlength="1"> <input class="joinotp3" type="text" maxlength="1"> <input class="joinotp4" type="text" maxlength="1"> <input class="joinotp5" type="text"
@@ -387,9 +388,10 @@
 			</div>
 			<!-- btn 취소 /  확인 -->
 
-			<div class="div-1295"></div>
+			<div class="div-1395"></div>
 			<div class="div-btn-area">
-				<input id="btn-back-tel" class="btn-back Yaldevi-SB-20w-btn" type="button" value="이전"> <input id="btn-next-name" class="btn-next Yaldevi-SB-20w-btn" type="button" value="확인">
+				<input id="btn-back-tel" class="btn-back Yaldevi-SB-20w-btn" type="button" value="이전">
+				<input id="btn-next-name" class="btn-next Yaldevi-SB-20w-btn" type="button" value="확인">
 			</div>
 		</div>
 		<!-- 가입창 모달-인증번로 입력 끝 222     -->
@@ -404,18 +406,24 @@
 			<!-- 이름 
 			<div class="div-680"></div>
 			<div class="Yaldevi-SemiBold-20g">*이름</div>
-			<input id="userpwd" name="userpwd" type="password" class="in-txt">
+			<input id="join-username" name="userpwd" type="password" class="in-txt">
 			-->
 			<!-- 닉네임 -->
-			<div class="div-225"></div>
+			<div class="div-825"></div>
 			<div class="Yaldevi-SemiBold-20g">*닉네임</div>
-			<input id="userpwd" name="userpwd" type="password" class="in-txt">
-
+			<input id="join-usernick" name="join-usernick" type="text" class="in-txt">
+			
+			
+			<!-- 닉네임 중복검사 -->
+			<div class="div-130"></div>
+			<input type="hidden" name="nickchk" id="nickchk" value="N">
+			<input id="btn-nick-dcheck" class="btn-login2" type="button" value="닉네임 중복 검사" placeholder="한글/영어대소문자/숫자만 가능"> 
 			<!-- btn 취소 /  확인 -->
 
-			<div class="div-1010"></div>
+			<div class="div-1110"></div>
 			<div class="div-btn-area">
-				<input id="btn-back-name" class="btn-back Yaldevi-SB-20w-btn" type="button" value="이전"> <input id="btn-next-welcome" class="btn-next Yaldevi-SB-20w-btn" type="button" value="확인">
+				<input id="btn-back-name" class="btn-back Yaldevi-SB-20w-btn" type="button" value="이전">
+				<input id="btn-next-welcome" class="btn-next Yaldevi-SB-20w-btn" type="button" value="확인">
 			</div>
 		</div>
 		<!-- 가입창 모달 끝 333     -->
