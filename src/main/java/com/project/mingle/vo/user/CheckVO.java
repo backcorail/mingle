@@ -1,4 +1,4 @@
-package com.project.mingle.vo;
+package com.project.mingle.vo.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ResponseDto<T> {
-	int status;
-	T	res;
-
+public class CheckVO {
+	String data;
 }

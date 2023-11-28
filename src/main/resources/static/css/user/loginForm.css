@@ -56,6 +56,10 @@ main{
   background-image: url('/mingle/img/user/rectangle-2020.png');
   background-size: contain;
 }
+.div-logo:hover{
+	cursor: pointer;
+	
+}
 .div-main-form{
   display: flex;
   flex-direction: column;
@@ -247,6 +251,8 @@ main{
 /* 회원가입 모달 hidden */
 
 .sign-modal-containder{
+	display: flex;
+	flex-direction: column;
   width: 36.4rem;
   height: 41.3rem;
 
@@ -299,6 +305,7 @@ main{
 }
 
 .div-btn-area{
+	align-self: flex-end;
   width: 16.55rem;
   height: 2.3rem;
   margin: 0 auto;
@@ -479,8 +486,12 @@ main{
 .div-535{  height: 5.35rem; }
 .div-680{  height: 6.80rem; }
 .div-720{  height: 7.20rem; }
+.div-825{  height: 8.25rem; }
 .div-1010{  height: 10.10rem; }
+.div-1110{  height: 11.10rem; }
 .div-1295{  height: 12.95rem; }
+.div-1395{  height: 13.95rem; }
+.div-1710{  height: 17.10rem; }
 /* 버튼용 */
 .Yaldevi-SB-20w-btn{  
   color: #FFFFFF;
