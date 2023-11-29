@@ -2,6 +2,7 @@
 .wrapper {
 	height: 150%;
 	width: 100%;
+	color: #FF1493;
 }
 .codyboard_background{
 	width: 100%;
@@ -30,13 +31,12 @@
 .max_temperature{color:#FF5959}
 
 .weather span{
-	color:#FF1493;
 	font-size: 15px;
 }
 
 .today{
-	width: 100px;
-	height: 180px;
+	width: 120px;
+	height: 200px;
 	background-color: white;
 	border-radius:10px;
 	box-shadow: 5px 5px 5px grey;
@@ -52,8 +52,11 @@
 	text-align: center;
 }
 
+#dateName{
+	color:black;
+}
+
 .codiTap a{
-	color: #FF1493;
 	font-size: 15px;
 }
 
@@ -75,6 +78,12 @@
 	margin-left: 50px;
 }
 
+.slide_list{
+	width: 800px;
+	height: 150px;
+	overflow: hidden;
+}
+
 .slide_item{
 	width:150px;
 	height:150px;
@@ -86,26 +95,29 @@
 .slide_item img{
 	width:150px;
 	height:150px;
+	border-radius:5px;
 }
 
 .category_h1{
 	font-size:15px; 
-	color:#FF1493;
 	margin-left: 45px;
 }
 
 
 
+.leftBtn{
+	display: inline-block;
+	float:left;	
+    margin-top: 63px;
+    
+}
+
 .rightBtn{
+	display: inline-block;
 	float:left;	
     margin-top: 63px;
     margin-right: 20px;
     transform: scaleX(-1);
-}
-
-.leftBtn{
-	float:left;	
-    margin-top: 63px;
 }
 
 @font-face{

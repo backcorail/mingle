@@ -15,6 +15,7 @@ $(document).ready(function(){
 	            console.log("최저온도 : "+ (resp.main.temp_min - 273.15) );
 	            console.log("날씨 : "+ resp.weather[0].main );
 	            console.log("구름  : "+ (resp.clouds.all) +"%" );     
+	            console.log("아이콘 번호"+resp.weather[0].icon);
 	            
 	            var temp_max = resp.main.temp_max - 273.15;
 	            var temp_min = resp.main.temp_min - 273.15;
@@ -24,8 +25,11 @@ $(document).ready(function(){
 	            
 	            $("#weather_Icon").attr("src", weatherIconAdrs);
 	            
-	            $("#min_temperature").text(temp_min.toFixed(1));
-	            $("#max_temperature").text(temp_max.toFixed(1));
+	            $("#min_temperature").text(temp_min.toFixed(1)+"°");
+	            $("#max_temperature").text(temp_max.toFixed(1)+"°");
+	            
+	            
+	            
 	        }
 	});
 });
