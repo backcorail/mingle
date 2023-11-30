@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserController {
 
-	@Value("${N_CHAP_IMG_CLIENT_ID}")
+	@Value("${N_CAP_IMG_CLIENT_ID}")
 	private String CLIENT_ID;
 	
-	@Value("${N_CHAP_IMG_CLIENT_SEC}")
+	@Value("${N_CAP_IMG_CLIENT_SEC}")
 	private String CLIENT_SEC;
 	
 	

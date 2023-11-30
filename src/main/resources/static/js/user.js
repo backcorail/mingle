@@ -78,6 +78,7 @@ let index = {
 			$(".div-fi-s3").css("display", "none");
 			$(".div-fi-s4").css("display", "none");
 			$(".div-fi-s1").css("display", "flex");
+			this.naverCaptcha();
 		});
 		//3-1) 아이디 찾기 찾기 페이지 1- 캡차
 		$("#btn-id-next1").on("click", () => {
@@ -754,6 +755,19 @@ let index = {
 			error: function(error) {
 				console.log(error);
 			}	
+		})
+	},
+	naverCaptcha:function(){
+		console.log("naverCaptcha js 호출");
+		$.ajax({
+			type: "GET",
+			url: "/mingle/user/captcha",
+			success: function(result) {
+				console.log(result);
+			},
+			error: function(error) {
+				console.log(error);
+			}
 		})
 	},
 	requestPut: function() {
