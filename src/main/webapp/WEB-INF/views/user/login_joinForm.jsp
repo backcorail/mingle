@@ -63,13 +63,16 @@
 			<div class="div-180"></div>
 			<div class="div-login-outline2">
 				<div class="div-id-text">아이디</div>
+				<!-- <input type="hidden" id="pw-userid-chk" value="N"> -->
 				<input id="pw-userid" name="pw-userid" type="text" class="in-txt" placeholder="예) asdqwe123456">
+				
 			</div>
 			<!-- 전화번호 -->
 			<div class="div-070"></div>
 			<div class="div-login-outline2">
 				<div class="div-id-text">전화번호</div>
-				<input id="pw-usertel" name="pw-usertel" type="text" class="in-txt" placeholder="예) 010-1234-5678">
+				<!-- <input type="hidden" id="pw-usertel-chk" value="N"> -->
+				<input id="pw-usertel" name="pw-usertel" type="text" class="in-txt" placeholder="예) 01012345678">
 			</div>
 
 			<!-- 다음 버튼 -->
@@ -103,11 +106,15 @@
 				<div class="div-225"></div>
 				<div class="div-bt-area">
 					<div class="Yaldevi-SemiBold-20g"></div>
-					<div class="div-id-alret Yaldevi-SB-20r-A">입력하신 번호가 다릅니다. 다시 입력해주세요.</div>
+					<div id="pwotp-no-text" class="div-id-alret Yaldevi-SB-20r-A">입력하신 번호가 다릅니다. 다시 입력해주세요.</div>
 				</div>
 				<div class="div-input-num-area-34">
-					<input class="otp1" type="text" maxlength="1"> <input class="otp2" type="text" maxlength="1"> <input class="otp3" type="text" maxlength="1"> <input class="otp4" type="text" maxlength="1"> <input class="otp5" type="text"
-						maxlength="1"> <input class="otp6" type="text" maxlength="1">
+					<input class="otp1 pwotp1" type="text" maxlength="1">
+					<input class="otp2 pwotp2" type="text" maxlength="1"> 
+					<input class="otp3 pwotp3" type="text" maxlength="1"> 
+					<input class="otp4 pwotp4" type="text" maxlength="1"> 
+					<input class="otp5 pwotp5" type="text" maxlength="1"> 
+					<input class="otp6 pwotp6" type="text" maxlength="1">
 				</div>
 			</div>
 			<!-- 인증번호 확인 버튼 -->
@@ -132,32 +139,32 @@
 			<div class="blank-22"></div>
 			<div class="div-tile-desc">Mixing various fashions into one</div>
 			<div class="div-065"></div>
-			<div class="div-line1-b2-FW Yaldevi-SemiBold-40y">비밀번로 변경</div>
+			<div class="div-line1-b2-FW Yaldevi-SemiBold-40y">비밀번호 변경</div>
 			<div class="div-050"></div>
-			<div class="div-line1-b1-Fw Yaldevi-SB-20y">비밀번호를 변경해주세요.</div>
+			<!-- <div class="div-line1-b1-Fw Yaldevi-SB-20y">비밀번호를 변경해주세요.</div> -->
 			<!-- 
         비밀번호가 일치하지 않습니다. 다시 입력해주세요.
         비밀번호가 같습니다. 현재비밀번호와 다르게 입력해주세요.
       -->
 			<div class="div-050"></div>
-			<div class="div-pwd-alret">비밀번호가 일치하지 않습니다. 다시 입력해주세요.</div>
+			<div id="pw-dno-text" class="div-pwd-alret">비밀번호가 일치하지 않습니다. 다시 입력해주세요.</div>
 			<div class="div-020"></div>
 			<!-- 현재 비밀번호 -->
-			<div class="div-login-outline2">
+<!-- 			<div class="div-login-outline2">
 				<div class="div-id-text">현재비밀번호</div>
 				<input id="usertel" name="usertel" type="text" class="in-txt" placeholder="예) asdqwe123456">
-			</div>
+			</div> -->
 			<!-- 변경할 비밀번호 -->
 			<div class="div-070"></div>
 			<div class="div-login-outline2">
 				<div class="div-id-text">변경할 비밀번호</div>
-				<input id="usertel" name="usertel" type="text" class="in-txt" placeholder="예) asdqwe123456">
+				<input id="pw-userpwd" name="pw-userpwd" type="text" class="in-txt" placeholder="예) asdqwe123456">
 			</div>
 			<!-- 비밀번호 확인-->
 			<div class="div-070"></div>
 			<div class="div-login-outline2">
 				<div class="div-id-text">비밀번호 확인</div>
-				<input id="usertel" name="usertel" type="text" class="in-txt" placeholder="예) asdqwe123456">
+				<input id="pw-userpwd-re" name="pw-userpwd-re" type="text" class="in-txt" placeholder="예) asdqwe123456">
 			</div>
 
 			<!-- 비밀번호 재설정 버튼 -->
@@ -209,9 +216,9 @@
 			<div class="div-chapcha-area">
 				<img src="/mingle/img/user/chapchaEx.png" alt="">
 			</div>
-			<!-- 로그인 버튼 -->
+			<!-- 다음 버튼 -->
 			<div class="blank-35"></div>
-			<input id="btn-login3" class="btn-login3" type="button" value="로그인">
+			<input id="btn-id-next1" class="btn-login3" type="button" value="다음">
 			<div class="blank-20"></div>
 			<ul class="ul-user-option">
 				<li><input type="button" value="회원가입" class="btn-joinform"></li>
@@ -241,9 +248,9 @@
 				<input id="usertel" name="usertel" type="text" class="in-txt" placeholder="예)asdf12345">
 			</div>
 
-			<!-- 로그인 버튼 -->
+			<!-- 다음 버튼 -->
 			<div class="div-435"></div>
-			<input id="btn-login3" class="btn-login3" type="button" value="다음">
+			<input id="btn-id-next2" class="btn-login3" type="button" value="다음">
 			<div class="div-300"></div>
 			<ul class="ul-user-option">
 				<li><input type="button" value="회원가입" class="btn-joinform"></li>
@@ -275,13 +282,17 @@
 					<div class="div-id-alret Yaldevi-SB-20r-A">입력하신 번호가 다릅니다. 다시 입력해주세요.</div>
 				</div>
 				<div class="div-input-num-area-34">
-					<input type="text" maxlength="1"> <input type="text" maxlength="1"> <input type="text" maxlength="1"> <input type="text" maxlength="1"> <input type="text"
-						maxlength="1"> <input type="text" maxlength="1">
+					<input class="otp1 idotp1" type="text" maxlength="1">
+					<input class="otp2 idotp2" type="text" maxlength="1"> 
+					<input class="otp3 idotp3" type="text" maxlength="1"> 
+					<input class="otp4 idotp4" type="text" maxlength="1"> 
+					<input class="otp5 idotp5" type="text" maxlength="1"> 
+					<input class="otp6 idotp6" type="text" maxlength="1">
 				</div>
 			</div>
 			<!-- 로그인 버튼 -->
 			<div class="div-392"></div>
-			<input id="btn-login3" class="btn-login3" type="button" value="다음">
+			<input id="btn-id-next3" class="btn-login3" type="button" value="다음">
 			<div class="div-300"></div>
 			<ul class="ul-user-option">
 				<li><input type="button" value="회원가입" class="btn-joinform"></li>
@@ -309,7 +320,7 @@
 
 			<!-- 로그인 버튼 -->
 			<div class="div-535"></div>
-			<input id="btn-login3" class="btn-login3" type="button" value="로그인페이지">
+			<input id="btn-id-next4" class="btn-login3" type="button" value="로그인페이지">
 			<div class="div-300"></div>
 			<ul class="ul-user-option">
 				<li><input type="button" value="회원가입" class="btn-joinform"></li>
@@ -383,8 +394,12 @@
 				<div id="joinotp-no-text" class="div-id-alret Yaldevi-SB-20r-A">입력하신 번호가 다릅니다. 다시 입력해주세요.</div>
 			</div>
 			<div class="div-input-num-area">
-				<input class="joinotp1" type="text" maxlength="1"> <input class="joinotp2" type="text" maxlength="1"> <input class="joinotp3" type="text" maxlength="1"> <input class="joinotp4" type="text" maxlength="1"> <input class="joinotp5" type="text"
-					maxlength="1"> <input class="joinotp6" type="text" maxlength="1">
+				<input class="otp1 joinotp1" type="text" maxlength="1">
+				<input class="otp2 joinotp2" type="text" maxlength="1">
+				<input class="otp3 joinotp3" type="text" maxlength="1">
+				<input class="otp4 joinotp4" type="text" maxlength="1">
+				<input class="otp5 joinotp5" type="text"	maxlength="1"> 
+				<input class="otp6 joinotp6" type="text" maxlength="1">
 			</div>
 			<!-- btn 취소 /  확인 -->
 

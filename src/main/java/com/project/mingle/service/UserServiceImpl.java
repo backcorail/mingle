@@ -10,6 +10,7 @@ import org.springframework.transaction.TransactionStatus;
 
 import com.project.mingle.mapper.UserMapper;
 import com.project.mingle.vo.UserVO;
+import com.project.mingle.vo.user.CheckVO;
 import com.project.mingle.vo.user.JoinUserVO;
 
 @Service
@@ -72,6 +73,36 @@ public class UserServiceImpl implements UserService {
 		return userMapper.login(userVO);
 	}
 
+	@Override
+	public UserVO idTelcheck(JoinUserVO joinUserVO) {
+		// TODO Auto-generated method stub
+		UserVO userVO = UserVO.builder()
+				.user_id(joinUserVO.getUserid())
+				.user_tel(joinUserVO.getUsertel())
+				.build();
+		System.out.println("\n 서비스 레이어 idTelcheck userVO build 이후 값");
+		System.out.println(userVO.toString());
+		return userMapper.idTelcheck(userVO);
+	}
+
+	@Override
+	public UserVO telcheck(String checktel) {
+		// TODO Auto-generated method stub
+		return userMapper.telcheck(checktel);
+	}
+
+	@Override
+	public int pwdUpdate(JoinUserVO joinUserVO) {
+		// TODO Auto-generated method stub
+		UserVO userVO = UserVO.builder()
+				.user_id(joinUserVO.getUserid())
+				.user_pwd(joinUserVO.getUserpwd())
+				.build();
+		System.out.println("\n 서비스 레이어 idTelcheck userVO build 이후 값");
+		System.out.println(userVO.toString());
+		int updateResult = userMapper.pwdUpdate(userVO);
+		return updateResult;
+	}
 
 	
 }
