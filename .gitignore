@@ -16,8 +16,6 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
-src/main/resources/application.properties
-src/main/resources/log4jdbc.log4j.properties
 
 ### IntelliJ IDEA ###
 .idea
