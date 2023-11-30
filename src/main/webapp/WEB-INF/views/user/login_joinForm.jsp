@@ -55,7 +55,7 @@
 			<div class="blank-22"></div>
 			<div class="div-tile-desc">Mixing various fashions into one</div>
 			<div class="div-065"></div>
-			<div class="div-line1-b2-FW Yaldevi-SemiBold-40y">비밀번로 찾기</div>
+			<div class="div-line1-b2-FW Yaldevi-SemiBold-40y">비밀번호 찾기</div>
 			<div class="div-050"></div>
 			<div class="div-line1-b1-Fw Yaldevi-SB-20y">아이디와 전화번호를 입력해주세요.</div>
 
@@ -185,7 +185,7 @@
 		<div class="div-pw-modal-bg">
 			<div class="div-edit-pawd-area div-fp-s4 modal-inner-appear">
 				<div class="div-160"></div>
-				<div class="div-line1-b2-FW Yaldevi-SB-C-40y">비밀번로 변경 완료</div>
+				<div class="div-line1-b2-FW Yaldevi-SB-C-40y">비밀번호 변경 완료</div>
 				<div class="div-130"></div>
 				<div class="div-line1-b1-Fw2 Yaldevi-SB-C-20y">비밀번호 가 변경되었습니다. 로그인페이지로 이동합니다.</div>
 				<div class="div-170"></div>
