@@ -3,45 +3,64 @@ let index = {
 		$(".div-golo").on('click',()=>{
 			// TODO: 이것은 어떻게 실행할지 고민. 중
 		})
-		// 로그인 
+		// 로그인  
 		$("#btn-main-login").on('click',()=>{
 			this.login();
+			// TODO 로그인 성공후 어디로 이동시킬지 경정해야 함.
 		})
-		
-		
-				
-		// 회원가입 모달
+			
+		// 1) 회원가입 모달 시작
 		$(".btn-joinform").on("click", () => {
 			/*alert("로그인");*/
 			this.userModalDataClean();
 			$(".modal-bg").css("display", "block");
 			$("#div-user-modal")
 				.css("display", "flex");
-				
 		});
-		/*비밀번호 찾기*/
+		// 2) 비밀 번호 찾기 시작
 		$(".btn-findpwd").on("click", () => {
+			this.pwDataClean();
 			$(".div-main-lg").css("display", "none");
 			$(".div-fp-s2").css("display", "none");
 			$(".div-fp-s3").css("display", "none");
 			$(".div-fp-s4").css("display", "none");
 			$(".div-fp-s1").css("display", "flex");
 		});
-		/*비밀번호 찾기 페이지 1- 전호번호 입력 확인*/
+		//2-1) 비밀번호 찾기 페이지 1- 전호번호 입력 확인
 		$("#btn-pw-next1").on("click", () => {
-			$(".div-fp-s1").css("display", "none");
-			$(".div-fp-s2").css("display", "flex");
+			// 아이디 있는지 확인 콜백1)
+			const id=$("#pw-userid").val();
+			if(!this.idregcheck(id)) return false;
+			this.pwIdcheck(id);
+			// 콜백 3개 중복 			
 		});
 		/*비밀번호 찾기 페이지 2- 인증번호 확인*/
 		$("#btn-pw-next2").on("click", () => {
-			$(".div-fp-s2").css("display", "none");
-			$(".div-fp-s3").css("display", "flex");
+			
+			const otpStr = this.otpSting("pwotp");
+			if(otpStr == false && otpStr.length <6) return false;
+			this.pwVerifyOtp(otpStr);
+			
 		});
 		/*비밀번호 찾기 페이지 3- 비밀번호 변경 확인*/
 		$("#btn-pw-next3").on("click", () => {
 			//$(".div-fp-s3").css("display", "none");
-			$(".div-pw-modal-bg").css("display", "block");
-			$(".div-fp-s4").css("display", "flex");
+			//전화번호 유효성 체크
+			if( $("#pw-userpwd").val()=="" || $("#pw-userpwd-re").val()==""){// 
+				alert("비밀번로를 입력하세요");
+				return false;
+			}
+			
+			// 유효성검증 일단 주석
+			// if (!valiPwd($("#pw-userpwd").val())) return false;
+			// if (!valiPwd($("#pw-userpwd-re").val())) return false;
+
+			if( $("#pw-userpwd").val() != $("#pw-userpwd-re").val()){// 
+				alert("비밀번호가 다릅니다.");
+				return false;
+			}
+			// 서버 비밀번호 업데이트
+			this.pwPut($("#pw-userid").val(),$("#pw-userpwd").val())
 		});
 		/*비밀번호 찾기 페이지 4- 로그인페이지로 이동 확인*/
 		$("#btn-pw-next4").on("click", () => {
@@ -52,7 +71,7 @@ let index = {
 		});
 			
 ////////////////////////////////////////////////////////////////////////				
-		/*아이디 찾기*/
+		//3 아이디 찾기*/
 		$(".btn-findid").on("click", () => {
 			$(".div-main-lg").css("display", "none");
 			$(".div-fi-s2").css("display", "none");
@@ -60,24 +79,24 @@ let index = {
 			$(".div-fi-s4").css("display", "none");
 			$(".div-fi-s1").css("display", "flex");
 		});
-		/*비밀번호 찾기 페이지 1- 전호번호 입력 확인*/
-		$("#btn-pw-next1").on("click", () => {
+		//3-1) 아이디 찾기 찾기 페이지 1- 캡차
+		$("#btn-id-next1").on("click", () => {
 			$(".div-fi-s1").css("display", "none");
 			$(".div-fi-s2").css("display", "flex");
 		});
-		/*비밀번호 찾기 페이지 2- 인증번호 확인*/
-		$("#btn-pw-next2").on("click", () => {
+		//3-2) 아이디 찾기 페이지 2- 인증번호 확인
+		$("#btn-id-next2").on("click", () => {
 			$(".div-fi-s2").css("display", "none");
 			$(".div-fi-s3").css("display", "flex");
 		});
 		/*비밀번호 찾기 페이지 3- 비밀번호 변경 확인*/
-		$("#btn-pw-next3").on("click", () => {
+		$("#btn-id-next3").on("click", () => {
 			//$(".div-fp-s3").css("display", "none");
 			$(".div-pw-modal-bg").css("display", "block");
 			$(".div-fi-s4").css("display", "flex");
 		});
 		/*비밀번호 찾기 페이지 4- 로그인페이지로 이동 확인*/
-		$("#btn-pw-next4").on("click", () => {
+		$("#btn-id-next4").on("click", () => {
 			$(".div-pw-modal-bg").css("display", "none");
 			$(".div-fi-s3").css("display", "none");
 			$(".div-fi-s4").css("display", "none");
@@ -98,8 +117,7 @@ let index = {
 			const id=$("#join-userid").val();
 			//this.idregcheck(id) && this.iddcheck(id);
 			if(!this.idregcheck(id)) return false;
-			let idresult =	this.iddcheck(id);
-			console.log(idresult);
+			this.iddcheck(id);
 		});
 		// 중복감사후 변경 체크 
 		$("#join-userid").on('input',() => {
@@ -124,14 +142,15 @@ let index = {
 		$("#join-userpwd-re").on('input',() => {
 			$("#joinpwd-yes-no-text").css("display", "none");
 		});
-		//otp 이벤트
-		
-		$(".joinotp1").on({	focus: function() {$(this).val(''); }, input: function() {	if(this.value.length === 1) { $(this).next('.joinotp2').focus(); }}	});
-		$(".joinotp2").on({	focus: function() {$(this).val(''); }, input: function() {	if(this.value.length === 1) { $(this).next('.joinotp3').focus(); }}	});
-		$(".joinotp3").on({	focus: function() {$(this).val(''); }, input: function() {	if(this.value.length === 1) { $(this).next('.joinotp4').focus(); }}	});
-		$(".joinotp4").on({	focus: function() {$(this).val(''); }, input: function() {	if(this.value.length === 1) { $(this).next('.joinotp5').focus(); }}	});
-		$(".joinotp5").on({	focus: function() {$(this).val(''); }, input: function() {	if(this.value.length === 1) { $(this).next('.joinotp6').focus(); }}	});
-		$(".joinotp6").on({	focus: function() {$(this).val(''); } });
+	
+		//otp 이벤트	
+		$(".otp1").on({	focus: function() {$(this).val(''); }, input: function() {	if(this.value.length === 1) { $(this).next('.otp2').focus(); }}	});
+		$(".otp2").on({	focus: function() {$(this).val(''); }, input: function() {	if(this.value.length === 1) { $(this).next('.otp3').focus(); }}	});
+		$(".otp3").on({	focus: function() {$(this).val(''); }, input: function() {	if(this.value.length === 1) { $(this).next('.otp4').focus(); }}	});
+		$(".otp4").on({	focus: function() {$(this).val(''); }, input: function() {	if(this.value.length === 1) { $(this).next('.otp5').focus(); }}	});
+		$(".otp5").on({	focus: function() {$(this).val(''); }, input: function() {	if(this.value.length === 1) { $(this).next('.otp6').focus(); }}	});
+		$(".otp6").on({	focus: function() {$(this).val(''); } });	
+	
 		
 		
 		
@@ -151,6 +170,9 @@ let index = {
 				alert("비밀번로를 입력하세요");
 				return false;
 			}
+			// 유효성검증 일단 주석
+			// if (!valiPwd($("#join-userpwd").val())) return false;
+			// if (!valiPwd($("#join-userpwd-re").val())) return false;
 			if( $("#join-userpwd").val() != $("#join-userpwd-re").val()){// 중복검사
 				$("#joinpwd-yes-no-text").css("display", "block");
 				//alert("비밀번호가 다릅니다.");
@@ -165,23 +187,14 @@ let index = {
 				alert("전화번호를 잘못입력했습니다.");
 				return false;	
 			}
-			this.sendOtp(tel);
-			// 
-			$("#div-user-modal")
-				.removeClass("modal-inner-appear")
-				.addClass("modal-inner-disappear");
-
-			$("#div-telaouth-modal")
-				.css("display", "flex")
-				.removeClass("modal-inner-disappear")
-				.addClass("modal-inner-appear");
+			// 전화 번호 중복 체크를 해야 하네 .
+			this.idTelcheck(tel)
 			
-			$("#joinotp-no-text").css('display','none');
-			$(".joinotp1").focus();
+			
 		});
-/*-----end)div-user-modal btn--------------------- */
+/*-----end) 2) div-user-modal btn--------------------- */
 
-/*-----start)div-telaouth-modal btn---------------- */			
+/*-----start) 3) div-telaouth-modal btn---------------- */			
 
 		// 전화번호 인증 후진이동
 		$("#btn-back-tel").on("click", () => {
@@ -283,6 +296,9 @@ let index = {
 /*-----end)div-telaouth-modal btn--------------------- */
 
 	},
+	initOtp(){
+			
+	},
 	userModalDataClean:function(){
 		// 1. div-user-modal
 		// 아이디 중복 여부 text
@@ -299,6 +315,17 @@ let index = {
 		this.otpClear();
 				
 	},
+	pwDataClean:function(){
+		$("#pw-userid").val('');
+		$("#pw-usertel").val('');
+		$("#pw-userpwd").val('');
+		$("#pw-userpwd-re").val('');
+		this.otpClear();
+		$("#pwotp-no-text").css('display','none');
+		$("#pw-dno-text").css('display','none');
+		
+	}
+	,
 	
 	idregcheck:function(id){
 			//아이디 공백 체크
@@ -345,6 +372,149 @@ let index = {
 			}
 		})
 	},
+	pwIdcheck: function(id) {
+		console.log("pwIdcheck check");
+		let idcheck ={
+			data: id
+		}
+		let _this=this;
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/iddcheck",
+			data: JSON.stringify(idcheck), // http body 데이터
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==101){ // 아이디 없음
+					alert("없는 아이디 입니다.");
+					return true;	
+				}
+				if(result.status==102){ // 아이디 있음
+					// alert("아이디가 존재합니다.");
+					//전화번호 있는지 확인 콜백2)
+					const reg = /^\d{11}$/;
+					const tel = $("#pw-usertel").val().trim();
+					if(!reg.test(tel)){
+						alert("전화번호를 잘못입력했습니다.");
+						return true;	
+					}
+					_this.pwIdTelcheck(id, tel);
+					return true;	
+				}
+				
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		})
+	},
+	valiPwd: function (pwd) {
+	
+		if (pwd.length > 20) {
+        alert("비밀번호는 최대 20자까지만 허용됩니다.");
+        return false;
+   		 }
+	    // 영어 알파벳이 포함되어 있는지 체크
+	    const reg = /[A-Za-z]/;
+	    if (!reg.test(pwd)) {
+	        alert("비밀번호에는 영어 알파벳이 적어도 하나 포함되어야 합니다.");
+	        return false;
+	    }
+	    // 숫자가 포함되어 있는지 체크
+	    reg = /[0-9]/;
+	    if (!reg.test(pwd)) {
+	        alert("비밀번호에는 숫자가 적어도 하나 포함되어야 합니다.");
+	        return false;
+	    }
+	    // 특수문자가 포함되어 있는지 체크
+	    regl = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+	    if (!reg.test(pwd)) {
+	        alert("비밀번호에는 특수문자가 적어도 하나 포함되어야 합니다.");
+	        return false;
+	    }
+	    // 모든 조건을 만족
+	    return true;
+	},
+	idTelcheck: function(tel) {
+		console.log("idTelcheck check");
+		let _this=this;
+		let idcheck ={
+			data: tel
+		}
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/telcheck",
+			data: JSON.stringify(idcheck), // http body 데이터
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==161){ // 등록되지 않은 전화번호
+					alert("등록되지 않는 번호입니다.");
+					// otp 진행 
+					_this.sendOtp(tel);
+					// 
+					$("#div-user-modal")
+						.removeClass("modal-inner-appear")
+						.addClass("modal-inner-disappear");
+		
+					$("#div-telaouth-modal")
+						.css("display", "flex")
+						.removeClass("modal-inner-disappear")
+						.addClass("modal-inner-appear");
+					
+					$("#joinotp-no-text").css('display','none');
+					$(".joinotp1").focus();
+					//
+					return true;
+				}
+				if(result.status==162){ // 등록된 전화번호
+					alert("이미 등록되어 있는 번호입니다.");
+					return false;	
+				}
+				
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		})
+	},
+	pwIdTelcheck: function(id,tel) {
+		console.log("telcheck check");
+		let _this=this;
+		let idcheck ={
+			userid: id,
+			usertel: tel
+		}
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/idTelcheck",
+			data: JSON.stringify(idcheck), // http body 데이터
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==151){ // 사용자가 등록한 전화번호 불일치
+					alert("등록된 전화번호와 일치 하지 알습니다.");
+					return false;
+				}
+				if(result.status==152){ // 사용자가 등록한 전화번호와 일치
+					// 전화번호 otp 요청 콜백3)
+					_this.sendOtp(tel)
+					// 화면 갱신 콜백4)
+					alert("사용자가 등록한 전화번호와 일치.");
+					$(".div-fp-s1").css("display", "none");
+					$(".div-fp-s2").css("display", "flex");
+					return true;	
+				}
+				
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		})
+	},
 	sendOtp:function(tel){
 		console.log("sendOtp check");
 		let otp ={
@@ -360,12 +530,15 @@ let index = {
 	otpClear:function(){
 		console.log("otpClear");
 		for (let i = 1; i <= 6; i++) {
-        	let position = 'joinotp' + i;
+        	//let position = 'joinotp' + i;
+        	let position = 'otp' + i;
         	$('.' + position).val('');
     	}
 	}
 	,
 	otpSting:function(joinotp){
+		console.log("otpSting 함수 전달받은 인자"+joinotp);
+		console.log(typeof joinotp);
  		let otpStrings = '';
     	for (let i = 1; i <= 6; i++) {
         	let position = joinotp + i;
@@ -408,6 +581,34 @@ let index = {
 			error: function(error) {
 				console.log(error);
 			}
+		})
+	},
+	pwVerifyOtp:function(otpStr){
+		console.log("pwVerifyOtp check");
+		let _this=this;
+		let otpStrs ={
+			data: otpStr
+		}
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/verify-otp",
+			data: JSON.stringify(otpStrs), // http body 데이터
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==111){ //
+					$("#pwotp-no-text").css('display','none');
+					_this.otpClear();
+					$(".div-fp-s2").css("display", "none");
+					$(".div-fp-s3").css("display", "flex");
+					return true;	
+				}
+				if(result.status==112){ // 
+					alert("입력하신 인증번호가 일치하지 않습니다.");
+					$("#pwotp-no-text").css('display','block');
+				}
+			},	error: function(error) { console.log(error);	}
 		})
 	},
 	nickregcheck:function(nick){
@@ -460,6 +661,38 @@ let index = {
 			usertel : $("#join-usertel").val(),
 			usernick : $("#join-usernick").val()
 		};
+	},
+	pwPut: function(id,pwd){
+		console.log("pwPut check");
+		let _this=this;
+		let idpwd ={
+			userid: id,
+			userpwd: pwd
+		}
+		console.log(idpwd);
+		$.ajax({
+			type: "PUT",
+			url: "/mingle/user/idpwd",
+			data: JSON.stringify(idpwd), // http body 데이터
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==171){ // 사용자가 비밀번호 변경 성공
+					alert("비밀변호 변경 성공");
+					$(".div-pw-modal-bg").css("display", "block");
+					$(".div-fp-s4").css("display", "flex");
+					return false;
+				}
+				if(result.status==172){ // 사용자가 비밀전호 변경 실패
+					alert("비밀변호 변경 실패");
+					return true;	
+				}	
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		})
 	},
 	userPost: function() {
 		console.log("userPost  호출");

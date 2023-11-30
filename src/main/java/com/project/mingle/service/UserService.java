@@ -13,4 +13,10 @@ public interface UserService {
 
 	public UserVO login(JoinUserVO joinUserVO);
 
+	public UserVO idTelcheck(JoinUserVO joinUserVO);
+
+	public UserVO telcheck(String checktel);
+
+	public int pwdUpdate(JoinUserVO joinUserVO);
+
 }

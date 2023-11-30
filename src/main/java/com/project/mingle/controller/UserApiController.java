@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -99,5 +100,40 @@ public class UserApiController {
 		return new ResponseDto<String>(UserResp.LOGINOK.getValue(), "로그인에 성공하였습니다.");
 	}
 	
-
+	@PostMapping("/user/telcheck")
+	public ResponseDto<String> telcheck(@RequestBody CheckVO checkVO){
+		System.out.println("checkVO : " + checkVO.getData());
+		UserVO userVO = userService.telcheck(checkVO.getData());
+		if(userVO==null) {
+			return new ResponseDto<String>(UserResp.TELNOREG.getValue(),"등록된 안된 전화번호");
+		}else {
+			System.out.println(userVO.toString());
+			return new ResponseDto<String>(UserResp.TELREG.getValue(),"등록된 전화번호");
+		}	
+	}
+	
+	
+	@PostMapping("/user/idTelcheck")
+	public ResponseDto<String> idTelcheck(@RequestBody JoinUserVO joinUserVO){
+		System.out.println("idTelcheck : " + joinUserVO.toString());
+		UserVO userVO = userService.idTelcheck(joinUserVO);
+		if(userVO==null) {
+			return new ResponseDto<String>(UserResp.TELIDEMPTY.getValue(),"등록된 전화번호 불일치");
+		}else {
+			System.out.println(userVO.toString());
+			return new ResponseDto<String>(UserResp.TELIDDD.getValue(),"등록된 전화번호와 일치.");
+		}	
+	}
+	
+	@PutMapping("/user/idpwd")
+	public ResponseDto<String> pwdUpdate(@RequestBody JoinUserVO joinUserVO){
+		System.out.println("pwdUpdate : " + joinUserVO.toString());
+		int updateResult  = userService.pwdUpdate(joinUserVO);
+		if(updateResult<1) {
+			return new ResponseDto<String>(UserResp.PWDMODYFAILD.getValue(),"비밀번호 변경 실패");
+		}else {
+			return new ResponseDto<String>(UserResp.PWDMODYOK.getValue(),"비밀번호 변경 성공.");
+		}	
+	}
+	
 }
