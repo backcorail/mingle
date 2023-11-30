@@ -506,6 +506,7 @@ let index = {
 					alert("사용자가 등록한 전화번호와 일치.");
 					$(".div-fp-s1").css("display", "none");
 					$(".div-fp-s2").css("display", "flex");
+					$(".pwotp1").focus();
 					return true;	
 				}
 				
@@ -741,7 +742,14 @@ let index = {
 			contentType: "application/json; charset=UTF-8",//body에 실어 보내는 데이터가 어떤 타입인지(MIME)
 			dataType:"json",
 			success: function(result) {
-				console.log(result);
+				if(result.status==141){ // 로그인 성공
+					location.href="http://localhost:9998/mingle/"
+					return true;	
+				}
+				if(result.status==142){ // 로그인 실패 
+					alert("아이디와 비밀번호를 확인해주세요.")
+					return true;	
+				}
 			},
 			error: function(error) {
 				console.log(error);
