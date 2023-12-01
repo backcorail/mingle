@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="/mingle/css/style_ranking.css">
 <script src="/mingle/js/style_ranking.js"></script>
 
+
+<div class="page">
 <div class="all_select">
   
 	<div class="board-wrap">
@@ -72,4 +74,5 @@
 		</div>
 		<!-- <button class ="moreview">더보기</button> -->
 	</div>
+</div>
 </div>

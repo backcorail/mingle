@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mingle.mapper.ResellMapper">
+	<select id="resell_totalRecord" resultType="int">
+		select count(resell_no) from resell;
+	</select>
+	 <select id="kream_totalRecord" resultType="int">
+	 	select count(item_no) from item;
+	 </select>
+	<select id="resell_boardData" resultType="com.project.mingle.vo.ResellVO">
+		select resell_no, resell_name, resell_seller, item_price, date_format(resell_writedate, '%Y-%m-%d %h:%i:%s')
+		resell_writedate from resell order by resell_writedate desc
+		limit #{onePageRecord} offset ${offsetPoint};
+	</select>
+	<select id="kreamData" resultType="com.project.mingle.vo.ResellVO">
+	    select item_name, item_price, item_image, item_postdate
+	    from item order by item_postdate desc
+	    limit #{onePageRecord} offset ${offsetPoint};
+	</select>
+</mapper>
