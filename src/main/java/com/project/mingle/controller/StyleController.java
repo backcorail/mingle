@@ -33,5 +33,20 @@ public class StyleController {
 	public String style_trend() {
 		return "style/style_trend";
 	}
+	
+	@GetMapping("/trend/info")
+	public String style_trendinfo() {
+		return "style/style_trendinfo";
+	}
+	
+	@GetMapping("/stylewrite")
+	public String style_stylewrite() {
+		return "style/style_write";
+	}
+	
+	@GetMapping("/map")
+	public String style_map() {
+		return "style/map";
+	}
 
 }
