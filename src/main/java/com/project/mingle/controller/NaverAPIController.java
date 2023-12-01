@@ -20,6 +20,7 @@ import org.springframework.http.MediaType;
 import com.project.mingle.service.NaverApiService;
 import com.project.mingle.vo.naver.NaverCapKeyVO;
 import com.project.mingle.vo.user.ResponseDto;
+import com.project.mingle.vo.user.UserResp;
 
 
 @RestController
@@ -58,8 +59,9 @@ public class NaverAPIController {
         System.out.println("컨트롤러 capkeycheck naverCapKeyVO-KEY "+naverCapKeyVO.getKey());
     	
     	boolean capKeyOauth = naverApiService.capkeycheck(naverCapKeyVO);
-        
-
-        return null; 
+    	if(capKeyOauth) {
+    		return new ResponseDto<String>(UserResp.CAPTCHAOK.getValue(),"캡차성공.");//102
+    	}
+    	return new ResponseDto<String>(UserResp.CAPTCHAFAILD.getValue(),"캡차실패");//102
     }
 }

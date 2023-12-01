@@ -19,6 +19,10 @@ let index = {
 		});
 		// 2) 비밀 번호 찾기 시작
 		$(".btn-findpwd").on("click", () => {
+			this.userModalDataClean();
+			this.captchaDataClean();
+			this.mainLoginDataClean();
+			//아이디 찾기 클린
 			this.pwDataClean();
 			$(".div-main-lg").css("display", "none");
 			$(".div-fp-s2").css("display", "none");
@@ -74,10 +78,16 @@ let index = {
 	//4-1) 캡차 리로드
 		$("#div-cap-reload").on('click', ()=>{
 			$("#cap-type").val('IMG');
-			this.naverCaptcha();
+			$("#captchaAudio-wrap").css('display','none');
+			$("#captchaImage").css('display','block');
+			this.captchaAudioClear();
+			this.naverCaptcha(); 	
+			
 		});
 		$("#div-cap-audio").on('click', ()=>{
 			$("#cap-type").val('AUDIO');
+			$("#captchaImage").css('display','none');
+			$("#captchaAudio-wrap").css('display','flex');			
 			this.naverCaptchaAudio();
 		});
 		
@@ -105,6 +115,12 @@ let index = {
 ////////////////////////////////////////////////////////////////////////				
 		//3 아이디 찾기*/
 		$(".btn-findid").on("click", () => {
+			this.userModalDataClean();
+			/*this.pwDataClean();*/
+			this.pwPageClean();
+			this.captchaDataClean();
+			this.mainLoginDataClean();
+		
 			$(".div-main-lg").css("display", "none");
 			$(".div-fi-s3").css("display", "none");
 			$(".div-fi-s4").css("display", "none");
@@ -339,6 +355,14 @@ let index = {
 		this.otpClear();
 				
 	},
+	pwPageClean:function(){
+			this.pwDataClean();
+			$(".div-pw-modal-bg").css("display", "none");
+			$(".div-fp-s1").css("display", "none");
+			$(".div-fp-s2").css("display", "none");
+			$(".div-fp-s3").css("display", "none");
+			$(".div-fp-s4").css("display", "none");
+	},
 	pwDataClean:function(){
 		$("#pw-userid").val('');
 		$("#pw-usertel").val('');
@@ -347,6 +371,13 @@ let index = {
 		this.otpClear();
 		$("#pwotp-no-text").css('display','none');
 		$("#pw-dno-text").css('display','none');
+	},
+	idDataClean:function(){
+			
+	},
+	idPageClean:function(){
+		this.idDataClean();
+		
 	},
 	mainLoginDataClean:function(){
 		$(".div-main-lg").css("display", "none");
@@ -357,6 +388,8 @@ let index = {
 		$(".div-cap-s1").css("display", "none");
 		$("#cap-userid").val('');
 		$("#cap-userpwd").val('');
+		$("#captchaImage").attr('src',null);
+		this.captchaAudioClear();
 	},
 	idregcheck:function(id){
 			//아이디 공백 체크
@@ -421,13 +454,13 @@ let index = {
 				console.log(result);
 				$("intext-captcha").val(''); // 캡차 입력칸 클리어
 				
-				if(result.status==171){ // 캡차 성공
+				if(result.status==181){ // 캡차 성공
 					alert("캡차 성공 => 아이디비번서버로 인증요청");
 					_this.captchaLogin();
 					return true;	
 				}
 				
-				if(result.status==172){ // 캡차 실패   		
+				if(result.status==182){ // 캡차 실패   		
 					alert("캡차 인증를 다시 확힌해주세요.");
 					// 캡차 리로드
 					if( $("#cap-type").val()=="IMG" ){
@@ -825,7 +858,8 @@ let index = {
 						.addClass("modal-inner-appear");
 					return true;	
 				}
-				if(result.status==132){ // 가입 실패 
+				if(result.status==132){ // 가입 실패
+					alert("회원가입에 실패하였습니다."); 
 					return true;	
 				}
 			},
@@ -852,6 +886,7 @@ let index = {
 				console.log(result);
 				if(result.status==141){ // 로그인 성공
 					console.log("로그인 성공");
+					$("#captchaing").val('N');
 					location.href="http://localhost:9998/mingle/"
 					return true;	
 				}
@@ -860,7 +895,13 @@ let index = {
 					console.log("142 로그인 실패 ");
 					return true;	
 				}
-				if(result.status==143){ // 캡차 로그인 페이지로이동 
+				if(result.status==143){ // 캡차 로그인 페이지로이동
+					if($("#captchaing").val()=="Y"){
+						$("#captchaing").val('N');
+						alert("캡차는 정상 입력 되었으나 아이디 및 비밀번호가 다릅니다. 로그인 창으로 이동합니다.");
+						location.href="http://localhost:9998/mingle/user/login_joinForm";	
+						return false;	
+					}
 					alert(result.res);
 					console.log("143 로그인 실패 ");
 					_this.captchaLoginPage();
@@ -927,7 +968,9 @@ let index = {
 		// 캡차UI + 데티어 클리어
 		this.captchaDataClean();
 		
-		$(".div-cap-s1").css("display", "flex");
+		$(".div-cap-s1").css("display", "flex"); // 켑차 화면
+		$("#captchaing").val('Y'); // 캡차상태
+		$("#captchaAudio-wrap").css('display','none');
 		this.naverCaptcha();
 	},
 	naverCaptcha:function(){
@@ -965,6 +1008,9 @@ let index = {
 	            // 오디오 태그의 src 속성을 설정
 	            $('#captchaAudio').attr('src', audioUrl);
 	            $("#captchaAudio")[0].play();
+	            // 오디오 요소 선택 및 재생 속도 설정
+				$("#captchaAudio").get(0).playbackRate = 1.25;
+
 
 	        },
 	        error: function(error) {
@@ -974,6 +1020,17 @@ let index = {
 	            responseType: 'blob' // 바이너리 데이터로 응답을 받음
 	        }
 	    });
+	},
+	captchaAudioClear: function(){
+		const audioElement = $("#captchaAudio")[0];
+		 if (audioElement) {
+			// 오디오 재생 중지
+	        audioElement.pause();
+	        // 오디오 타임라인을 시작 지점으로 이동
+	        audioElement.currentTime = 0;
+	        // 오디오 소스를 null로 설정
+	        audioElement.src = null;
+    	}
 	},
 	requestPut: function() {
 		console.log("requestPut js 호출");

@@ -200,6 +200,7 @@
 		<!-- 캡차 비밀번호 5실패시  진행  시작-->
 		<!-- 1. 캡차 시작 -->
 		<div class="div-main-form div-cap-s1">
+			<input type="hidden" id="captchaing" value="Y" />
 			<div class="div-245"></div>
 			<div class="div-logo">mingle</div>
 			<div class="blank-22"></div>
@@ -213,19 +214,21 @@
 				<input id="cap-userpwd" name="userpwd" type="password" class="in-txt" placeholder="예)qwert0987654">
 			</div>
 			<!-- 캡차 적용구간 -->
-			<div class="div-145"></div>
+			<div class="div-050"></div>
 
 			<div id="div-chapcha-area">
 				
 				<div class="div-cap-area">
 					<input id="cap-type" type="hidden" value="IMG" /><!-- IMG /AUDIO -->
 					<img id="captchaImage">
-					<audio id="captchaAudio" controls></audio>
+					<div id="captchaAudio-wrap">
+						<audio id="captchaAudio" controls></audio>
+					</div>
 					<div class="div-cap-re-au">
 						<!-- TODO : 웹폰트 OR SVG적용 -->
-						<img id="div-cap-reload" src="/mingle/img/user/reload.png" />
+						<img id="div-cap-reload" class="cap-option" src="/mingle/img/user/reload.png" />
 						<!-- TODO : 웹폰트 OR SVG적용 -->
-						<img id="div-cap-audio" src="/mingle/img/user/audio.png" />
+						<img id="div-cap-audio" class="cap-option" src="/mingle/img/user/audio.png" />
 					</div>
 				</div>
 				<input id="intext-captcha" class="cap-txt" type="text" placeholder="캡차를 입력하세요" />
