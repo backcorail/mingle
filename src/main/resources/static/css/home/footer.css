@@ -1,0 +1,110 @@
+footer {
+    width: 100%;
+    /* 테스트용 색깔 변수 */
+    background: black;
+    z-index: 19;
+}
+#areaTop_footer{
+	width: 100%;
+	height: 130px;
+	display: flex;
+	align-items: center;
+	padding-top: 20px;
+	border-bottom: 5px solid white;
+	font-family: 'Roboto Slab', serif;
+	color: white;
+}
+#areaTop_left{
+	width:25%;
+	display: flex;
+	justify-content: center;
+}
+#footer_logo{
+	font-family: 'Keania One', sans-serif;
+	font-size: 64px;
+	color: white;
+}
+#areaTop_middle{
+	width:50%;
+	display: flex;
+	justify-content: space-evenly;
+}
+#areaTop_middle a{
+	font-size: 20px;
+	color: white;
+}
+
+#areaTop_right{
+	width:25%;
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 10px;
+}
+#areaTop_right_wrapper{
+	display: flex;
+	justify-content: space-around;
+	width: 145px;
+}
+#areaTop_right img{
+	width: 40px;
+	height: 40px;
+}
+
+#areaTop_footer a:hover{
+	color: rgba(255, 214, 0);
+	transition: color 0.3s;
+}
+
+
+#areaBottom_footer{
+	width: 100%;
+	height: 40px;
+	display: flex;
+	align-items: center;
+}
+#areaBottom_annotation{
+	margin-left: 50px;
+	color: white;
+	
+}
+#area_sideBtn{
+	width:75px;
+	height: 215px;
+	position: fixed;
+	right: 2%;
+	bottom: 150px;
+	z-index: 300;
+	box-shadow: 0px 4px 4px 0px rgb(0, 0, 0, 0.25);
+	border-radius: 10px;
+	background: white;
+}
+.areaBtn_sideBtn{
+	width:75px;	
+	display: flex;
+	justify-content: center
+}
+#area_sideBtn button{
+	background: none;
+	border: none;
+}
+#area_sideBtn img{
+	width: 54px;
+	height: 54px;
+}
+
+#chat_btn{
+	margin-top: 25px;
+}
+#chat_btn img{
+	width: 32px;
+	height: 32px;
+}
+#yellow_chat_btn button{
+	width: 54px;
+	height: 54px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 100px;
+	background: #FFB400;
+}

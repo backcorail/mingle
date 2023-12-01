@@ -91,7 +91,7 @@
 		
 		<!-- 글작성 부분 -->
         <div class="write_recell">
-			<a  href="" class="button_container">
+			<a  href="/mingle/resell/write" class="button_container">
 			  	<button class="btn_write_recell"><span>fill out</span></button>
 			</a>
 	 	</div> 

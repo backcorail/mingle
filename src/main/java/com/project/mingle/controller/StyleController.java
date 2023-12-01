@@ -33,5 +33,9 @@ public class StyleController {
 	public String style_trend() {
 		return "style/style_trend";
 	}
+	@GetMapping("/write")
+	public String resell_write() {
+		return "style/style_write";
+	}
 
 }
