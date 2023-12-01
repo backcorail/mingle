@@ -19,4 +19,9 @@ public class ResellController {
 	public String resell_board() {
 		return "resell/resell_board";
 	}
+	
+	@GetMapping("/write")
+	public String resell_write() {
+		return "resell/resell_write";
+	}
 }

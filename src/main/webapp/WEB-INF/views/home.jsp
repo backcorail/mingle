@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
-	<link rel="stylesheet" href="/mingle/css/home.css">
+	<link rel="stylesheet" href="/mingle/css/home/home.css">
 	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap&family=Abril+Fatface&family=Shadows+Into+Light&display=swap&family=Lobster&display=swap&family=Montserrat:wght@700&display=swap&family=Montserrat&display=swap&family=Vina+Sans&display=swap&family=Poppins:ital@1&display=swap&family=Nanum+Pen+Script&display=swap&family=Kanit:ital,wght@1,500&family=DM+Sans:opsz@9..40&family=Noto+Sans+KR:wght@300" rel="stylesheet">
 	<script src="/mingle/js/home.js"></script>
 </head>

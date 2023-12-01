@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/mingle/css/init_mingle.css">
-<link rel="stylesheet" href="/mingle/css/header.css">
-<link rel="stylesheet" href="/mingle/css/footer.css">
+<link rel="stylesheet" href="/mingle/css/home/header.css">
+<link rel="stylesheet" href="/mingle/css/home/footer.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +58,7 @@
 				<ul class="subtitle_tabMenu" id="subMenu_2">
 					<li><a href="#">men</a></li>
 					<li><a href="#">women</a></li>
-					<li><a href="#">shoes</a></li>
+					<li><a href="/mingle/style/write">shoes</a></li>
 					<li><a href="/mingle/kream">bag</a></li>
 					<li><a href="#">other</a></li>
 				</ul>
