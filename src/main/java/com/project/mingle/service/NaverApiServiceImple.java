@@ -10,8 +10,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.lang.UsesSunHttpServer;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -30,6 +34,9 @@ public class NaverApiServiceImple implements NaverApiService {
 	private String CLIENT_SEC;
 	
 	NaverCaptchaVO naverCaptchaVO;
+	
+	@Autowired
+	HttpSession httpSession;
 
 	@Override
 	public File getCaptcha() {
@@ -119,6 +126,7 @@ public class NaverApiServiceImple implements NaverApiService {
 	public File getCaptchaImg(String CAPTCHA_KEY) {
 		String clientId = CLIENT_ID;// 애플리케이션 클라이언트 아이디값";
 		System.out.println("getCaptchaImg() 호출 CAPTCHA_KEY : "+CAPTCHA_KEY);
+		String captempfilePath = httpSession.getServletContext().getRealPath("/captempfile");
 		File imgFile=null;
 		try {
 			String key = CAPTCHA_KEY; // https://naveropenapi.apigw.ntruss.com/captcha/v1/nkey 호출로 받은 키값
@@ -134,9 +142,18 @@ public class NaverApiServiceImple implements NaverApiService {
 				int read = 0;
 				byte[] bytes = new byte[1024];
 				// 랜덤한 이름으로 파일 생성
-				String tempname = Long.valueOf(new Date().getTime()).toString();
-				imgFile = new File(tempname + ".jpg");
-				imgFile.createNewFile();
+                System.out.println("io 에러 위치 확인 1");
+                File directory = new File(captempfilePath);
+                if (!directory.exists()) {
+                    directory.mkdirs(); // 디렉토리가 없으면 생성
+                }
+                // 파일 생성
+                String tempname = Long.valueOf(new Date().getTime()).toString();
+                imgFile = new File(directory, tempname + ".jpg");
+                imgFile.createNewFile();
+//				String tempname = Long.valueOf(new Date().getTime()).toString();
+//				imgFile = new File(tempname + ".jpg");
+//				imgFile.createNewFile();
 				OutputStream outputStream = new FileOutputStream(imgFile);
 				while ((read = is.read(bytes)) != -1) {
 					outputStream.write(bytes, 0, read);
@@ -163,13 +180,14 @@ public class NaverApiServiceImple implements NaverApiService {
 	public File getCaptchaAudio(String CAPTCHA_KEY) {
 		System.out.println("getCaptchaAudio() 호출 CAPTCHA_KEY : "+CAPTCHA_KEY);
 		String clientId = CLIENT_ID;//애플리케이션 클라이언트 아이디값";
-		
+		String captempfilePath = httpSession.getServletContext().getRealPath("/captempfile");		
 		File audioFile= null;
 		try {
             String key = CAPTCHA_KEY; // https://naveropenapi.apigw.ntruss.com/scaptcha/v1/skey 호출로 받은 키값
             String apiURL = "https://naveropenapi.apigw.ntruss.com/scaptcha-bin/v1/scaptcha?key=" + key 
             		+ "&X-NCP-APIGW-API-KEY-ID=" + clientId;
             System.out.println("getCaptchaAudio() 호출 apiURL 확인 \n "+apiURL); 
+        
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
@@ -180,9 +198,23 @@ public class NaverApiServiceImple implements NaverApiService {
                 int read = 0;
                 byte[] bytes = new byte[1024];
                 // 랜덤한 이름으로 파일 생성
+               
+                /////////////////////////////////////////////////////////////////
+                System.out.println("io 에러 위치 확인 1");
+                File directory = new File(captempfilePath);
+                if (!directory.exists()) {
+                    directory.mkdirs(); // 디렉토리가 없으면 생성
+                }
+                // 파일 생성
                 String tempname = Long.valueOf(new Date().getTime()).toString();
-                audioFile = new File(tempname + ".wav");
+                audioFile = new File(directory, tempname + ".wav");
                 audioFile.createNewFile();
+               ////////////////////////////////////////////////////// 
+//               String tempname = Long.valueOf(new Date().getTime()).toString();
+//               audioFile = new File(captempfilePath, tempname + ".wav");
+//               audioFile.createNewFile();
+                
+
                 OutputStream outputStream = new FileOutputStream(audioFile);
                 while ((read =is.read(bytes)) != -1) {
                     outputStream.write(bytes, 0, read);
@@ -200,6 +232,7 @@ public class NaverApiServiceImple implements NaverApiService {
                 System.out.println(response.toString());
             }
         } catch (Exception e) {
+        	e.printStackTrace(); // 오류 출력
             System.out.println(e);
         }
 		
