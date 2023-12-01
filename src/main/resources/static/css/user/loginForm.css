@@ -452,10 +452,75 @@ main{
   align-items: center;
   border-radius: 0.5rem;
   background-color: #ffffff;
-
 }
+.div-cap-s1{
+	display: none;
+}
+#div-chapcha-area{
+	width: 24.2rem;
+	height: 8.4rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	/*background-color: #4AD295;*/
+}
+#div-chapcha-area .div-cap-area{
+	width: 24.2rem;
+	height: 6.4rem; /*captchaImage 이미지 높이와 동일*/
+	display: flex;
+	
+}
+#div-chapcha-area .div-cap-area #captchaImage{
+	width: 28rem;
+	height: 6.4rem;
+}
+#div-chapcha-area .div-cap-area .div-cap-re-au{
+	width: 4.2rem;
+	height: 6.4rem;
+	display: flex;
+	flex-direction: column;
+}
+.div-cap-re-au #div-cap-reload{
+	width: 3.2rem;
+	height: 3.2rem;
+	padding: 0.5rem; /* 패딩 값은 필요에 따라 조절 */
+	background-color: #f7e175;
+}
+.div-cap-re-au #div-cap-audio{
+	width: 3.2rem;
+	height: 3.2rem;
+	padding: 0.5rem; /* 패딩 값은 필요에 따라 조절 */
+	/*TODO :키프레임 애니메이션도 적용해볼것*/
+	 transition: background-color 0.2s ease; /* 애니메이션 설정 */
+	background-color: #f7e175;
+}
+.div-cap-re-au #div-cap-reload:hover
+, .div-cap-re-au #div-cap-audio:hover{
+	cursor: pointer;
+	/*TODO :키프레임 애니메이션도 적용해볼것*/
+	/*TODO :hover 전체에 적용할것,.*/
+	transition: background-color 0.2s ease; /* 애니메이션 설정 */
+	background-color: #fecb02;
+}
+
+.cap-txt{
+  width: 80%;
+  border: none;
+  border-bottom: 0.1rem solid #FFB400;
+  height: 1.65rem;
+  font: 600 1.25rem "Yaldevi-SemiBold";
+  text-align: center;
+}
+.cap-txt:focus{
+  outline:none;
+}
+.cap-txt::placeholder{
+  color: #afafaf;
+}
+
+
 .blank-35{
-  height: 1.75rem
+  height: 1.75rem;
 }
 .div-020{  height: 0.20rem; }
 .div-035{  height: 0.35rem; }

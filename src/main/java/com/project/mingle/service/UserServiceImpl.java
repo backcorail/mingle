@@ -1,6 +1,7 @@
 package com.project.mingle.service;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,14 +11,19 @@ import org.springframework.transaction.TransactionStatus;
 
 import com.project.mingle.mapper.UserMapper;
 import com.project.mingle.vo.UserVO;
-import com.project.mingle.vo.user.CheckVO;
 import com.project.mingle.vo.user.JoinUserVO;
+import com.project.mingle.vo.user.ResponseDto;
+import com.project.mingle.vo.user.UserResp;
 
 @Service
 public class UserServiceImpl implements UserService {
 
+	 private static final int MAX_LOGIN_ATTEMPTS = 5;
+	 
 	@Inject
 	UserMapper userMapper;
+	@Autowired	
+	HttpSession session; 
 	
 	@Autowired
 	PlatformTransactionManager  platformTransactionManager;
@@ -62,7 +68,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserVO login(JoinUserVO joinUserVO) {
+	public ResponseDto<String> login(JoinUserVO joinUserVO) {
 		// TODO Auto-generated method stub
 		UserVO userVO = UserVO.builder()
 				.user_id(joinUserVO.getUserid())
@@ -70,7 +76,34 @@ public class UserServiceImpl implements UserService {
 				.build();
 		System.out.println("\n 서비스 레이어 userVO build 이후 값");
 		System.out.println(userVO.toString());
-		return userMapper.login(userVO);
+		userVO = userMapper.login(userVO);
+		
+		// 로그인시도 횟수 측정
+		Integer loginAttempts = (Integer) session.getAttribute("LOGIN_ATTEMPTS");
+        // 로그인 시도 횟수 초기화
+        if (loginAttempts == null) {
+            loginAttempts = 0;
+        }
+
+        if (userVO !=null) {
+            // 로그인 성공 로직
+        	session.removeAttribute("LOGIN_ATTEMPTS"); // 성공 시 로그인 시도 횟수 제거
+        	System.out.println(userVO.toString());
+        	System.out.println("로그인 성공");
+            return new ResponseDto<String>(UserResp.LOGINOK.getValue(),"로그인에 성공하였습니다."); 
+        } else {
+            loginAttempts++;
+            session.setAttribute("LOGIN_ATTEMPTS", loginAttempts);
+
+            if (loginAttempts >= MAX_LOGIN_ATTEMPTS) {
+                // 최대 시도 횟수 초과 처리
+            	System.out.println("로그인을 "+loginAttempts+" 회 실패하였습니다.");
+            	System.out.println("캡차로 이동");
+            	return new ResponseDto<String>(UserResp.LOGINATTEMPTS.getValue(),"캡차로 이동");
+            }
+            System.out.println("로그인을 "+loginAttempts+" 회 실패하였습니다.");
+            return new ResponseDto<String>(UserResp.LOGINFAILD.getValue(),"로그인을 "+loginAttempts+" 회 실패하였습니다.");
+        }
 	}
 
 	@Override
