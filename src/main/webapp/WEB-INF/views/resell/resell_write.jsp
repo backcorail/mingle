@@ -5,7 +5,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap&family=Bayon&display=swap&family=Grenze+Gotisch&display=swap&family=Fredericka+the+Great&display=swap&family=Racing+Sans+One&display=swap&family=Abril+Fatface&display=swap&family=Lilita+One&display=swap" rel="stylesheet" rel="stylesheet">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/super-build/ckeditor.js"></script>
-<script src="/mingle/js/ckeditor.js"></script>
+<script src="/mingle/js/resell/ckeditor.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
 <script>
 //ck에디터
@@ -211,7 +211,7 @@ $(function() {
 				<ul class="image_preview">상단 노출 제품 관련 이미지를 선택해주세요.</ul>
 			</div>
 	  	</div>
-	  	<script src="/mingle/js/resell_write.js"></script><!-- 위에 적으면 에러남 -->
+	  	<script src="/mingle/js/resell/resell_write.js"></script><!-- 위에 적으면 에러남 -->
 	  	<hr/>
 	  	<!-- 판매희망주소 --><!-- api 적용시, 분리하면 에러남 -->
 	  	<div class="sellAddr_area">

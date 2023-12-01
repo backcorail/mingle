@@ -55,9 +55,4 @@ public class ResellController {
 		mav.setViewName("resell/resell_write");
 		return mav;
 	}
-	
-	@GetMapping("/write")
-	public String resell_write() {
-		return "resell/resell_write";
-	}
 }
