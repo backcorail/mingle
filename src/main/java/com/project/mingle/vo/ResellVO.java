@@ -26,17 +26,17 @@ public class ResellVO {
 	//private int item_price;
 	
 	// 크림 관련 변수 목록
-	private String item_image;	
-    private String item_name;
+	private int item_no; // 아이템 고유 번호
+	private String item_image; // 아이템 사진
+    private String item_name; // 아이템 이름
     private String item_price; // 아이템 가격
-    private String item_postdate;
+    private String item_postdate; // 아이템 올린 날짜
     private int ktotalRecord; // 크림 총 레코드수
     private int ktotalPage; // 크림 총 페이지
     
     
 	
 	public void setTotalPage() {
-		// 총 페이지 수
 		totalPage = (int)Math.ceil(this.totalRecord / (double)onePageRecord);
 	}
 	

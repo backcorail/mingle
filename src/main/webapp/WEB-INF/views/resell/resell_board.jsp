@@ -38,14 +38,15 @@
 					<div>50,000원</div>
 				</div>
 				<div class="modify_remove">
-					<div>수정</div>
-					<div>삭제</div>
+					<a href="./?page=${rVO.nowPage}">목록</a>
+					<a>수정</a>
+					<a>삭제</a>
 				</div>
 			</li>
 			<li class="blank_line"></li>
 			<li class="resell_item_name">
-				<div>(W) The North Face White Label Novelty Nuptse Down Jacket Silver</div>
-				<div>(W) 노스페이스 화이트 라벨 노벨티 눕시 다운 자켓 실버</div>
+				<div>${rVO.item_name}</div>
+				<div>${rVO.item_name}</div>
 			</li>
 			<li class="blank_line"></li>
 			<li class="buy_button"><button>구매요청하기</button></li>
@@ -71,10 +72,12 @@
 	<div class="resell_board_bottom_text">
 	(여기가 물품 설명글)
 	</div>
+	<div class="row_line"></div>
 </div>
 
 
 <!-- 댓글 부분 -->
+<!-- 
 <div class="row_line"></div>
 
 <div class="resell_reply">
@@ -99,3 +102,4 @@
 		</c:forEach>
 	</ul>
 </div>
+ -->

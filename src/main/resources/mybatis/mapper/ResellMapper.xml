@@ -15,7 +15,7 @@
 		limit #{onePageRecord} offset ${offsetPoint};
 	</select>
 	<select id="kreamData" resultType="com.project.mingle.vo.ResellVO">
-	    select item_name, item_price, item_image, item_postdate
+	    select item_no, item_name, item_price, item_image, item_postdate
 	    from item order by item_postdate desc
 	    limit #{onePageRecord} offset ${offsetPoint};
 	</select>

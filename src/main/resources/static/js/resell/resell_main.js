@@ -76,9 +76,7 @@ $(document).ready(function() {
 	// 현재 페이지 URL 가져오기
 	var url = window.location.search;
 	var urlParams = new URLSearchParams(url);
-	var nowPage = urlParams.get("page");
-	var nowGroup = 
-	console.log(nowPage);
+	var nowPage = urlParams.get("page"); 
 	if(!nowPage) { nowPage = 1; }
 	
 	$.ajax({

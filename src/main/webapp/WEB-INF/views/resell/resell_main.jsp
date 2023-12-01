@@ -91,7 +91,7 @@
 		
 		<!-- 글작성 부분 -->
         <div class="write_recell">
-			<a  href="" class="button_container">
+			<a href="resell/write" class="button_container">
 			  	<button class="btn_write_recell"><span>fill out</span></button>
 			</a>
 	 	</div> 
@@ -104,7 +104,7 @@
 				<div class="list_box">
 					<img src="/mingle/img/resell/sample.jpg">
 					<!-- <img src="${vo.item_image}"/> -->
-					<a href="">${vo.item_name}</a>
+					<a href="/mingle/resell/board?no=${vo.item_no}&page=${rVO.nowPage}">${vo.item_name}</a>
 					<div class="recell_price">${vo.item_price}</div>
 					<div class="recell_time">
 						<div>
@@ -120,34 +120,34 @@
 			<ul class="page_select">
 				<li>
 					<c:if test="${rVO.nowPage != 1}">
-						<a href="resell?page=1" class="page_box">첫 페이지</a>
+						<a href="/mingle/resell?page=1" class="page_box">첫 페이지</a>
 					</c:if>
 				</li>
 				<li>
 					<c:if test="${rVO.nowPage > rVO.onePageCount}">
-						<a href="resell?page=${rVO.startPage - rVO.onePageCount}" class="page_box">이전</a>
+						<a href="/mingle/resell?page=${rVO.startPage - rVO.onePageCount}" class="page_box">이전</a>
 					</c:if>
 				</li>
 				<c:forEach var="n" begin="${rVO.startPage}" end="${rVO.startPage + rVO.onePageCount-1}">
 					<li>
 						<c:if test="${n<=rVO.ktotalPage}">
 							<c:if test="${n==rVO.nowPage}">
-								<a href="resell?page=${n}" class="page_now">${n}</a>
+								<a href="/mingle/resell?page=${n}" class="page_now">${n}</a>
 							</c:if>
 							<c:if test="${n!=rVO.nowPage}">
-								<a href="resell?page=${n}" class="page_box">${n}</a>
+								<a href="/mingle/resell?page=${n}" class="page_box">${n}</a>
 							</c:if>
 						</c:if>
 					</li>
 				</c:forEach>
 				<li>
 					<c:if test="${rVO.nowPage / rVO.onePageCount < rVO.ktotalPage / rVO.onePageCount}">
-						<a href="resell?page=${rVO.startPage + rVO.onePageCount}" class="page_box">다음</a>
+						<a href="/mingle/resell?page=${rVO.startPage + rVO.onePageCount}" class="page_box">다음</a>
 					</c:if>
 				</li>
 				<li>
 					<c:if test="${rVO.nowPage != rVO.ktotalPage}">
-						<a href="resell?page=${rVO.ktotalPage}" class="page_box">끝 페이지</a>
+						<a href="/mingle/resell?page=${rVO.ktotalPage}" class="page_box">끝 페이지</a>
 					</c:if>
 				</li>
 			</ul>
