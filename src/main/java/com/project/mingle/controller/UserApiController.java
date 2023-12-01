@@ -92,14 +92,8 @@ public class UserApiController {
 	@PostMapping("/user/login")
 	public ResponseDto<String> login(@RequestBody JoinUserVO joinUserVO, HttpSession session) {
 		System.out.println("UserApiController : login 호출됨");
-		UserVO userVO = userService.login(joinUserVO); // principal(접근주체)
-		if(userVO==null) {
-			return new ResponseDto<String>(UserResp.LOGINFAILD.getValue(),"로그인에 실패하였습니다.");
-		}else {
-			System.out.println(userVO.toString());
-			return new ResponseDto<String>(UserResp.LOGINOK.getValue(),"로그인에 성공하였습니다.");
-		}	
-		
+		ResponseDto<String> responseDto = userService.login(joinUserVO); // principal(접근주체)
+		return responseDto;
 		
 //		UserVO principal = userService.login(joinUserVO); // principal(접근주체)
 //		if (principal != null) {

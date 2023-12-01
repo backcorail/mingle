@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="https://kit.fontawesome.com/7b899d6a28.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/mingle/css/user/loginForm.css">
 <link rel="stylesheet" href="/mingle/css/user/fp_Form.css">
 <link rel="stylesheet" href="/mingle/css/user/fi_Form.css">
@@ -196,9 +197,10 @@
 		<!-- 4. 비밀번호 변경 완료 시작-->
 		<!-- 비밓번호 찾기   끝-->
 
-		<!-- 아이디 찾기  진행  시작-->
+		<!-- 캡차 비밀번호 5실패시  진행  시작-->
 		<!-- 1. 캡차 시작 -->
-		<div class="div-main-form div-fi-s1">
+		<div class="div-main-form div-cap-s1">
+			<input type="hidden" id="captchaing" value="Y" />
 			<div class="div-245"></div>
 			<div class="div-logo">mingle</div>
 			<div class="blank-22"></div>
@@ -206,19 +208,35 @@
 			<div class="blank-20"></div>
 			<div class="div-login-outline2">
 				<div class="div-id-text">아이디</div>
-				<input id="id-userid" name="userid" type="text" class="in-txt" placeholder="예)asdf12345">
+				<input id="cap-userid" name="userid" type="text" class="in-txt" placeholder="예)asdf12345">
 				<div class="blank-20"></div>
 				<div class="div-p wd-text">비밀번호</div>
-				<input id="id-userpwd" name="userpwd" type="password" class="in-txt" placeholder="예)qwert0987654">
+				<input id="cap-userpwd" name="userpwd" type="password" class="in-txt" placeholder="예)qwert0987654">
 			</div>
 			<!-- 캡차 적용구간 -->
-			<div class="div-215"></div>
-			<div class="div-chapcha-area">
-				<img src="/mingle/img/user/chapchaEx.png" alt="">
+			<div class="div-050"></div>
+
+			<div id="div-chapcha-area">
+				
+				<div class="div-cap-area">
+					<input id="cap-type" type="hidden" value="IMG" /><!-- IMG /AUDIO -->
+					<img id="captchaImage">
+					<div id="captchaAudio-wrap">
+						<audio id="captchaAudio" controls></audio>
+					</div>
+					<div class="div-cap-re-au">
+						<!-- TODO : 웹폰트 OR SVG적용 -->
+						<img id="div-cap-reload" class="cap-option" src="/mingle/img/user/reload.png" />
+						<!-- TODO : 웹폰트 OR SVG적용 -->
+						<img id="div-cap-audio" class="cap-option" src="/mingle/img/user/audio.png" />
+					</div>
+				</div>
+				<input id="intext-captcha" class="cap-txt" type="text" placeholder="캡차를 입력하세요" />
+				
 			</div>
 			<!-- 다음 버튼 -->
-			<div class="blank-35"></div>
-			<input id="btn-id-next1" class="btn-login3" type="button" value="다음">
+			<div class="div-070"></div>
+			<input id="btn-cap-login" class="btn-login3" type="button" value="로그인">
 			<div class="blank-20"></div>
 			<ul class="ul-user-option">
 				<li><input type="button" value="회원가입" class="btn-joinform"></li>
@@ -230,6 +248,9 @@
 			<div class="blank-41"></div>
 		</div>
 		<!-- 1. 캡차 끝 -->
+		<!-- 캡차 비밀번호 5실패시  진행  끝-->
+		
+		<!-- 아이디 찾기  진행  시작-->
 		<!-- 2. 전화 번호인증 시작 -->
 		<div class="div-main-form div-fi-s2">
 			<div class="div-245"></div>

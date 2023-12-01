@@ -19,6 +19,10 @@ let index = {
 		});
 		// 2) 비밀 번호 찾기 시작
 		$(".btn-findpwd").on("click", () => {
+			this.userModalDataClean();
+			this.captchaDataClean();
+			this.mainLoginDataClean();
+			//아이디 찾기 클린
 			this.pwDataClean();
 			$(".div-main-lg").css("display", "none");
 			$(".div-fp-s2").css("display", "none");
@@ -34,7 +38,7 @@ let index = {
 			this.pwIdcheck(id);
 			// 콜백 3개 중복 			
 		});
-		/*비밀번호 찾기 페이지 2- 인증번호 확인*/
+		//2-2) 비밀번호 찾기 페이지 2- 인증번호 확인*/
 		$("#btn-pw-next2").on("click", () => {
 			
 			const otpStr = this.otpSting("pwotp");
@@ -42,7 +46,7 @@ let index = {
 			this.pwVerifyOtp(otpStr);
 			
 		});
-		/*비밀번호 찾기 페이지 3- 비밀번호 변경 확인*/
+		//2-3) 비밀번호 찾기 페이지 3- 비밀번호 변경 확인*/
 		$("#btn-pw-next3").on("click", () => {
 			//$(".div-fp-s3").css("display", "none");
 			//전화번호 유효성 체크
@@ -62,29 +66,67 @@ let index = {
 			// 서버 비밀번호 업데이트
 			this.pwPut($("#pw-userid").val(),$("#pw-userpwd").val())
 		});
-		/*비밀번호 찾기 페이지 4- 로그인페이지로 이동 확인*/
+		//2-4) 비밀번호 찾기 페이지 4- 로그인페이지로 이동 확인*/
 		$("#btn-pw-next4").on("click", () => {
 			$(".div-pw-modal-bg").css("display", "none");
 			$(".div-fp-s3").css("display", "none");
 			$(".div-fp-s4").css("display", "none");
 			$(".div-main-lg").css("display", "flex");
 		});
+////////////////////////////////////////////////////////////////////////
+	//4) 캡차 진행
+	//4-1) 캡차 리로드
+		$("#div-cap-reload").on('click', ()=>{
+			$("#cap-type").val('IMG');
+			$("#captchaAudio-wrap").css('display','none');
+			$("#captchaImage").css('display','block');
+			this.captchaAudioClear();
+			this.naverCaptcha(); 	
 			
+		});
+		$("#div-cap-audio").on('click', ()=>{
+			$("#cap-type").val('AUDIO');
+			$("#captchaImage").css('display','none');
+			$("#captchaAudio-wrap").css('display','flex');			
+			this.naverCaptchaAudio();
+		});
+		
+
+		//4-2) 캡차 로그인
+		$("#btn-cap-login").on("click", () => {// 로그인 버튼
+			// 아이디 유효성 체크
+			const id = $("#cap-userid").val();
+			if(!this.idregcheck(id)) return false;
+			// 비밀번호 유효성 체크
+			if($("#cap-userpwd").val() =="" ){
+				alert("비밀번호를 입력하세요");
+				return false;
+			}
+			// 테스트 편의성을 위해 주석
+			// this.valiPwd($("cap-userpwd").val());
+			//캡차 공백 체크
+			if($("#intext-captcha").val()==''){
+				alert("캡차 입력을 확인하세요");
+				return false;
+			}
+			// 아이디중복체크
+			this.capiddcheck(id);
+		});
 ////////////////////////////////////////////////////////////////////////				
 		//3 아이디 찾기*/
 		$(".btn-findid").on("click", () => {
+			this.userModalDataClean();
+			/*this.pwDataClean();*/
+			this.pwPageClean();
+			this.captchaDataClean();
+			this.mainLoginDataClean();
+		
 			$(".div-main-lg").css("display", "none");
-			$(".div-fi-s2").css("display", "none");
 			$(".div-fi-s3").css("display", "none");
 			$(".div-fi-s4").css("display", "none");
-			$(".div-fi-s1").css("display", "flex");
-			this.naverCaptcha();
-		});
-		//3-1) 아이디 찾기 찾기 페이지 1- 캡차
-		$("#btn-id-next1").on("click", () => {
-			$(".div-fi-s1").css("display", "none");
 			$(".div-fi-s2").css("display", "flex");
 		});
+
 		//3-2) 아이디 찾기 페이지 2- 인증번호 확인
 		$("#btn-id-next2").on("click", () => {
 			$(".div-fi-s2").css("display", "none");
@@ -297,9 +339,6 @@ let index = {
 /*-----end)div-telaouth-modal btn--------------------- */
 
 	},
-	initOtp(){
-			
-	},
 	userModalDataClean:function(){
 		// 1. div-user-modal
 		// 아이디 중복 여부 text
@@ -316,6 +355,14 @@ let index = {
 		this.otpClear();
 				
 	},
+	pwPageClean:function(){
+			this.pwDataClean();
+			$(".div-pw-modal-bg").css("display", "none");
+			$(".div-fp-s1").css("display", "none");
+			$(".div-fp-s2").css("display", "none");
+			$(".div-fp-s3").css("display", "none");
+			$(".div-fp-s4").css("display", "none");
+	},
 	pwDataClean:function(){
 		$("#pw-userid").val('');
 		$("#pw-usertel").val('');
@@ -324,10 +371,26 @@ let index = {
 		this.otpClear();
 		$("#pwotp-no-text").css('display','none');
 		$("#pw-dno-text").css('display','none');
+	},
+	idDataClean:function(){
+			
+	},
+	idPageClean:function(){
+		this.idDataClean();
 		
-	}
-	,
-	
+	},
+	mainLoginDataClean:function(){
+		$(".div-main-lg").css("display", "none");
+		$("#userid").val('');
+		$("#userpwd").val('');
+	},
+	captchaDataClean: function(){
+		$(".div-cap-s1").css("display", "none");
+		$("#cap-userid").val('');
+		$("#cap-userpwd").val('');
+		$("#captchaImage").attr('src',null);
+		this.captchaAudioClear();
+	},
 	idregcheck:function(id){
 			//아이디 공백 체크
 		  	if (id == "") {
@@ -342,7 +405,82 @@ let index = {
 		  	}
 		  	return true;
 	},
-
+	
+	capiddcheck: function(id) {
+		console.log("capiddcheck check");
+		let idcheck ={
+			data: id
+		}
+		const _this=this;
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/iddcheck",
+			data: JSON.stringify(idcheck), // http body 데이터
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==101){ // 아이디 없음 - 가입 안함
+					alert("등록되지 않은 아이디 입니다. 다시 확인해주세요.")					
+					return true;	
+				}
+				if(result.status==102){ // 아이디는 있음 
+					// 아이디=> 캡차=> 아이디&비번
+					// 캡차 체크
+					_this.capkeycheck($("#intext-captcha").val()); 		
+					return true;	
+				}
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		})
+	},
+	capkeycheck: function(capkey) {
+		console.log("capkeycheck check");
+		
+		let capkeyData ={
+			type: $("#cap-type").val(),
+			key: capkey
+		}
+		const _this=this;
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/capkeycheck",
+			data: JSON.stringify(capkeyData), // http body 데이터
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				$("intext-captcha").val(''); // 캡차 입력칸 클리어
+				
+				if(result.status==181){ // 캡차 성공
+					alert("캡차 성공 => 아이디비번서버로 인증요청");
+					_this.captchaLogin();
+					return true;	
+				}
+				
+				if(result.status==182){ // 캡차 실패   		
+					alert("캡차 인증를 다시 확힌해주세요.");
+					// 캡차 리로드
+					if( $("#cap-type").val()=="IMG" ){
+						_this.naverCaptcha(); 
+						return false;	
+					}
+					if( $("#cap-type").val()=="AUDIO" ){
+						_this.naverCaptchaAudio();
+						return false;	
+					}
+					return true;
+					
+				}
+			},
+			error: function(error) {
+				$("intext-captcha").val(''); // 캡차 입력칸 클리어
+				console.log(error);
+			}
+		})
+	},
 	iddcheck: function(id) {
 		console.log("iddcheck check");
 		let idcheck ={
@@ -720,7 +858,8 @@ let index = {
 						.addClass("modal-inner-appear");
 					return true;	
 				}
-				if(result.status==132){ // 가입 실패 
+				if(result.status==132){ // 가입 실패
+					alert("회원가입에 실패하였습니다."); 
 					return true;	
 				}
 			},
@@ -729,9 +868,55 @@ let index = {
 			}
 		})
 	},
+		//시큐리티 이전 로그인 방식.
+	captchaLogin: function() {
+		console.log("captchaLogin js 호출");
+		const _this=this;
+		let data = {
+			userid: $("#cap-userid").val(),
+			userpwd: $("#cap-userpwd").val()
+		};
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/login",
+			data: JSON.stringify(data), // http body 데이터 
+			contentType: "application/json; charset=UTF-8",//body에 실어 보내는 데이터가 어떤 타입인지(MIME)
+			dataType:"json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==141){ // 로그인 성공
+					console.log("로그인 성공");
+					$("#captchaing").val('N');
+					location.href="http://localhost:9998/mingle/"
+					return true;	
+				}
+				if(result.status==142){ // 로그인 실패 
+					alert(result.res);
+					console.log("142 로그인 실패 ");
+					return true;	
+				}
+				if(result.status==143){ // 캡차 로그인 페이지로이동
+					if($("#captchaing").val()=="Y"){
+						$("#captchaing").val('N');
+						alert("캡차는 정상 입력 되었으나 아이디 및 비밀번호가 다릅니다. 로그인 창으로 이동합니다.");
+						location.href="http://localhost:9998/mingle/user/login_joinForm";	
+						return false;	
+					}
+					alert(result.res);
+					console.log("143 로그인 실패 ");
+					_this.captchaLoginPage();
+					return true;	
+				}
+			},
+			error: function(error) {
+				console.log(error);
+			}	
+		})
+	},
 	//시큐리티 이전 로그인 방식.
 	login: function() {
 		console.log("login js 호출");
+		const _this=this;
 		let data = {
 			userid: $("#userid").val(),
 			userpwd: $("#userpwd").val()
@@ -743,12 +928,21 @@ let index = {
 			contentType: "application/json; charset=UTF-8",//body에 실어 보내는 데이터가 어떤 타입인지(MIME)
 			dataType:"json",
 			success: function(result) {
+				console.log(result);
 				if(result.status==141){ // 로그인 성공
+					console.log("로그인 성공");
 					location.href="http://localhost:9998/mingle/"
 					return true;	
 				}
 				if(result.status==142){ // 로그인 실패 
-					alert("아이디와 비밀번호를 확인해주세요.")
+					alert(result.res);
+					console.log("142 로그인 실패 ");
+					return true;	
+				}
+				if(result.status==143){ // 캡차 로그인 페이지로이동 
+					alert(result.res);
+					console.log("143 로그인 실패 ");
+					_this.captchaLoginPage();
 					return true;	
 				}
 			},
@@ -757,18 +951,86 @@ let index = {
 			}	
 		})
 	},
+	captchaLoginPage:function(){
+		
+		// 회원가입 모달 UI + 데이터 클리어
+		this.userModalDataClean();
+		
+		// 비밀번호찾기 UI + 데이터 클리어
+		this.pwDataClean()
+		
+		// 아이디찾기 UI + 데이터 클리어
+		// TODO: 구현해야함.
+		
+		// 로그인 UI + 데이터 클리어
+		this.mainLoginDataClean();
+		
+		// 캡차UI + 데티어 클리어
+		this.captchaDataClean();
+		
+		$(".div-cap-s1").css("display", "flex"); // 켑차 화면
+		$("#captchaing").val('Y'); // 캡차상태
+		$("#captchaAudio-wrap").css('display','none');
+		this.naverCaptcha();
+	},
 	naverCaptcha:function(){
 		console.log("naverCaptcha js 호출");
 		$.ajax({
-			type: "GET",
-			url: "/mingle/user/captcha",
-			success: function(result) {
-				console.log(result);
-			},
-			error: function(error) {
-				console.log(error);
-			}
-		})
+	        type: "GET",
+	        url: "/mingle/user/captcha",
+	        success: function(result) {
+	            // Blob 형태로 결과를 받음
+	            var blob = new Blob([result], { type: 'image/jpeg' }); // 이미지 타입에 맞게 설정
+	            var imgUrl = URL.createObjectURL(blob);
+	
+	            // 이미지 태그의 src 속성을 설정
+	            $('#captchaImage').attr('src', imgUrl);
+	        },
+	        error: function(error) {
+	            console.log(error);
+	        },
+	        xhrFields: {
+	            responseType: 'blob' // 바이너리 데이터로 응답을 받음
+	        }
+	    });
+	},
+	naverCaptchaAudio: function() {
+	    console.log("naverCaptchaAudio js 호출");
+	
+	    $.ajax({
+	        type: "GET",
+	        url: "/mingle/user/captchaaudio",
+	        success: function(result) {
+	            // Blob 형태로 결과를 받음
+	            var blob = new Blob([result], { type: 'audio/wav' }); // 오디오 타입 설정
+	            var audioUrl = URL.createObjectURL(blob);
+	
+	            // 오디오 태그의 src 속성을 설정
+	            $('#captchaAudio').attr('src', audioUrl);
+	            $("#captchaAudio")[0].play();
+	            // 오디오 요소 선택 및 재생 속도 설정
+				$("#captchaAudio").get(0).playbackRate = 1.25;
+
+
+	        },
+	        error: function(error) {
+	            console.log(error);
+	        },
+	        xhrFields: {
+	            responseType: 'blob' // 바이너리 데이터로 응답을 받음
+	        }
+	    });
+	},
+	captchaAudioClear: function(){
+		const audioElement = $("#captchaAudio")[0];
+		 if (audioElement) {
+			// 오디오 재생 중지
+	        audioElement.pause();
+	        // 오디오 타임라인을 시작 지점으로 이동
+	        audioElement.currentTime = 0;
+	        // 오디오 소스를 null로 설정
+	        audioElement.src = null;
+    	}
 	},
 	requestPut: function() {
 		console.log("requestPut js 호출");

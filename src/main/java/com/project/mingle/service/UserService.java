@@ -2,6 +2,7 @@ package com.project.mingle.service;
 
 import com.project.mingle.vo.UserVO;
 import com.project.mingle.vo.user.JoinUserVO;
+import com.project.mingle.vo.user.ResponseDto;
 
 public interface UserService {
 	
@@ -11,7 +12,7 @@ public interface UserService {
 
 	public UserVO nickcheck(String checknick);
 
-	public UserVO login(JoinUserVO joinUserVO);
+	public ResponseDto<String> login(JoinUserVO joinUserVO);
 
 	public UserVO idTelcheck(JoinUserVO joinUserVO);
 
