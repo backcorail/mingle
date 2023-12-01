@@ -4,8 +4,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <script src="/mingle/js/style_main.js"></script>
+<script src="/mingle/js/style_styles.js"></script>
 <link rel="stylesheet" href="/mingle/css/style_main.css">
 <link rel="stylesheet" href="/mingle/css/style_ranking.css">
+
+
+
 <main class="style_main">
 	<div class="style_title_container">
 		<h2 class="style_title">STYLE</h2>
