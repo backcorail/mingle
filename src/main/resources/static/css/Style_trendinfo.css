@@ -1,0 +1,315 @@
+@charset "UTF-8";
+
+.page {
+	margin-top : 90px;
+}
+
+.slider-container {
+	width : 500px;
+	height : 650px;
+	display : flex;
+}
+
+
+.slider {
+  position: relative;
+  width: 500px;
+  height: 570px;
+  overflow: hidden;
+  margin : auto;
+}
+
+.slide-show {
+  display: flex;
+  width: calc(600px * 3); /* width = slideWidth * numberOfSlides */
+  transition: all 0.5s ease;
+  margin : auto;
+  height : 539px;
+}
+
+.slide {
+  width: 500px;
+  height: 539px;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2em;
+  color: black;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#prevBtn {
+  left: 10px;
+  color : white;
+}
+
+#nextBtn {
+  right: 10px;
+  color : white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pagination .dot {
+  width: 10px;
+  height: 10px;
+  background: gray;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination .dot.active {
+  background: black;
+}
+
+.info-box {
+	font-size: 15px;
+	display:flex;
+	flex-direction: row;
+	width : auto;
+	background-color: lightgrey;
+	border-radius: 3px;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.profile-img-info {
+	width : 30px;
+	height : 30px;
+	border-radius: 50%;
+}
+
+.follow-btn {
+    padding: 5px 10px; 
+    background-color: black; 
+    color: white; 
+    border: none;
+    cursor: pointer; 
+    font-size: 10px; 
+    border-radius: 15px; 
+}
+
+.follow-btn2 {
+    padding: 3px 7px; 
+    background-color: lightgrey; 
+    color: black; 
+    border: none;
+    cursor: pointer; 
+    font-size: 10px; 
+    border-radius: 10px; 
+}
+
+.follow {
+	text-align: right;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.info {
+	margin-right : 323px;
+	height : 30px;
+}
+
+.text-info {
+	font-size : 10px;
+	font-weight: 500;
+}
+
+.text-info2 {
+	font-size : 10px;
+}
+
+
+.tag {
+	width : 500px;
+	display : flex;
+}
+
+/* 태그 css*/
+
+.tag-slider {
+  position: relative;
+  width: 500px;
+  height: 200px;
+  overflow: hidden;
+  margin : auto;
+}
+
+.tag-slide-show {
+  display: flex;
+  width: calc(600px * 3); /* width = slideWidth * numberOfSlides */
+  transition: all 0.5s ease;
+  margin : auto;
+  height : 130px;
+}
+
+.tag-slide {
+  width: 500px;
+  height: 200px;
+  display : flex;
+}
+
+.tag-slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2em;
+  color: black;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#tag-prevBtn {
+  left: 10px;
+  color : white;
+  font-size : 30px;
+}
+
+#tag-nextBtn {
+  right: 10px;
+  color : white;
+  font-size : 30px;
+}
+
+
+
+.tag-img {
+	width : 110px;
+	height : 125px;
+	border-radius: 10px;
+	margin-right : 20px;
+}
+
+
+#prevBtn:hover, #nextBtn:hover, #tag-prevBtn:hover, #tag-nextBtn:hover  {
+  background-color: rgba(0,0,0,0.8);
+}
+.tag-items-infobox {
+	width : 110px;
+	height : 125px;
+	margin-right : 20px;
+}
+
+.tag-items-info {
+	height : 70px;
+	width : 110px;
+	font-size : 13px;
+	margin-right : 20px;
+}
+
+.tag-items {
+	width : 500px;
+}
+
+.tag-slider-container {
+	width : 500px;
+	height : 200px;
+}
+
+
+/* 태그 밑 */
+
+.imote {
+	width : 500px;
+	height : 50px;	
+}
+
+.reply {
+	background-color: white;
+	cursor : pointer;
+	border : white;
+	width : 30px;
+	height : 30px;
+	
+}
+
+.heart {
+	background-color: white;
+	cursor : pointer;
+	border : white;
+	width : 30px;
+	height : 30px;
+	
+}
+
+.scrap {
+	background-color: white;
+	cursor : pointer;
+	border : white;
+	width : 30px;
+	height : 30px;
+	
+} 
+ 
+
+ .reply-btn {
+	background-color: white;
+	cursor : pointer;
+	border : white;
+	width : 40px;
+	height : 31px;
+}
+
+.heart-btn {
+	background-color: white;
+	cursor : pointer;
+	border : white;
+	width : 40px;
+	height : 31px;
+}
+
+.scrap-btn {
+	background-color: white;
+	cursor : pointer;
+	border : white;
+	width : 40px;
+	height : 31px;
+	
+} 
+
+
+
+
+ 
+ 
+.like-cnt {
+	font-size : 14px;
+	margin-bottom : 8px;
+}
+
+.hashtag {
+	width : 500px;
+	height : 30px;
+	font-size : 15px;
+	margin-bottom : 8px;
+}
+
+.reply-cnt {
+	font-size : 14px;
+	margin-bottom : 8px;
+}
+
+.reply-box {
+	width : 500px;
+	height : 300px;
+	border-bottom: 1px solid black;
+	margin-bottom : 10px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-reply {
+	font-size : 15px;
+}
