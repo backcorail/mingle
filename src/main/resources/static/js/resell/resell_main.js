@@ -36,7 +36,7 @@ $(document).ready(function() {
     // 검색창 애니메이션
     $(".resell_search>img").click(function() {
 		var width_change = parseInt($("#search_bar").css("width"), 10);
-		if(width_change == 38) {
+		if(width_change <= 38) {
 			$("#search_bar").css("width","495px");
 			$("#search_bar").css("color","black");
 			$("#search_bar").prop("placeholder", "여기에 검색어 입력.");
@@ -50,11 +50,61 @@ $(document).ready(function() {
     });
 });
 
+function timeDiff(time) {
+	time = new Date(time);
+	var currentTime = new Date();
+	var diff = Math.floor((currentTime - time)/60000);
+	
+	if(diff<1) {
+		return "방금전";
+	} else if(diff < 60) {
+		return diff+"분전";
+	} else if(diff < 1440) {
+		return Math.floor(diff/60)+"시간전";
+	} else if(diff < 10080) {
+		return Math.floor(diff/1440)+"일전";
+	} else if(diff < 43200) {
+		return Math.floor(diff/10080)+"주전";
+	} else if(diff < 525600) {
+		return Math.floor(diff/43200)+"달전";
+	} else {
+		return ""
+	}
+}
+
 $(document).ready(function() {
-    $('.list_box .recell_time').each(function() {
-        var now = new Date();
-        var dateTime = now.toISOString().slice(0, 19).replace("T", " ");
-        $(this).text(dateTime);
-    });
+	// 현재 페이지 URL 가져오기
+	var url = window.location.search;
+	var urlParams = new URLSearchParams(url);
+	var nowPage = urlParams.get("page");
+	var nowGroup = 
+	console.log(nowPage);
+	if(!nowPage) { nowPage = 1; }
+	
+	$.ajax({
+		type : "GET",
+		url : "resell?page="+nowPage,
+		data : { 
+			page:nowPage
+		},
+		success : function(data) {
+			
+		},
+		error : function(error) {
+			console.log(error);
+		}
+	})
 });
 
+
+$(document).ready(function() {
+	$(".page_now").parent().css("background","#FFC107");
+	$(".page_box").parent().hover(
+		function() {
+			$(this).css("background","#FFC107");
+		},
+		function() {
+			$(this).css("background","");
+		}
+	);
+});
