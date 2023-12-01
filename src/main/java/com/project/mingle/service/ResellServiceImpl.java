@@ -34,9 +34,4 @@ public class ResellServiceImpl implements ResellService {
 	public List<ResellVO> kreamData(ResellVO rVO) {
 		return mapper.kreamData(rVO);
 	}
-
-	
-	
-	
-
 }
