@@ -51,10 +51,21 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    $('.list_box .recell_time').each(function() {
+    $('.recell_time').each(function() {
         var now = new Date();
-        var dateTime = now.toISOString().slice(0, 19).replace("T", " ");
-        $(this).text(dateTime);
+        var option = {
+			year : "numeric",
+			month : "2-digit",
+			day : "2-digit",
+			hour : "2-digit",
+			minute : "2-digit",
+			second : "2-digit",
+			hour12 : false
+		};
+        var dateTime = new Intl.DateTimeFormat('ko-KR', option);
+        var formattedDateTime = dateTime.format(now);
+        console.log(now, formattedDateTime);
+        $(this).text(formattedDateTime);
     });
 });
 

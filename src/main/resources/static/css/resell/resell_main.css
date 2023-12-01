@@ -163,9 +163,9 @@
 /* 중앙 오른쪽 리셀 부분 */
 .resell_list {
 	display:flex;
-	box-sizing: border-box;
+	box-sizing:border-box;
 	width:1000px;
-	justify-content:space-evenly;
+	justify-content:flex-start;
 	flex-wrap: wrap;
 }
 .list_box {

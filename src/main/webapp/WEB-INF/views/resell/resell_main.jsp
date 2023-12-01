@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<link rel="stylesheet" href="/mingle/css/resell_main.css">
+<link rel="stylesheet" href="/mingle/css/resell/resell_main.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap&family=Nanum+Pen+Script&display=swap&family=Abril+Fatface&family=Kanit:ital,wght@1,500&family=Noto+Sans+KR:wght@300" rel="stylesheet">
-<script src="/mingle/js/resell_main.js"></script>
+<script src="/mingle/js/resell/resell_main.js"></script>
 
 <!-- 위쪽 카테고리 선택부분 -->
 <div>
@@ -21,7 +21,7 @@
 		<li id="choose_other" class="choose"><h3>Other</h3></li>
 	</ul>
 </div>
-<hr style="1px solid black">
+
 <div class="resell_main">
 <!-- 왼쪽 탭 부분 -->
 	<div class="resell_left">
@@ -88,20 +88,22 @@
 			<a  href="" class="button_container">
 			  	<button class="btn_write_recell"><span>fill out</span></button>
 			</a>
-	 	</div>   
+	 	</div> 
 	</div>
 	
 	<!-- 리셀 부분 -->
-	<div class="resell_list">
-		<c:forEach var="n" begin="1" end="16">
-			<div class="list_box">
-				<img src="/mingle/img/resell/sample.jpg"/>
-				<a href="">평상복의류(흰색)</a>
-				<div class="recell_price">50000</div>
-				<div class="recell_time"></div>
-			</div>
-		</c:forEach>
-
+	<div class="resell_right">
+		<div class="resell_list">
+			<c:forEach var="vo" items="${list}">
+				<div class="list_box">
+					<img src="/mingle/img/resell/sample.jpg"/>
+					<a href="">${vo.resell_name}</a>
+					<div class="recell_price">${vo.item_price} 원</div>
+					<div class="recell_time">${vo.resell_writedate}</div>
+				</div>
+			</c:forEach>
+		</div>
+	
 		<!-- 페이지수 -->
 		<div class="page_select">
 			<div>◀</div>
