@@ -43,8 +43,14 @@ public class ResellController {
 	}
 	
 	@GetMapping("/board")
-	public ModelAndView resell_board() {
+	public ModelAndView resell_board(@RequestParam(name="no") Integer no, @RequestParam(name="page") Integer page, ResellVO rVO) {
 		ModelAndView mav = new ModelAndView();
+		rVO.setNowPage(page);
+		
+		List<ResellVO> kreamList = service.kreamData(rVO);
+		mav.addObject("rVO", rVO);
+		mav.addObject("klist", kreamList);
+		
 		mav.setViewName("resell/resell_board");
 		return mav;
 	}

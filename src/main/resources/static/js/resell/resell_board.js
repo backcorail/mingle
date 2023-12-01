@@ -41,3 +41,22 @@ $(document).ready(function() {
 		
 	})
 });
+
+$(document).ready(function() {
+	// 현재 페이지 URL 가져오기
+	var url = window.location.search;
+	var urlParams = new URLSearchParams(url);
+	var nowPage = urlParams.get("page");
+	var boardNum = urlParams.get("no");
+	console.log(nowPage,boardNum);
+	$.ajax({
+		type : "GET",
+		url : "board?page="+nowPage+"&no="+boardNum,
+		data : { 
+			page:nowPage,
+			no:boardNum
+		},
+	})
+});
+
+
