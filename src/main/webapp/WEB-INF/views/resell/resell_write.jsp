@@ -220,7 +220,7 @@ $(function() {
 		  	<div id="map" style="width:100%;height:350px;display:none;"></div>
 	  	</div>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=32c66affb1cc55e17a82c794a21905ab&libraries=services,clusterer,drawing"></script>
-		<script type="text/javascript" src="/mingle/js/resell_write_map.js"></script>
+		<script type="text/javascript" src="/mingle/js/resell/resell_write_map.js"></script>
 	  	<hr/>
 		<!-- 작성,취소 버튼 -->
 		<div class="pustBack_box">
