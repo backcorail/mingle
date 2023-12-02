@@ -1,4 +1,4 @@
-package com.project.mingle.controller;
+package com.project.mingle.controller.naver;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-// ... 클래스 정의 및 다른 필요한 코드
-
-import com.project.mingle.service.NaverApiService;
+import com.project.mingle.service.naver.NaverApiService;
 import com.project.mingle.vo.naver.NaverCapKeyVO;
 import com.project.mingle.vo.user.ResponseDto;
 import com.project.mingle.vo.user.UserResp;
