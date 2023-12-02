@@ -1,4 +1,4 @@
-package com.project.mingle.service;
+package com.project.mingle.service.naver;
 
 import java.io.BufferedReader;
 import java.io.File;

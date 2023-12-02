@@ -1,4 +1,4 @@
-package com.project.mingle.controller;
+package com.project.mingle.controller.user;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.mingle.service.AuthService;
-import com.project.mingle.service.UserService;
+import com.project.mingle.service.Auth.AuthService;
+import com.project.mingle.service.user.UserService;
 import com.project.mingle.vo.UserVO;
 import com.project.mingle.vo.user.CheckVO;
 import com.project.mingle.vo.user.JoinUserVO;
@@ -28,7 +28,7 @@ public class UserApiController {
 	// http://localhost:9998/mingle/user/iddcheck
 	@PostMapping("/user/iddcheck")
 	public ResponseDto<String> iddcheck(@RequestBody CheckVO checkVO ){
-		System.out.println("checkVO.getData : " + checkVO.getData());
+		System.out.println("checkVO : " + checkVO.getData());
 		UserVO userVO = userService.iddcheck(checkVO.getData());
 		if(userVO==null) {
 			return new ResponseDto<String>(UserResp.USERIDOK.getValue(),"사용가능한 아이디입니다.");//101
@@ -104,13 +104,17 @@ public class UserApiController {
 	
 	@PostMapping("/user/telcheck")
 	public ResponseDto<String> telcheck(@RequestBody CheckVO checkVO){
-		System.out.println("checkVO : " + checkVO.getData());
+		System.out.println("checkVO.getData : " + checkVO.getData());
+		System.out.println("checkVO.getType : " + checkVO.getType());
 		UserVO userVO = userService.telcheck(checkVO.getData());
 		if(userVO==null) {
-			return new ResponseDto<String>(UserResp.TELNOREG.getValue(),"등록된 안된 전화번호");
+			return new ResponseDto<String>(UserResp.TELNOREG.getValue(),"등록된 안된 전화번호");//161
 		}else {
+			if("USER".equals(checkVO.getType())) {
+				return new ResponseDto<String>(UserResp.USERIDRETURNE.getValue(),userVO.getUser_id());//103
+			}
 			System.out.println(userVO.toString());
-			return new ResponseDto<String>(UserResp.TELREG.getValue(),"등록된 전화번호");
+			return new ResponseDto<String>(UserResp.TELREG.getValue(),"등록된 전화번호");//162
 		}	
 	}
 	

@@ -1,4 +1,4 @@
-package com.project.mingle.controller;
+package com.project.mingle.controller.user;
 
 import javax.servlet.http.HttpSession;
 

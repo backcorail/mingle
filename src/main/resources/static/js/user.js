@@ -1,7 +1,11 @@
 let index = {
 	init: function() {
-		$(".div-golo").on('click',()=>{
-			// TODO: 이것은 어떻게 실행할지 고민. 중
+		$(".div-logo").on('click',()=>{
+			//로그인 창으로이동.
+			this.pwPageClean();
+			this.idPageClean();
+			this.captchaDataClean();
+			$(".div-main-lg").css('display','flex');
 		})
 		// 로그인  
 		$("#btn-main-login").on('click',()=>{
@@ -16,14 +20,15 @@ let index = {
 			$(".modal-bg").css("display", "block");
 			$("#div-user-modal")
 				.css("display", "flex");
+			$("#join-userid").focus();
 		});
 		// 2) 비밀 번호 찾기 시작
 		$(".btn-findpwd").on("click", () => {
-			this.userModalDataClean();
-			this.captchaDataClean();
 			this.mainLoginDataClean();
-			//아이디 찾기 클린
-			this.pwDataClean();
+			this.userModalDataClean();
+			this.captchaDataClean();			
+			this.idPageClean();
+			this.pwPageClean();
 			$(".div-main-lg").css("display", "none");
 			$(".div-fp-s2").css("display", "none");
 			$(".div-fp-s3").css("display", "none");
@@ -91,7 +96,6 @@ let index = {
 			this.naverCaptchaAudio();
 		});
 		
-
 		//4-2) 캡차 로그인
 		$("#btn-cap-login").on("click", () => {// 로그인 버튼
 			// 아이디 유효성 체크
@@ -115,35 +119,41 @@ let index = {
 ////////////////////////////////////////////////////////////////////////				
 		//3 아이디 찾기*/
 		$(".btn-findid").on("click", () => {
-			this.userModalDataClean();
-			/*this.pwDataClean();*/
-			this.pwPageClean();
-			this.captchaDataClean();
 			this.mainLoginDataClean();
-		
+			this.userModalDataClean();
+			this.pwPageClean();/*this.pwDataClean();*/
+			this.captchaDataClean();
+			this.idPageClean();
 			$(".div-main-lg").css("display", "none");
 			$(".div-fi-s3").css("display", "none");
 			$(".div-fi-s4").css("display", "none");
 			$(".div-fi-s2").css("display", "flex");
 		});
 
-		//3-2) 아이디 찾기 페이지 2- 인증번호 확인
+		//3-2) 아이디 찾기 페이지 2- 전화번호 확인
 		$("#btn-id-next2").on("click", () => {
-			$(".div-fi-s2").css("display", "none");
-			$(".div-fi-s3").css("display", "flex");
+			// 전화번호 등록 확인
+			// 맞으면 인증번호 / 틀리면 알람.
+			const tel = $("#id-usertel").val();
+			if(this.telRegcheck(tel))	this.teldcheck(tel);
 		});
-		/*비밀번호 찾기 페이지 3- 비밀번호 변경 확인*/
+		//3-3)아이디  찾기 페이지 3- 인증번호 확인
 		$("#btn-id-next3").on("click", () => {
 			//$(".div-fp-s3").css("display", "none");
-			$(".div-pw-modal-bg").css("display", "block");
-			$(".div-fi-s4").css("display", "flex");
+			// otp 가져와서 전송 하고 확인후 다음페이지 이동.
+			
+			const otpStr = this.otpSting("idotp");
+			if(otpStr == false && otpStr.length <6) return false;
+			this.idVerifyOtp(otpStr);
 		});
-		/*비밀번호 찾기 페이지 4- 로그인페이지로 이동 확인*/
+		//3-3)아이디 찾기 페이지 4- 로그인페이지로 이동 확인*/
 		$("#btn-id-next4").on("click", () => {
-			$(".div-pw-modal-bg").css("display", "none");
-			$(".div-fi-s3").css("display", "none");
-			$(".div-fi-s4").css("display", "none");
+		
+			$("#userid").val($("#id-userid").text());
+			//  아이디 찾기 데이터 클린.
+			this.idPageClean();
 			$(".div-main-lg").css("display", "flex");
+			
 		});				
 
 	
@@ -373,11 +383,15 @@ let index = {
 		$("#pw-dno-text").css('display','none');
 	},
 	idDataClean:function(){
-			
+			$("#id-usertel").val('');
+			this.otpClear();
+			$("#id-userid").text('');
 	},
 	idPageClean:function(){
 		this.idDataClean();
-		
+		$(".div-fi-s2").css("display", "none");		
+		$(".div-fi-s3").css("display", "none");
+		$(".div-fi-s4").css("display", "none");
 	},
 	mainLoginDataClean:function(){
 		$(".div-main-lg").css("display", "none");
@@ -386,6 +400,7 @@ let index = {
 	},
 	captchaDataClean: function(){
 		$(".div-cap-s1").css("display", "none");
+		$("#captchaing").val('N'); 
 		$("#cap-userid").val('');
 		$("#cap-userpwd").val('');
 		$("#captchaImage").attr('src',null);
@@ -794,6 +809,117 @@ let index = {
 			}
 		})
 	},
+	telRegcheck:function(tel){
+		//전화번호 있는지 확인 콜백2)
+		if(tel==''){
+			alert("전화번호를 입력하세요."); return false;			
+		}
+		const reg = /^\d{11}$/;
+		if(!reg.test(tel)){
+			alert("전화번호를 잘못입력했습니다."); return false;	
+		}
+	  	return true;
+	},
+	teldcheck: function(tel) {
+		console.log("teldcheck check");
+		let _this=this;
+		let telcheck ={
+			data: tel
+		}
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/telcheck",
+			data: JSON.stringify(telcheck), // http body 데이터
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==161){ // 등록되지 않은 전화번호
+					alert("등록되지 않는 번호입니다.");
+					return false;
+				}
+				if(result.status==162){ // 등록된 전화번호
+					alert("이미 등록되어 있는 번호입니다.");
+					// otp 진행 
+					_this.sendOtp(tel);
+					$(".div-fi-s2").css("display", "none");
+					$(".div-fi-s3").css("display", "flex");
+					_this.otpClear();
+					$("#idotp-no-text").css('display','none')
+					$(".idotp1").focus();
+					return false;	
+				}
+				
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		})
+	},
+	idVerifyOtp:function(otpStr){
+		console.log("idVerifyOtp check");
+		let _this=this;
+		let otpStrs ={
+			data: otpStr
+		}
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/verify-otp",
+			data: JSON.stringify(otpStrs), // http body 데이터
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==111){ // otp 인증 성공
+					_this.otpClear();
+					// 전화번호 존재 = 아이디도 있다.
+					// 전화번호로 아이디 요청
+					const tel = $("#id-usertel").val();
+					_this.idrequest(tel)
+					return true;	
+				}
+				if(result.status==112){ // otp 인증 실패
+					alert("입력하신 인증번호가 일치하지 않습니다.");
+					$("#idotp-no-text").css('display','block');
+				}
+			},	error: function(error) { console.log(error);	}
+		})
+	},
+	idrequest: function(tel) {
+		console.log("idrequest check");
+		let idcheck ={
+			data: tel,
+			type: "USER"
+		}
+		const _this=this;
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/telcheck",
+			data: JSON.stringify(idcheck), // http body 데이터
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==161){ //
+					alert("유효한 아이디가 없습니다. 운영자에게 문의하세요.");
+				}
+				if(result.status==161){ // 아이디 없음 - 가입 안함
+					alert("서비스가 지연되고 있습니다.. 운영자에게 문의하세요.");
+				}
+				if(result.status==103){ // 아이디 리턴
+					$("#idotp-no-text").css('display','none');
+					$(".div-fi-s3").css("display", "none");
+					$(".div-fi-s4").css("display", "flex");
+					$("#id-userid").text(result.res);
+					return true;	
+				}
+				
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		})
+	},
 	getValue: function() {
 		return {
 			userid : $("#join-userid").val(),
@@ -960,7 +1086,7 @@ let index = {
 		this.pwDataClean()
 		
 		// 아이디찾기 UI + 데이터 클리어
-		// TODO: 구현해야함.
+		this.idPageClean();
 		
 		// 로그인 UI + 데이터 클리어
 		this.mainLoginDataClean();
@@ -1022,7 +1148,18 @@ let index = {
 	    });
 	},
 	captchaAudioClear: function(){
+		
+/*		$("#captchaAudio")[0].pause();
+		$("#captchaAudio")[0].currentTime=0;
+		$("#captchaAudio").attr('src','');*/
 		const audioElement = $("#captchaAudio")[0];
+		if(audioElement){
+			 audioElement.pause();
+			 audioElement.currentTime = 0;
+			 audioElement.src = null;
+			 //audioElement.src = '';
+		}
+		/*
 		 if (audioElement) {
 			// 오디오 재생 중지
 	        audioElement.pause();
@@ -1030,7 +1167,7 @@ let index = {
 	        audioElement.currentTime = 0;
 	        // 오디오 소스를 null로 설정
 	        audioElement.src = null;
-    	}
+    	}*/
 	},
 	requestPut: function() {
 		console.log("requestPut js 호출");

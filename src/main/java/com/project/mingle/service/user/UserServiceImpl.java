@@ -1,4 +1,4 @@
-package com.project.mingle.service;
+package com.project.mingle.service.user;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;

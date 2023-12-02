@@ -1,4 +1,4 @@
-package com.project.mingle.service;
+package com.project.mingle.service.Auth;
 
 import java.util.Random;
 

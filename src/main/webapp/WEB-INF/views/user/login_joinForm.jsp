@@ -266,7 +266,7 @@
 			<div class="div-100"></div>
 			<div class="div-login-outline2">
 				<div class="div-id-text">전화번호</div>
-				<input id="usertel" name="usertel" type="text" class="in-txt" placeholder="예)asdf12345">
+				<input id="id-usertel" name="usertel" type="text" class="in-txt" placeholder="01012345678">
 			</div>
 
 			<!-- 다음 버튼 -->
@@ -300,7 +300,7 @@
 				<div class="div-225"></div>
 				<div class="div-bt-area">
 					<div class="Yaldevi-SemiBold-20g"></div>
-					<div class="div-id-alret Yaldevi-SB-20r-A">입력하신 번호가 다릅니다. 다시 입력해주세요.</div>
+					<div id="idotp-no-text" class="div-id-alret Yaldevi-SB-20r-A">입력하신 번호가 다릅니다. 다시 입력해주세요.</div>
 				</div>
 				<div class="div-input-num-area-34">
 					<input class="otp1 idotp1" type="text" maxlength="1">
@@ -336,12 +336,12 @@
 			<div class="div-line1-b2-FW Yaldevi-SemiBold-40y">아이디찾기</div>
 			<div class="div-245"></div>
 			<div class="div-userid-show-area">
-				<div class="div-userid Yaldevi-SB-24">asdqwer123456</div>
+				<div id="id-userid" class="div-userid Yaldevi-SB-24"></div>
 			</div>
 
 			<!-- 로그인 버튼 -->
 			<div class="div-535"></div>
-			<input id="btn-id-next4" class="btn-login3" type="button" value="로그인페이지">
+			<input id="btn-id-next4" class="btn-login3" type="button" value="로그인페이지 이동">
 			<div class="div-300"></div>
 			<ul class="ul-user-option">
 				<li><input type="button" value="회원가입" class="btn-joinform"></li>

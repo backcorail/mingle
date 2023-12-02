@@ -3,6 +3,7 @@ package com.project.mingle.vo.user;
 public enum UserResp {
 	USERIDOK(101,"사용가능 아이디"),
 	USERIDDD(102,"중복된 아이디"),
+	USERIDRETURNE(103,"아이디찾기"),
 	
 	OTPOK(111,"OTP 인증 성공"),
 	OTPFAIDL(112,"OTP 인증 실패"),

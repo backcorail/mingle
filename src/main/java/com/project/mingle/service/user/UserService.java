@@ -1,4 +1,4 @@
-package com.project.mingle.service;
+package com.project.mingle.service.user;
 
 import com.project.mingle.vo.UserVO;
 import com.project.mingle.vo.user.JoinUserVO;
