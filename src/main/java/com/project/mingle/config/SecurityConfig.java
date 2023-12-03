@@ -16,16 +16,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	// 1. 접근 경로 필터링.
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-//		http
-//			.cors().disable() // cors 방지
-//			.csrf().disable() //csrf 			
-//			.formLogin().disable()
-//			.headers().frameOptions().disable();
-	    http
-        .cors(cors -> cors.disable())
-        .csrf(csrf -> csrf.disable())
-        .formLogin(formLogin -> formLogin.disable())
-        .headers(headers -> headers.frameOptions().disable());
+		http
+			.authorizeRequests()
+	        .antMatchers("/mingle/mypage").authenticated() // /mingle/mypage에 대해서는 인증 필요
+	        .antMatchers("/", "/mingle/**").permitAll() // 나머지 /mingle/** 경로는 모두 허용
+        .and()
+        .formLogin()
+            .loginPage("/mingle/user/login_joinForm") // 컨텍스트 패스에 맞춘 로그인 페이지 경로
+            .loginProcessingUrl("/mingle/user/login") // 컨텍스트 패스에 맞춘 로그인 처리 URL
+            .defaultSuccessUrl("/mingle"); // 로그인 성공 후 이동할 기본 URL
+            // .failureUrl("/mingle/fail") // 로그인 실패 시 이동할 URL (필요한 경우)
 	}
 	
 	//2. 비밀번호 암호화
