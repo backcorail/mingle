@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,7 +14,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="/mingle/admintest">admin page</a>
+            <a class="navbar-brand ps-3" href="/mingle/admintest">Mingle</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -47,18 +47,88 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+							<!-- Members 메뉴 -->
+							<div class="sb-sidenav-menu-heading">Interface</div>
+							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseMembers" aria-expanded="false" aria-controls="collapseMembers">
+							    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+							    Members
+							    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+							</a>
+							<!-- Members 하위 메뉴 -->
+							<div class="collapse" id="collapseMembers" aria-labelledby="headingMembers" data-bs-parent="#sidenavAccordion">
+							    <nav class="sb-sidenav-menu-nested nav">
+							        <a class="nav-link" href="/mingle/admintest/members_data">Members Data</a>
+							        <a class="nav-link" href="/mingle/admintest/layout_static">Sublink 2</a>
+							        <!-- 더 많은 하위 메뉴 항목들 추가 가능 -->
+							    </nav>
+							</div>
+							<!-- Products 메뉴 -->
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                Products
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <!-- Products 하위 메뉴 -->
+                            <div class="collapse" id="collapseProducts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/mingle/admintest/layout_static">Static Navigation</a>
+                                    <a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
+                                    <a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
                                 </nav>
                             </div>
+                            <!-- Transactions 메뉴 -->
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTransactions" aria-expanded="false" aria-controls="collapseTransactions">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Transactions
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <!-- Transactions 하위 메뉴 -->
+                            <div class="collapse" id="collapseTransactions" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="/mingle/admintest/layout_static">Transactions Data</a>
+                                    <a class="nav-link" href="/mingle/admintest/layout_static">Transactions Delete</a>
+                                </nav>
+                            </div>
+                            <!-- Posts 메뉴 -->
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePosts" aria-expanded="false" aria-controls="collapsePosts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Posts
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <!-- Posts 하위 메뉴 -->
+                            <div class="collapse" id="collapsePosts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="/mingle/admintest/layout_static">Posts Data</a>
+                                    <a class="nav-link" href="/mingle/admintest/layout_static">Posts Delete</a>
+                                </nav>
+                            </div>
+                             <!-- Recommend 메뉴 -->
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRecommend" aria-expanded="false" aria-controls="collapseRecommend">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Recommend
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <!-- Recommend 하위 메뉴 -->
+                            <div class="collapse" id="collapseRecommend" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="/mingle/admintest/layout_static">Recommend Data</a>
+                                    <a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
+                                </nav>
+                            </div>
+                             <!-- Server 메뉴 -->
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseServer" aria-expanded="false" aria-controls="collapseServer">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Server
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <!-- Recommend 하위 메뉴 -->
+                            <div class="collapse" id="collapseServer" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="/mingle/admintest/layout_static">Server Data</a>
+                                    <a class="nav-link" href="/mingle/admintest/layout_static">Server settings</a>
+                                </nav>
+                            </div>
+
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Pages
@@ -117,7 +187,7 @@
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">회원 관리</div>
+                                    <div class="card-body">Members</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -126,7 +196,7 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">상품 관리</div>
+                                    <div class="card-body">Products</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -135,7 +205,7 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">거래 관리</div>
+                                    <div class="card-body">Transactions</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -144,7 +214,7 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">커뮤니티 관리</div>
+                                    <div class="card-body">Posts</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -157,7 +227,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-area me-1"></i>
-                                        회원 차트
+                                        Members Charts
                                     </div>
                                     <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
                                 </div>
@@ -166,7 +236,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        거래 차트
+                                        Transactions Charts
                                     </div>
                                     <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                                 </div>
@@ -175,18 +245,18 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                상품 데이터
+                                Products Data
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>이름</th>
-                                            <th>상품명</th>
-                                            <th>지역</th>
+                                            <th>Name</th>
+                                            <th>Products</th>
+                                            <th>Location</th>
                                             <th>Age</th>
-                                            <th>입고일</th>
-                                            <th>가격</th>
+                                            <th>Date</th>
+                                            <th>Price</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -202,7 +272,7 @@
                                     <tbody>
                                         <tr>
                                             <td>홍길동</td>
-                                            <td>System Architect</td>
+                                            <td>The North Face White Label Novelty Nuptse Down Jacket Silver</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
                                             <td>2011/04/25</td>

@@ -10932,7 +10932,7 @@ body {
   overflow-y: auto;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
-  padding-left: 225px;
+  padding-left: 300px;
   top: 56px;
 }
 
@@ -10978,6 +10978,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 280px;
   flex-wrap: nowrap;
 }
 .sb-sidenav .sb-sidenav-menu {
