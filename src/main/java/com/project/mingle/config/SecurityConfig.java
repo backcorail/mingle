@@ -50,12 +50,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		 2) 로그인페이지는 허용페이지어야 한다.
 		 
 		 */
-		
+// 	1)기본설정
+//		http
+//		.cors().disable() // cors 방지
+//		.csrf().disable() //csrf 			
+//		.formLogin().disable()
+//		.headers().frameOptions().disable();
 		http
 	    .cors().disable() // CORS 방지
 	    .csrf().disable() // CSRF 방지
 	    .authorizeRequests()
-	        .antMatchers("/","/mingle/**")
+	        //.antMatchers("/","/mypage/**")
+	    	.antMatchers("/","/mingle/user/login_joinForm")
 	        .permitAll() // 해당 경로는 누구나 접근 가능
 	    .anyRequest()
 	    .authenticated() // 그 외의 경로는 인증 필요
