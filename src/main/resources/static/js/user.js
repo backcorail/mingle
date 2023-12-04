@@ -9,7 +9,8 @@ let index = {
 		})
 		// 로그인  
 		$("#btn-main-login").on('click',()=>{
-			this.login();
+			//this.login();
+			this.loginproc();
 			// TODO 로그인 성공후 어디로 이동시킬지 경정해야 함.
 		})
 			
@@ -1049,7 +1050,45 @@ let index = {
 		};
 		$.ajax({
 			type: "POST",
-			url: "/mingle/user/login",
+			url: "/mingle/user/loginc",
+			data: JSON.stringify(data), // http body 데이터 
+			contentType: "application/json; charset=UTF-8",//body에 실어 보내는 데이터가 어떤 타입인지(MIME)
+			dataType:"json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==141){ // 로그인 성공
+					console.log("로그인 성공");
+					location.href="http://localhost:9998/mingle/"
+					return true;	
+				}
+				if(result.status==142){ // 로그인 실패 
+					alert(result.res);
+					console.log("142 로그인 실패 ");
+					return true;	
+				}
+				if(result.status==143){ // 캡차 로그인 페이지로이동 
+					alert(result.res);
+					console.log("143 로그인 실패 ");
+					_this.captchaLoginPage();
+					return true;	
+				}
+			},
+			error: function(error) {
+				console.log(error);
+			}	
+		})
+	},
+	loginproc: function() {
+		console.log("login js 호출");
+		const _this=this;
+		
+		let data = {
+			userid: $("#userid").val(),
+			userpwd: $("#userpwd").val()
+		};
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/loginproc",
 			data: JSON.stringify(data), // http body 데이터 
 			contentType: "application/json; charset=UTF-8",//body에 실어 보내는 데이터가 어떤 타입인지(MIME)
 			dataType:"json",
