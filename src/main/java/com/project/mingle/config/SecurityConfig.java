@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		        .antMatchers("/mingle/user/logout").authenticated() // 로그아웃 경로는 인증된 사용자만 허용
 		        .antMatchers("/", "/mingle/**").permitAll() // 나머지 /mingle/** 경로는 모두 허용
         .and()
-        .formLogin()
+        	.formLogin()
 	        .usernameParameter("userid") // 사용자 이름 파라미터 이름 변경
 	        .passwordParameter("userpwd") // 비밀번호 파라미터 이름 변경
             .loginPage("/mingle/user/login_joinForm") // 컨텍스트 패스에 맞춘 로그인 페이지 경로

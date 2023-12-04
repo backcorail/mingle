@@ -17,9 +17,11 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
+        	System.out.println("필터동작확인");
             JoinUserVO joinUserVO = objectMapper.readValue(request.getInputStream(), JoinUserVO.class);
             UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(
                 joinUserVO.getUserid(), joinUserVO.getUserpwd());
+            
             setDetails(request, authRequest);
             return this.getAuthenticationManager().authenticate(authRequest);
         } catch (IOException e) {
