@@ -20,6 +20,16 @@ public class AdminTestController {
 		return "admin/layout_static";	
 	}
 	
+	@GetMapping("/members_data")
+	public String members_data() {
+		return "admin/members_data";
+	}
+	
+	@GetMapping("/products_data")
+	public String products_data() {
+		return "admin/products_data";
+	}
+	
 	@GetMapping("/charts")
 	public String charts() {
 		return "admin/charts";	
