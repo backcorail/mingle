@@ -1,4 +1,4 @@
-package com.project.mingle.config.Auth;
+package com.project.mingle.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.mingle.vo.user.JoinUserVO;

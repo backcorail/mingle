@@ -23,19 +23,25 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String username = authentication.getName();
-        String password = authentication.getCredentials().toString();
+    	System.out.println("Provider authenticate 호출 확인");
+        String userid = authentication.getName();
+        String userpwd = authentication.getCredentials().toString();
 
-        UserDetails userDetails = userSecDetailsServiceImple.loadUserByUsername(username);
+        System.out.println("Provider userid : "+ userid);
+        System.out.println("Provider userpwd : "+ userpwd);
+        
+        UserDetails userDetails = userSecDetailsServiceImple.loadUserByUsername(userid);
         if (userDetails == null) {
+        	System.out.println("Provider userDetails 사용자 없음.");
             throw new UsernameNotFoundException("User not found");
         }
 
-        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+        if (!passwordEncoder.matches(userpwd, userDetails.getPassword())) {
+        	System.out.println("Provider userDetails 비밀번호 오류");
             throw new BadCredentialsException("Invalid password");
         }
 
-        return new UsernamePasswordAuthenticationToken(username, password, userDetails.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(userid, userpwd, userDetails.getAuthorities());
     }
 
     @Override

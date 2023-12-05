@@ -18,10 +18,16 @@ public class UserSecDetailsServiceImple implements UserDetailsService {
     UserMapper userMapper;
     
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserVO userVO = userMapper.iddcheck(username);
+    public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
+    	System.out.println("UserSecDetailsServiceImple  loadUserByUsername() 호출확인");
+    	System.out.println("UserSecDetailsServiceImple "+userid);
+    	
+        UserVO userVO = userMapper.iddcheck(userid);
+        
         if (userVO == null) {
-            throw new UsernameNotFoundException("사용자를 찾을수 없습니다.: " + username);
+//        	System.out.println("UserSecDetailsServiceImple 사용자 없음.");
+//            throw new UsernameNotFoundException("사용자를 찾을수 없습니다.: " + userid);
+        	 return null;
         }
         return new UserSecDetails(userVO);
     }

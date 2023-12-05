@@ -1,7 +1,7 @@
-package com.project.mingle.service.Auth;
+package com.project.mingle.handler.security;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,19 +13,19 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
-public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
+    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType("application/json");
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("message", "Login successful");
-        data.put("user", authentication.getName()); // 또는 필요한 사용자 정보 추가
+        Map<String, Object> data = new HashMap();
+        data.put("message", "Logout successful");
 
         response.getOutputStream().println(objectMapper.writeValueAsString(data));
     }
 }
+

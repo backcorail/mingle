@@ -28,7 +28,12 @@ public enum UserResp {
 	PWDMODYFAILD(172,"변경실패"),
 	
 	CAPTCHAOK(181,"캡차성공"),
-	CAPTCHAFAILD(182,"캡차실패");
+	CAPTCHAFAILD(182,"캡차실패"),
+	
+	PASSWORDOK(191,"비밀번호같은"),
+	PASSWORDFAILD(192,"비밀번호오류");
+	
+	
 	
 	
 	

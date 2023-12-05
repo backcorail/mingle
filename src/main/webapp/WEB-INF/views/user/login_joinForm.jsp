@@ -14,18 +14,18 @@
 			<div class="div-tile-desc">Mixing various fashions into one</div>
 			<!-- 아이디 비밀번호 -->
 			<div class="blank-20"></div>
-			
-			<div class="div-login-outline">
-				<div class="div-id-text">아이디</div>
-				<input id="userid" name="userid" type="text" class="in-txt" placeholder="예)asdf12345">
-				<div class="blank-20"></div>
-				<div class="div-pwd-text">비밀번호</div>
-				<input id="userpwd" name="userpwd" type="password" class="in-txt" placeholder="예)qwert0987654">
-			</div>
-			<!-- 로그인 버튼 -->
-			<div class="div-020"></div>
-			<input id="btn-main-login" class="btn-login" type="submit" value="로그인">
-			
+			<!-- <form method="POST" action="/migle/user/loginProc"> -->
+				<div class="div-login-outline">
+					<div class="div-id-text">아이디</div>
+					<input id="userid" name="userid" type="text" class="in-txt" placeholder="예)asdf12345">
+					<div class="blank-20"></div>
+					<div class="div-pwd-text">비밀번호</div>
+					<input id="userpwd" name="userpwd" type="password" class="in-txt" placeholder="예)qwert0987654">
+				</div>
+				<!-- 로그인 버튼 -->
+				<div class="div-020"></div>
+				<input id="btn-main-login" class="btn-login" type="button" value="로그인">
+			<!-- </form> -->
 			<!-- 회원가입 / 비밀 번호 / 아이디 찾기-->
 			<!-- <div class="blank-35"></div> -->
 			<div class="blank-20"></div>
