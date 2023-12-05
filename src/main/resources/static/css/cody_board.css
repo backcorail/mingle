@@ -76,19 +76,37 @@
 .slide{
 	display:block;
 	height: 220px;
-	margin-left: 50px;
+	width: 680px;
 	overflow: hidden;
 }
 
 
 
 .slide_list{
-	width: 800px;
 	height: 180px;
-	overflow: hidden;
 	font-size: 12px;
 	text-align: right;
+	position: relative;
 }
+.slide_list2{
+	height: 180px;
+	font-size: 12px;
+	text-align: right;
+	position: relative;
+}
+.slide_list3{
+	height: 180px;
+	font-size: 12px;
+	text-align: right;
+	position: relative;
+}
+.slide_list4{
+	height: 180px;
+	font-size: 12px;
+	text-align: right;
+	position: relative;
+}
+
 
 .slide_item{
 	width:150px;
@@ -98,7 +116,39 @@
 	background-color: white;
 	border-radius:5px;
 }
-.slide_item img{
+.slide_item1{
+	width:150px;
+	height:150px;
+	float:left;
+	margin-right: 20px;
+	background-color: white;
+	border-radius:5px;
+}
+.slide_item2{
+	width:150px;
+	height:150px;
+	float:left;
+	margin-right: 20px;
+	background-color: white;
+	border-radius:5px;
+}
+.slide_item3{
+	width:150px;
+	height:150px;
+	float:left;
+	margin-right: 20px;
+	background-color: white;
+	border-radius:5px;
+}
+.slide_item4{
+	width:150px;
+	height:150px;
+	float:left;
+	margin-right: 20px;
+	background-color: white;
+	border-radius:5px;
+}
+.item-img{
 	width:150px;
 	height:150px;
 	border-radius:5px;
@@ -106,32 +156,89 @@
 
 
 
-
 .category_h1{
 	font-size:15px; 
-	margin-left: 45px;
+	
 }
 
 
 
 .leftBtn{
-	display: inline-block;
+	margin-left: 50px;
+	margin-right: 20px;
+	display: block;
 	float:left;	
-    margin-top: 63px;
-    
+    margin-top: 83px;
+    transform: scaleX(-1);
+}
+.leftBtn2{
+	margin-left: 50px;
+	margin-right: 20px;
+	display: block;
+	float:left;	
+    margin-top: 83px;
+    transform: scaleX(-1);
+}
+.leftBtn3{
+	margin-left: 50px;
+	margin-right: 20px;
+	display: block;
+	float:left;	
+    margin-top: 83px;
+    transform: scaleX(-1);
+}
+.leftBtn4{
+	margin-left: 50px;
+	margin-right: 20px;
+	display: block;
+	float:left;	
+    margin-top: 83px;
+    transform: scaleX(-1);
 }
 
-
-
+.BtnImg{
+	width:24px; 
+	height:24px;
+}
 
 
 .rightBtn{
-	display: inline-block;
-	float:left;	
-    margin-top: 63px;
-    margin-right: 20px;
-    transform: scaleX(-1);
+	width:24px; 
+	height:24px;
+	margin-left: 690px;
+	top: 243px;
+	display: flex;
+	position: absolute;
 }
+
+.rightBtn2{
+	width:24px; 
+	height:24px;
+	margin-left: 690px;
+	top: 463px;
+	display: flex;
+	position: absolute;
+}
+.rightBtn3{
+	width:24px; 
+	height:24px;
+	margin-left: 690px;
+	top: 683px;
+	display: flex;
+	position: absolute;
+}
+.rightBtn4{
+	width:24px; 
+	height:24px;
+	margin-left: 690px;
+	top: 903px;
+	display: flex;
+	position: absolute;
+}
+
+
+
+
 
 @font-face{
 	src:url("/mingle/font/KottaOne-Regular.ttf");
