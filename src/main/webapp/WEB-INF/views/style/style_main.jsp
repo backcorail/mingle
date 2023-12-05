@@ -5,8 +5,8 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <script src="/mingle/js/style_main.js"></script>
 <script src="/mingle/js/style_styles.js"></script>
-<link rel="stylesheet" href="/mingle/css/style_main.css">
-<link rel="stylesheet" href="/mingle/css/style_ranking.css">
+<link rel="stylesheet" href="/mingle/css/style/style_main.css">
+<link rel="stylesheet" href="/mingle/css/style/style_ranking.css">
 
 
 
@@ -17,10 +17,10 @@
 	</div>
 	<div id="style_tabs">
 		<ul class="style_tabs_list">
-			<li class="tab"><a href="#tabs-1" id="ranking_tab">RANKING</a></li>
-			<li class="tab"><a href="#tabs-2" id="style_tab">STYLE</a></li>
-			<li class="tab"><a href="#tabs-3" id="trend_tab">TREND</a></li>
-			<li class="tab"><a href="#tabs-4" id="request_tab">REQUEST</a></li>
+			<li class="tab"><a href="/mingle/style#tabs-1" id="ranking_tab">RANKING</a></li>
+			<li class="tab"><a href="/mingle/style#tabs-2" id="style_tab">STYLE</a></li>
+			<li class="tab"><a href="/mingle/style#tabs-3" id="trend_tab">TREND</a></li>
+			<li class="tab"><a href="/mingle/style#tabs-4" id="request_tab">REQUEST</a></li>
 		</ul>
 		<hr class="style_header_line">
 		<!-- 수평선 -->

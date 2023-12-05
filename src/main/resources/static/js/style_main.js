@@ -41,6 +41,7 @@ $(function() {
     });
 });
 
+
 // 첫 번째 탭의 콘텐츠 로드
 $(document).ready(function() {
 	var baseURL = "/mingle/style/";
@@ -49,4 +50,45 @@ $(document).ready(function() {
 		console.log(rankData.html());
 		$("#tabs-1").html(rankData);
 	});
+});
+
+// 두 번째 탭의 콘텐츠 로드
+$(document).ready(function() {
+	var baseURL = "/mingle/style/";
+	$.get(baseURL + "styles", function(data) {
+		const rankData = $(data).find(".all_select");
+		console.log(rankData.html());
+		$("#tabs-2").html(rankData);
+	});
+});
+
+// 세 번째 탭의 콘텐츠 로드
+$(document).ready(function() {
+	var baseURL = "/mingle/style/";
+	$.get(baseURL + "trend", function(data) {
+		const rankData = $(data).find(".all_select");
+		console.log(rankData.html());
+		$("#tabs-3").html(rankData);
+	});
+});
+
+// 네 번째 탭의 콘텐츠 로드
+$(document).ready(function() {
+	var baseURL = "/mingle/style/";
+	$.get(baseURL + "request", function(data) {
+		const rankData = $(data).find(".all_select");
+		console.log(rankData.html());
+		$("#tabs-4").html(rankData);
+	});
+});
+
+
+ $(document).ready(function() {
+  $('.tab').click(function() {
+    var tabId = $(this).find('a').attr('href').substring(1); // 탭의 href 속성에서 '#' 제거
+    window.location.hash = tabId; // URL의 해시 부분 변경
+
+    // 스크롤 위치를 맨 위로 조정
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
+  });
 });

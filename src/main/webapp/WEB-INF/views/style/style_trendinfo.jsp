@@ -6,6 +6,11 @@
 <link rel="stylesheet" href="/mingle/css/Style_ranking.css">
 
 
+
+
+
+
+
 <!-- 슬라이드 완료 -->
 <div class="page">
 	<div class="slider-container">
