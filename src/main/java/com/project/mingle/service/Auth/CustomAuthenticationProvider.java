@@ -40,8 +40,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         	System.out.println("Provider userDetails 비밀번호 오류");
             throw new BadCredentialsException("Invalid password");
         }
-
+        
+        
+        System.out.println("Provider userDetails 토큰생성 직전 " + userDetails.getUsername());
+        System.out.println("Provider userDetails 토큰생성 직전 " + userDetails.getPassword());
         return new UsernamePasswordAuthenticationToken(userid, userpwd, userDetails.getAuthorities());
+        
+        // authenticate 가 끝나면 CustomAuthenticationSuccessHandler 호출
     }
 
     @Override

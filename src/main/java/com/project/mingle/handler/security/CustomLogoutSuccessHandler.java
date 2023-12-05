@@ -11,21 +11,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.mingle.vo.user.ResponseDto;
+import com.project.mingle.vo.user.UserResp;
 
 @Component
 public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 
-    private ObjectMapper objectMapper = new ObjectMapper();
-
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
+        
+    	System.out.println("CustomLogoutSuccessHandler 호출확인 ");
+    	ObjectMapper mapper = new ObjectMapper();
+        response.setCharacterEncoding("UTF-8");
         response.setStatus(HttpServletResponse.SC_OK);
-        response.setContentType("application/json");
-
-        Map<String, Object> data = new HashMap();
-        data.put("message", "Logout successful");
-
-        response.getOutputStream().println(objectMapper.writeValueAsString(data));
+        ResponseDto<String> responseDto = new ResponseDto<String>();
+    	responseDto.setStatus(UserResp.LOGOUTOK.getValue()); //144// 로그아웃 성공
+    	responseDto.setRes("로그아웃 성공");
+        response.getWriter().println(mapper.writeValueAsString(responseDto));
+        response.getWriter().flush();  
     }
 }
 

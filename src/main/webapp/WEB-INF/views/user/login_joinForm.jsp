@@ -1,11 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+	<script>
+		alert("로그인 상태입니다.")
+	</script>
+	<sec:authentication property="principal" var="user"/>
+</sec:authorize>
 <script src="https://kit.fontawesome.com/7b899d6a28.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/mingle/css/user/loginForm.css">
 <link rel="stylesheet" href="/mingle/css/user/fp_Form.css">
 <link rel="stylesheet" href="/mingle/css/user/fi_Form.css">
 <link rel="stylesheet" href="/mingle/css/user/joinForm.css">
+
 <main>
 	<div class="container">
+	<h1 style="background-color: white">${user}asdfas</h1>
 		<!-- 로그인폼 시작 -->
 		<div class="div-main-form div-main-lg">
 			<div class="blank-102"></div>
