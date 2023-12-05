@@ -1,55 +1,64 @@
-
+// 각종 스타일 변경
 $(document).ready(function() {
-	// 하위 카테고리 숨기기
-	$("#category1").hide();
-	$("#category2").hide();
-	$("#category3").hide();
-	
-	//변수 선언 - 탭메뉴 버튼
-	const btn1 = document.getElementById("moreView1");
-	const btn2 = document.getElementById("moreView2");
-	const btn3 = document.getElementById("moreView3");
 	
 	// 각각의 탭 종류 클릭시 보여주기/닫기
-	$("#moreView1").click(function() {
-		$("#category1").slideToggle(300);
-		btn1.style.transition = "transform 0.3s linear"
-		btn1.style.transform += "rotate(45deg)";
-		
-	});
-	$("#moreView2").click(function() {
-		$("#category2").slideToggle(300);
-		btn2.style.transition = "transform 0.3s linear"
-		btn2.style.transform += "rotate(45deg)";
-	});
-	$("#moreView3").click(function() {
-		$("#category3").slideToggle(300);
-		btn3.style.transition = "transform 0.3s linear"
-		btn3.style.transform += "rotate(45deg)";
+	$(".moreView").click(function() {
+		$(this).parent().next().slideToggle(300);
+		var rad = $(this).data("rotation") || 0;
+		var newRad = rad + 45;
+		$(this).data("rotation",newRad);
+		$(this).css("transform","rotate("+newRad+"deg)");
 	});
 	
-	$(".choose").click(function() {
-        $(".choose").removeClass("active");
-        $(this).addClass("active");
-    });
-    
+	// 상단탭 클릭시 효과
+	$(".category_type").click(function() {
+		$(".category_type").removeClass("active");
+		$(this).addClass("active");
+	});
+	
+	// 검색바 값 여부에 따른 애니메이션 초기 속성 조정
+	if($("#search_bar").val() != "") {
+		console.log("값이 있음");
+		$("#search_bar").css({
+			"width":"495px",
+			"color":"black",
+			"padding":"0px 10px 0px 36px",
+		});
+		$("#search_magnifier").css("transform","translateX(457px)");
+		$("#search_slide").css("transform","rotate(180deg)");
+	}
+	
     // 검색창 애니메이션
-    $(".resell_search>img").click(function() {
+    $("#search_slide").click(function() {
+		$("#search_bar").css("transition","width 0.3s ease-in-out");
+		$("#search_magnifier").css("transition","transform 0.3s ease-in-out");
+		$("#search_slide").css("transition","transform 0.3s ease-in-out");
 		var width_change = parseInt($("#search_bar").css("width"), 10);
+		var rad = $(this).data("rotation") || 0 || 180;
+		var newRad = rad + 180;
+		$(this).data("rotation",newRad);
 		if(width_change <= 38) {
+			$("#search_magnifier").css("transform","translateX(457px)");
 			$("#search_bar").css("width","495px");
 			$("#search_bar").css("color","black");
 			$("#search_bar").prop("placeholder", "여기에 검색어 입력.");
 			$("#search_bar").css("padding","0px 10px 0px 36px");
 		} else {
+			$("#search_magnifier").css("transform","translateX(0px)");
 			$("#search_bar").css("width","38px");
 			$("#search_bar").css("color","white");
 			$("#search_bar").prop("placeholder", "");
 			$("#search_bar").css("padding","0px");
 		}
+		$(this).css("transform","rotate("+newRad+"deg)");
     });
+    
+    $("#search_magnifier").click(function() {
+		$(".resell_search form").submit();
+	});
 });
 
+// 시간 계산 함수
 function timeDiff(time) {
 	time = new Date(time);
 	var currentTime = new Date();
@@ -72,27 +81,51 @@ function timeDiff(time) {
 	}
 }
 
+
+
+// 검색 관련 함수
+function search() {
+	var url = window.location.search;
+	var urlParams = new URLSearchParams(url);
+	var nowSearch = urlParams.get("search");
+	var nowPage = urlParams.get("page");
+	var searchValue = $("#search_bar").val();
+	var searchUrl = window.location.origin + window.location.pathname;
+	if(searchValue == "") { // 값이 없을시
+		alert("검색어를 입력해주세요.");
+	} 
+	else { // 값이 있을시
+		if(!nowPage) {nowPage = 1; console.log("페이지 확인");}
+		if(!nowSearch) {nowSearch = searchValue; console.log("검색어 확인");}
+		searchUrl += "?page=1&search="+searchValue;
+		window.location.href = searchUrl;
+	}
+	$.ajax({
+		type : "GET",
+		url : "resell?page="+nowPage+"&search="+searchValue,
+		data : {search:searchValue},
+	});
+	return false;
+}
+
+
+
+// URL 변수 받기
 $(document).ready(function() {
 	// 현재 페이지 URL 가져오기
 	var url = window.location.search;
 	var urlParams = new URLSearchParams(url);
 	var nowPage = urlParams.get("page"); 
-	if(!nowPage) { nowPage = 1; }
-	
+	var searchValue = urlParams.get("search");
+	if(!nowPage) { nowPage = 1; };
+	if(!searchValue) {searchValue = ""};
 	$.ajax({
 		type : "GET",
-		url : "resell?page="+nowPage,
-		data : { 
-			page:nowPage
-		},
-		success : function(data) {
-			
-		},
-		error : function(error) {
-			console.log(error);
-		}
-	})
+		url : "resell?page="+nowPage+"&search="+searchValue,
+		data : {page:nowPage},
+	});
 });
+
 
 
 $(document).ready(function() {

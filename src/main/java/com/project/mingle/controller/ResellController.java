@@ -21,16 +21,22 @@ public class ResellController {
 	ResellService service;
 
 	@GetMapping("")
-	public ModelAndView resell_main(@RequestParam(name="page", required = false) Integer page, ResellVO rVO) {
+	public ModelAndView resell_main(@RequestParam(name="page", required = false) Integer page, @RequestParam(name="search", required = false) String search, ResellVO rVO) {
 		ModelAndView mav = new ModelAndView();
 		int currentPage = (page != null) ? page : 1;
+		String currentSearch = (search != null) ? search : null;
+		
+		rVO.setNowPage(currentPage);
+		rVO.setSearchWord(currentSearch);
+
 		// 총 레코드 수(resell_totalRecord)
 		rVO.setTotalRecord(service.resell_totalRecord(rVO));
 		rVO.setKtotalRecord(service.kream_totalRecord(rVO));
+		
 		// 총 페이지수 계산을 setTotalPage 메소드에서 계산
-		rVO.setNowPage(currentPage);
 		rVO.setTotalPage();
 		rVO.setKtotalPage();
+		
 		// 게시글 데이터
 		List<ResellVO> list = service.resell_boardData(rVO);
 		List<ResellVO> kreamList = service.kreamData(rVO);
@@ -39,13 +45,14 @@ public class ResellController {
 		mav.addObject("list", list);
 		mav.addObject("klist", kreamList);
 		mav.setViewName("resell/resell_main");
+		
 		return mav;
 	}
 	
 	@GetMapping("/board")
 	public ModelAndView resell_board(@RequestParam(name="no") Integer no, @RequestParam(name="page") Integer page, ResellVO rVO) {
 		ModelAndView mav = new ModelAndView();
-		rVO.setNowPage(page);
+		//rVO.setNowPage(page);
 		
 		List<ResellVO> kreamList = service.kreamData(rVO);
 		mav.addObject("rVO", rVO);
@@ -55,10 +62,15 @@ public class ResellController {
 		return mav;
 	}
 	
+	
+	
 	@GetMapping("/write")
-	public ModelAndView resell_write() {
+	public ModelAndView resell_write(ResellVO rVO) {
 		ModelAndView mav = new ModelAndView();
+		List<ResellVO> kreamList = service.kreamData(rVO);
+		mav.addObject("rVO", rVO);
+		mav.addObject("klist", kreamList);
 		mav.setViewName("resell/resell_write");
-		return mav;
+		return mav; 
 	}
 }

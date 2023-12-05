@@ -48,13 +48,15 @@ $(document).ready(function() {
 	var urlParams = new URLSearchParams(url);
 	var nowPage = urlParams.get("page");
 	var boardNum = urlParams.get("no");
+	var nowSearch = urlParams.get("search");
 	console.log(nowPage,boardNum);
 	$.ajax({
 		type : "GET",
-		url : "board?page="+nowPage+"&no="+boardNum,
+		url : "board?no="+boardNum+"&page="+nowPage+"&search="+nowSearch,
 		data : { 
 			page:nowPage,
-			no:boardNum
+			no:boardNum,
+			search:nowSearch,
 		},
 	})
 });
