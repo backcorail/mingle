@@ -1104,7 +1104,7 @@ let index = {
 				if(result.status==141){ // 로그인 성공
 					console.log("로그인 성공");
 					location.reload(true);
-					//location.href="http://localhost:9998/mingle/"
+					location.href="http://localhost:9998/mingle/"
 					return true;	
 				}
 				if(result.status==101){ // 아이디 없음 
