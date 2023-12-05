@@ -16,13 +16,10 @@ $(document).ready(function(){
 	            console.log("날씨 : "+ resp.weather[0].main );
 	            console.log("구름  : "+ (resp.clouds.all) +"%" );     
 	            console.log("아이콘 번호"+resp.weather[0].icon);*/
+	            $("#headerDiv").attr("style","background : none;");
 	            
 	            
-	            $("#headerDiv").css("background","none");
-	           
-	            
-	            
-	            var temp_max = resp.main.temp_max - 273.15;
+			   	var temp_max = resp.main.temp_max - 273.15;
 	            var temp_min = resp.main.temp_min - 273.15;
 	            
 	            const weatherIcon = "01d";
@@ -53,12 +50,6 @@ $(document).ready(function(){
 					$(".codi").attr("style","box-shadow: 5px 5px 5px grey;");
 					$("#header_logo, #btn_login").attr("style", "color:black");
 				}
-	            
-	            
-	            
-	            
-	            
-	            
 	        }
 	});
 });

@@ -7,9 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CodyController {
 
 	@GetMapping("/cody")
-	public String cody_board(){
+	public String cody(){
+		return "cody/cody";
+	}
+	
+	@GetMapping("/cody_board")
+	public String cody_board() {
 		return "cody/cody_board";
 	}
+	
 	
 	
 	

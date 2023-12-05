@@ -57,7 +57,7 @@ public class StyleController {
 		return "style/style_trendinfo";
 	}
 	
-	@GetMapping("/stylewrite")
+	@GetMapping("/write")
 	public String style_stylewrite() {
 		return "style/style_write";
 	}

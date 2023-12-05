@@ -23,6 +23,8 @@ function validateForm() {
 }
 ///////////////////////////////////////////////////
 
+
+
 // 이미지 업로드
 function getImageFiles(e) {
   const uploadFiles = [];
