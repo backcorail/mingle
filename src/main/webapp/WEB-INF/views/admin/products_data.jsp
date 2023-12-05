@@ -69,7 +69,7 @@
 							aria-controls="collapseMembers">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
-							</div> products
+							</div> Members
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
 							</div>
@@ -270,41 +270,37 @@
 							<table id="datatablesSimple">
 								<thead>
 									<tr>
-										<th>seller ID</th>
-										<th>product name</th>
-										<th>date</th>
-										<th>category</th>
-										<th>image</th>
+										<th>Seller ID</th>
+										<th>Product name</th>
+										<th>Post date</th>
+										<th>Category</th>
+										<th>Image</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th>seller ID</th>
-										<th>product name</th>
-										<th>date</th>
-										<th>category</th>
-										<th>image</th>
+										<th>Seller ID</th>
+										<th>Product name</th>
+										<th>Date</th>
+										<th>Category</th>
+										<th>Image</th>
 									</tr>
 								</tfoot>
 								<tbody>
-									<c:forEach var="n" begin="1" end="57">
+									<c:forEach var="kItem" items="${klist}">
+										<c:forEach var="users" items="${userlist}">
 										<tr>
-											<td>id1234</td>
-											<td>new balance 933</td>
-											<td>2023.11.14</td>
-											<td>신발</td>
-											<td>adf123afscx</td>
+											<td>${users.user_id}</td>
+											<td>${kItem.item_name}</td>
+											<td>${kItem.item_postdate}</td>
+											<td>Category</td>
+											<td>${kItem.item_image}</td>
 										</tr>
 									</c:forEach>
+										</c:forEach>
 								</tbody>
 							</table>
 						</div>
-					</div>
-					<div style="height: 100vh"></div>
-					<div class="card mb-4">
-						<div class="card-body">When scrolling, the navigation stays
-							at the top of the page. This is the end of the static navigation
-							demo.</div>
 					</div>
 				</div>
 			</main>
