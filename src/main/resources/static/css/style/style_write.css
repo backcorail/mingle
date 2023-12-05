@@ -1,25 +1,27 @@
 /*제목 및 부제목*/
 .styleWrite_title{
-	width: 1280px;
+	width: 640px;
 	height: 110px;
-	margin-top: 90px;
+	margin-top: 110px;
+	margin-bottom: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	text-align: left;
 	font-size: 40px;
+	color: rgb(0, 0, 0);
 }
 .styleWrite_subtitle{
 	font-size: 20px;
+	color: rgb(128, 128, 128);
 }
 /*글작성 페이지*/
 
 /*전체 body*/
 .styleWrite{
-	width: 1280px;
+	width: 640px;
 	display: flex;
 	flex-direction: column;
-	background: blue;
 	align-items: center;
 }
 .styleWrite_wrapper{
@@ -30,7 +32,7 @@
 }
 
 /*헤더*/
-.header{
+.header_style{
 	width: 100%;
 	height: 68px;
 	border-radius: 10px 10px 0px 0px;
@@ -43,7 +45,7 @@
 	width:44px;
 	height:44px;
 	border-radius: 100%;
-	background: red;
+	border: 1px solid gray;
 }
 .user_wrapper{
 	width:250px;
@@ -63,8 +65,8 @@
 	font-weight: bold;
 }
 
-/*이미지 슬라이더 파트*/
 
+/*이미지 슬라이더 파트*/
 /*이미지 업로드*/
 .middle{
 	width:640px;
@@ -74,33 +76,256 @@
   	overflow: hidden;
   	margin : auto;
 }
-.imgUpload{
-	width: calc(640px * 3); /* width = slideWidth * numberOfSlides */
-	height:640px;
-	display: flex;
-  	transition: all 0.5s ease;
-  	margin : auto;
+.real-upload{
+	display: none;
 }
-.real-upload {
-  display: none;
+
+/*업로드 버튼 스타일*/
+.type--A{
+  --line_color : #555555 ;
+  --back_color : #FFECF6  ;
 }
-.image_preview{
+.buttonu{
+    position : relative ;
+    z-index : 0 ;
+    width : 240px ;
+    height : 56px ;
+    text-decoration : none ;
+    font-size : 14px ; 
+    font-weight : bold ;
+    color : var(--line_color) ;
+    letter-spacing : 2px ;
+    transition : all .3s ease ;
+}
+.buttonu__text{
+    display : flex ;
+    justify-content : center ;
+    align-items : center ;
+    width : 100% ;
+    height : 100% ;
+}
+.buttonu::before,
+.buttonu::after,
+.buttonu__text::before,
+.buttonu__text::after{
+    content : '' ;
+    position : absolute ;
+    height : 3px ;
+    border-radius : 2px ;
+    background : var(--line_color) ;
+    transition : all .5s ease ;
+}
+.buttonu::before{
+    top : 0 ;
+    left : 54px ;
+    width : calc( 100% - 56px * 2 - 16px ) ;
+}
+.buttonu::after{
+    top : 0 ;
+    right : 54px ;
+    width : 8px ;
+}
+.buttonu__text::before{
+    bottom : 0 ;
+    right : 54px ;
+    width : calc( 100% - 56px * 2 - 16px ) ;
+}
+.buttonu__text::after{
+    bottom : 0 ;
+    left : 54px ;
+    width : 8px ;
+}
+.buttonu__line{
+    position : absolute ;
+    top : 0 ;
+    width : 56px ;
+    height : 100% ;
+    overflow : hidden ;
+}
+.buttonu__line::before{
+    content : '' ;
+    position : absolute ;
+    top : 0 ;
+    width : 150% ;
+    height : 100% ;
+    box-sizing : border-box ;
+    border-radius : 300px ;
+    border : solid 3px var(--line_color) ;
+}
+.buttonu__line:nth-child(1),
+.buttonu__line:nth-child(1)::before{
+    left : 0 ;
+}
+.buttonu__line:nth-child(2),
+.buttonu__line:nth-child(2)::before{
+    right : 0 ;
+}
+.buttonu:hover{
+    letter-spacing : 6px ;
+}
+.buttonu:hover::before,
+.buttonu:hover .buttonu__text::before{
+    width : 8px ;
+}
+.buttonu:hover::after,
+.buttonu:hover .buttonu__text::after{
+    width : calc( 100% - 56px * 2 - 16px ) ;
+}
+.buttonu__drow1,
+.buttonu__drow2{
+    position : absolute ;
+    z-index : -1 ;
+    border-radius : 16px ;
+    transform-origin : 16px 16px ;
+}
+.buttonu__drow1{
+    top : -16px ;
+    left : 40px ;
+    width : 32px ;
+    height : 0;
+    transform : rotate( 30deg ) ;
+}
+.buttonu__drow2{
+    top : 44px ;
+    left : 77px ;
+    width : 32px ;
+    height : 0 ;
+    transform : rotate(-127deg ) ;
+}
+.buttonu__drow1::before,
+.buttonu__drow1::after,
+.buttonu__drow2::before,
+.buttonu__drow2::after{
+    content : '' ;
+    position : absolute ;
+}
+.buttonu__drow1::before{
+    bottom : 0 ;
+    left : 0 ;
+    width : 0 ;
+    height : 32px ;
+    border-radius : 16px ;
+    transform-origin : 16px 16px ;
+    transform : rotate( -60deg ) ;
+}
+.buttonu__drow1::after{
+    top : -10px ;
+    left : 45px ;
+    width : 0 ;
+    height : 32px ;
+    border-radius : 16px ;
+    transform-origin : 16px 16px ;
+    transform : rotate( 69deg ) ;
+}
+.buttonu__drow2::before{
+    bottom : 0 ;
+    left : 0 ;
+    width : 0 ;
+    height : 32px ;
+    border-radius : 16px ;
+    transform-origin : 16px 16px ;
+    transform : rotate( -146deg ) ;
+}
+.buttonu__drow2::after{
+    bottom : 26px ;
+    left : -40px ;
+    width : 0 ;
+    height : 32px ;
+    border-radius : 16px ;
+    transform-origin : 16px 16px ;
+    transform : rotate( -262deg ) ;
+}
+.buttonu__drow1,
+.buttonu__drow1::before,
+.buttonu__drow1::after,
+.buttonu__drow2,
+.buttonu__drow2::before,
+.buttonu__drow2::after{
+    background : var( --back_color ) ;
+}
+.buttonu:hover .buttonu__drow1{
+    animation : drow1 ease-in .06s ;
+    animation-fill-mode : forwards ;
+}
+.buttonu:hover .buttonu__drow1::before{
+    animation : drow2 linear .08s .06s ;
+    animation-fill-mode : forwards ;
+}
+.buttonu:hover .buttonu__drow1::after{
+    animation : drow3 linear .03s .14s ;
+    animation-fill-mode : forwards ;
+}
+.buttonu:hover .buttonu__drow2{
+    animation : drow4 linear .06s .2s ;
+    animation-fill-mode : forwards ;
+}
+.buttonu:hover .buttonu__drow2::before{
+    animation : drow3 linear .03s .26s ;
+    animation-fill-mode : forwards ;
+}
+.buttonu:hover .buttonu__drow2::after{
+    animation : drow5 linear .06s .32s ;
+    animation-fill-mode : forwards ;
+}
+@keyframes drow1{
+    0%   { height : 0 ; }
+    100% { height : 100px ; }
+}
+@keyframes drow2{
+    0%   { width : 0 ; opacity : 0 ;}
+    10%  { opacity : 0 ;}
+    11%  { opacity : 1 ;}
+    100% { width : 120px ; }
+}
+@keyframes drow3{
+    0%   { width : 0 ; }
+    100% { width : 80px ; }
+}
+@keyframes drow4{
+    0%   { height : 0 ; }
+    100% { height : 120px ; }
+}
+@keyframes drow5{
+    0%   { width : 0 ; }
+    100% { width : 124px ; }
+}
+.upload{
+	margin-top: 20px;
+}
+.uploadImg{
 	width:640px;
 	height:640px;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	text-align: center;
 }
 
-.uploadImg {
-  width:640px;
-  height:640px;
-  background-color: rgb(255, 255, 221);
+
+/*태그 상품*/
+.footer_style{
+	width: 640px;
+	margin-top: 20px;
+}
+.tag-slider {
+  position: relative;
+  width: 640px;
+  height: 200px;
+  overflow: hidden;
+  margin : auto;
 }
 
-/*슬라이더*/
-.slide-btn {
+.tag-slide-show {
+  display: flex;
+  width: calc(640px * 3); /* width = slideWidth * numberOfSlides */
+  transition: all 0.5s ease;
+  margin : auto;
+  height : 130px;
+}
+
+.tag-slide {
+  width: 640px;
+  height: 200px;
+  display : flex;
+}
+
+.tag-slide-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -111,30 +336,123 @@
   cursor: pointer;
 }
 
-#prevBtn {
-  left: 20px;
-  color : black;
+#tag-prevBtn {
+  left: 10px;
+  color : white;
+  font-size : 30px;
 }
 
-#nextBtn {
-  right: 20px;
-  color : black;
-}
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
+#tag-nextBtn {
+  right: 10px;
+  color : white;
+  font-size : 30px;
 }
 
-.pagination .dot {
-  width: 10px;
-  height: 10px;
-  background: gray;
-  border-radius: 50%;
-  margin: 0 5px;
-  cursor: pointer;
+
+
+.tag-img {
+	width : 110px;
+	height : 125px;
+	border-radius: 10px;
+	margin-right : 20px;
 }
 
-.pagination .dot.active {
-  background: black;
+
+#prevBtn:hover, #nextBtn:hover, #tag-prevBtn:hover, #tag-nextBtn:hover  {
+  background-color: rgba(0,0,0,0.8);
+}
+.tag-items-infobox {
+	width : 110px;
+	height : 125px;
+	margin-right : 20px;
+}
+
+.tag-items-info {
+	height : 70px;
+	width : 110px;
+	font-size : 13px;
+	margin-right : 20px;
+}
+
+.tag-items {
+	width : 640px;
+}
+
+.tag-slider-container {
+	width : 640px;
+	height : 200px;
+}
+.style_title{
+	width: 640px;
+	height: 200px;
+}
+.style_title_subject{
+	height: 50px;
+	line-height: 50px;
+	font-size: 20px;
+}
+.style_title_text{
+	width: 640px;
+	height: 100px;
+}
+
+
+/*작성,취소 버튼*/
+.pushBack_box{
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+}
+.clear {
+  clear: both;
+}
+
+input.button {
+  display: block;
+  position: relative;
+  float: left;
+  width: 120px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.2s ;
+  font-family: 'Fredericka the Great', serif;
+  font-size: 30px;
+  color: white;
+}
+.btnBlueGreen {
+  background: rgb(162, 162, 255);
+}
+
+.btnLightBlue {
+  background: rgb(255, 128, 128);
+}
+.btnFade.btnBlueGreen:hover {
+  background: rgb(0, 0, 157);
+}
+
+.btnFade.btnLightBlue:hover {
+  background: rgb(128, 64, 64);
+}
+.btnBlueGreen.btnPush {
+  box-shadow: 0px 5px 0px 0px rgb(0, 0, 157);
+}
+
+.btnLightBlue.btnPush {
+  box-shadow: 0px 5px 0px 0px rgb(128, 0, 0);
+}
+.btnPush:hover {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.btnBlueGreen.btnPush:hover {
+  box-shadow: 0px 0px 0px 0px rgb(0, 128, 0);
+}
+
+.btnLightBlue.btnPush:hover {
+  box-shadow: 0px 0px 0px 0px rgb(128, 0, 0);
 }
