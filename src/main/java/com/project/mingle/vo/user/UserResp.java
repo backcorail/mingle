@@ -17,6 +17,7 @@ public enum UserResp {
 	LOGINOK(141,"로그인성공"),
 	LOGINFAILD(142,"로그인실패"),
 	LOGINATTEMPTS(143,"캡차로이동"),
+	LOGOUTOK(144,"로그아웃"),
 	
 	TELIDEMPTY(151,"사용자전화번호불일치"),
 	TELIDDD(152,"사용자전화번호일치"),
@@ -28,7 +29,12 @@ public enum UserResp {
 	PWDMODYFAILD(172,"변경실패"),
 	
 	CAPTCHAOK(181,"캡차성공"),
-	CAPTCHAFAILD(182,"캡차실패");
+	CAPTCHAFAILD(182,"캡차실패"),
+	
+	PASSWORDOK(191,"비밀번호같은"),
+	PASSWORDFAILD(192,"비밀번호오류");
+	
+	
 	
 	
 	

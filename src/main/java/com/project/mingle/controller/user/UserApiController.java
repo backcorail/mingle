@@ -102,6 +102,7 @@ public class UserApiController {
 //		return new ResponseDto<String>(UserResp.LOGINOK.getValue(), "로그인에 성공하였습니다.");
 	}
 	
+	
 	@PostMapping("/user/telcheck")
 	public ResponseDto<String> telcheck(@RequestBody CheckVO checkVO){
 		System.out.println("checkVO.getData : " + checkVO.getData());
@@ -141,5 +142,10 @@ public class UserApiController {
 			return new ResponseDto<String>(UserResp.PWDMODYOK.getValue(),"비밀번호 변경 성공.");
 		}	
 	}
+	
+	
+	
+	
+	
 	
 }

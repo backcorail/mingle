@@ -9,7 +9,8 @@ let index = {
 		})
 		// 로그인  
 		$("#btn-main-login").on('click',()=>{
-			this.login();
+			//this.login();
+			this.loginproc();
 			// TODO 로그인 성공후 어디로 이동시킬지 경정해야 함.
 		})
 			
@@ -998,45 +999,50 @@ let index = {
 	captchaLogin: function() {
 		console.log("captchaLogin js 호출");
 		const _this=this;
-		let data = {
+		let loginprocData = {
 			userid: $("#cap-userid").val(),
 			userpwd: $("#cap-userpwd").val()
 		};
 		$.ajax({
 			type: "POST",
-			url: "/mingle/user/login",
-			data: JSON.stringify(data), // http body 데이터 
-			contentType: "application/json; charset=UTF-8",//body에 실어 보내는 데이터가 어떤 타입인지(MIME)
-			dataType:"json",
+			url: "/mingle/user/loginproc",
+			data: loginprocData,
+//			data: JSON.stringify(data), // http body 데이터 
+//			contentType: "application/json; charset=UTF-8",//body에 실어 보내는 데이터가 어떤 타입인지(MIME)
+			dataType:"json",			
 			success: function(result) {
 				console.log(result);
 				if(result.status==141){ // 로그인 성공
 					console.log("로그인 성공");
-					$("#captchaing").val('N');
 					location.href="http://localhost:9998/mingle/"
 					return true;	
 				}
-				if(result.status==142){ // 로그인 실패 
+				if(result.status==101){ // 아이디 없음 
 					alert(result.res);
-					console.log("142 로그인 실패 ");
+					console.log("아이디가 업습니다. ");
 					return true;	
 				}
-				if(result.status==143){ // 캡차 로그인 페이지로이동
-					if($("#captchaing").val()=="Y"){
+				if(result.status==192){ // 비밀번호 불일치 
+					alert(result.res);
+					console.log("비밀번호가 다릅니다.");
+					return true;	
+				}
+				if(result.status==143){ // 캡차 로그인 페이지로이동 
+					/*if($("#captchaing").val()=="Y"){
 						$("#captchaing").val('N');
 						alert("캡차는 정상 입력 되었으나 아이디 및 비밀번호가 다릅니다. 로그인 창으로 이동합니다.");
 						location.href="http://localhost:9998/mingle/user/login_joinForm";	
 						return false;	
 					}
 					alert(result.res);
-					console.log("143 로그인 실패 ");
+					console.log("143 로그인 실패 ");*/
 					_this.captchaLoginPage();
 					return true;	
-				}
-			},
-			error: function(error) {
-				console.log(error);
-			}	
+			}
+		},
+		error: function(error) {
+			console.log(error);
+		},
 		})
 	},
 	//시큐리티 이전 로그인 방식.
@@ -1049,7 +1055,7 @@ let index = {
 		};
 		$.ajax({
 			type: "POST",
-			url: "/mingle/user/login",
+			url: "/mingle/user/loginc",
 			data: JSON.stringify(data), // http body 데이터 
 			contentType: "application/json; charset=UTF-8",//body에 실어 보내는 데이터가 어떤 타입인지(MIME)
 			dataType:"json",
@@ -1063,6 +1069,52 @@ let index = {
 				if(result.status==142){ // 로그인 실패 
 					alert(result.res);
 					console.log("142 로그인 실패 ");
+					return true;	
+				}
+				if(result.status==143){ // 캡차 로그인 페이지로이동 
+					alert(result.res);
+					console.log("143 로그인 실패 ");
+					_this.captchaLoginPage();
+					return true;	
+				}
+			},
+			error: function(error) {
+				console.log(error);
+			}	
+		})
+	},
+	loginproc: function() {
+		console.log("loginproc js 호출");
+		const _this=this;
+		
+		let loginprocData = {
+			userid: $("#userid").val(),
+			userpwd: $("#userpwd").val()
+		};
+		console.log(loginprocData);
+		$.ajax({
+			type: "POST",
+			url: "/mingle/user/loginproc",
+			data: loginprocData, // http body 데이터
+			//data: JSON.stringify(data), // http body 데이터 
+			//contentType: "application/json; charset=UTF-8",//body에 실어 보내는 데이터가 어떤 타입인지(MIME)
+			dataType:"json",
+			success: function(result) {
+				console.log(result);
+				if(result.status==141){ // 로그인 성공
+					console.log("로그인 성공");
+					location.reload(true);
+					location.href="http://localhost:9998/mingle/"
+					return true;	
+				}
+				if(result.status==101){ // 아이디 없음 
+					alert(result.res);
+					console.log("아이디가 업습니다. ");
+					return true;	
+				}
+				if(result.status==192){ // 비밀번호 불일치 
+					alert(result.res);
+					console.log("비밀번호가 다릅니다.");
 					return true;	
 				}
 				if(result.status==143){ // 캡차 로그인 페이지로이동 
