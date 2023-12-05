@@ -1,1 +1,95 @@
 @charset "UTF-8";
+.wrapper{
+	width: 100%;
+	height: 100%;
+	margin-top:90px;
+}
+
+
+
+.background{
+	border: 0px solid black;
+	background-color: black;
+	width: 100%;
+	height: 100%;
+	display: inline-flex;
+	justify-content: center;
+}
+
+.where{
+	width: 500px;
+	color:white;
+	font-size: 30px;
+	margin-top: 100px;
+	text-align: center;
+}
+
+.currentMap{
+	width: 500px;
+	height: 500px;
+	position: absolute;
+	margin-top:20px;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.today_concept{
+	display: block;
+	margin-left: 40px;
+	color:white;
+	font-size: 30px;
+	width: 500px;
+	text-align: center;
+	justify-content: center;
+	color:white;
+}
+.today_concept span{
+	color:black;
+	font-size: 35px;
+	font-weight: 900;
+	-webkit-text-stroke: 1px white;
+	letter-spacing : -2px;
+}
+.today_concept img{
+	width:230px;
+	height: 300px;
+	border-radius: 10px;	
+	border:2px solid white;
+	margin-top: 10px;
+}
+
+
+.exercise{
+	position: absolute;
+	width:230px;
+	
+}
+.wedding{
+	width:230px;
+	margin-left: 270px;
+}
+.business{
+	position: absolute;
+	width:230px;
+}
+.daily{
+	width:230px;
+	margin-left: 270px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

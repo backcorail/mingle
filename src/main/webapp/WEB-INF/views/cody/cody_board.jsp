@@ -27,8 +27,9 @@
 		<div class="rightBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
 	      	<ul class="slide_list">
 	        	<c:forEach var="n" begin="1" end="4">
-					<li class="slide_item" id="slide_item">
+					<li class="slide_item slide_item_${n}" id="slide_item">
 	        			<img src="/mingle/img/cody/jk.jpg">
+	        			<a>자켓${n}</a>
 	        		</li>
 				</c:forEach>
 				<div class="leftBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
@@ -42,22 +43,27 @@
 	        	<c:forEach var="n" begin="1" end="4">
 					<li class="slide_item">
 	        			<img src="/mingle/img/cody/mtm.jpg">
+	        			<a>맨투맨${n}</a>
 	        		</li>
 				</c:forEach>
-	        	<li class="leftBtn"><img class="BtnImg" style="width:24px; height:24px;"></li>
+	        	<div class="leftBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
 	      </ul>
+	      
 	   </div>
 	   <div class="slide">
 	   <h1 class="category_h1">데님팬츠</h1>
+	   
 	   <div class="rightBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
 	      	<ul class="slide_list">
 		        <c:forEach var="n" begin="1" end="4">
 					<li class="slide_item">
 	        			<img src="/mingle/img/cody/dp.jpg">
+	        			<a>데님팬츠${n}</a>
 	        		</li>
 				</c:forEach>
-	        	<li class="leftBtn"><img class="BtnImg" style="width:24px; height:24px;"></li>
+	        	<div class="leftBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
 	      </ul>
+	      
 	   </div>
 	   <div class="slide">
 	   <h1 class="category_h1">스니커즈</h1>
@@ -66,10 +72,11 @@
 	        	<c:forEach var="n" begin="1" end="4">
 					<li class="slide_item">
 	        			<img src="/mingle/img/cody/snk.jpg">
+	        			<a>스니커즈${n}</a>
 	        		</li>
 				</c:forEach>
-	        	<li class="leftBtn"><img class="BtnImg" style="width:24px; height:24px;"></li>
 	      </ul>
+	      <div class="leftBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
 		</div>
 	</div>
 </div>
