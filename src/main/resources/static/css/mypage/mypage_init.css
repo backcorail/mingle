@@ -1,0 +1,110 @@
+@font-face {
+  font-family : 'Kanit-Regular';
+  src : url('/mingle/assets/fonts/Kanit-Regular.ttf')
+}
+
+@font-face {
+  font-family : 'Kanit-SemiBold';
+  src : url('/mingle/assets/fonts/Kanit-SemiBold.ttf')
+}
+@font-face {
+  font-family : 'Kanit-Regular';
+  src : url('/mingle/assets/fonts/Kanit-Regular.ttf')
+}
+
+@font-face {
+  font-family : 'Kanit-SemiBold';
+  src : url('/mingle/assets/fonts/Kanit-SemiBold.ttf')
+}
+
+/* 공통 설정 */
+:root{
+  --default-size : 0.70215; /* = 1280/1823 */ 
+  --cate-back : #FFFFFF;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000000;
+  /*헤더 공간 확보*/
+  margin-top: 90px;
+}
+.container{
+  display: flex;
+  justify-content: center;
+
+  width: calc(1823px * var(--default-size));
+  height: calc(1057.81px * var(--default-size));  
+  background-color: #000000;
+}
+.div-side{
+  /* 내부 여백 */
+  padding-top: calc(17.92px * var(--default-size));
+  padding-left: calc(17.92px * var(--default-size));
+  /* 마이페이지 메인과 가격 */
+  margin-right: calc(16px * var(--default-size));;
+  
+  width: calc(261.23px * var(--default-size));
+  height: calc(475.12px * var(--default-size));  
+  background-color: var(--cate-back);
+}
+.div-side  div {
+  margin-bottom: calc(9px * var(--default-size));
+}
+.div-mypage-main{
+  width: calc(1548.35px * var(--default-size));
+  background-color: var(--cate-back);
+}
+/* 마이페이지 side 끝 */
+
+/* 폰트별 - 글자 사이즈 */
+.Kanit-SemiBold-28{
+  height: calc(41.83px * var(--default-size));  
+  font: 
+    600 
+    calc(28px * var(--default-size))
+    "Kanit-SemiBold";
+  color: #000000;
+}
+
+.Kanit-Regular-25b{
+  font: 
+    400 
+    calc(25px * var(--default-size))
+    "Kanit-Regular";
+  color: #000000;
+}
+.Kanit-Regular-25y{
+  height: calc(37px * var(--default-size)); 
+  font: 
+    400 
+    calc(25px * var(--default-size))
+    "Kanit-Regular";
+  color: #ffb400;
+  line-height: calc(37px * var(--default-size)); 
+}
+
+.Kanit-Regular-20{
+  height: calc(30px * var(--default-size));  
+  font: 
+    400 
+    calc(20px * var(--default-size))
+    "Kanit-Regular";
+  color: #afafaf;
+  line-height: calc(30px * var(--default-size)); 
+}
+
+.Kanit-Regular-18{
+  height: calc(26.89px * var(--default-size));  
+  font: 
+    400 
+    calc(18px * var(--default-size))
+    "Kanit-Regular";
+  color: #afafaf;
+}
+.Kanit-Regular-18:hover{
+  color: #ffb400;
+  cursor: pointer;
+}
