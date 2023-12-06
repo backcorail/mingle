@@ -26,10 +26,6 @@ public class MypageController {
 	public String myfavo() {
 		return "/mypage/myfavo";
 	}
-	@GetMapping("/mypage/myinit")
-	public String myinit() {
-		return "/mypage/myinit";
-	}
 	@GetMapping("/mypage/mymain")
 	public String mymain() {
 		return "/mypage/mymain";
