@@ -37,6 +37,7 @@ function createElement(e, file) {
   img.setAttribute('src', e.target.result);
   img.setAttribute('data-file', file.name);
   img.setAttribute('class', 'uploadImg');
+  img.setAttribute('name', 'style_image')
   li.appendChild(img);
 
   return li;

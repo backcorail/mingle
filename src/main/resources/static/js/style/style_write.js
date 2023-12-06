@@ -1,6 +1,6 @@
 /* 그 유효성 검사 */
 function validateForm() {
-    var title = document.getElementById("subject").value;
+    var title = document.getElementById("style_subject").value;
     var content = document.getElementById("content").value;
 
     if (!title) {

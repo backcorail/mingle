@@ -1,13 +1,25 @@
 package com.project.mingle.controller;
 
+import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.project.mingle.service.StyleService;
+import com.project.mingle.vo.StyleVO;
 
 @Controller
 
 @RequestMapping("/style")
 public class StyleController {
+	@Autowired
+	StyleService service;
 
 	@GetMapping("")
 	public String style_main() {
@@ -43,6 +55,28 @@ public class StyleController {
 	public String style_stylewrite() {
 		return "style/style_write";
 	}
+	
+	@GetMapping("/requestwrite")
+	public String style_requestwrite() {
+		return "style/request_write";
+	}
+	
+	@PostMapping("/writeOk")
+	public ModelAndView styleWriteOk(StyleVO vo, HttpServletRequest request, Principal principal) {
+		ModelAndView mav = new ModelAndView();
+		vo.setUser_id(principal.getName());
+		
+		int result = service.styleInsert(vo);
+		if (result > 0) {
+			mav.setViewName("redirect:list");
+		} else {
+			mav.addObject("msg", "등록");
+			mav.setViewName("board/boardResult");
+		}
+		return mav;
+		
+	}
+	
 	
 	@GetMapping("/map")
 	public String style_map() {
