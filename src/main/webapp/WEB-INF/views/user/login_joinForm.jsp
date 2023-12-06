@@ -14,7 +14,6 @@
 
 <main>
 	<div class="container">
-	<h1 style="background-color: white">${user}asdfas</h1>
 		<!-- 로그인폼 시작 -->
 		<div class="div-main-form div-main-lg">
 			<div class="blank-102"></div>

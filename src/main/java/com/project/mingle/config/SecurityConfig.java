@@ -92,7 +92,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutSuccessHandler(customLogoutSuccessHandler)// 로그아웃 처리 핸들러
 				.logoutSuccessUrl("/") // 로그아웃 성공 시 리디렉션할 URL
 				.invalidateHttpSession(true) // 세션 무효화// 로그인 성공 후 이동할 기본 URL
-//				.deleteCookies("JSESSIONID"); // 쿠키삭제
+				.deleteCookies("JSESSIONID") // 쿠키삭제
 				
                 // ajax 통신 가능하도록
                 .and()// 그리고 http
