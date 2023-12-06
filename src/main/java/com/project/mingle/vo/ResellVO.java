@@ -26,8 +26,10 @@ public class ResellVO {
 	//private int item_price;
 	
 	// 검색 관련 변수
-	private String searchKey;
-	private String searchWord; // 검색할 문장
+	private String searchWord;
+	private String searchWord1; // 검색할 문장1
+	private String searchWord2; // 검색할 문장2
+	private String searchWord3; // 검색할 문장3
 	
 	// 크림 관련 변수 목록
 	private int item_no; // 아이템 고유 번호

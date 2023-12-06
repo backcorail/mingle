@@ -21,13 +21,24 @@ public class ResellController {
 	ResellService service;
 
 	@GetMapping("")
-	public ModelAndView resell_main(@RequestParam(name="page", required = false) Integer page, @RequestParam(name="search", required = false) String search, ResellVO rVO) {
-		ModelAndView mav = new ModelAndView();
-		int currentPage = (page != null) ? page : 1;
-		String currentSearch = (search != null) ? search : null;
+	public ModelAndView resell_main(
+			@RequestParam(name="page", defaultValue="1") int page,
+			@RequestParam(name="search", defaultValue="") String[] search,
+			ResellVO rVO) {
 		
-		rVO.setNowPage(currentPage);
-		rVO.setSearchWord(currentSearch);
+		ModelAndView mav = new ModelAndView();
+		rVO.setNowPage(page);
+		rVO.setSearchWord("");
+		
+		if (search.length > 0 && !"".equals(search[0])) {
+	        rVO.setSearchWord1(search[0]);
+	    }
+	    if (search.length > 1 && !"".equals(search[1])) {
+	        rVO.setSearchWord2(search[1]);
+	    }
+	    if (search.length > 2 && !"".equals(search[2])) {
+	        rVO.setSearchWord3(search[2]);
+	    }
 
 		// 총 레코드 수(resell_totalRecord)
 		rVO.setTotalRecord(service.resell_totalRecord(rVO));

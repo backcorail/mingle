@@ -16,6 +16,7 @@ $(document).ready(function() {
 		$(this).addClass("active");
 	});
 	
+	/*
 	// 검색바 값 여부에 따른 애니메이션 초기 속성 조정
 	if($("#search_bar").val() != "") {
 		console.log("값이 있음");
@@ -27,14 +28,12 @@ $(document).ready(function() {
 		$("#search_magnifier").css("transform","translateX(457px)");
 		$("#search_slide").css("transform","rotate(180deg)");
 	}
+	*/
 	
     // 검색창 애니메이션
     $("#search_slide").click(function() {
-		$("#search_bar").css("transition","width 0.3s ease-in-out");
-		$("#search_magnifier").css("transition","transform 0.3s ease-in-out");
-		$("#search_slide").css("transition","transform 0.3s ease-in-out");
 		var width_change = parseInt($("#search_bar").css("width"), 10);
-		var rad = $(this).data("rotation") || 0 || 180;
+		var rad = $(this).data("rotation") || 0;
 		var newRad = rad + 180;
 		$(this).data("rotation",newRad);
 		if(width_change <= 38) {
@@ -85,25 +84,47 @@ function timeDiff(time) {
 
 // 검색 관련 함수
 function search() {
-	var url = window.location.search;
-	var urlParams = new URLSearchParams(url);
-	var nowSearch = urlParams.get("search");
-	var nowPage = urlParams.get("page");
-	var searchValue = $("#search_bar").val();
-	var searchUrl = window.location.origin + window.location.pathname;
-	if(searchValue == "") { // 값이 없을시
+	var searchUrl = window.location.search;
+	var urlParams = new URLSearchParams(searchUrl);
+	var search = urlParams.get("search");
+	var page = urlParams.get("page");
+	var addSearch = $("#search_bar").val().trim();
+	var url = window.location.origin + window.location.pathname;
+	var newSearch = search || "";
+	console.log(search);
+	
+	
+	if(addSearch == "") { // 값이 없을시
 		alert("검색어를 입력해주세요.");
-	} 
-	else { // 값이 있을시
-		if(!nowPage) {nowPage = 1; console.log("페이지 확인");}
-		if(!nowSearch) {nowSearch = searchValue; console.log("검색어 확인");}
-		searchUrl += "?page=1&search="+searchValue;
-		window.location.href = searchUrl;
+		return false;
+	} else { // 값이 있을시
+		var count = (search ? (search.match(/,/g) || []).length : 0);
+		if(count==2) {
+			alert("검색어는 최대 3개까지 작성하실수 있습니다.");
+			return false;
+		}
+		// 대소문자 구분 없이 중복 검사
+        if (newSearch.toLowerCase().includes(addSearch.toLowerCase())) {
+            alert("중복된 검색어입니다. 다시 작성해주세요.");
+            return false;
+        }
+        
+		if(search == null) {
+			newSearch = addSearch;
+		} else {
+			newSearch += ","+addSearch;
+		}
+		if(!page) {page = 1};
+		var newUrl = url+"?page="+page+"&search="+newSearch;
+		window.location.href = newUrl;
 	}
 	$.ajax({
 		type : "GET",
-		url : "resell?page="+nowPage+"&search="+searchValue,
-		data : {search:searchValue},
+		url : "resell",
+		data : {
+			page:page,
+			search:newSearch.split(","),
+		}
 	});
 	return false;
 }
@@ -117,8 +138,13 @@ $(document).ready(function() {
 	var urlParams = new URLSearchParams(url);
 	var nowPage = urlParams.get("page"); 
 	var searchValue = urlParams.get("search");
+	
 	if(!nowPage) { nowPage = 1; };
 	if(!searchValue) {searchValue = ""};
+	
+	var searchArray = searchValue.split('/');
+	var searchNum = searchArray.length;
+	
 	$.ajax({
 		type : "GET",
 		url : "resell?page="+nowPage+"&search="+searchValue,

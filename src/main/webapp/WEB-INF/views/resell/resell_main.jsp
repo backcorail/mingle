@@ -11,15 +11,37 @@
 	<ul class="resell_top">
 		<li>
 			총 레코드/페이지 수 = ${rVO.ktotalRecord}/${rVO.ktotalPage}<br>
-			현재 검색 데이터 = ${rVO.searchWord}
+			현재 검색 데이터 = ${rVO.searchWord}<br>
+			test = ${rVO.searchWord1}/${rVO.searchWord2}/${rVO.searchWord3}
 		</li>
 		<li class="resell_search">
-			<form method="get" action="resell?page=${rVO.nowPage}&search=${rVO.searchWord}" onsubmit="return search()">
-				<input type="text" id="search_bar" value="${rVO.searchWord}">
-			</form>
-			<img id="search_magnifier" src="/mingle/img/resell/search.png">
-			<img id="search_slide" src="/mingle/img/resell/slide.png">
-			<div>다음으로 검색 : ${rVO.searchWord} <div>X</div></div>
+			<div>
+				<form method="get" action="resell?page=${rVO.nowPage}&search=${rVO.searchWord1}/${rVO.searchWord2}/${rVO.searchWord3}" onsubmit="return search()">
+					<input type="text" id="search_bar">
+				</form>
+				<img class="search_img" id="search_magnifier" src="/mingle/img/resell/search.png">
+				<img class="search_img" id="search_slide" src="/mingle/img/resell/slide.png">
+			</div>
+			<ul class="search_word">
+				<c:if test="${rVO.searchWord1 != null}">
+					<li>
+						<div>${rVO.searchWord1}</div>
+						<img src="/mingle/img/resell/delete.png"/>
+					</li>
+				</c:if>
+				<c:if test="${rVO.searchWord2 != null}">
+					<li>
+						<div>${rVO.searchWord2}</div>
+						<img src="/mingle/img/resell/delete.png"/>
+					</li>
+				</c:if>
+				<c:if test="${rVO.searchWord3 != null}">
+					<li>
+						<div>${rVO.searchWord3}</div>
+						<img src="/mingle/img/resell/delete.png"/>
+					</li>
+				</c:if>
+			</ul>
 		</li>
 		<li id="type_men" class="category_type active"><h3>Men</h3></li>
 		<li id="type_women" class="category_type"><h3>Women</h3></li>
@@ -105,7 +127,7 @@
 				<div class="list_box">
 					<img src="/mingle/img/resell/sample.jpg">
 					<!-- <img src="${vo.item_image}"/> -->
-					<a href="/mingle/resell/board?no=${vo.item_no}&page=${rVO.nowPage}<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>">${vo.item_name}</a>
+					<a href="/mingle/resell/board?no=${vo.item_no}&page=${rVO.nowPage}<c:if test="${rVO.searchWord1 != null}">&search=${rVO.searchWord1}</c:if>">${vo.item_name}</a>
 					<div class="recell_price">${vo.item_price}</div>
 					<div class="recell_time">
 						<div>

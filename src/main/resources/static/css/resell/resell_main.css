@@ -18,25 +18,25 @@
 	justify-content:right;
 	text-align:center;
 }
-.resell_top>li {
+.resell_top > li {
 	width:100px;
 	text-align:center;
 	margin-top:10px;
 	padding-bottom:5px;
 }
-.resell_top>li:nth-child(1) { /*나중에 지울거*/
+.resell_top > li:nth-child(1) { /*나중에 지울거*/
 	width:260px;
 	text-align:left;
 	font-size:0.6em;
 }
-.resell_top>li:nth-child(2) { /*1로 바꿔야함*/
+.resell_top > li:nth-child(2) { /*1로 바꿔야함*/
 	width:500px;
 }
 .resell_search {
-	position:relative;
+	position: relative;
 	display:flex;
-	flex-wrap: wrap;
-	margin-left:20px;
+	flex-direction: column;
+    align-items: flex-start;
 }
 .resell_search input {
 	width:38px;
@@ -45,22 +45,44 @@
 	border-radius:20px;
 	font-size:0.8em;
 	color:white;
+	transition:width 0.3s ease-in-out;
 }
-.resell_search > img {
+.search_img {
 	width:24px;
 	height:24px;
 	position:absolute;
 	top:6px;
 	left:7px;
+	transition:transform 0.3s ease-in-out;
+	cursor:pointer;
 }
-.resell_search > div {
-	font-size:0.6em;
-	border:1px solid #ddd;
-	margin:5px 0px;
-	padding:2px 5px;
-	border-radius:7px;
+.search_word {
 	display:flex;
+	overflow:hidden;
+}
+.search_word > li {
+	display:flex;
+	font-size:0.5em;
+	border:1px solid #ddd;
+	margin:2px;
+	padding:0px 5px;
+	border-radius:7px;
+	align-items: center;
+	height:20px;
 	
+}
+.search_word div {
+	max-width:130px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+.search_word img {
+	width:12px;
+	height:12px;
+	margin-left:5px;
+	cursor:pointer;
 }
 
 
