@@ -40,7 +40,7 @@
 			<c:otherwise>
 		    	<div id="mypageLogout">
 		    		<img src="#" id="profile"/>
-		    		<a href="/mingle/mypage" id="btn_mypage">Mypage</a>
+		    		<a href="/mingle/mypage/mymain" id="btn_mypage">Mypage</a>
 		    		<a href="/mingle/user/logout" id="logout">Logout</a>
 		    	</div>
 			</c:otherwise>
