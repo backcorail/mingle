@@ -76,5 +76,6 @@
 		<!-- mypage main 끝  -->
 	</div>
 	<!-- container -->
-	<script src="/mingle/js/layout_resize.js"></script>
 </main>
+	<script src="/mingle/js/layout_resize.js"></script>
+<script src="/mingle/js/mypage/myedit.js"></script>
