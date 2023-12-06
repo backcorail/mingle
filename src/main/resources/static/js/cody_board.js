@@ -104,7 +104,7 @@ $(document).ready(function(){
 			   	var temp_max = resp.main.temp_max - 273.15;
 	            var temp_min = resp.main.temp_min - 273.15;
 	            
-	            const weatherIcon = "01d";
+	            const weatherIcon = resp.weather[0].icon;
 	            const weatherIconAdrs = "http://openweathermap.org/img/wn/"+weatherIcon+"@2x.png";
 	            
 	            $("#weather_Icon").attr("src", weatherIconAdrs);
