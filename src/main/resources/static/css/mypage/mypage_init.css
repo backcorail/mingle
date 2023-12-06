@@ -50,6 +50,8 @@ main{
   height: calc(475.12px * var(--default-size));  
   background-color: var(--cate-back);
 }
+
+
 .div-side  div {
   margin-bottom: calc(9px * var(--default-size));
 }
@@ -104,6 +106,8 @@ main{
     "Kanit-Regular";
   color: #afafaf;
 }
+
+.div-my-page:hover,
 .Kanit-Regular-18:hover{
   color: #ffb400;
   cursor: pointer;

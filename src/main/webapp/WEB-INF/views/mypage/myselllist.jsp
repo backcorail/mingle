@@ -9,22 +9,7 @@
     <main>
       <div class="container">
         <!-- side 메뉴 -->
-        <div class="div-side">
-          <div class="div-my-page Kanit-SemiBold-28">마이페이지</div>
-          <div class="div-edit-user Kanit-Regular-18">회원정보수정</div>
-
-          <div class="div-shopping-data Kanit-SemiBold-28">쇼핑정보</div>
-          <div class="div-buy-data Kanit-Regular-18">구매내역</div>
-          <div class="div-sell-data Kanit-Regular-18">판매내역</div>
-          <div class="div-my-basket Kanit-Regular-18">장바구니</div>
-
-          <div class="div-myact Kanit-SemiBold-28">내활동</div>
-          <div class="div-myboard Kanit-Regular-18">게시글</div>
-          <div class="div-myreply Kanit-Regular-18">댓글</div>
-          <div class="div-favo Kanit-Regular-18">좋아요</div>
-          <div class="div-scrap Kanit-Regular-18">스크랩</div>
-        </div>
-
+<%@ include file="myaside.jspf" %>
         <!-- mypage main -->
         <div class="div-mypage-main">
           <div class="Kanit-SemiBold-28">판매내역</div>
