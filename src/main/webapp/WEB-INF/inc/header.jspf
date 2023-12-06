@@ -35,12 +35,12 @@
 		<div id="header_loginArea"> 			
 		<c:choose>
 			<c:when test="${empty authUser }">
-	        	<a href="#" id="btn_login">Login/Sign-up</a>
+	        	<a href="/mingle/user/login_joinForm" id="btn_login">Login/Sign-up</a>
 			</c:when>
 			<c:otherwise>
 		    	<div id="mypageLogout">
 		    		<img src="#" id="profile"/>
-		    		<a href="#" id="btn_mypage">Mypage</a>
+		    		<a href="/mingle/mypage" id="btn_mypage">Mypage</a>
 		    		<a href="/mingle/user/logout" id="logout">Logout</a>
 		    	</div>
 			</c:otherwise>
@@ -55,7 +55,7 @@
 					<li><a href="/mingle/style/ranking">ranking</a></li>
 					<li><a href="/mingle/style/styles">style</a></li>
 					<li><a href="/mingle/style/trend">trend</a></li>
-					<li><a href="/mingle/style/request">request</a></li>
+					<li><a href="/mingle/style/request">request</a></li>					
 				</ul>
 	    	</div>
 	    	<div class="area_tabMenu" id="area_tabMenu_2" onmouseover="showSubMenu(2)" onmouseout="showSubHidden(2)">
