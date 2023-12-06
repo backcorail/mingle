@@ -4,7 +4,6 @@
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="authUser"/>
 </sec:authorize>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +39,7 @@
 			<c:otherwise>
 		    	<div id="mypageLogout">
 		    		<img src="#" id="profile"/>
-		    		<a href="/mingle/mypage/mymain" id="btn_mypage">Mypage</a>
+		    		<a href="/mingle/mypage/mymain" id="btn_mypage">${authUser}</a>
 		    		<a href="/mingle/user/logout" id="logout">Logout</a>
 		    	</div>
 			</c:otherwise>
@@ -52,10 +51,10 @@
 	    	<div class="area_tabMenu" id="area_tabMenu_1" onmouseover="showSubMenu(1)" onmouseout="showSubHidden(1)">
 		    	<a href="/mingle/style" class="title_tabMenu">STYLE</a>
 		    	<ul class="subtitle_tabMenu" id="subMenu_1">
-					<li><a href="/mingle/style/ranking">ranking</a></li>
-					<li><a href="/mingle/style/styles">style</a></li>
-					<li><a href="/mingle/style/trend">trend</a></li>
-					<li><a href="/mingle/style/request">request</a></li>					
+					<li><a href="/mingle/style?tabs=1">ranking</a></li>
+					<li><a href="/mingle/style?tabs=2">style</a></li>
+					<li><a href="/mingle/style?tabs=3">trend</a></li>
+					<li><a href="/mingle/style?tabs=4">request</a></li>					
 				</ul>
 	    	</div>
 	    	<div class="area_tabMenu" id="area_tabMenu_2" onmouseover="showSubMenu(2)" onmouseout="showSubHidden(2)">

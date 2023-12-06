@@ -21,7 +21,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
     	System.out.println("onAuthenticationSuccess  로그인 성공 호출 : ");
-
+    	
         request.getSession().removeAttribute("LOGIN_ATTEMPTS"); // 성공 시 로그인 시도 횟수 제거
     	
         ObjectMapper mapper = new ObjectMapper();

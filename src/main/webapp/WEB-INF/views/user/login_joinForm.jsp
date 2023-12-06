@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<sec:authorize access="isAuthenticated()">
-	<script>
-		alert("로그인 상태입니다.")
-	</script>
-	<sec:authentication property="principal" var="user"/>
-</sec:authorize>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script src="https://kit.fontawesome.com/7b899d6a28.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/mingle/css/user/loginForm.css">
 <link rel="stylesheet" href="/mingle/css/user/fp_Form.css">
