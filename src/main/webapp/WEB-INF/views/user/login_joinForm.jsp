@@ -493,4 +493,4 @@
 
 </main>
 <script src="/mingle/js/layout_resize.js"></script>
-<script src="/mingle/js/user.js"></script>
+<script src="/mingle/js/user/user.js"></script>
