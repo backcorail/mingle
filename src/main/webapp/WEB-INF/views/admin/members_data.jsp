@@ -79,9 +79,8 @@
 							aria-labelledby="headingMembers"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Members
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Sublink
-									2</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Members Data</a>
+								<a class="nav-link" href="/mingle/admintest/members_charts">Members Charts</a>
 								<!-- ë ë§ì íì ë©ë´ í­ëª©ë¤ ì¶ê° ê°ë¥ -->
 							</nav>
 						</div>
