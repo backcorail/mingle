@@ -52,10 +52,10 @@
 		    	<a href="/mingle/style" class="title_tabMenu">STYLE</a>
 		    	<ul class="subtitle_tabMenu" id="subMenu_1">
 
-					<li><a href="/mingle/style#tabs-1">ranking</a></li>
-					<li><a href="/mingle/style#tabs-2">style</a></li>
-					<li><a href="/mingle/style#tabs-3">trend</a></li>
-					<li><a href="/mingle/style#tabs-4">request</a></li>
+					<li><a href="/mingle/style?tabs=1">ranking</a></li>
+					<li><a href="/mingle/style?tabs=2">style</a></li>
+					<li><a href="/mingle/style?tabs=3">trend</a></li>
+					<li><a href="/mingle/style?tabs=4">request</a></li>
 
 				</ul>
 	    	</div>

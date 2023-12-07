@@ -23,4 +23,5 @@ public class StyleVO {
     private String style_writedate;//작성일자
     private int resell_no;//리셀 글번호 - 태그상품 위해서
     private String style_name;//리셀 제목	
+    private int item_no;
 }
