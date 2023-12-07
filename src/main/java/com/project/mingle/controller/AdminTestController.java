@@ -12,16 +12,12 @@ import com.project.mingle.service.AdminService;
 import com.project.mingle.vo.AdminTestVO;
 import com.project.mingle.vo.AdminVO;
 
-
 @Controller
 
 @RequestMapping("/admintest")
 public class AdminTestController {
-	
 	@Autowired
 	AdminService service; 
-	
-
 	
 	@GetMapping("")
 	public String admintest() {
@@ -43,6 +39,11 @@ public class AdminTestController {
 		mav.addObject("userlist", userlist);
 		mav.setViewName("admin/members_data");
 		return mav;
+	}
+	
+	@GetMapping("/members_charts")
+	public String members_charts() {
+		return "admin/members_charts";
 	}
 	
 	@GetMapping("/products_data")

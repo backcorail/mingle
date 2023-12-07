@@ -294,7 +294,7 @@
 											<td>${kItem.item_name}</td>
 											<td>${kItem.item_postdate}</td>
 											<td>Category</td>
-											<td>${kItem.item_image}</td>
+											<td><img src="${kItem.item_image}"/></td>
 										</tr>
 									</c:forEach>
 										</c:forEach>
