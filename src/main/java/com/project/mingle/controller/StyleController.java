@@ -19,9 +19,6 @@ import com.project.mingle.vo.StyleVO;
 @RequestMapping("/style")
 public class StyleController {
 	@Autowired
-	StyleService service;
-
-	@Autowired
 	StyleService service; // 서비스의 내용을 가져온다.
 	
 	@GetMapping("")
