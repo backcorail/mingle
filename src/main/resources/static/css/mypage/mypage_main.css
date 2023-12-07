@@ -1,0 +1,226 @@
+@font-face {
+  font-family : 'Inika-Bold';
+  src : url('/mingle/assets/fonts/Inika-Bold.ttf')
+}
+@font-face {
+  font-family : 'Inika-Regular';
+  src : url('/mingle/assets/fonts/Inika-Regular.ttf')
+}
+
+/* 공통 설정 */
+:root{
+  --cate-back : #FFFFFF;
+}
+
+.div-mypage-main{
+  display: flex;
+  /* width: calc(1548.35px * var(--default-size)); */
+  height: calc(1057.81px * var(--default-size));
+  background-color: var(--cate-back);
+}
+
+.div-profile{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: calc(362.32px * var(--default-size));
+  height: calc(976.34px * var(--default-size));
+
+  margin-top: calc(39.84px * var(--default-size));
+  margin-right: calc(62.06px * var(--default-size));
+  margin-bottom: calc(41.63px * var(--default-size));
+  margin-left: calc(47.04px * var(--default-size));
+
+  padding-top: calc(69.83px * var(--default-size));
+  padding-right: calc(57.07px * var(--default-size));
+  padding-bottom: calc(69.83px * var(--default-size));
+  padding-left: calc(63.79px * var(--default-size));
+
+
+  border-style: solid;
+  border-color: #FFB400;
+  border-width: calc(5px * var(--default-size)); 
+}
+.div-profile > #img-profile{
+  align-self: center;
+  width: calc(225.81px * var(--default-size));
+  height: calc(224.72px * var(--default-size));
+
+  border-radius: 50%;
+  
+  box-shadow: 
+  calc(0px * var(--default-size))
+  calc(4px * var(--default-size))
+  calc(4px * var(--default-size))
+  calc(4px * var(--default-size))
+  rgba(0, 0, 0, 0.25);
+}
+
+.div-profile .div-my-nick{
+  align-self: center;
+  width: calc(233.46px * var(--default-size));
+  height: calc(41.9px * var(--default-size));
+  
+  margin-top: calc(11.43px * var(--default-size));
+  
+  font: 700 
+  calc(25px * var(--default-size))
+  "Inika-Bold";
+  color: #000000;
+  text-align: center;
+  line-height: calc(41.9px * var(--default-size));
+}
+
+.div-profile .div-my-name{
+  align-self: center;
+  width: calc(70.17px * var(--default-size));
+  height: calc(33.01px * var(--default-size));
+  
+  margin-top: calc(12.7px * var(--default-size));
+  
+  font: 400 
+  calc(20px * var(--default-size))
+  "Inika-Regular";
+  color: #000000;
+  text-align: center;
+  line-height: calc(33.01px * var(--default-size));
+}
+
+.div-profile .div-id{
+  margin-top: calc(45px * var(--default-size));
+}
+.div-profile .div-pwd{
+  margin-top: calc(29px * var(--default-size));
+}
+.div-profile .div-tel{
+  margin-top: calc(29px * var(--default-size));
+}
+.div-profile .div-addr{
+  margin-top: calc(35px * var(--default-size));
+}
+
+.div-profile .btn-edit-userdata{
+  width: calc(233.46px * var(--default-size));
+  height: calc(54.59px * var(--default-size));
+
+  border-style: none;
+  border-radius: 5px;
+  margin-top: calc(119px * var(--default-size));
+
+  background: #ffb400;
+  color: #ffffff;
+}
+.div-profile .btn-edit-userdata:hover{
+  background: #f7e175;
+  cursor: pointer;
+}
+.div-my-detail-data{
+  margin-top: calc(39.84px * var(--default-size));
+}
+
+.ul-templete-mydata{
+  display: flex;
+  justify-content: space-evenly;
+  
+  width: calc(980.86px * var(--default-size));
+  height: calc(82.67px * var(--default-size));
+
+  margin-top: calc(16.93px * var(--default-size));
+  border-radius: calc(10px * var(--default-size));
+
+  background: #fef1ab;
+}
+.ul-templete-mydata .li-col-line div{
+  border-left: 2px solid #FDE047;
+}
+.ul-templete-mydata > li > .div-subtitle-txt{
+  height: calc(19.92px * var(--default-size));
+  margin-top: calc(13.95px * var(--default-size));
+  color: #000000;
+  font: 
+    400 
+    calc(15px * var(--default-size))
+    "Inika-Regular";
+}
+.ul-templete-mydata > li > .div-subtitle-num{
+  height: calc(30.88px * var(--default-size));
+  color: #f60000;
+  font: 
+    400 
+    calc(24px * var(--default-size))
+    "Inika-Regular";
+  text-align: center;
+}
+
+.div-my-detail-data .div-buy-detail-list{
+  height: calc(191px * var(--default-size));
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-my-detail-data .div-sell-detail-list{
+  height: calc(191px * var(--default-size));
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* 관심상품 List */
+.div-related-item-box{
+  display: flex;
+  justify-content: space-between;
+  width: calc(980.86px * var(--default-size));
+  height: calc(294px * var(--default-size));
+  margin-top: calc(3px * var(--default-size));
+
+}
+.div-eye-items-box{
+  width: calc(223.42px * var(--default-size));
+  height: calc(294px * var(--default-size));
+
+}
+.div-eye-items-box img{
+  
+  width: calc(223.42px * var(--default-size));
+  height: calc(222.12px * var(--default-size));
+  background-color: #D9D9D9;
+
+}
+
+.div-eye-items-box .div-eye-item-title{
+  width: calc(223.42px * var(--default-size));
+  height: calc(14.94px * var(--default-size));
+}
+
+.div-eye-items-box .div-eye-item-script{
+  width: calc(223.42px * var(--default-size));
+  height: calc(41.83px * var(--default-size));
+  padding-top: calc(10px * var(--default-size));
+  word-break: keep-all;
+}
+
+
+
+.Inika-bold-20{
+  font: 700 
+  calc(20px * var(--default-size))
+  "Inika-Bold";
+  color: #000000;
+}
+.Inika-bold-18{
+  font: 700 
+  calc(18px * var(--default-size))
+  "Inika-Bold";
+  color: #000000;
+}
+.Inika-Regular-16{
+  font: 400 
+  calc(16px * var(--default-size))
+  "Inika-Regular";
+  color: #000000;
+}

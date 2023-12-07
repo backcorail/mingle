@@ -1,0 +1,222 @@
+@font-face {
+  font-family : 'Inika-Bold';
+  src : url('/mingle/assets/fonts/Inika-Bold.ttf')
+}
+@font-face {
+  font-family : 'Inika-Regular';
+  src : url('/mingle/assets/fonts/Inika-Regular.ttf')
+}
+
+/* 공통 설정 */
+:root{
+  --cate-back : #FFFFFF;
+  --btn-click-bg : #f0eded;
+  --btn-click-ybg : #f7e175;
+}
+
+.div-mypage-main{
+  /* width: calc(1548.35px * var(--default-size)); */
+  height: calc(1096px * var(--default-size));
+
+  display: flex;
+  flex-direction: column;
+
+  padding-top: calc(18px * var(--default-size));
+  padding-right: calc(47.27px * var(--default-size));
+  /* padding-bottom: calc(69.83px * var(--default-size)); */
+  padding-left: calc(49px * var(--default-size));
+
+  background-color: var(--cate-back);
+}
+
+.div-ub-bold{
+  width: 100%;
+  height: calc(85px * var(--default-size));
+  /* 내부 정렬용 임시 시작*/
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* 내부 정렬용 임시 끝*/
+  margin-top: calc(10px * var(--default-size));
+  border-top: 
+    calc(3px * var(--default-size)) 
+    solid 
+    #000000;
+  border-bottom: 
+  calc(3px * var(--default-size)) 
+  solid 
+  #000000;
+  background: rgba(217, 217, 217, 0.41);
+}
+.div-ub-bold{
+  height: calc(85px * var(--default-size));
+}
+.div-ub-bold > div:nth-of-type(1){
+  width: calc(323px * var(--default-size));
+  text-align: center;
+}
+.div-ub-bold > div:nth-of-type(2){
+  width: calc(591px * var(--default-size));
+}
+.div-ub-bold > div:nth-of-type(2) div{
+  width: calc(408px * var(--default-size));
+  text-align: center;
+}
+
+.div-ub-bold > div:nth-of-type(3){
+  width: calc(431px * var(--default-size));
+  text-align: center;
+}
+
+.div-item-list-area{
+  display: flex;
+  flex-direction: column;
+  padding-top: calc(15px * var(--default-size));
+}
+.div-track{
+  height:calc(73px * var(--default-size));
+  display: flex;
+  flex-direction: row;
+  
+}
+/* 위치 */
+.div-track .div-board-cate-area{
+  width: calc(323px * var(--default-size));
+  height: calc(73px * var(--default-size));
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.div-track .div-board-cate-area .div-board-cate{
+  margin-top: calc(5px * var(--default-size));
+}
+
+/* 제목 */
+.div-track .div-board-title-area{
+  width: calc(591px * var(--default-size));
+  height: calc(73px * var(--default-size));
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.div-track .div-board-title-area .div-board-title{
+  width: calc(408px * var(--default-size));
+}
+
+/* 등록일 */
+.div-track .div-board-date-area{
+  width: calc(431px * var(--default-size));
+  height: calc(73px * var(--default-size));
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-blank-45{
+  height: calc(45px * var(--default-size));
+}
+
+.btn-more-data{
+  width: calc(198px * var(--default-size));
+  height: calc(54px * var(--default-size));
+
+  margin: 0 auto;
+  border-style: none;
+  border-radius: calc(10px * var(--default-size));
+
+  background: #ffb400;
+  text-align: center;
+  line-height: calc(54px * var(--default-size));
+}
+.btn-more-data:hover{
+  cursor: pointer;
+  background: var(--btn-click-ybg);
+}
+
+
+/* 폰트 사용 */
+.Inika-bold-25{
+  font: 700 
+  calc(25px * var(--default-size))
+  "Inika-Bold";
+  color: #000000;
+}
+.Inika-bold-20w{
+  font: 700 
+  calc(20px * var(--default-size))
+  "Inika-Bold";
+  color: #ffffff;
+}
+
+.Inika-bold-20{
+  font: 700 
+  calc(20px * var(--default-size))
+  "Inika-Bold";
+  color: #000000;
+}
+.Inika-bold-18{
+  height: calc(23px * var(--default-size)); 
+  font: 700 
+  calc(18px * var(--default-size))
+  "Inika-Bold";
+  color: #000000;
+  line-height: calc(23px * var(--default-size)); 
+}
+
+
+.Inika-Regular-22{
+  font: 400 
+  calc(22px * var(--default-size))
+  "Inika-Regular";
+  color: #000000;
+}
+
+.Inika-Regular-20{
+  height: calc(30px * var(--default-size)); 
+  font: 400 
+  calc(20px * var(--default-size))
+  "Inika-Regular";
+  color: #000000;
+  line-height: calc(30px * var(--default-size)); 
+}
+.Inika-Regular-18{
+  font: 400 
+  calc(18px * var(--default-size))
+  "Inika-Regular";
+  color: #000000;
+}
+.Inika-Regular-18w{
+  font: 400 
+  calc(18px * var(--default-size))
+  "Inika-Regular";
+  color: #ffffff;
+}
+
+.Inika-Regular-16{
+  height: calc(21px * var(--default-size)); 
+  font: 400 
+  calc(16px * var(--default-size))
+  "Inika-Regular";
+  color: #000000;
+  line-height: calc(21px * var(--default-size)); 
+}
+
+.Inika-Regular-16-l2{
+  height: calc(42px * var(--default-size)); 
+  font: 400 
+  calc(16px * var(--default-size))
+  "Inika-Regular";
+  color: #000000;
+  line-height: calc(21px * var(--default-size)); 
+}
+
+.Inika-Regular-16-af{
+  margin-bottom: calc(18px * var(--default-size));
+  font: 400 
+  calc(16px * var(--default-size))
+  "Inika-Regular";
+  color: #afafaf;
+}

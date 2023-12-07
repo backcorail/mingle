@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mingle.mapper.AdminMapper">
+	<!-- <select id="resell_totalRecord" resultType="int">
+		select count(resell_no) from resell;
+		<if test="searchWord!=null">
+	    where item_name like '%${searchWord}%'
+	    </if>
+	</select> -->
+	 <select id="kream_totalRecord" resultType="int">
+	 	select count(item_no) from item;
+	 	<if test="searchWord!=null">
+	    where item_name like '%${searchWord}%'
+	    </if>
+	 </select>
+	<!-- <select id="resell_boardData" resultType="com.project.mingle.vo.AdminVO">
+		select resell_no, resell_name, resell_seller, item_price, date_format(resell_writedate, '%Y-%m-%d %h:%i:%s')
+		resell_writedate from resell
+		<if test="searchWord!=null">
+			where resell_name like '%${searchWord}%'
+		</if>
+		order by resell_writedate desc limit #{onePageRecord} offset ${offsetPoint};
+	</select> -->
+	
+	<select id="kreamData" resultType="com.project.mingle.vo.AdminVO">
+	    select item_no, item_name, item_price, item_image, item_postdate from item 
+	    <if test="searchWord!=null">
+	   		where item_name like '%${searchWord}%'
+	    </if>
+			order by item_postdate desc limit #{onePageRecord} offset ${offsetPoint};
+	</select>
+	
+	<select id="usersData" resultType="com.project.mingle.vo.AdminTestVO">
+		select * from users
+		<if test="searchWord!=null">
+	   		where user_id like '%${searchWord}%'
+	    </if>
+			order by user_regdate desc limit #{onePageRecord} offset ${offsetPoint};
+	</select>
+</mapper>
