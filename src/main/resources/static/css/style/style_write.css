@@ -1,6 +1,15 @@
+/*스타일 페이지 바디*/
+.page_style{
+	width: 1280px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
 /*제목 및 부제목*/
 .styleWrite_title{
-	width: 640px;
+	width: 1280px;
 	height: 110px;
 	margin-top: 110px;
 	margin-bottom: 20px;
@@ -15,14 +24,43 @@
 	font-size: 20px;
 	color: rgb(128, 128, 128);
 }
+/*글종류 선택 페이지*/
+.writeType_select{
+	width:1280px;
+	height: 50px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	border-top: 2px solid black;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
+	border-bottom: 7px double black;
+	background: rgb(192, 192, 192);
+}
+.writeType_select>div{
+	width: 400px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Lilita One', sans-serif;
+	font-size: 25px;
+}
+.writeType_select>div>a{
+	color: white;
+}
 /*글작성 페이지*/
 
-/*전체 body*/
+/*글작성 body*/
 .styleWrite{
-	width: 640px;
+	width: 1280px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
+	padding-top: 40px;
 }
 .styleWrite_wrapper{
 	width: 640px;

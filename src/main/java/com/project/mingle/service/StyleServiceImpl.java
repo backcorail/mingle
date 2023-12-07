@@ -1,11 +1,12 @@
 package com.project.mingle.service;
 
-import java.util.List;
-
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Service;
-
+import com.project.mingle.mapper.StyleMapper;
+import com.project.mingle.vo.StyleVO;
+import java.util.List;
+import javax.inject.Inject;
+import org.springframework.stereotype.Service;
 import com.project.mingle.mapper.StyleMapper;
 import com.project.mingle.vo.StyleVO;
 
@@ -36,7 +37,9 @@ public class StyleServiceImpl  implements StyleService{
 		
 		return mapper.style_likes_check(sVO);
 	}
-
-	
-	
+  
+  	@Override
+	public int styleInsert(StyleVO vo) {
+		return mapper.styleInsert(vo);
+	}
 }
