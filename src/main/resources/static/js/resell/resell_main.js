@@ -16,20 +16,6 @@ $(document).ready(function() {
 		$(this).addClass("active");
 	});
 	
-	/*
-	// 검색바 값 여부에 따른 애니메이션 초기 속성 조정
-	if($("#search_bar").val() != "") {
-		console.log("값이 있음");
-		$("#search_bar").css({
-			"width":"495px",
-			"color":"black",
-			"padding":"0px 10px 0px 36px",
-		});
-		$("#search_magnifier").css("transform","translateX(457px)");
-		$("#search_slide").css("transform","rotate(180deg)");
-	}
-	*/
-	
     // 검색창 애니메이션
     $("#search_slide").click(function() {
 		var width_change = parseInt($("#search_bar").css("width"), 10);
@@ -104,7 +90,11 @@ function search() {
 			return false;
 		}
 		// 대소문자 구분 없이 중복 검사
-        if (newSearch.toLowerCase().includes(addSearch.toLowerCase())) {
+		var isDuplicate = newSearch.split(",").some(function(item) {
+			return item.trim().toLowerCase() === addSearch.toLowerCase();
+		});
+		
+        if (isDuplicate) {
             alert("중복된 검색어입니다. 다시 작성해주세요.");
             return false;
         }
@@ -128,6 +118,44 @@ function search() {
 	});
 	return false;
 }
+
+
+
+// 검색어 지우기
+$(document).ready(function() {
+	$(".search_word").on("click", ".search_delete", function() {
+    	var removeText = $(this).prev().text().trim();
+    	var searchUrl = window.location.search;
+		var urlParams = new URLSearchParams(searchUrl);
+		var search = urlParams.get("search");
+		var page = urlParams.get("page");
+		var url = window.location.origin + window.location.pathname;
+		
+    	var searchArray = search.split(",");
+    	var newArray = searchArray.filter(function(item) {
+			return item.trim() != removeText;
+		});
+		var newSearch = newArray.join(",");
+		var newUrl;
+		if(newSearch =="") {
+			newUrl = url+"?page="+page;
+		} else {
+    		newUrl = url+"?page="+page+"&search="+newSearch;
+    	}
+    	window.location.href = newUrl;
+    	$(this).closest("li").remove();
+    	
+    	$.ajax({
+			type : "GET",
+			url : "resell",
+			data : {
+				page:page,
+				search:newSearch.split(","),
+			}
+		});
+		return false;
+	});
+});
 
 
 

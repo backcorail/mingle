@@ -28,12 +28,20 @@ public class ResellController {
 		
 		ModelAndView mav = new ModelAndView();
 		rVO.setNowPage(page);
-		rVO.setSearchWord("");
+
+		String searchAll = "";
+		for(int i=0; i<search.length; i++) {
+			searchAll += search[i];
+			if(i != search.length-1) {
+				searchAll += ",";
+			}
+		}
+		rVO.setSearchWord(searchAll);
 		
 		if (search.length > 0 && !"".equals(search[0])) {
-	        rVO.setSearchWord1(search[0]);
-	    }
-	    if (search.length > 1 && !"".equals(search[1])) {
+			rVO.setSearchWord1(search[0]);
+		}
+		if (search.length > 1 && !"".equals(search[1])) {
 	        rVO.setSearchWord2(search[1]);
 	    }
 	    if (search.length > 2 && !"".equals(search[2])) {

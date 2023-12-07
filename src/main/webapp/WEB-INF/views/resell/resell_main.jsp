@@ -11,7 +11,6 @@
 	<ul class="resell_top">
 		<li>
 			총 레코드/페이지 수 = ${rVO.ktotalRecord}/${rVO.ktotalPage}<br>
-			현재 검색 데이터 = ${rVO.searchWord}<br>
 			test = ${rVO.searchWord1}/${rVO.searchWord2}/${rVO.searchWord3}
 		</li>
 		<li class="resell_search">
@@ -26,19 +25,19 @@
 				<c:if test="${rVO.searchWord1 != null}">
 					<li>
 						<div>${rVO.searchWord1}</div>
-						<img src="/mingle/img/resell/delete.png"/>
+						<img class="search_delete" id="search_delete1" src="/mingle/img/resell/delete.png"/>
 					</li>
 				</c:if>
 				<c:if test="${rVO.searchWord2 != null}">
 					<li>
 						<div>${rVO.searchWord2}</div>
-						<img src="/mingle/img/resell/delete.png"/>
+						<img class="search_delete" id="search_delete2" src="/mingle/img/resell/delete.png"/>
 					</li>
 				</c:if>
 				<c:if test="${rVO.searchWord3 != null}">
 					<li>
 						<div>${rVO.searchWord3}</div>
-						<img src="/mingle/img/resell/delete.png"/>
+						<img class="search_delete" id="search_delete3" src="/mingle/img/resell/delete.png"/>
 					</li>
 				</c:if>
 			</ul>
@@ -143,34 +142,34 @@
 			<ul class="page_select">
 				<li>
 					<c:if test="${rVO.nowPage != 1}">
-						<a href="/mingle/resell?page=1<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>" class="page_box">첫 페이지</a>
+						<a href="/mingle/resell?page=1<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">첫 페이지</a>
 					</c:if>
 				</li>
 				<li>
 					<c:if test="${rVO.nowPage > rVO.onePageCount}">
-						<a href="/mingle/resell?page=${rVO.startPage - rVO.onePageCount}<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>" class="page_box">이전</a>
+						<a href="/mingle/resell?page=${rVO.startPage - rVO.onePageCount}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">이전</a>
 					</c:if>
 				</li>
 				<c:forEach var="n" begin="${rVO.startPage}" end="${rVO.startPage + rVO.onePageCount-1}">
 					<li>
 						<c:if test="${n<=rVO.ktotalPage}">
 							<c:if test="${n==rVO.nowPage}">
-								<a href="/mingle/resell?page=${n}<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>" class="page_now">${n}</a>
+								<a href="/mingle/resell?page=${n}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_now">${n}</a>
 							</c:if>
 							<c:if test="${n!=rVO.nowPage}">
-								<a href="/mingle/resell?page=${n}<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>" class="page_box">${n}</a>
+								<a href="/mingle/resell?page=${n}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">${n}</a>
 							</c:if>
 						</c:if>
 					</li>
 				</c:forEach>
 				<li>
 					<c:if test="${rVO.nowPage / rVO.onePageCount < rVO.ktotalPage / rVO.onePageCount}">
-						<a href="/mingle/resell?page=${rVO.startPage + rVO.onePageCount}<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>" class="page_box">다음</a>
+						<a href="/mingle/resell?page=${rVO.startPage + rVO.onePageCount}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">다음</a>
 					</c:if>
 				</li>
 				<li>
 					<c:if test="${rVO.nowPage != rVO.ktotalPage}">
-						<a href="/mingle/resell?page=${rVO.ktotalPage}<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>" class="page_box">끝 페이지</a>
+						<a href="/mingle/resell?page=${rVO.ktotalPage}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">끝 페이지</a>
 					</c:if>
 				</li>
 			</ul>
