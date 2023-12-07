@@ -148,9 +148,9 @@
 
 <script>
 $(document).ready(function() {
-    $(".board_items").click(function() {
+    $(".img").click(function() {
 		console.log("in");
-        window.location.href = "http://localhost:9998/mingle/style/trend/info";
+        window.location.href = "/mingle/style/trend/info";
     });
 });
 </script>

@@ -46,7 +46,7 @@
 	display : inline-block;
 	justify-content: center;
 	margin-bottom : 20px;
-	cursor : pointer;
+	
 }
 
 .heart {
@@ -71,6 +71,7 @@
 	height : 200px;
 	border-radius: 10px;
 	margin-bottom : 5px;
+	cursor : pointer;
 }
 
 .imgdiv{
@@ -90,6 +91,7 @@
 
 .hashtag {
 	font-size : 10px;
+	cursor : pointer;
 }
 
 .username {
@@ -156,4 +158,12 @@
 
 .all_select {
 	margin-top : 20px;
+}
+
+.username:hover {
+    text-decoration: underline;
+}
+
+.hashtag:hover {
+    text-decoration: underline;
 }
