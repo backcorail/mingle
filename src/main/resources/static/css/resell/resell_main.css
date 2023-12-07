@@ -14,30 +14,30 @@
 /* 위쪽 검색창, 탭부분 */
 .resell_top {
 	width:1280px;
+	height:75px;
 	display:flex;
 	justify-content:right;
 	text-align:center;
-	
 }
-.resell_top>li {
+.resell_top > li {
 	width:100px;
 	text-align:center;
 	margin-top:10px;
 	padding-bottom:5px;
 }
-.resell_top>li:nth-child(1) {
+.resell_top > li:nth-child(1) { /*나중에 지울거*/
 	width:260px;
 	text-align:left;
 	font-size:0.6em;
 }
-.resell_top>li:nth-child(2) {
+.resell_top > li:nth-child(2) { /*1로 바꿔야함*/
 	width:500px;
 }
 .resell_search {
-	position:relative;
-	
+	position: relative;
 	display:flex;
-	justify-content:left;
+	flex-direction: column;
+    align-items: flex-start;
 }
 .resell_search input {
 	width:38px;
@@ -45,30 +45,60 @@
 	border:3px solid #FFC107;
 	border-radius:20px;
 	font-size:0.8em;
-	transition: width 0.3s ease-in-out;
 	color:white;
-
+	transition:width 0.3s ease-in-out;
 }
-.resell_search > img {
+.search_img {
 	width:24px;
 	height:24px;
 	position:absolute;
 	top:6px;
 	left:7px;
+	transition:transform 0.3s ease-in-out;
+	cursor:pointer;
+}
+.search_word {
+	display:flex;
+	overflow:hidden;
+}
+.search_word > li {
+	display:flex;
+	font-size:0.6em;
+	border:1px solid #ddd;
+	margin:4px 2px;
+	padding:0px 5px;
+	border-radius:7px;
+	align-items: center;
+	height:20px;
+	
+}
+.search_word div {
+	max-width:130px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+.search_word img {
+	width:12px;
+	height:12px;
+	margin-left:5px;
+	cursor:pointer;
 }
 
 
 
 /* 상단 밑줄 애니메이션 */
-.choose {
+.category_type {
 	font-family: 'Playfair Display', serif;
 	cursor: pointer;
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
-	transition: all 0.3s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	height:40px;
 }
-.choose::before {
+.category_type::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -79,11 +109,11 @@
     background-color: #FFC107;
     transition: width 0.3s ease-in-out;
 }
-.choose.active::before {
+.category_type.active::before {
     width: 100%;
     transform: translateX(-50%);
 }
-.choose:hover {
+.category_type:hover {
 	color:#FFC107;
 }
 
@@ -109,16 +139,21 @@
 	width:21px;
 	height:21px;
 	cursor:pointer;
+	transition:transform 0.3s linear;
+	
 }
-.category {
+.category_detail {
     overflow:hidden;
     line-height:25px;
     display:none;
+    
 }
-.category > li {
+.category_detail > li {
 	margin: 10px 10px;
 	font-family: 'HakgyoansimWoojuR';
 	font-size: 20px;
+}
+.category_detail a {
 	color: rgb(0, 0, 0);
 }
 
