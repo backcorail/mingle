@@ -195,6 +195,38 @@ function createMarkerImage(markerSize, offset, spriteOrigin) {
 
 
 
+function printCityWeather(){
+	if(city==""){
+		alert("거주지를 선택해 주세요.");
+	}else{
+		var check = $(this).attr('name');
+		$(this).attr("href", "cody_board");
+		$.ajax({
+			url:"action",
+			type:"POST",
+			data:{
+				place:city,
+				situation:check
+			},
+			success: function(data){
+			},
+			error:function(){
+				alert("error");
+			}
+		});
+		
+	}
+	
+}
+
+$(document).ready(function(){
+	$('#exercise').on('click',printCityWeather);
+	$('#wedding').on('click',printCityWeather);
+	$('#business').on('click',printCityWeather);
+	$('#daily').on('click',printCityWeather);
+	
+	
+});
 
 
 

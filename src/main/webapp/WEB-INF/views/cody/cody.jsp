@@ -9,19 +9,21 @@
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a837c752e79af40c0be818db797f371"></script>
 	</div>
 	<div class="today_concept"><b>오늘의 컨셉은?</b>
-		<a href="cody_board" data_btn="exercise"><div class="exercise">
+	<form action="send5" method="GET">
+		<a  id="exercise" name="exercise"><div class="exercise">
 			<span>운동</span><br>
 			<img src="/mingle/img/cody/background/exercise.jpg">
 		</div></a>
-		<a href="cody_board" data_btn="wedding"><div class="wedding"><span>결혼식</span><br>
+		<a id="wedding" name="wedding"><div class="wedding"><span>결혼식</span><br>
 			<img src="/mingle/img/cody/background/wedding.jpg">
 		</div></a>
-		<a href="cody_board" data_btn="business" ><div class="business"><span>비즈니스</span><br>
+		<a id="business" name="business"><div class="business"><span>비즈니스</span><br>
 			<img src="/mingle/img/cody/background/business.jpg">
 		</div></a>
-		<a href="cody_board" data_btn="daily"><div class="daily"><span>일상</span><br>
+		<a id="daily" name="daily"><div class="daily"><span>일상</span><br>
 			<img src="/mingle/img/cody/background/daily.jpg">
 		</div></a>
+	</form>	
 	</div>
 </div>
 <script src="/mingle/js/cody/cody.js"></script>

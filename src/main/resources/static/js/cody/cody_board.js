@@ -66,6 +66,7 @@ function slideEnd(){
 
 
 
+
 $(document).ready(function(){
 		$('.slide_list').css('width',$slidebox);
 		$('.slide_list2').css('width',$slidebox);
