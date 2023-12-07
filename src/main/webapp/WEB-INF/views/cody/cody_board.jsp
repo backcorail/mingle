@@ -76,4 +76,4 @@
 	</div>
 </div>
 <input type="button" class="homeBtn" name="homeBtn" value="Main" onclick="location.href='/mingle'" >
-<script src="/mingle/js/cody_board.js"></script>
+<script src="/mingle/js/cody/cody_board.js"></script>
