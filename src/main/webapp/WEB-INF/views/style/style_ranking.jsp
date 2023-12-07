@@ -2,10 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<link rel="stylesheet" href="/mingle/css/style_ranking.css">
+
 <script src="/mingle/js/style_ranking.js"></script>
-
-
+<link rel="stylesheet" href="/mingle/css/style/style_ranking.css">
 
 
 <div class="page">
@@ -147,5 +146,11 @@
 	</div>
 </div>
 
-
-
+<script>
+$(document).ready(function() {
+    $(".board_items").click(function() {
+		console.log("in");
+        window.location.href = "http://localhost:9998/mingle/style/trend/info";
+    });
+});
+</script>

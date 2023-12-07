@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="authUser"/>
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,18 +31,19 @@
 		<img src="/mingle/img/home/btn_more.png" class="btn-1" onclick="toggleBtn()"/>
 		<!-- left button -->
 		<a href="/mingle" id="header_logo">mingle</a>
-		<div id="header_loginArea"> 
-
-			<c:if test="${logStatus=='' || logStatus !='Y'}">
-		        <a href="#" id="btn_login">Login/Sign-up</a>
-		    </c:if>
-		    <c:if test="${logStatus!='' && logStatus == 'Y'}">
+		<div id="header_loginArea"> 			
+		<c:choose>
+			<c:when test="${empty authUser }">
+	        	<a href="/mingle/user/login_joinForm" id="btn_login">Login/Sign-up</a>
+			</c:when>
+			<c:otherwise>
 		    	<div id="mypageLogout">
 		    		<img src="#" id="profile"/>
-		    		<a href="#" id="btn_mypage">Mypage</a>
-		    		<a href="#" id="logout">Logout</a>
+		    		<a href="/mingle/mypage/mymain" id="btn_mypage">${authUser}</a>
+		    		<a href="/mingle/user/logout" id="logout">Logout</a>
 		    	</div>
-		    </c:if>
+			</c:otherwise>
+		</c:choose>
 	    </div>
     </div>
     <div id="tabMenu_header">
@@ -47,10 +51,12 @@
 	    	<div class="area_tabMenu" id="area_tabMenu_1" onmouseover="showSubMenu(1)" onmouseout="showSubHidden(1)">
 		    	<a href="/mingle/style" class="title_tabMenu">STYLE</a>
 		    	<ul class="subtitle_tabMenu" id="subMenu_1">
-					<li><a href="/mingle/style/ranking">ranking</a></li>
-					<li><a href="/mingle/style/styles">style</a></li>
-					<li><a href="/mingle/style/trend">trend</a></li>
-					<li><a href="/mingle/style/request">request</a></li>
+
+					<li><a href="/mingle/style#tabs-1">ranking</a></li>
+					<li><a href="/mingle/style#tabs-2">style</a></li>
+					<li><a href="/mingle/style#tabs-3">trend</a></li>
+					<li><a href="/mingle/style#tabs-4">request</a></li>
+
 				</ul>
 	    	</div>
 	    	<div class="area_tabMenu" id="area_tabMenu_2" onmouseover="showSubMenu(2)" onmouseout="showSubHidden(2)">

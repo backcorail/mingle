@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
@@ -26,6 +27,9 @@ public class UserServiceImpl implements UserService {
 	HttpSession session; 
 	
 	@Autowired
+	PasswordEncoder passwordEncoder;
+	
+	@Autowired
 	PlatformTransactionManager  platformTransactionManager;
 	@Autowired
 	TransactionDefinition transactionDefinition;
@@ -35,11 +39,14 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		System.out.println("save : UserServiceImpl");
 		TransactionStatus transactionStatus = platformTransactionManager.getTransaction(transactionDefinition);
+		
+		String rawPwd = joinUserVO.getUserpwd();
+		String encodedPwd = passwordEncoder.encode(rawPwd);
 		int saveResult=0;
         try {
     		UserVO userVO = UserVO.builder()
     				.user_id(joinUserVO.getUserid())
-    				.user_pwd(joinUserVO.getUserpwd())
+    				.user_pwd(encodedPwd)
     				.user_nick(joinUserVO.getUsernick())
     				.user_tel(joinUserVO.getUsertel())
     				.user_status(1)

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/mingle/css/cody_board.css">
-<script src="/mingle/js/cody_board.js"></script>
 <hr>
 <div style="height: 150%"></div>
 <div class="codyboard_background" id="codyboard_background">
@@ -22,62 +21,59 @@
 		<a>무난무난하고 깔끔한 데일리 켐퍼스룩</a>
 		</div>
 	<div class="cody_item">
+	<div class="leftBtn" data-btn="0"><img class="BtnImg"></div>
 		<div class="slide">
 		<h1 class="category_h1">자켓</h1>
-		<div class="rightBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
-	      	<ul class="slide_list">
-	        	<c:forEach var="n" begin="1" end="4">
-					<li class="slide_item slide_item_${n}" id="slide_item">
-	        			<img src="/mingle/img/cody/jk.jpg">
+	      	<div class="slide_list">
+	        	<c:forEach var="n" begin="1" end="9">
+					<div class="slide_item1 slide_item${n}" id="slide_item">
+	        			<img class="item-img" src="/mingle/img/cody/jk.jpg">
 	        			<a>자켓${n}</a>
-	        		</li>
+	        		</div>
 				</c:forEach>
-				<div class="leftBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
-	      </ul>
-	      
+	      </div>
+	      <div class="rightBtn" data-btn="1"><img class="BtnImg"></div>
 	   </div>
+	   <div class="leftBtn2" data-btn="0"><img class="BtnImg"></div>
 	   <div class="slide">
 	   <h1 class="category_h1">맨투맨</h1>
-	   <div class="rightBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
-	      	<ul class="slide_list">
-	        	<c:forEach var="n" begin="1" end="4">
-					<li class="slide_item">
-	        			<img src="/mingle/img/cody/mtm.jpg">
+	      	<div class="slide_list2">
+	        	<c:forEach var="n" begin="1" end="8">
+					<div class="slide_item2">
+	        			<img class="item-img" src="/mingle/img/cody/mtm.jpg">
 	        			<a>맨투맨${n}</a>
-	        		</li>
+	        		</div>
 				</c:forEach>
-	        	<div class="leftBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
-	      </ul>
-	      
+	      </div>
+	      <div class="rightBtn2" data-btn="1"><img class="BtnImg"></div>
 	   </div>
+	   <div class="leftBtn3" data-btn="0"><img class="BtnImg"></div>
 	   <div class="slide">
 	   <h1 class="category_h1">데님팬츠</h1>
-	   
-	   <div class="rightBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
-	      	<ul class="slide_list">
-		        <c:forEach var="n" begin="1" end="4">
-					<li class="slide_item">
-	        			<img src="/mingle/img/cody/dp.jpg">
+	      	<div class="slide_list3">
+		        <c:forEach var="n" begin="1" end="5">
+					<div class="slide_item3">
+	        			<img class="item-img" src="/mingle/img/cody/dp.jpg">
 	        			<a>데님팬츠${n}</a>
-	        		</li>
+	        		</div>
 				</c:forEach>
-	        	<div class="leftBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
-	      </ul>
-	      
+	      </div>
+	      <div class="rightBtn3" data-btn="1"><img class="BtnImg" style=></div>
 	   </div>
+	   <div class="leftBtn4" data-btn="0"><img class="BtnImg"></div>
 	   <div class="slide">
 	   <h1 class="category_h1">스니커즈</h1>
-	   <div class="rightBtn"><img class="BtnImg"  style="width:24px; height:24px;"></div>
-	      	<ul class="slide_list">
-	        	<c:forEach var="n" begin="1" end="4">
-					<li class="slide_item">
-	        			<img src="/mingle/img/cody/snk.jpg">
+	      	<div class="slide_list4">
+	        	<c:forEach var="n" begin="1" end="6">
+					<div class="slide_item4">
+	        			<img class="item-img" src="/mingle/img/cody/snk.jpg">
 	        			<a>스니커즈${n}</a>
-	        		</li>
+	        		</div>
 				</c:forEach>
-	      </ul>
-	      <div class="leftBtn"><img class="BtnImg" style="width:24px; height:24px;"></div>
+	      </div>
+	      <div class="rightBtn4" data-btn="1"><img class="BtnImg"></div>
 		</div>
 	</div>
 </div>
 <input type="button" class="homeBtn" name="homeBtn" value="Main" onclick="location.href='/mingle'" >
+<script src="/mingle/js/cody/cody_board.js"></script>

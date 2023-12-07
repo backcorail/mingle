@@ -79,9 +79,8 @@
 							aria-labelledby="headingMembers"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Members
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Sublink
-									2</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Members Data</a>
+								<a class="nav-link" href="/mingle/admintest/members_charts">Members Charts</a>
 								<!-- ë ë§ì íì ë©ë´ í­ëª©ë¤ ì¶ê° ê°ë¥ -->
 							</nav>
 						</div>
@@ -271,35 +270,47 @@
 								<thead>
 									<tr>
 										<th>ID</th>
+										<th>Email</th>
 										<th>Password</th>
-										<th>Name</th>
 										<th>Nickname</th>
-										<th>phone Number</th>
-										<th>address</th>
-										<th>profile image</th>
+										<th>Gender</th>
+										<th>Tel</th>
+										<th>Add</th>
+										<th>Img</th>
+										<th>Regdate</th>
+										<th>Secdate</th>
+										<th>Status</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
 										<th>ID</th>
+										<th>Email</th>
 										<th>Password</th>
-										<th>Name</th>
 										<th>Nickname</th>
-										<th>phone Number</th>
-										<th>address</th>
-										<th>profile image</th>
+										<th>Gender</th>
+										<th>Tel</th>
+										<th>Addr</th>
+										<th>Img</th>
+										<th>Regdate</th>
+										<th>Secdate</th>
+										<th>Status</th>
 									</tr>
 								</tfoot>
 								<tbody>
-									<c:forEach var="n" begin="1" end="57">
+									<c:forEach var="vo" items="${userlist}">
 										<tr>
-											<td>id1234</td>
-											<td>pwd1234</td>
-											<td>홍길동</td>
-											<td>길동</td>
-											<td>010-1234-5678</td>
-											<td>서울시 강남구 강남대로23</td>
-											<td>asd78as789as0</td>
+											<td>${vo.user_id}</td>
+											<td>${vo.user_email}</td>
+											<td>${vo.user_pwd}</td>
+											<td>${vo.user_nick}</td>
+											<td>${vo.user_gender}</td>
+											<td>${vo.user_tel}</td>
+											<td>${vo.user_addr}</td>
+											<td>${vo.user_img}</td>
+											<td>${vo.user_regdate}</td>
+											<td>${vo.user_secdate}</td>
+											<td>${vo.user_status}</td>
 										</tr>
 									</c:forEach>
 								</tbody>

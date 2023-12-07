@@ -1,52 +1,41 @@
-$(function() {
-    $("#style_tabs").tabs({
-        activate: function(event, ui) {
-            var tabId = ui.newPanel.attr('id');
-            $(".tab").removeClass("active"); // 모든 탭에서 active 클래스 제거
-            $('a[href="#' + tabId + '"]').parent().addClass("active"); 
-            // 현재 탭에 active 클래스 추가
-            
-            var baseURL = "/mingle/style/"; // 기본 URL 설정
-            switch(tabId) {
-                case 'tabs-1':
-                    $.get(baseURL + "ranking", function(data) {
-						const rankData = $(data).find(".all_select");
-						console.log(rankData.html());
-						$("#tabs-1").html(rankData);
-					});
-                    break;
-                case 'tabs-2':
-					$.get(baseURL + "styles", function(data) {
-						const rankData = $(data).find(".all_select");
-						console.log(rankData.html());
-						$("#tabs-2").html(rankData);
-					});
-                    break;
-                case 'tabs-3':
-                    $.get(baseURL + "trend", function(data) {
-						const rankData = $(data).find(".all_select");
-						console.log(rankData.html());
-						$("#tabs-3").html(rankData);
-					});
-                    break;
-                case 'tabs-4':
-					$.get(baseURL + "request", function(data) {
-						const rankData = $(data).find(".all_select");
-						console.log(rankData.html());
-						$("#tabs-4").html(rankData);
-					});
-                    break;
-            }
-        }
-    });
+$(document).ready(function() {
+	var url = window.location.search;
+	var urlParams = new URLSearchParams(url);
+	var tabs = urlParams.get("tabs");
+	switch(tabs) {
+		case "1" :
+		 	$.get("style/ranking", function(d) {
+				const data = $(d).find(".all_select");
+				$("#tabs").html(data);
+			});
+			break;
+		case "2" :
+			$.get("style/styles", function(d) {
+				const data = $(d).find(".all_select");
+				$("#tabs").html(data);
+			});
+			break;
+		case "3" :
+			$.get("style/trend", function(d) {
+				const data = $(d).find(".all_select");
+				$("#tabs").html(data);
+			});
+			break;
+		default :
+	}
+	
+	if(!tabs) {tabs = 1};
+	$.ajax({
+		type:"GET",
+		url:"style",
+		data:{tabs:tabs}
+	});
 });
 
-// 첫 번째 탭의 콘텐츠 로드
+
 $(document).ready(function() {
-	var baseURL = "/mingle/style/";
-	$.get(baseURL + "ranking", function(data) {
-		const rankData = $(data).find(".all_select");
-		console.log(rankData.html());
-		$("#tabs-1").html(rankData);
-	});
+	$("body").on('click', '.board_items', function() {
+		console.log("in");
+        window.location.href = "/mingle/style/trend/info";
+    });
 });
