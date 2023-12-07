@@ -2,6 +2,9 @@
 
 .page {
 	margin-top : 90px;
+	display : flex;
+	justify-content: center;
+	
 }
 
 .board_list_now {
@@ -47,12 +50,20 @@
 }
 
 .heart {
-	font-size: 20px; 
-    color: red; 
-    background-color: transparent; 
-    border: none; 
-    cursor: pointer;
+	width : 20px;
+	height : 20px; 
+    background-color: white;
+	cursor : pointer;
+	border : white;
     float: right;
+}
+
+.heart-btn {
+	background-color: white;
+	cursor : pointer;
+	border : white;
+	width : 25px;
+	height : 20px;
 }
 
 .img{
@@ -69,15 +80,7 @@
 	counter-increment: divCounter;
 }
 
-.imgdiv::before {
-    content: counter(divCounter);
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 20px;
-    color: black;
-    z-index: 10;
-}
+
 
 .profile-img {
 	width : 20px;

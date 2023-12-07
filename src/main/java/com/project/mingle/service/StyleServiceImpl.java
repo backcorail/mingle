@@ -30,6 +30,13 @@ public class StyleServiceImpl  implements StyleService{
 		return mapper.kreamData(sVO);
 	}
 
+
+	@Override
+	public int style_likes_check(StyleVO sVO) {
+		
+		return mapper.style_likes_check(sVO);
+	}
+
 	
 	
 }
