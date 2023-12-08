@@ -73,6 +73,7 @@ dependencies {
 	// 2. 시큐리티 태그 라이브러리
 	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
 	implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.3.13.RELEASE'
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
 	
 	
 	//웹소켓 통신 - 채팅을 위해 1번 ~ 번

@@ -1,10 +1,20 @@
 package com.project.mingle.controller.mypage;
 
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.project.mingle.service.user.UserService;
+import com.project.mingle.vo.UserVO;
 
 @Controller
 public class MypageController {
+	
+	@Autowired
+	UserService userService;
 	
 	//1)
 	@GetMapping("/mypage/mybasket")
@@ -21,10 +31,16 @@ public class MypageController {
 	public String mybuylist() {
 		return "/mypage/mybuylist";
 	}
-	//4)
+	//4)회원정보 수정 => 작업중
 	@GetMapping("/mypage/myedit")
-	public String myedit() {
-		return "/mypage/myedit";
+	public ModelAndView myedit(Principal principal) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		UserVO userVO = userService.iddcheck(principal.getName());
+		
+		modelAndView.addObject("userVO", userVO);
+		modelAndView.setViewName("/mypage/myedit");
+		return modelAndView;
 	}
 	//5)
 	@GetMapping("/mypage/myfavo")

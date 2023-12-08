@@ -16,7 +16,7 @@ public class UserVO {
 	private String user_email;		//3) nn => n
 	private String user_pwd;		//4) nn
 	private String user_nick;		//5) nn
-	private Integer user_gender;//6) nn =>n
+	private Integer user_gender;//6) nn =>n 1: 남자 / 2:여자
 	private String user_tel;			//7) 둘다 가능
 	private String user_addr;		//8) nn =>n
 	private String user_img;			//9) 기본이미지
@@ -24,7 +24,7 @@ public class UserVO {
 	private String user_secdate;	//11)
 	private Integer user_status;	//12) nn
 	private String user_unlock;	//13)
-	private String userOauth;		//14)
+	private String user_Oauth;		//14)
 
 //	private Integer userNo;		//1)
 //    private String userId; 			//2)

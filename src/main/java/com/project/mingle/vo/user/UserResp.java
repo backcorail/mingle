@@ -32,9 +32,30 @@ public enum UserResp {
 	CAPTCHAFAILD(182,"캡차실패"),
 	
 	PASSWORDOK(191,"비밀번호같은"),
-	PASSWORDFAILD(192,"비밀번호오류");
+	PASSWORDFAILD(192,"비밀번호오류"),
 	
+	ID_C_OK(211,"아이디변경성공"),
+	ID_C_FAILE(212,"아이디변경실패"),
+	ID_C_DD(213,"아이디중복"),
 	
+	PW_C_OK(221,"비밀번호변경성공"),
+	PW_C_FAILE(222,"비밀번호변경실패"),
+	
+	NICK_C_OK(231,"닉네임변경성공"),
+	NICK_C_FAILE(232,"닉네임변경실패"),
+	NICK_C_DD(233,"닉네임중복"),
+	
+	TEL_C_OK(241,"전화변호 변경성공"),
+	TEL_C_FAILE(242,"전화변호 변경실패"),
+	TEL_C_DD(243,"전화변호 중복"),
+	
+	ADDR_C_OK(251,"주소 변경성공"),
+	ADDR_C_FAILE(252,"주소 변경실패"),
+	
+	GEN_C_OK(261,"성별 변경성공"),
+	GEN_C_FAILE(262,"성별 변경실패"),
+	
+	;
 	
 	
 	
