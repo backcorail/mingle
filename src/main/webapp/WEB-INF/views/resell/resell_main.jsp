@@ -11,11 +11,12 @@
 	<ul class="resell_top">
 		<li>
 			총 레코드/페이지 수 = ${rVO.ktotalRecord}/${rVO.ktotalPage}<br>
-			test = ${rVO.searchWord1}/${rVO.searchWord2}/${rVO.searchWord3}
+			test = ${rVO.searchWord1}/${rVO.searchWord2}/${rVO.searchWord3}<br>
+			1:${rVO.nowPage}, 2:${rVO.ktotalPage}
 		</li>
 		<li class="resell_search">
 			<div>
-				<form method="get" action="resell?page=${rVO.nowPage}&search=${rVO.searchWord1}/${rVO.searchWord2}/${rVO.searchWord3}" onsubmit="return search()">
+				<form method="get" action="resell" onsubmit="return search()">
 					<input type="text" id="search_bar">
 				</form>
 				<img class="search_img" id="search_magnifier" src="/mingle/img/resell/search.png">
@@ -42,18 +43,33 @@
 				</c:if>
 			</ul>
 		</li>
-		<li id="type_men" class="category_type active"><h3>Men</h3></li>
-		<li id="type_women" class="category_type"><h3>Women</h3></li>
-		<li id="type_shoes" class="category_type"><h3>Shoes</h3></li>
-		<li id="type_bag" class="category_type"><h3>Bag</h3></li>
-		<li id="type_other" class="category_type"><h3>Other</h3></li>
+		<li class="search_category">
+			<div>
+				<div id="type_men" class="category_type select">Men</div>
+				<div id="type_women" class="category_type">Women</div>
+				<div id="type_shoes" class="category_type">Shoes</div>
+				<div id="type_bag" class="category_type">Bag</div>
+				<div id="type_other" class="category_type">Other</div>
+			</div>
+			<div class="sort_dropdown">
+				<div class="sort_button">
+					<div>정렬</div>
+					<img src="/mingle/img/resell/sort_slide.png">
+					<div class="sort_list">
+						<a class="resell_sort <c:if test="${rVO.sort == 'latest'}">active</c:if>" href="/mingle/resell?sort=latest">최신순</a>
+						<a class="resell_sort <c:if test="${rVO.sort == 'name'}">active</c:if>" href="/mingle/resell?sort=name">이름순</a>
+						<a class="resell_sort <c:if test="${rVO.sort == 'price'}">active</c:if>" href="/mingle/resell?sort=price">가격순</a>
+					</div>
+				</div>
+			</div>
+		</li>
+		
 	</ul>
 </div>
 
 <div class="resell_main">
 <!-- 왼쪽 탭 부분 -->
 	<div class="resell_left">
-	
 		<!-- TOP 부분 -->
 		<div class="resell_left_top">
 			<div class="resell_left_topic">
@@ -122,11 +138,15 @@
 	<!-- 리셀 부분 -->
 	<div class="resell_right">
 		<div class="resell_list">
+			<c:if test="${rVO.ktotalPage == 0}">
+				<div class="search_nothing">검색결과가 없습니다.</div>
+			</c:if>
 			<c:forEach var="vo" items="${klist}">
 				<div class="list_box">
-					<img src="/mingle/img/resell/sample.jpg">
+					<img referrerpolicy="no-referrer" src="${vo.item_image}">
 					<!-- <img src="${vo.item_image}"/> -->
-					<a href="/mingle/resell/board?no=${vo.item_no}&page=${rVO.nowPage}<c:if test="${rVO.searchWord1 != null}">&search=${rVO.searchWord1}</c:if>">${vo.item_name}</a>
+					<a href="/mingle/resell/board?no=${vo.item_no}&page=${rVO.nowPage}
+						<c:if test="${rVO.searchWord1 != null}">&search=${rVO.searchWord1}</c:if>">${vo.item_name}</a>
 					<div class="recell_price">${vo.item_price}</div>
 					<div class="recell_time">
 						<div>
@@ -138,41 +158,38 @@
 		</div>
 		
 		<!-- 페이지수 -->
-		<div class="resell_bottom">
-			<ul class="page_select">
-				<li>
-					<c:if test="${rVO.nowPage != 1}">
-						<a href="/mingle/resell?page=1<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">첫 페이지</a>
-					</c:if>
-				</li>
-				<li>
-					<c:if test="${rVO.nowPage > rVO.onePageCount}">
-						<a href="/mingle/resell?page=${rVO.startPage - rVO.onePageCount}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">이전</a>
-					</c:if>
-				</li>
-				<c:forEach var="n" begin="${rVO.startPage}" end="${rVO.startPage + rVO.onePageCount-1}">
+		<c:if test="${rVO.ktotalPage != 0}">
+			<div class="resell_bottom">
+				<ul class="page_select">
 					<li>
-						<c:if test="${n<=rVO.ktotalPage}">
-							<c:if test="${n==rVO.nowPage}">
-								<a href="/mingle/resell?page=${n}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_now">${n}</a>
-							</c:if>
-							<c:if test="${n!=rVO.nowPage}">
-								<a href="/mingle/resell?page=${n}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">${n}</a>
-							</c:if>
+						<c:if test="${rVO.nowPage != 1}">
+							<a href="/mingle/resell?page=1<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">첫 페이지</a>
 						</c:if>
 					</li>
-				</c:forEach>
-				<li>
-					<c:if test="${rVO.nowPage / rVO.onePageCount < rVO.ktotalPage / rVO.onePageCount}">
-						<a href="/mingle/resell?page=${rVO.startPage + rVO.onePageCount}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">다음</a>
-					</c:if>
-				</li>
-				<li>
-					<c:if test="${rVO.nowPage != rVO.ktotalPage}">
-						<a href="/mingle/resell?page=${rVO.ktotalPage}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">끝 페이지</a>
-					</c:if>
-				</li>
-			</ul>
-		</div>
+					<li>
+						<c:if test="${rVO.nowPage > rVO.onePageCount}">
+							<a href="/mingle/resell?page=${rVO.startPage - rVO.onePageCount}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">이전</a>
+						</c:if>
+					</li>
+					<c:forEach var="n" begin="${rVO.startPage}" end="${rVO.startPage + rVO.onePageCount-1}">
+						<li class="<c:if test='${n==rVO.nowPage}'>active</c:if>">
+							<c:if test="${n<=rVO.ktotalPage}">
+								<a href="/mingle/resell?page=${n}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">${n}</a>
+							</c:if>
+						</li>
+					</c:forEach>
+					<li>
+						<c:if test="${rVO.nowPage / rVO.onePageCount < rVO.ktotalPage / rVO.onePageCount}">
+							<a href="/mingle/resell?page=${rVO.startPage + rVO.onePageCount}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">다음</a>
+						</c:if>
+					</li>
+					<li>
+						<c:if test="${rVO.nowPage != rVO.ktotalPage && rVO.ktotalPage != 0}">
+							<a href="/mingle/resell?page=${rVO.ktotalPage}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">끝 페이지</a>
+						</c:if>
+					</li>
+				</ul>
+			</div>	
+		</c:if>
 	</div>
 </div>

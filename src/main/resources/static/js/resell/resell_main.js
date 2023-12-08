@@ -12,8 +12,8 @@ $(document).ready(function() {
 	
 	// 상단탭 클릭시 효과
 	$(".category_type").click(function() {
-		$(".category_type").removeClass("active");
-		$(this).addClass("active");
+		$(".category_type").removeClass("select");
+		$(this).addClass("select");
 	});
 	
     // 검색창 애니메이션
@@ -70,15 +70,8 @@ function timeDiff(time) {
 
 // 검색 관련 함수
 function search() {
-	var searchUrl = window.location.search;
-	var urlParams = new URLSearchParams(searchUrl);
-	var search = urlParams.get("search");
-	var page = urlParams.get("page");
 	var addSearch = $("#search_bar").val().trim();
-	var url = window.location.origin + window.location.pathname;
 	var newSearch = search || "";
-	console.log(search);
-	
 	
 	if(addSearch == "") { // 값이 없을시
 		alert("검색어를 입력해주세요.");
@@ -90,11 +83,11 @@ function search() {
 			return false;
 		}
 		// 대소문자 구분 없이 중복 검사
-		var isDuplicate = newSearch.split(",").some(function(item) {
+		var duplicate = newSearch.split(",").some(function(item) {
 			return item.trim().toLowerCase() === addSearch.toLowerCase();
 		});
 		
-        if (isDuplicate) {
+        if (duplicate) {
             alert("중복된 검색어입니다. 다시 작성해주세요.");
             return false;
         }
@@ -105,18 +98,8 @@ function search() {
 			newSearch += ","+addSearch;
 		}
 		if(!page) {page = 1};
-		var newUrl = url+"?page="+page+"&search="+newSearch;
-		window.location.href = newUrl;
 	}
-	$.ajax({
-		type : "GET",
-		url : "resell",
-		data : {
-			page:page,
-			search:newSearch.split(","),
-		}
-	});
-	return false;
+
 }
 
 
@@ -159,37 +142,95 @@ $(document).ready(function() {
 
 
 
-// URL 변수 받기
 $(document).ready(function() {
-	// 현재 페이지 URL 가져오기
-	var url = window.location.search;
-	var urlParams = new URLSearchParams(url);
-	var nowPage = urlParams.get("page"); 
-	var searchValue = urlParams.get("search");
-	
-	if(!nowPage) { nowPage = 1; };
-	if(!searchValue) {searchValue = ""};
-	
-	var searchArray = searchValue.split('/');
-	var searchNum = searchArray.length;
-	
-	$.ajax({
-		type : "GET",
-		url : "resell?page="+nowPage+"&search="+searchValue,
-		data : {page:nowPage},
+	$(".sort_list").hide();
+	$(".sort_button").click(function() {
+		$(".sort_list").animate({width:"toggle"},200);
+		var rad = $(".sort_button > img").data("rotation") || 0;
+		var newRad = rad + 180;
+		$(".sort_button > img").data("rotation", newRad);
+		$(".sort_button > img").css("transform","rotate("+newRad+"deg)");
 	});
 });
 
 
 
-$(document).ready(function() {
-	$(".page_now").parent().css("background","#FFC107");
-	$(".page_box").parent().hover(
-		function() {
-			$(this).css("background","#FFC107");
+// 비동기식(ajax) 데이터 보내기 및 데이터 판별
+function URLData(page, search, category, detail, sort) {
+	// page - 0 : 값 없음(초기값=1) / !0 : 값 있음
+	// search - "" : 값 없음(초기값="") / !"" : 값 있음
+	// category - 0 : 값 없음(초기값=1) / !0 : 값 있음
+	// detail - 0 : 값 없음(초기값=0) / !0 : 값 있음
+	// sort - "" : 값 없음(초기값="latest") /  : 값 있음
+	
+	// 필요한 변수 및 데이터
+	var url = window.location.origin + window.location.pathname;
+	var params = window.location.search;
+	var urlParams = new URLSearchParams(params);
+	
+	var newURL = url+"?";
+	var count = 0;
+	
+	// 바꿀값이 없으면 주소에 있는 값 불러오기
+	if(page == 0) {page = urlParams.get("page")}
+	if(search == "") {search = urlParams.get("search")}
+	if(category == 0) {category = urlParams.get("category")}
+	if(detail == 0) {detail = urlParams.get("detail")}
+	if(sort == "") {sort = urlParams.get("sort")}
+	
+	// 변경할 URL주소 만들기
+	if(!page) {
+		if(count>=1) {newURL += "&"}
+		newURL += "page="+page;
+		count++;
+	}
+	if(!search) {
+		if(count>=1) {newURL += "&"}
+		newURL += "search="+search;
+		count++;
+	}
+	if(!category) {
+		if(count>=1) {newURL += "&"}
+		newURL += "category="+category;
+		count++;
+	}
+	if(!detail) {
+		if(count>=1) {newURL += "&"}
+		newURL += "detail="+detail;
+		count++;
+	}
+	if(!sort) {
+		if(count>=1) {newURL += "&"}
+		newURL += "sort="+sort;
+		count++;
+	}
+	
+	// 바꿀 값, 현재 주소의 값 둘다 없을 때 보낼 데이터 초기값 정해주기 
+	if(!page) {page=1};
+	if(!search) {search=""};
+	if(!category) {category=0};
+	if(!detail) {category=1};
+	if(!sort) {sort="latest"};
+	
+	// 새로만든 주소 적용하기
+	window.location.href = newURL;
+	
+	// 비동기식 데이터 보내기
+	$.ajax({
+		type : "GET",
+		url : "resell",
+		data : {
+			page : page,
+			search : search,
+			category : category,
+			detail : detail,
+			sort : sort
 		},
-		function() {
-			$(this).css("background","");
+		success : function(d) {
+			console.log("전송 완료");
+		},
+		error : function(d) {
+			console.log("전솔 실패");
 		}
-	);
-});
+	});
+}

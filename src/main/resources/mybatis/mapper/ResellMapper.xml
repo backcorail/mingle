@@ -63,7 +63,6 @@
 				and item_name like '%${searchWord3}%'
 			</if>
 		</where>
-	    order by item_postdate desc limit #{onePageRecord} offset ${offsetPoint};
+	    order by item_name limit #{onePageRecord} offset ${offsetPoint};
 	</select>
-	
 </mapper>

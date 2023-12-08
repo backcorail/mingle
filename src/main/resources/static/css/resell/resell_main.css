@@ -9,6 +9,7 @@
 	width:1280px;
 	display:flex;
 	margin-top:20px;
+	justify-content: space-between;
 }
 
 /* 위쪽 검색창, 탭부분 */
@@ -88,7 +89,15 @@
 
 
 
-/* 상단 밑줄 애니메이션 */
+/* 상단 카테고리 부분*/
+.resell_top > li:last-child {
+	width:500px;
+}
+.search_category {
+	display:flex;
+	flex-direction:column;
+	align-items: flex-end;
+}
 .category_type {
 	font-family: 'Playfair Display', serif;
 	cursor: pointer;
@@ -97,6 +106,8 @@
 	overflow: hidden;
 	transition: all 0.5s ease-in-out;
 	height:40px;
+	width:100px;
+	font-size:1.2em;
 }
 .category_type::before {
     content: '';
@@ -109,7 +120,7 @@
     background-color: #FFC107;
     transition: width 0.3s ease-in-out;
 }
-.category_type.active::before {
+.category_type.select::before {
     width: 100%;
     transform: translateX(-50%);
 }
@@ -117,6 +128,60 @@
 	color:#FFC107;
 }
 
+
+
+/* 상단 정렬 부분 */
+.search_category > div:first-child {
+	display:flex;
+}
+.search_category > div:last-child {
+	
+}
+.sort_dropdown {
+	display:flex;
+	position:relative;
+	flex-direction:column;
+	font-size:16px;
+	margin:10px 4px 0px 0px;
+}
+.sort_button {
+	border:1px solid #ddd;
+	border-radius:5px;
+	display:flex;
+	justify-content:center;
+	box-shadow:0px 0px 5px 0px #ddd;
+	line-height:28px;
+	cursor:pointer;
+	background:rgba(0, 0, 0, 0.6);
+	color:white;
+}
+.sort_button > div:first-child {
+	width:50px;
+	height:28px;
+	padding-left:10px;
+	border-left:1px solid #ddd;
+}	
+.sort_button > img {
+	width:20px;
+	height:20px;
+	margin-top:4px;
+	transition:transform 0.2s ease-in-out;
+}
+
+.sort_list {
+	display:flex;
+	overflow:hidden;
+	background:rgba(255, 255, 255, 0.1);
+	border-radius:5px;
+}
+.sort_list > a {
+	width:70px;
+	text-align:center;
+	text-decoration:none;
+	color:white;
+	overflow:hidden;
+	white-space:nowrap;
+}
 
 
 /* 중간 왼쪽 탭 부분 */
@@ -140,13 +205,11 @@
 	height:21px;
 	cursor:pointer;
 	transition:transform 0.3s linear;
-	
 }
 .category_detail {
     overflow:hidden;
     line-height:25px;
     display:none;
-    
 }
 .category_detail > li {
 	margin: 10px 10px;
@@ -209,6 +272,11 @@
 	width:1000px;
 	justify-content:flex-start;
 	flex-wrap: wrap;
+}
+.search_nothing {
+	font-weight:bold;	
+	margin:50px auto 0;
+	font-size:1.2em;
 }
 .list_box {
 	height:320px;
@@ -309,4 +377,10 @@
 }
 .page_numbering > * {
 	width:30px;
+}
+
+
+/* 기타 스타일 */
+.active {
+	background-color:#FFC107;
 }
