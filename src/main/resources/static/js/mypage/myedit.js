@@ -140,12 +140,23 @@ $(function() {
 			data: JSON.stringify(data), // http body 데이터
 			contentType: "application/json; charset=UTF-8",
 			success: function(response) {
-				// 닉네임 변경신청 
-				// 서버에서 중복 확인
-				// 1) 중복이면 알람.
-				// 2) 변경되면 알람 
+				var numberString = response.status+"";
 
-				// 성공적으로 데이터를 보냈을 때의 처리
+				// 끝자리 숫자 추출
+				var lastDigit = numberString.charAt(numberString.length - 1);
+				if(lastDigit=='1'){
+					const selBtnId = "btn-"+selData;
+					if(selData=="usergen"){
+						$("." + selData).attr("disabled", "disabled");
+					}
+					$("#"+selBtnId).val("변경");
+					// 추가 작업
+					alert(response.res);
+				}else if(lastDigit=='2'){
+					alert(response.res);
+				}else if(lastDigit=='3'){
+					alert(response.res);
+				}
 				console.log("데이터 전송 성공: ", response);
 			},
 			error: function(xhr, status, error) {

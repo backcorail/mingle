@@ -35,7 +35,7 @@ public class MypageServiceImple implements MypageService {
 			userVO= mypageMapper.ddDataCheck("user_id",checkVO.getData());
 			if(userVO==null) {
 				resultInt = mypageMapper.userPut(userid,"user_id",checkVO.getData());
-				if(resultInt >1) {
+				if(resultInt >0) {
 					// 변경성공
 					return new ResponseDto<String>(UserResp.ID_C_OK.getValue(), "아이디 변경 성공"); //211
 				}else {
@@ -52,7 +52,7 @@ public class MypageServiceImple implements MypageService {
 			String encodedPwd = passwordEncoder.encode(rawPwd);
 			resultInt = mypageMapper.userPut(userid,"user_pwd",encodedPwd);
 			
-			if(resultInt >1) {
+			if(resultInt >0) {
 				// 변경성공
 				return new ResponseDto<String>(UserResp.PW_C_OK.getValue(), "비밀번호 변경 성공"); //221
 			}else {
@@ -62,12 +62,10 @@ public class MypageServiceImple implements MypageService {
 			
 			
 		case "usernick":
-			System.out.println("서비스임플 : "+checkVO.getData());
 			userVO= mypageMapper.ddDataCheck("user_nick",checkVO.getData());
-
 			if(userVO==null) {
 				resultInt = mypageMapper.userPut(userid,"user_nick",checkVO.getData());
-				if(resultInt >1) {
+				if(resultInt >0) {
 					// 변경성공
 					return new ResponseDto<String>(UserResp.NICK_C_OK.getValue(), "닉네임 변경 성공");
 				}else {
@@ -76,6 +74,7 @@ public class MypageServiceImple implements MypageService {
 				}
 			}else {
 				// 데이터 중복
+				System.out.println("usernick 체크 else) : ");
 				return new ResponseDto<String>(UserResp.NICK_C_DD.getValue(), "닉네임 중복");
 			}
 			
@@ -84,7 +83,7 @@ public class MypageServiceImple implements MypageService {
 			userVO= mypageMapper.ddDataCheck("user_tel",checkVO.getData());
 			if(userVO==null) {
 				resultInt = mypageMapper.userPut(userid,"user_tel",checkVO.getData());
-				if(resultInt >1) {
+				if(resultInt >0) {
 					// 변경성공
 					return new ResponseDto<String>(UserResp.TEL_C_OK.getValue(), "전화변호 변경 성공");
 				}else {
@@ -99,7 +98,7 @@ public class MypageServiceImple implements MypageService {
 		case "useraddr":
 			System.out.println(checkVO.getData());
 			resultInt = mypageMapper.userPut(userid,"user_addr",checkVO.getData());
-			if(resultInt >1) {
+			if(resultInt >0) {
 				// 변경성공
 				return new ResponseDto<String>(UserResp.ADDR_C_OK.getValue(), "주소 변경 성공");
 			}else {
@@ -110,7 +109,7 @@ public class MypageServiceImple implements MypageService {
 		case "usergen":
 			System.out.println(checkVO.getData());
 			resultInt = mypageMapper.userPut(userid,"user_gender",checkVO.getData());
-			if(resultInt >1) {
+			if(resultInt >0) {
 				// 변경성공
 				return new ResponseDto<String>(UserResp.GEN_C_OK.getValue(), "성별 변경 성공");
 			}else {
