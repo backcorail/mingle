@@ -7,4 +7,6 @@ public interface MypageService {
 
 	ResponseDto<String> userPut(String userid, CheckVO checkVO);
 
+	int userOut(String name);
+
 }

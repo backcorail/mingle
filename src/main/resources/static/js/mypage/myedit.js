@@ -24,7 +24,7 @@ $(function() {
 	// 이미지 삭제 버튼 클릭 이벤트
 	$('#btn-img-del').click(function() {
 		$('#img-profile').attr('src', '/mingle/img/user/profileEX.png'); // 기본 이미지로 변경
-		imgChange(selfile)
+		imgdefaultChange(selfile)
 	});
 
 	$('#file-selector').change(function(e) {
@@ -60,12 +60,38 @@ $(function() {
 			alert('이미지 파일이 아닙니다!');
 		}
 	});
+	function imgdefaultChange() {
+		// FormData 객체 생성
+		console.log("imgdefaultChange 호출확인");
+
+		// AJAX를 사용하여 파일 전송
+		$.ajax({
+			url: '/mingle/mypage/defaultimg', // 서버 엔드포인트 URL
+			type: 'PUT',
+			success: function(response) {
+				console.log('서버 응답: ', response);
+				console.log('서버 응답: ', response.res);
+				$('#btn-img-sel').val("이미지변경");
+				if (response.status == 271) {
+					$('#img-profile').attr('src', response.res);
+					alert("프로필이 변경되었습니다.");
+					return false;
+				}
+				alert(response.res);
+			},
+			error: function(xhr, status, error) {
+				console.error('업로드 실패: ', error);
+				// 오류 처리 로직
+			}
+		});
+	}
+	
 	function imgChange(file) {
 		// FormData 객체 생성
 		console.log("imgChange 호출확인");
 		var formData = new FormData();
 		formData.append('image', file); // 'image'는 서버 측에서 기대하는 필드 이름입니다.
-		
+
 		// AJAX를 사용하여 파일 전송
 		$.ajax({
 			url: '/mingle/mypage/upload', // 서버 엔드포인트 URL
@@ -95,6 +121,15 @@ $(function() {
 	// 정보수정
 	$(".btn-userdata-common").click(function() {
 		const btnStatus = $(this).val();
+		if (btnStatus == "회원탈퇴") {
+			alert("회원탈퇴");
+			// 회원탈퇴 로직
+			// 재확인 
+			//  서버 요청. ajax 확인.
+			 userOutAjax();
+			return true;
+		};
+
 
 		var idValue = $(this).attr('id'); // id 값 가져오기
 		const btnSubValue = idValue.replace("btn-", "");
@@ -193,6 +228,7 @@ $(function() {
 			}// switch	
 		}// 수정 if
 	}); // 버튼이벤트 공통
+
 	const originData = {
 		userid: $(".userid").val(),
 		userpw: $(".userpw").val(),
@@ -219,6 +255,28 @@ $(function() {
 		}
 		return true;
 	}
+
+	function userOutAjax(selData, inputValue) {
+		$.ajax({
+			url: '/mingle/mypage/user', // 실제 URL로 변경 필요
+			type: 'DELETE',
+			success: function(response) {
+				if (response.status == 281) {
+					alert("회원탈퇴 성공");
+					location.href="/mingle"
+				}
+				if (response.status == 282) {
+					alert("회원탈퇴 실패");
+				}
+				console.log("데이터 전송 성공: ", response);
+
+			},
+			error: function(xhr, status, error) {
+				// 에러 처리
+				console.error("데이터 전송 실패: ", error);
+			}
+		});
+	}// 정보탈퇴 delete 요청
 
 	function userDataAjax(selData, inputValue) {
 		const data = {

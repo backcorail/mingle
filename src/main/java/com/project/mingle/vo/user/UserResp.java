@@ -59,6 +59,9 @@ public enum UserResp {
 	IMG_C_FAILE(272,"프로필 변경실패"),
 	IMG_C_BLANK(273,"파일이 비어 있습니다."),
 	
+	USER_OUT_OK(281,"회원탈퇴 성공"),
+	USER_OUT_FAILE(282,"회원탈퇴 실패"),
+	
 	;
 	
 	

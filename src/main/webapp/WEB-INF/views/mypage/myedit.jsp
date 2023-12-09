@@ -47,6 +47,9 @@
 						<input id="btn-img-del" type="button" value="이미지삭제">
 					</div>
 				</div>
+				<div class="user-out-area">
+					<input type="button" class="user-out btn-userdata-common" value="회원탈퇴"> 
+				</div>
 			</div>
 			<!-- 경계선 굵은것 앏은것-->
 			<div class="div-underline-thin"></div>

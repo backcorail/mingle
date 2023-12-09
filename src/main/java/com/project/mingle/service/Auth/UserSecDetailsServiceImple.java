@@ -25,7 +25,7 @@ public class UserSecDetailsServiceImple implements UserDetailsService {
         UserVO userVO = userMapper.iddcheck(userid);
         
         if (userVO == null) {
-//        	System.out.println("UserSecDetailsServiceImple 사용자 없음.");
+        	System.out.println("UserSecDetailsServiceImple 사용자 없음.");
 //            throw new UsernameNotFoundException("사용자를 찾을수 없습니다.: " + userid);
         	 return null;
         }

@@ -44,6 +44,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         
         System.out.println("Provider userDetails 토큰생성 직전 " + userDetails.getUsername());
         System.out.println("Provider userDetails 토큰생성 직전 " + userDetails.getPassword());
+        //return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         return new UsernamePasswordAuthenticationToken(userid, userpwd, userDetails.getAuthorities());
         
         // authenticate 가 끝나면 CustomAuthenticationSuccessHandler 호출

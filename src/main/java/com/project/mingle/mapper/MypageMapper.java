@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.project.mingle.vo.UserVO;
+import com.project.mingle.vo.user.ResponseDto;
 
 @Mapper
 @Repository
@@ -15,5 +16,7 @@ public interface MypageMapper {
 
 	//회원정보 단일 수정
 	public int userPut(String user_id, String column, String data);
+
+	public int userOut(String userid);
 
 }

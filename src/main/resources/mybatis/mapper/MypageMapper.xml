@@ -4,11 +4,17 @@
 <mapper namespace="com.project.mingle.mapper.MypageMapper">
 
 	<!-- 회원정보 확인 -->
-	<select id="ddDataCheck" resultType="com.project.mingle.vo.UserVO">
+	<select id="ddDataCheck"
+		resultType="com.project.mingle.vo.UserVO">
 		select * from users where ${param1} = #{param2}
 	</select>
 	<!-- 일부회원정보 수정 -->
 	<update id="userPut">
-		update users set ${param2} =  #{param3} where user_id=#{param1}
+		update users set ${param2} = #{param3} where
+		user_id=#{param1}
 	</update>
+	<!-- 일부회원정보 수정 -->
+	<delete id="userOut">
+		delete from users where user_id=#{param1}
+	</delete>
 </mapper>
