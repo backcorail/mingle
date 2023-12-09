@@ -14,4 +14,13 @@
 			<a href="/mingle/mypage/mymain" id="btn_mypage">${authUser}</a>
 		</c:otherwise>
 	</c:choose>
+	
+	<c:if test="${empty authUser }">
+		<!-- 로그인 아닐때  -->
+		<div class="div-my-nickname Inika-bold-25">등록하신 닉네임이 없습니다.</div>
+	</c:if>
+	<c:if test="${!empty authUser  }">
+		<!-- 로그인 일때  -->
+		<div class="div-my-nickname Inika-bold-25">${userVO.user_nick}</div>
+	</c:if>
 </div>

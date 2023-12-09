@@ -570,8 +570,13 @@ let index = {
         alert("비밀번호는 최대 20자까지만 허용됩니다.");
         return false;
    		 }
+		let reg = /[ㄱ-ㅎㅏ-ㅣ가-힣]/;
+		if (reg.test(pwd)) {
+			alert("비밀번호에는 한글이 포함될 수 없습니다.");
+			return false;
+		}
 	    // 영어 알파벳이 포함되어 있는지 체크
-	    const reg = /[A-Za-z]/;
+	    reg = /[A-Za-z]/;
 	    if (!reg.test(pwd)) {
 	        alert("비밀번호에는 영어 알파벳이 적어도 하나 포함되어야 합니다.");
 	        return false;
@@ -583,7 +588,7 @@ let index = {
 	        return false;
 	    }
 	    // 특수문자가 포함되어 있는지 체크
-	    regl = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+	    reg = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 	    if (!reg.test(pwd)) {
 	        alert("비밀번호에는 특수문자가 적어도 하나 포함되어야 합니다.");
 	        return false;
