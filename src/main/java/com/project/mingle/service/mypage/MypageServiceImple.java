@@ -139,5 +139,14 @@ public class MypageServiceImple implements MypageService {
 		return null;
 	}
 
+	@Override
+	public int userOut(String userid) {
+		// TODO Auto-generated method stub
+		int resultDel =  mypageMapper.userOut(userid);
+
+
+		return resultDel ;
+	}
+
 	
 }

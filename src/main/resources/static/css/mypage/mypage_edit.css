@@ -35,6 +35,7 @@
     #000000;
 }
 .div-edit-area{
+	width: 100%;
   display: flex;
   align-items: center;
   margin-top: calc(69px * var(--default-size));
@@ -100,6 +101,7 @@
   background: var(--btn-click-bg);
 }
 
+
 .div-underline-thin{
   width: 100%;
   margin-bottom: calc(61px * var(--default-size));
@@ -160,6 +162,16 @@
 .div-profile-edit-area .div-main-data-area{
   width: calc(553px * var(--default-size));
   margin-right: calc(52px * var(--default-size));
+}
+.user-out-area{
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+	
+}
+.user-out-area .user-out{
+	margin-right: 1rem;
+	width: 5rem;
 }
 
 /* 서브 데이터 수정 */

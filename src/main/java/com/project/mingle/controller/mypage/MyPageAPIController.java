@@ -5,6 +5,9 @@ import java.security.Principal;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,5 +69,40 @@ public class MyPageAPIController {
 			System.out.println("값 확인 : Exception");
 			return new ResponseDto<String>(UserResp.IMG_C_FAILE.getValue(), "프로필 변경실패");
 		}
+	}
+	@PutMapping("/mypage/defaultimg")
+	public ResponseDto<String> defaultimg(Principal principal) {
+
+			String fileName="profileEX.png";
+            CheckVO checkVO = new CheckVO("/mingle/profileimg/"+fileName,"userimg");
+            ResponseDto<String> responseDto = mypageService.userPut(principal.getName(), checkVO);
+            responseDto.setRes("/mingle/profileimg/"+fileName);
+
+			System.out.println("값 확인 : Exception");
+			return responseDto;
+
+	}
+	
+	
+	
+	
+	//회원탈퇴로직
+	@DeleteMapping("/mypage/user")
+	public ResponseDto<String> userOut(Authentication authentication){
+		int resultDel = mypageService.userOut(authentication.getName());
+		
+		ResponseDto<String> responseDto = new ResponseDto<String>();
+		if(resultDel>0) {
+			if (authentication != null ) {
+	            SecurityContextHolder.clearContext();
+				responseDto.setStatus(UserResp.USER_OUT_OK.getValue());
+				responseDto.setRes("회원탈퇴 완료");
+	        } 
+		}else {
+			responseDto.setStatus(UserResp.USER_OUT_FAILE.getValue());
+			responseDto.setRes("회원탈퇴 실패");
+		}
+		
+		return responseDto;
 	}
 }
