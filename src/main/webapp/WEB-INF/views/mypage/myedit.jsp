@@ -15,7 +15,13 @@
 			<!-- 경계선 굵은것 -->
 			<div class="div-underline-bold"></div>
 			<div class="div-edit-area">
-				<img id="img-profile" src="/mingle/img/user/profileEX.png" alt="">
+				<c:if test="${empty userVO.user_img }">
+					<img id="img-profile" src="/mingle/img/user/profileEX.png" alt="">
+				</c:if>
+				<c:if test="${!empty userVO.user_img  }">
+					<img id="img-profile" src="${userVO.user_img}">
+				</c:if>
+				
 
 				<div class="div-profile-area">
 
@@ -35,7 +41,10 @@
 					</c:if>
 
 					<div class="div-btn-area">
-						<input type="button" value="이미지변경"> <input type="button" value="이미지삭제">
+						<!-- 숨겨진 파일 선택기 -->
+						<input type="file" id="file-selector" style="display: none;">
+						<input id="btn-img-sel" type="button" value="이미지변경">
+						<input id="btn-img-del" type="button" value="이미지삭제">
 					</div>
 				</div>
 			</div>

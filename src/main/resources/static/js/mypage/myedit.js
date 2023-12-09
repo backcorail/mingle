@@ -1,7 +1,98 @@
 
-
 $(function() {
+	let selfile = null;
+	// 이미지파일 수정
+	$('#btn-img-sel').click(function(event) {
+		console.log("버튼 클릭됨. 현재 값: ", $(this).val());
 
+		if ($(this).val() == "이미지변경") {
+			console.log("이미지 변경 조건 진입");
+			$('#file-selector').click();
+		} else if ($(this).val() == "이미지수정") {
+			console.log("이미지 수정 조건 진입");
+			imgChange(selfile);
+		} else {
+			console.log("조건에 해당하지 않음");
+		}
+
+		// 이벤트 전파 방지
+		event.preventDefault();
+		event.stopPropagation();
+	});
+
+
+	// 이미지 삭제 버튼 클릭 이벤트
+	$('#btn-img-del').click(function() {
+		$('#img-profile').attr('src', '/mingle/img/user/profileEX.png'); // 기본 이미지로 변경
+		imgChange(selfile)
+	});
+
+	$('#file-selector').change(function(e) {
+		console.log("파일 선택 이벤트 발생");
+		selfile = e.target.files[0]; // 선택된 파일
+
+		// 파일 크기 제한 (예: 2MB)
+		var maxSize = 2 * 1024 * 1024; // 2MB
+		if (selfile.size > maxSize) {
+			alert('파일 크기가 너무 큽니다 (최대 2MB).');
+			return; // 더 이상 진행하지 않음
+		}
+
+		// 파일이 이미지인지 확인
+		if (selfile && selfile.type.match('image.*')) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				var img = new Image();
+				img.src = e.target.result;
+
+				img.onload = function() {
+					// 이미지 가로, 세로 길이 제한 (예: 500x500)
+					if (img.width > 500 || img.height > 500) {
+						alert('이미지 크기가 너무 큽니다 (최대 500x500).');
+						return; // 더 이상 진행하지 않음
+					}
+					$('#img-profile').attr('src', this.src); // 이미지 업데이트
+				};
+			};
+			reader.readAsDataURL(selfile); // 파일 읽기
+			$("#btn-img-sel").val("이미지수정");
+		} else {
+			alert('이미지 파일이 아닙니다!');
+		}
+	});
+	function imgChange(file) {
+		// FormData 객체 생성
+		console.log("imgChange 호출확인");
+		var formData = new FormData();
+		formData.append('image', file); // 'image'는 서버 측에서 기대하는 필드 이름입니다.
+		
+		// AJAX를 사용하여 파일 전송
+		$.ajax({
+			url: '/mingle/mypage/upload', // 서버 엔드포인트 URL
+			type: 'PUT',
+			data: formData,
+			processData: false, // processData와 contentType을 false로 설정
+			contentType: false,
+			success: function(response) {
+				console.log('서버 응답: ', response);
+				console.log('서버 응답: ', response.res);
+				$('#btn-img-sel').val("이미지변경");
+				if (response.status == 271) {
+					$('#img-profile').attr('src', response.res);
+					alert("프로필이 변경되었습니다.");
+					return false;
+				}
+				alert(response.res);
+			},
+			error: function(xhr, status, error) {
+				console.error('업로드 실패: ', error);
+				// 오류 처리 로직
+			}
+		});
+	}
+
+
+	// 정보수정
 	$(".btn-userdata-common").click(function() {
 		const btnStatus = $(this).val();
 
@@ -140,21 +231,21 @@ $(function() {
 			data: JSON.stringify(data), // http body 데이터
 			contentType: "application/json; charset=UTF-8",
 			success: function(response) {
-				var numberString = response.status+"";
+				var numberString = response.status + "";
 
 				// 끝자리 숫자 추출
 				var lastDigit = numberString.charAt(numberString.length - 1);
-				if(lastDigit=='1'){
-					const selBtnId = "btn-"+selData;
-					if(selData=="usergen"){
+				if (lastDigit == '1') {
+					const selBtnId = "btn-" + selData;
+					if (selData == "usergen") {
 						$("." + selData).attr("disabled", "disabled");
 					}
-					$("#"+selBtnId).val("변경");
+					$("#" + selBtnId).val("변경");
 					// 추가 작업
 					alert(response.res);
-				}else if(lastDigit=='2'){
+				} else if (lastDigit == '2') {
 					alert(response.res);
-				}else if(lastDigit=='3'){
+				} else if (lastDigit == '3') {
 					alert(response.res);
 				}
 				console.log("데이터 전송 성공: ", response);

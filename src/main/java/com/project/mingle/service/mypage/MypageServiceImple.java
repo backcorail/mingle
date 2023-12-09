@@ -117,7 +117,20 @@ public class MypageServiceImple implements MypageService {
 				return new ResponseDto<String>(UserResp.GEN_C_FAILE.getValue(), "성별 변경 실패");
 			}
 			
-
+		case "userimg":
+			System.out.println(checkVO.getData());
+			resultInt = mypageMapper.userPut(userid,"user_img",checkVO.getData());
+			System.out.println("호출 확인 : userimg");
+			if(resultInt >0) {
+				// 변경성공
+				System.out.println("호출 확인 : userimg 변경성공");
+				return new ResponseDto<String>(UserResp.IMG_C_OK.getValue(), "이미지 변경 성공");
+			}else {
+				// 변경실패
+				System.out.println("값 확인 : userimg 변경실패");
+				return new ResponseDto<String>(UserResp.IMG_C_FAILE.getValue(), "이미지 변경 실패");
+			}
+			
 		default:
 			System.out.println(checkVO.getData());
 			// 어떤 case도 일치하지 않을 때 실행할 코드

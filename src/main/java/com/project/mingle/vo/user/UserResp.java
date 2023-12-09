@@ -55,6 +55,10 @@ public enum UserResp {
 	GEN_C_OK(261,"성별 변경성공"),
 	GEN_C_FAILE(262,"성별 변경실패"),
 	
+	IMG_C_OK(271,"프로필 변경성공"),
+	IMG_C_FAILE(272,"프로필 변경실패"),
+	IMG_C_BLANK(273,"파일이 비어 있습니다."),
+	
 	;
 	
 	
