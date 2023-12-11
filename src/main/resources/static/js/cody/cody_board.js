@@ -1,3 +1,10 @@
+const urlStr = window.location.href;
+const url = new URL(urlStr);
+const urlParams = url.searchParams;
+const city = urlParams.get('city');
+const situation = urlParams.get('situation');
+
+
 var $item = 170;
 var $count = $('.slide_item1').length;
 var $count2 = $('.slide_item2').length;
@@ -68,6 +75,8 @@ function slideEnd(){
 
 
 $(document).ready(function(){
+		
+	
 		$('.slide_list').css('width',$slidebox);
 		$('.slide_list2').css('width',$slidebox);
 		$('.slide_list3').css('width',$slidebox);
@@ -86,7 +95,9 @@ $(document).ready(function(){
 	    var date = new Date();
 	    $("#dateName").text(day_names[date.getDay()]);
 	    $("#date").text((date.getMonth()+1)+ "." +date.getDate());
-	    var apiURI = "https://api.openweathermap.org/data/2.5/weather?q=Seoul,kr&appid=43e709e6a39f22a1a3734e13c7720b45";
+		
+	    
+	    var apiURI = "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",kr&appid=43e709e6a39f22a1a3734e13c7720b45";
 	    $.ajax({
 	        url: apiURI,
 	        dataType: "json",
