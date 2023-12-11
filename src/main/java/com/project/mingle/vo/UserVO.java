@@ -25,6 +25,8 @@ public class UserVO {
 	private Integer user_status;	//12) nn
 	private String user_unlock;	//13)
 	private String user_Oauth;		//14)
+	private String user_role;		//15)
+	
 
 //	private Integer userNo;		//1)
 //    private String userId; 			//2)
