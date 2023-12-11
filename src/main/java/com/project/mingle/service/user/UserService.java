@@ -2,6 +2,7 @@ package com.project.mingle.service.user;
 
 import com.project.mingle.vo.UserVO;
 import com.project.mingle.vo.user.JoinUserVO;
+import com.project.mingle.vo.user.OauthJoinUserVO;
 import com.project.mingle.vo.user.ResponseDto;
 
 public interface UserService {
@@ -19,5 +20,7 @@ public interface UserService {
 	public UserVO telcheck(String checktel);
 
 	public int pwdUpdate(JoinUserVO joinUserVO);
+
+	public int saveOauth(OauthJoinUserVO oauthJoinUserVO);
 
 }

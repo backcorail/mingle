@@ -7,8 +7,10 @@
 <link rel="stylesheet" href="/mingle/css/user/joinForm.css">
 
 <main>
+
 	<div class="container">
 		<!-- 로그인폼 시작 -->
+		
 		<div class="div-main-form div-main-lg">
 			<div class="blank-102"></div>
 			<div class="div-logo">mingle</div>
@@ -43,7 +45,9 @@
 			<div class="blank-27"></div>
 			<ul class="ul-sns-list">
 				<li><a href=""><img src="/mingle/img/user/naver.png" alt="naver"></a></li>
-				<li><a href=""><img src="/mingle/img/user/kakao.png" alt="naver"></a></li>
+				<li><a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}">
+					<img src="/mingle/img/user/kakao.png" alt="naver">
+				</a></li>
 				<li><a href=""><img src="/mingle/img/user/google.png" alt="naver"></a></li>
 				<li><a href=""><img src="/mingle/img/user/facebook.png" alt="naver"></a></li>
 			</ul>

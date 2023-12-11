@@ -13,6 +13,7 @@ import org.springframework.transaction.TransactionStatus;
 import com.project.mingle.mapper.UserMapper;
 import com.project.mingle.vo.UserVO;
 import com.project.mingle.vo.user.JoinUserVO;
+import com.project.mingle.vo.user.OauthJoinUserVO;
 import com.project.mingle.vo.user.ResponseDto;
 import com.project.mingle.vo.user.UserResp;
 
@@ -54,6 +55,34 @@ public class UserServiceImpl implements UserService {
     		System.out.println("\n 서비스 레이어 userVO build 이후 값");
     		System.out.println(userVO.toString());
         	saveResult = userMapper.save(userVO);
+            platformTransactionManager.commit(transactionStatus); // 성공 시 커밋
+        } catch (Exception e) {
+            platformTransactionManager.rollback(transactionStatus); // 예외 발생 시 롤백
+            
+        }
+		return saveResult;
+	}
+	
+	@Override
+	public int saveOauth(OauthJoinUserVO oauthJoinUserVO  ) {
+		// TODO Auto-generated method stub
+		System.out.println("save : UserServiceImpl");
+		TransactionStatus transactionStatus = platformTransactionManager.getTransaction(transactionDefinition);
+		
+		String rawPwd = oauthJoinUserVO.getUserpwd();
+		String encodedPwd = passwordEncoder.encode(rawPwd);
+		int saveResult=0;
+        try {
+    		UserVO userVO = UserVO.builder()
+    				.user_id(oauthJoinUserVO.getUserid())
+    				.user_pwd(encodedPwd)
+    				.user_nick(oauthJoinUserVO.getUsernick())
+    				.user_Oauth(oauthJoinUserVO.getUserOauth())
+    				.user_status(1)
+    				.build();
+    		System.out.println("\n 서비스 레이어 userVO build 이후 값");
+    		System.out.println(userVO.toString());
+        	saveResult = userMapper.saveOauth(userVO);
             platformTransactionManager.commit(transactionStatus); // 성공 시 커밋
         } catch (Exception e) {
             platformTransactionManager.rollback(transactionStatus); // 예외 발생 시 롤백

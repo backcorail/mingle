@@ -58,10 +58,11 @@
 					<!-- 아이디 -->
 					<div class="Inika-Regular-16-af">아이디</div>
 					<div class="div-userid-area div-underline-thin-data">
-						<c:if test="${empty userVO.user_id }">
+					
+						<c:if test="${empty userVO.user_id ||  !empty userVO.user_Oauth }">
 							<input readonly type="text" class="userid Inika-Regular-22 input-userdata-commom" placeholder="등록하신 아이디가 없습니다">
 						</c:if>
-						<c:if test="${!empty userVO.user_id }">
+						<c:if test="${empty userVO.user_Oauth}">
 							<input readonly type="text" class="userid Inika-Regular-22 input-userdata-commom" value="${userVO.user_id}">
 						</c:if>
 						<!-- 변경 버튼 -->
@@ -69,7 +70,7 @@
 							<!-- <input id="btn-userid" type="button" class="btn-userdata-common" value="변경"> -->
 						</c:if>
 						<c:if test="${!empty userVO.user_Oauth }">
-							<input id="btn-userid" type="button" class="btn-userdata-common" value="변경">
+							<!-- <input id="btn-userid" type="button" class="btn-userdata-common" value="변경"> -->
 						</c:if>
 						
 						
@@ -80,7 +81,13 @@
 					<div class="div-userid-area div-underline-thin-data">
 						<input readonly type="text" class="userpw Inika-Regular-22 input-userdata-commom" placeholder="***************************">
 						<!-- 변경 버튼 -->
-						<input id="btn-userpw" type="button" class="btn-userdata-common" value="변경">
+						<c:if test="${empty userVO.user_Oauth }">
+							<input id="btn-userpw" type="button" class="btn-userdata-common" value="변경">
+						</c:if>
+						<c:if test="${!empty userVO.user_Oauth }">
+							
+						</c:if>
+						
 					</div>
 				</div>
 				<div class="div-sub-data-area">

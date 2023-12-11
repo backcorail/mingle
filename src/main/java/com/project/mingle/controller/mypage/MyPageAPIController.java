@@ -5,8 +5,13 @@ import java.security.Principal;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.mingle.config.Auth.UserSecDetails;
+import com.project.mingle.service.Auth.UserSecDetailsServiceImple;
 import com.project.mingle.service.mypage.MypageService;
 import com.project.mingle.vo.user.CheckVO;
 import com.project.mingle.vo.user.ResponseDto;
@@ -24,18 +31,28 @@ public class MyPageAPIController {
 
 	@Autowired
 	MypageService mypageService;
+	
+    private final UserSecDetailsServiceImple userSecDetailsServiceImple;
+
+	public MyPageAPIController(UserSecDetailsServiceImple userSecDetailsServiceImple, PasswordEncoder passwordEncoder) {
+        this.userSecDetailsServiceImple = userSecDetailsServiceImple;
+    }
 
 	@PutMapping("/mypage/user")
-	public ResponseDto<String> userPut(@RequestBody CheckVO checkVO, Principal principal) {
+	public ResponseDto<String> userPut(@RequestBody CheckVO checkVO,@AuthenticationPrincipal UserSecDetails principal) {
 
 		System.out.println("userPut 호출");
-		ResponseDto<String> responseDto = mypageService.userPut(principal.getName(), checkVO);
-
+		ResponseDto<String> responseDto = mypageService.userPut(principal.getUserVO().getUser_id(), checkVO);
+		
+		UserDetails userDetails = userSecDetailsServiceImple.loadUserByUsername(principal.getUserVO().getUser_id());
+		Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
 		return responseDto;
 	}
 
 	@PutMapping("/mypage/upload")
-	public ResponseDto<String> uploadImage(@RequestParam("image") MultipartFile file,Principal principal,HttpSession session) {
+	public ResponseDto<String> uploadImage(@RequestParam("image") MultipartFile file,@AuthenticationPrincipal UserSecDetails principal,HttpSession session) {
 		// 파일 처리 로직
 		try {
 			if (file.isEmpty()) {
@@ -51,7 +68,7 @@ public class MyPageAPIController {
             String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
 
             // 새로운 파일 이름 생성 (예: UUID 사용)
-            String newFileName = principal.getName()+ fileExtension;
+            String newFileName = principal.getUsername()+ fileExtension;
             System.out.println("newFileName => " + newFileName);
             
 			// 파일 저장 로직 (여기에 구현)
@@ -60,8 +77,12 @@ public class MyPageAPIController {
             CheckVO checkVO = new CheckVO("/mingle/profileimg/"+fileName,"userimg");
             
             
-            ResponseDto<String> responseDto = mypageService.userPut(principal.getName(), checkVO);
+            ResponseDto<String> responseDto = mypageService.userPut(principal.getUsername(), checkVO);
             responseDto.setRes("/mingle/profileimg/"+fileName);
+            
+    		UserDetails userDetails = userSecDetailsServiceImple.loadUserByUsername(principal.getUserVO().getUser_id());
+    		Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+    		SecurityContextHolder.getContext().setAuthentication(authentication);
             
             return responseDto;
 		} catch (Exception e) {
@@ -79,6 +100,11 @@ public class MyPageAPIController {
             responseDto.setRes("/mingle/profileimg/"+fileName);
 
 			System.out.println("값 확인 : Exception");
+			
+			UserDetails userDetails = userSecDetailsServiceImple.loadUserByUsername(principal.getName());
+			Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+			
 			return responseDto;
 
 	}

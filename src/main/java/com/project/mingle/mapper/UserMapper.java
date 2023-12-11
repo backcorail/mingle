@@ -36,6 +36,8 @@ public interface UserMapper {
 	
 	//비밀번호 변경
 	public int pwdUpdate(UserVO userVO);
+
+	public int saveOauth(UserVO userVO);
 	
 
 	

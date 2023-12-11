@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/mingle/css/mypage/mypage_main.css">
     <main>
       <div class="container">
+      
         <!-- side 메뉴 -->
 <%@ include file="myaside.jspf" %>
         <!-- mypage main -->
@@ -35,7 +36,7 @@
           <div class="div-my-detail-data">
             <!-- 구매 내역 -->
             <div class="div-buy-data-num">
-              <div class="div-title-txt Inika-bold-20">구매내역</div>
+              <div class="div-title-txt Inika-bold-20"><h1>${authUser.userVO.user_nick}</h1></div>
               <ul class="ul-templete-mydata">
                 <li>
                   <div class="div-subtitle-txt">전체</div>

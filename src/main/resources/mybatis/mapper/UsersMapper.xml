@@ -9,6 +9,12 @@
 		values 
 		(#{user_id}, #{user_pwd}, #{user_nick}, #{user_status}, #{user_tel})
 	</insert>
+	 <insert id="saveOauth"  >
+		insert into users
+		( user_id, user_pwd, user_nick, user_status, user_Oauth )  
+		values 
+		(#{user_id}, #{user_pwd}, #{user_nick}, #{user_status}, #{user_Oauth})
+	</insert>
 	<!-- 아이디 중복체크 -->
 	<select id="iddcheck" resultType="com.project.mingle.vo.UserVO">
 		select * from users where user_id = #{checkid}
