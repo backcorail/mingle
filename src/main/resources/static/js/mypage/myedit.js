@@ -52,6 +52,7 @@ $(function() {
 						return; // 더 이상 진행하지 않음
 					}
 					$('#img-profile').attr('src', this.src); // 이미지 업데이트
+					$("#profile").attr('src', this.src);
 				};
 			};
 			reader.readAsDataURL(selfile); // 파일 읽기
@@ -74,6 +75,7 @@ $(function() {
 				$('#btn-img-sel').val("이미지변경");
 				if (response.status == 271) {
 					$('#img-profile').attr('src', response.res);
+					$("#profile").attr('src', response.res);
 					alert("프로필이 변경되었습니다.");
 					return false;
 				}
@@ -105,6 +107,7 @@ $(function() {
 				$('#btn-img-sel').val("이미지변경");
 				if (response.status == 271) {
 					$('#img-profile').attr('src', response.res);
+					$("#profile").attr('src', response.res);
 					alert("프로필이 변경되었습니다.");
 					return false;
 				}
@@ -117,7 +120,7 @@ $(function() {
 		});
 	}
 
-
+	let tempnick='';
 	// 정보수정
 	$(".btn-userdata-common").click(function() {
 		const btnStatus = $(this).val();
@@ -157,7 +160,7 @@ $(function() {
 			// 변경사항이 있으면 ajax날림.
 			// 변경이 성공하면 알람창 호출 
 		}
-
+		
 		if (btnStatus == '수정') {
 			switch (btnSubValue) {
 				case 'userid':
@@ -181,7 +184,8 @@ $(function() {
 				case 'usernick':
 					// 'usernick'에 대한 처리
 					console.log("User Nickname button clicked");
-					const nick = $("." + btnSubValue).val()
+					
+					let nick = $("." + btnSubValue).val()
 					if (nickregcheck(nick) && valueCheck(btnSubValue)) { // 닉네임 유효성검사 
 						userDataAjax(btnSubValue, nick)
 					}
@@ -300,6 +304,11 @@ $(function() {
 					}
 					$("#" + selBtnId).val("변경");
 					// 추가 작업
+					if(numberString=="231"){
+						const vlatest = $(".usernick").val();
+						$(".div-my-nickname").text(vlatest);
+						$("#btn_mypage").text(vlatest);
+					}
 					alert(response.res);
 				} else if (lastDigit == '2') {
 					alert(response.res);
