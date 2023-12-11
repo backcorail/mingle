@@ -15,4 +15,8 @@ public interface AdminMapper {
 	//public List<AdminVO> resell_boardData(AdminVO rVO);
 	public List<AdminVO> kreamData(AdminVO rVO);
 	public List<AdminTestVO> usersData(AdminTestVO rVO);
+	
+	//유저 수 카운팅
+	int countUsers();
+	
 }

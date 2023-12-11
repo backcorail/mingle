@@ -1,5 +1,7 @@
 package com.project.mingle.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +44,24 @@ public class AdminTestController {
 	}
 	
 	@GetMapping("/members_charts")
-	public String members_charts() {
-		return "admin/members_charts";
+	public ModelAndView members_charts(AdminTestVO rVO) {
+		ModelAndView mav = new ModelAndView();
+		
+		// 현재 날짜와 시간 가져오기
+		LocalDateTime now = LocalDateTime.now();
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy 'at' hh:mm a");
+		String formattedDate = now.format(formatter);
+		
+		//총 유저 수 카운트
+		int userCount = service.countUsers();
+		System.out.println("User Count : " +userCount);
+		
+		mav.addObject("currentDateTime", formattedDate);
+		mav.addObject("userCount", userCount);
+		mav.setViewName("admin/members_charts");
+		return mav;
+		
 	}
 	
 	@GetMapping("/products_data")
@@ -62,6 +80,26 @@ public class AdminTestController {
 		mav.addObject("userlist", userlist);
 		mav.setViewName("admin/products_data");
 		return mav;
+	}
+	
+	@GetMapping("transactions_data")
+	public String transactions_data() {
+		return "admin/transactions_data";
+	}
+	
+	@GetMapping("transactions_charts")
+	public String transactions_charts() {
+		return "admin/transactions_charts";
+	}
+	
+	@GetMapping("posts_data")
+	public String posts_data() {
+		return"admin/posts_data";
+	}
+	
+	@GetMapping("recommend_data")
+	public String recommend_data() {
+		return"admin/recommend_data";
 	}
 	
 	@GetMapping("/charts")

@@ -39,4 +39,9 @@
 	    </if>
 			order by user_regdate desc limit #{onePageRecord} offset ${offsetPoint};
 	</select>
+	
+	    <!-- 유저 수 카운팅 -->
+    <select id="countUsers" resultType="int">
+        select count(distinct user_id) from users;
+    </select>
 </mapper>

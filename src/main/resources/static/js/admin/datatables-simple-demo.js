@@ -4,8 +4,8 @@ $(document).ready(function() {
         type: 'GET',
         success: function(data) {
             // 가져온 데이터에서 <main> 태그 내부의 내용만 추출하여 삽입
-            var mainContent = $(data).find('main').html();
-            $('#data-container').html(mainContent);
+            var productsListContent = $(data).find('#products_list').html();
+            $('#products_data_container').html(productsListContent);
 
             // Simple-DataTables 초기화 (불러온 데이터 안에 테이블이 있다면)
             const datatablesSimple = document.getElementById('datatablesSimple');
