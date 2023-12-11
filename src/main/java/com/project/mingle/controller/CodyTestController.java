@@ -19,7 +19,7 @@ public class CodyTestController {
 		return "OK";
 	}
 	
-	@RequestMapping("/")
+	@RequestMapping("/co")
 	public String main(Model model) {
 		model.addAttribute("data", "hello rozy~!");
 		return "index";

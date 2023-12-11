@@ -105,9 +105,9 @@ public class MypageController {
 		ModelAndView modelAndView = new ModelAndView();
 		// 데이터 가져오기
 		// 판매내역 가져오기
-		
+
+
 		modelAndView.setViewName("/mypage/myselllist");
 		return modelAndView;
 	}
-	
 }

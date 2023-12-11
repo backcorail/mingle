@@ -38,8 +38,8 @@
 			</c:when>
 			<c:otherwise>
 		    	<div id="mypageLogout">
-		    		<img src="#" id="profile"/>
-		    		<a href="/mingle/mypage/mymain" id="btn_mypage">${authUser}</a>
+		    		<img id="profile" src="${!empty authUser.userVO.user_img ? authUser.userVO.user_img : '/mingle/img/user/profileEX.png'}" alt="" >
+		    		<a href="/mingle/mypage/mymain" id="btn_mypage">${authUser.userVO.user_nick}</a>
 		    		<a href="/mingle/user/logout" id="logout">Logout</a>
 		    	</div>
 			</c:otherwise>
