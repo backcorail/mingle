@@ -43,7 +43,9 @@ public class AdminServiceImpl implements AdminService{
 			return mapper.usersData(rVO);
 		}
 
-
-		
-
+		@Override
+		public int countUsers() {
+			// TODO Auto-generated method stub
+			return mapper.countUsers();
+		}
 }

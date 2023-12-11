@@ -62,7 +62,7 @@
 								<i class="fas fa-tachometer-alt"></i>
 							</div> Dashboard
 						</a>
-						<!-- Members 메뉴 -->
+						<!-- Members ë©ë´ -->
 						<div class="sb-sidenav-menu-heading">Interface</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseMembers" aria-expanded="false"
@@ -74,17 +74,17 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Members 하위 메뉴 -->
+						<!-- Members íì ë©ë´ -->
 						<div class="collapse" id="collapseMembers"
 							aria-labelledby="headingMembers"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/members_data">Members Data</a>
 								<a class="nav-link" href="/mingle/admintest/members_charts">Members Charts</a>
-								<!-- 더 많은 하위 메뉴 항목들 추가 가능 -->
+								<!-- ë ë§ì íì ë©ë´ í­ëª©ë¤ ì¶ê° ê°ë¥ -->
 							</nav>
 						</div>
-						<!-- Products 메뉴 -->
+						<!-- Products ë©ë´ -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseProducts" aria-expanded="false"
 							aria-controls="collapseProducts">
@@ -95,16 +95,16 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Products 하위 메뉴 -->
+						<!-- Products íì ë©ë´ -->
 						<div class="collapse" id="collapseProducts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
-								<a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+									<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
+									<a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
 							</nav>
 						</div>
-						<!-- Transactions 메뉴 -->
+						<!-- Transactions ë©ë´ -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseTransactions" aria-expanded="false"
 							aria-controls="collapseTransactions">
@@ -115,15 +115,15 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Transactions 하위 메뉴 -->
+						<!-- Transactions íì ë©ë´ -->
 						<div class="collapse" id="collapseTransactions"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/transactions_data">Transactions Data</a>
-								<a class="nav-link" href="/mingle/admintest/transactions_charts">Transactions Charts</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Transactions Delete</a>
 							</nav>
 						</div>
-						<!-- Posts 메뉴 -->
+						<!-- Posts ë©ë´ -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapsePosts" aria-expanded="false"
 							aria-controls="collapsePosts">
@@ -134,7 +134,7 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Posts 하위 메뉴 -->
+						<!-- Posts íì ë©ë´ -->
 						<div class="collapse" id="collapsePosts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
@@ -142,7 +142,7 @@
 								<a class="nav-link" href="/mingle/admintest/layout_static">Posts Delete</a>
 							</nav>
 						</div>
-						<!-- Recommend 메뉴 -->
+						<!-- Recommend ë©ë´ -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseRecommend" aria-expanded="false"
 							aria-controls="collapseRecommend">
@@ -153,15 +153,15 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Recommend 하위 메뉴 -->
+						<!-- Recommend íì ë©ë´ -->
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Data</a>
 								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
 							</nav>
 						</div>
-						<!-- Server 메뉴 -->
+						<!-- Server ë©ë´ -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseServer" aria-expanded="false"
 							aria-controls="collapseServer">
@@ -172,14 +172,16 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Recommend 하위 메뉴 -->
+						<!-- Recommend íì ë©ë´ -->
 						<div class="collapse" id="collapseServer"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Server Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Server settings</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Server
+									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Server
+									settings</a>
 							</nav>
 						</div>
+
 
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapsePages" aria-expanded="false"
@@ -247,72 +249,77 @@
 				</div>
 			</nav>
 		</div>
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Charts</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="/mingle/admintest">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Charts</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-                                <a target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a>
-                                .
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-chart-area me-1"></i>
-                                Area Chart Example
-                            </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
-                            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-pie me-1"></i>
-                                        Pie Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="/mingle/js/admin/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-		<script src="/mingle/js/admin/chart-area-demo.js"></script>
-        <script src="/mingle/js/admin/chart-bar-demo.js"></script>
-        <script src="/mingle/js/admin/chart-pie-demo.js"></script>
-    </body>
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid px-4">
+					<h1 class="mt-4">Transactions Data</h1>
+					<ol class="breadcrumb mb-4">
+						<li class="breadcrumb-item"><a href="/mingle/admintest">Dashboard</a></li>
+						<li class="breadcrumb-item active">Transactions Navigation</li>
+					</ol>
+					<div class="card mb-4">
+						<div class="card-header">
+							<i class="fas fa-table me-1"></i> Transactions List
+						</div>
+						<div class="card-body">
+							<table id="datatablesSimple">
+								<thead>
+									<tr>
+										<th>Seller ID</th>
+										<th>Product name</th>
+										<th>Post date</th>
+										<th>Category</th>
+										<th>Image</th>
+									</tr>
+								</thead>
+								<tfoot>
+									<tr>
+										<th>Seller ID</th>
+										<th>Product name</th>
+										<th>Date</th>
+										<th>Category</th>
+										<th>Image</th>
+									</tr>
+								</tfoot>
+								<tbody>
+									<c:forEach var="kItem" items="${klist}">
+										<c:forEach var="users" items="${userlist}">
+										<tr>
+											<td>${users.user_id}</td>
+											<td>${kItem.item_name}</td>
+											<td>${kItem.item_postdate}</td>
+											<td>Category</td>
+											<td><img referrerpolicy="no-referrer" src="${kItem.item_image}"/></td>
+										</tr>
+									</c:forEach>
+										</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</main>
+			<footer class="py-4 bg-light mt-auto">
+				<div class="container-fluid px-4">
+					<div
+						class="d-flex align-items-center justify-content-between small">
+						<div class="text-muted">Copyright &copy; Your Website 2023</div>
+						<div>
+							<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
+								&amp; Conditions</a>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="/mingle/js/admin/scripts.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+		crossorigin="anonymous"></script>
+	<script src="/mingle/js/admin/datatables-simple-demo.js"></script>
+</body>
 </html>

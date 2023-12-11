@@ -119,8 +119,8 @@
 						<div class="collapse" id="collapseTransactions"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Transactions Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Transactions Delete</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_data">Transactions Data</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_charts">Transactions Delete</a>
 							</nav>
 						</div>
 						<!-- Posts 메뉴 -->
@@ -250,7 +250,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Charts</h1>
+                        <h1 class="mt-4">Members Charts</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="/mingle/admintest">Dashboard</a></li>
                             <li class="breadcrumb-item active">Charts</li>
@@ -262,57 +262,61 @@
                                 .
                             </div>
                         </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-chart-area me-1"></i>
-                                Area Chart Example
-                            </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
-                            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-pie me-1"></i>
-                                        Pie Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="/mingle/js/admin/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-		<script src="/mingle/js/admin/chart-area-demo.js"></script>
-        <script src="/mingle/js/admin/chart-bar-demo.js"></script>
-        <script src="/mingle/js/admin/chart-pie-demo.js"></script>
-    </body>
-</html>
+                        <div id="total_users">
+	                        <div class="card mb-4">
+	                            <div class="card-header">
+	                                <i class="fas fa-chart-area me-1"></i>
+	                                Total Users
+	                            </div>
+	                            <!-- userCount 데이터 저장 -->
+	                            <div id="countUsersData" data-count-users="${userCount}"></div>
+	                            <div class="card-body"><canvas id="membersCharts" width="100%" height="30"></canvas></div>
+	                            <div class="card-footer small text-muted">Updated ${currentDateTime}</div>
+	                    </div>
+	                        </div>
+	                        <div class="row">
+	                            <div class="col-lg-6">
+	                                <div class="card mb-4">
+	                                    <div class="card-header">
+	                                        <i class="fas fa-chart-bar me-1"></i>
+	                                        Bar Chart Example
+	                                    </div>
+	                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
+	                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+	                                </div>
+	                            </div>
+	                            <div class="col-lg-6">
+	                                <div class="card mb-4">
+	                                    <div class="card-header">
+	                                        <i class="fas fa-chart-pie me-1"></i>
+	                                        Pie Chart Example
+	                                    </div>
+	                                    <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
+	                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </main>
+	                <footer class="py-4 bg-light mt-auto">
+	                    <div class="container-fluid px-4">
+	                        <div class="d-flex align-items-center justify-content-between small">
+	                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+	                            <div>
+	                                <a href="#">Privacy Policy</a>
+	                                &middot;
+	                                <a href="#">Terms &amp; Conditions</a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </footer>
+	            </div>
+	        </div>
+	        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+	        <script src="/mingle/js/admin/scripts.js"></script>
+	        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+			<script src="/mingle/js/admin/members_charts.js"></script>
+	        <script src="/mingle/js/admin/chart-bar-demo.js"></script>
+	        <script src="/mingle/js/admin/chart-pie-demo.js"></script>
+	    </body>
+	</html>

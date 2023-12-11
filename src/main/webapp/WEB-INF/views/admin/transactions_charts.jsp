@@ -120,7 +120,7 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/transactions_data">Transactions Data</a>
-								<a class="nav-link" href="/mingle/admintest/transactions_charts">Transactions Charts</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_charts">Transactions Delete</a>
 							</nav>
 						</div>
 						<!-- Posts 메뉴 -->
@@ -138,7 +138,7 @@
 						<div class="collapse" id="collapsePosts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Posts Data</a>
 								<a class="nav-link" href="/mingle/admintest/layout_static">Posts Delete</a>
 							</nav>
 						</div>
@@ -157,7 +157,7 @@
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Data</a>
 								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
 							</nav>
 						</div>
