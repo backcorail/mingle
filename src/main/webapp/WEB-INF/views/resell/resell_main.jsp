@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page import="java.util.HashMap" %>
 
 <link rel="stylesheet" href="/mingle/css/resell/resell_main.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap&family=Nanum+Pen+Script&display=swap&family=Abril+Fatface&family=Kanit:ital,wght@1,500&family=Noto+Sans+KR:wght@300" rel="stylesheet">
@@ -14,6 +16,8 @@
 			test = ${rVO.searchWord1}/${rVO.searchWord2}/${rVO.searchWord3}<br>
 			1:${rVO.nowPage}, 2:${rVO.ktotalPage}
 		</li>
+		
+		<!-- 검색 부분 -->
 		<li class="resell_search">
 			<div>
 				<form method="get" action="resell" onsubmit="return search()">
@@ -43,97 +47,57 @@
 				</c:if>
 			</ul>
 		</li>
+		
+		<!-- 상단 카테고리 -->
 		<li class="search_category">
 			<div>
-				<div id="type_men" class="category_type select">Men</div>
-				<div id="type_women" class="category_type">Women</div>
-				<div id="type_shoes" class="category_type">Shoes</div>
-				<div id="type_bag" class="category_type">Bag</div>
-				<div id="type_other" class="category_type">Other</div>
+				<c:forEach var="n" items="${main}" varStatus="n0">
+					<div class="category_type ${n}" id="${n0.index}">${n}</div>
+				</c:forEach>
 			</div>
 			<div class="sort_dropdown">
 				<div class="sort_button">
 					<div>정렬</div>
 					<img src="/mingle/img/resell/sort_slide.png">
 					<div class="sort_list">
-						<a class="resell_sort <c:if test="${rVO.sort == 'latest'}">active</c:if>" href="/mingle/resell?sort=latest">최신순</a>
-						<a class="resell_sort <c:if test="${rVO.sort == 'name'}">active</c:if>" href="/mingle/resell?sort=name">이름순</a>
-						<a class="resell_sort <c:if test="${rVO.sort == 'price'}">active</c:if>" href="/mingle/resell?sort=price">가격순</a>
+						<div id="latest" class="resell_sort <c:if test="${rVO.sort == 'latest'}">active</c:if>">최신순</div>
+						<div id="name" class="resell_sort <c:if test="${rVO.sort == 'name'}">active</c:if>">이름순</div>
+						<div id="price" class="resell_sort <c:if test="${rVO.sort == 'price'}">active</c:if>">가격순</div>
 					</div>
 				</div>
 			</div>
 		</li>
-		
 	</ul>
 </div>
 
+
 <div class="resell_main">
 <!-- 왼쪽 탭 부분 -->
-	<div class="resell_left">
-		<!-- TOP 부분 -->
-		<div class="resell_left_top">
-			<div class="resell_left_topic">
-				<h2>TOP</h2>
-				<img src="/mingle/img/resell/btn_more_resell.png" id="moreView1" class="moreView"/>
-			</div>
-			<ul id="category_detail1" class="category_detail">
-				<li><a href="">맨투맨/스웨트 셔츠</a></li>
-				<li><a href="">니트/스웨터</a></li>
-				<li><a href="">긴소매 티셔츠</a></li>
-				<li><a href="">카라 티셔츠</a></li>
-				<li><a href="">반소매 티셔츠</a></li>
-				<li><a href="">민소매 티셔츠</a></li>
-				<li><a href="">스포츠 상의</a></li>
-				<li><a href="">셔츠</a></li>
-			</ul>
-		</div>
-		
-		<!-- BOTTOM 부분 -->
-		<div class="resell_left_bottom">
-			<div class="resell_left_topic">
-				<h2>BOTTOM</h2>
-				<img src="/mingle/img/resell/btn_more_resell.png" id="moreView2" class="moreView"/>
-			</div>
-			<ul id="category_detail2" class="category_detail">
-				<li><a href="">데님팬츠</a></li>
-				<li><a href="">코튼 팬트</a></li>
-				<li><a href="">슈트 팬츠/슬랙스</a></li>
-				<li><a href="">트레이닝/조거 팬츠</a></li>
-				<li><a href="">숏 팬츠</a></li>
-				<li><a href="">스포츠 하의</a></li>
-				<li><a href="">기타 바지</a></li>
-				<li><a href="">점프 슈트/오버올</a></li>
-			</ul>
-		</div>
-		
-		<!-- OUTER 부분 -->
-		<div class="resell_left_outer">
-			<div class="resell_left_topic">
-				<h2>OUTER</h2>
-				<img src="/mingle/img/resell/btn_more_resell.png" id="moreView3" class="moreView"/>
-			</div>
-			<ul id="category_detail3" class="category_detail">
-				<li><a href="">후드 집업</a></li>
-				<li><a href="">블루종</a></li>
-				<li><a href="">라이더 재킷</a></li>
-				<li><a href="">트리커 재킷</a></li>
-				<li><a href="">슈트/블레이저 재킷</a></li>
-				<li><a href="">무스탕/퍼</a></li>
-				<li><a href="">카디건</a></li>
-				<li><a href="">아노락</a></li>
-				<li><a href="">코트</a></li>
-				<li><a href="">패딩</a></li>
-				<li><a href="">나일론/코치 재킷</a></li>
-			</ul>
-		</div>
-		
+	<ul class="resell_left">
+		<!-- 왼쪽 카테고리 -->
+		<c:forEach var="category" items="${title}" varStatus="n1">
+	        <li>
+	            <div class="resell_left_topic">
+	                <div>${category}</div>
+	                <img src="/mingle/img/resell/btn_more_resell.png" class="moreView">
+	            </div>
+	            <ul class="search_detail">
+	                <c:forEach var="item" items="${requestScope[category]}" varStatus="n2">
+	                    <li>
+	                    	<div class="category_detail" id="<c:if test='${!n2.last}'>${(n1.index+1)*100+n2.index}</c:if>
+	                    	<c:if test='${n2.last}'>${(n1.index+1)*100+99}</c:if>">${item}</div>
+	                    </li>
+	                </c:forEach>
+	            </ul>
+	        </li>
+		</c:forEach>
 		<!-- 글작성 부분 -->
-        <div class="write_recell">
-			<a  href="/mingle/resell/write" class="button_container">
+		<li class="write_recell">
+			<a href="/mingle/resell/write" class="button_container">
 			  	<button class="btn_write_recell"><span>fill out</span></button>
 			</a>
-	 	</div> 
-	</div>
+	 	</li> 
+ 	</ul>
 	
 	<!-- 리셀 부분 -->
 	<div class="resell_right">
@@ -144,12 +108,14 @@
 			<c:forEach var="vo" items="${klist}">
 				<div class="list_box">
 					<img referrerpolicy="no-referrer" src="${vo.item_image}">
-					<!-- <img src="${vo.item_image}"/> -->
-					<a href="/mingle/resell/board?no=${vo.item_no}&page=${rVO.nowPage}
-						<c:if test="${rVO.searchWord1 != null}">&search=${rVO.searchWord1}</c:if>">${vo.item_name}</a>
-					<div class="recell_price">${vo.item_price}</div>
+					<div class="board_view" id="${vo.item_no}">${vo.item_name}</div>
+					
+					<c:set var="format" value="${vo.item_price}"/>
+					<fmt:formatNumber var="formatPrice" value="${format}" pattern="#,###원"/>
+					<div class="recell_price">${formatPrice}</div>
 					<div class="recell_time">
 						<div>
+							${vo.item_postdate} / 
 							<script>document.write(timeDiff('${vo.item_postdate}'));</script>
 						</div>
 					</div>
@@ -163,29 +129,29 @@
 				<ul class="page_select">
 					<li>
 						<c:if test="${rVO.nowPage != 1}">
-							<a href="/mingle/resell?page=1<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">첫 페이지</a>
+							<div id="1" class="page_box">첫 페이지</div>
 						</c:if>
 					</li>
 					<li>
 						<c:if test="${rVO.nowPage > rVO.onePageCount}">
-							<a href="/mingle/resell?page=${rVO.startPage - rVO.onePageCount}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">이전</a>
+							<div id="${rVO.startPage - rVO.onePageCount}" class="page_box">이전</div>
 						</c:if>
 					</li>
 					<c:forEach var="n" begin="${rVO.startPage}" end="${rVO.startPage + rVO.onePageCount-1}">
 						<li class="<c:if test='${n==rVO.nowPage}'>active</c:if>">
 							<c:if test="${n<=rVO.ktotalPage}">
-								<a href="/mingle/resell?page=${n}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">${n}</a>
+								<div id="${n}" class="page_box">${n}</div>
 							</c:if>
 						</li>
 					</c:forEach>
 					<li>
 						<c:if test="${rVO.nowPage / rVO.onePageCount < rVO.ktotalPage / rVO.onePageCount}">
-							<a href="/mingle/resell?page=${rVO.startPage + rVO.onePageCount}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">다음</a>
+							<div id="${rVO.startPage + rVO.onePageCount}" class="page_box">다음</div>
 						</c:if>
 					</li>
 					<li>
 						<c:if test="${rVO.nowPage != rVO.ktotalPage && rVO.ktotalPage != 0}">
-							<a href="/mingle/resell?page=${rVO.ktotalPage}<c:if test="${rVO.searchWord!=''}">&search=${rVO.searchWord}</c:if>" class="page_box">끝 페이지</a>
+							<div id="${rVO.ktotalPage}" class="page_box">끝 페이지</div>
 						</c:if>
 					</li>
 				</ul>

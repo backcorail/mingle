@@ -38,9 +38,9 @@
 					<div>50,000원</div>
 				</div>
 				<div class="modify_remove">
-					<a href="/mingle/resell?page=${rVO.nowPage}<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>">목록</a>
-					<a>수정</a>
-					<a>삭제</a>
+					<div href="/mingle/resell?page=${rVO.nowPage}<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>">목록</div>
+					<div>수정</div>
+					<div>삭제</div>
 				</div>
 			</li>
 			<li class="blank_line"></li>

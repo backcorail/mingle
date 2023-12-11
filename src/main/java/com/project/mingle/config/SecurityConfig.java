@@ -59,8 +59,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		.formLogin().disable()
 //		.headers().frameOptions().disable();
 
-        http. // http 설정 시작.
-                authorizeHttpRequests() // 인가 요청
+        http // http 설정 시작.
+                .authorizeHttpRequests() // 인가 요청
+                .antMatchers("/img/**").permitAll()
 //         	.antMatchers("/user/**","/js/**","/css/**","/assets/**","/font/**","/img/**").permitAll()
 //         	.anyRequest().authenticated();
                 .antMatchers("/mypage/**").authenticated()// 마이페이지는 인증받은 사람만 // 인증받지 않으면 exceptionHandling
@@ -87,7 +88,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationProvider(customAuthenticationProvider)//AuthenticationManagerBuilder 에서 provider를 지정해도 된다. 
                 .csrf(csrf -> csrf.disable());// 테스트를 위해서 
                 
-
 //         .successHandler((request, response, authentication) -> {
 //             HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
 //             

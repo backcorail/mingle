@@ -45,12 +45,11 @@ public class ResellVO {
 	private String searchWord2; // 검색할 문장2
 	private String searchWord3; // 검색할 문장3
 	
-	// 정렬 관련 변수 목록
+	// 정렬,카테고리 관련 변수 목록
 	private String sort; // 정렬 유형
+	private int category; // 상단에 있는 카테고리
+	private int detail; // 왼쪽에 있는 상세 카테고리
 	
-	// 카테고리 관련 변수 목록
-	private int category; // 상단에 있는 카테고리(5가지)
-	private int detail; // 왼쪽에 있는 상세 카테고리(?가지)
 	
 	
     

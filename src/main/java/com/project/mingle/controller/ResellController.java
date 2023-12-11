@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class ResellController {
 
 	@GetMapping("")
 	public ModelAndView resell_main(
+			@RequestParam(name="no", defaultValue="0") int no,
 			@RequestParam(name="page", defaultValue="1") int page,
 			@RequestParam(name="search", defaultValue="") String[] search,
 			@RequestParam(name="category", defaultValue="1") int category,
@@ -40,6 +42,22 @@ public class ResellController {
 			ResellVO rVO) {
 		
 		ModelAndView mav = new ModelAndView();
+		
+		String[] main = {"All", "Men", "Women", "Other"};
+		String[] title = {"Top", "Outer", "Bottom", "Shose", "Bag"};;
+		String[] Top = {"전체", "맨투맨/스웨트 셔츠", "니트/스웨터", "긴소매 티셔츠", "카라 티셔츠", "반소매 티셔츠", "민소매 티셔츠", "후드 티셔츠", "스포츠 상의", "셔츠/블라우스", "기타 상의"};
+		String[] Outer = {"전체", "후드 집업", "블루종", "라이더 재킷", "트러커 재킷", "슈트/블레이저 재킷", "무스탕/퍼", "카디건", "아노락", "코트", "패딩", "나일론/코치 재킷", "기타 아우터"};
+		String[] Bottom = {"전체", "데님팬츠", "코튼 팬트", "슈트 팬츠/슬랙스", "트레이닝/조거 팬츠", "숏 팬츠", "스포츠 하의", "기타 바지"};
+		String[] Shose = {"전체", "구두", "부츠", "힐/펌프스", "운동화", "슬리퍼", "샌들", "기타 신발"};
+		String[] Bag = {"전체", "백팩", "크로스백/매신저백", "슬링백", "핸드백", "지갑", "기타 가방"};
+		mav.addObject("main", main);
+		mav.addObject("title", title);
+		mav.addObject("Top", Top);
+		mav.addObject("Outer", Outer);
+		mav.addObject("Bottom", Bottom);
+		mav.addObject("Shose", Shose);
+		mav.addObject("Bag", Bag);
+		
 		rVO.setNowPage(page);
 
 		String searchAll = "";
@@ -49,6 +67,7 @@ public class ResellController {
 				searchAll += ",";
 			}
 		}
+		
 		rVO.setSearchWord(searchAll);
 		
 		if (search.length > 0 && !"".equals(search[0])) {
@@ -81,7 +100,14 @@ public class ResellController {
 	}
 
 	@GetMapping("/board")
-	public ModelAndView resell_board(@RequestParam(name="no") Integer no, @RequestParam(name="page") Integer page, ResellVO rVO) {
+	public ModelAndView resell_board(
+			@RequestParam(name="no", defaultValue="0") int no,
+			@RequestParam(name="page", defaultValue="1") int page,
+			@RequestParam(name="search", defaultValue="") String[] search,
+			@RequestParam(name="category", defaultValue="1") int category,
+			@RequestParam(name="detail", defaultValue="0") int detail,
+			@RequestParam(name="sort", defaultValue="latest") String sort,
+			ResellVO rVO) {
 		ModelAndView mav = new ModelAndView();
 		//rVO.setNowPage(page);
 		

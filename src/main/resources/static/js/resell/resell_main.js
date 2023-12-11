@@ -1,22 +1,39 @@
-// 각종 스타일 변경
+// 기타 변수들 관리
 $(document).ready(function() {
 	
-	// 각각의 탭 종류 클릭시 보여주기/닫기
-	$(".moreView").click(function() {
-		$(this).parent().next().slideToggle(300);
-		var rad = $(this).data("rotation") || 0;
-		var newRad = rad + 45;
-		$(this).data("rotation",newRad);
-		$(this).css("transform","rotate("+newRad+"deg)");
+	// ===========================================================
+	// -----< 공통 변수 지정 >-----
+	
+	var url = window.location.origin + window.location.pathname;
+	var params = window.location.search;
+	var urlParams = new URLSearchParams(params);
+	var page = urlParams.get("page");
+	var search = urlParams.get("search");
+	var category = urlParams.get("category");
+	var detail = urlParams.get("detail");
+	var sort = urlParams.get("sort");
+	
+	// -----< 공통 변수 지정 >-----
+	// ===========================================================
+	// -----< 초기 값 지정 >-----
+	
+	
+	
+	// -----< 초기 값 지정 >-----
+	// ===========================================================
+	// -----< 페이지 부분 >-----
+	
+	// 데이터 보내기
+	$(".page_box").click(function() {
+		var pageNum = $(this).attr("id");
+		URLData(url+"?", pageNum, null, null, null, null);
 	});
 	
-	// 상단탭 클릭시 효과
-	$(".category_type").click(function() {
-		$(".category_type").removeClass("select");
-		$(this).addClass("select");
-	});
+	// -----< 페이지 부분 >-----
+	// ===========================================================
+	// -----< 상단검색바 부분 >-----
 	
-    // 검색창 애니메이션
+	// 검색창 열고 닫는 애니메이션
     $("#search_slide").click(function() {
 		var width_change = parseInt($("#search_bar").css("width"), 10);
 		var rad = $(this).data("rotation") || 0;
@@ -37,113 +54,67 @@ $(document).ready(function() {
 		}
 		$(this).css("transform","rotate("+newRad+"deg)");
     });
-    
+    // 검색바 돋보기 이미지 누를때도 submit적용
     $("#search_magnifier").click(function() {
 		$(".resell_search form").submit();
 	});
-});
-
-// 시간 계산 함수
-function timeDiff(time) {
-	time = new Date(time);
-	var currentTime = new Date();
-	var diff = Math.floor((currentTime - time)/60000);
-	
-	if(diff<1) {
-		return "방금전";
-	} else if(diff < 60) {
-		return diff+"분전";
-	} else if(diff < 1440) {
-		return Math.floor(diff/60)+"시간전";
-	} else if(diff < 10080) {
-		return Math.floor(diff/1440)+"일전";
-	} else if(diff < 43200) {
-		return Math.floor(diff/10080)+"주전";
-	} else if(diff < 525600) {
-		return Math.floor(diff/43200)+"달전";
-	} else {
-		return ""
-	}
-}
-
-
-
-// 검색 관련 함수
-function search() {
-	var addSearch = $("#search_bar").val().trim();
-	var newSearch = search || "";
-	
-	if(addSearch == "") { // 값이 없을시
-		alert("검색어를 입력해주세요.");
-		return false;
-	} else { // 값이 있을시
-		var count = (search ? (search.match(/,/g) || []).length : 0);
-		if(count==2) {
-			alert("검색어는 최대 3개까지 작성하실수 있습니다.");
-			return false;
-		}
-		// 대소문자 구분 없이 중복 검사
-		var duplicate = newSearch.split(",").some(function(item) {
-			return item.trim().toLowerCase() === addSearch.toLowerCase();
-		});
-		
-        if (duplicate) {
-            alert("중복된 검색어입니다. 다시 작성해주세요.");
-            return false;
-        }
-        
-		if(search == null) {
-			newSearch = addSearch;
-		} else {
-			newSearch += ","+addSearch;
-		}
-		if(!page) {page = 1};
-	}
-
-}
-
-
-
-// 검색어 지우기
-$(document).ready(function() {
+	// 검색어 지우기
 	$(".search_word").on("click", ".search_delete", function() {
-    	var removeText = $(this).prev().text().trim();
-    	var searchUrl = window.location.search;
-		var urlParams = new URLSearchParams(searchUrl);
-		var search = urlParams.get("search");
-		var page = urlParams.get("page");
-		var url = window.location.origin + window.location.pathname;
-		
+		var removeText = $(this).prev().text().trim();
     	var searchArray = search.split(",");
     	var newArray = searchArray.filter(function(item) {
 			return item.trim() != removeText;
 		});
 		var newSearch = newArray.join(",");
-		var newUrl;
-		if(newSearch =="") {
-			newUrl = url+"?page="+page;
-		} else {
-    		newUrl = url+"?page="+page+"&search="+newSearch;
-    	}
-    	window.location.href = newUrl;
     	$(this).closest("li").remove();
-    	
-    	$.ajax({
-			type : "GET",
-			url : "resell",
-			data : {
-				page:page,
-				search:newSearch.split(","),
-			}
-		});
-		return false;
+    	URLData(url+"?", 1, newSearch, null, null, null);
 	});
-});
+	
+	// -----< 상단검색바 부분 >-----
+	// ===========================================================
+	// -----< 상단 카테고리 부분 >-----
 
-
-
-$(document).ready(function() {
+	// 상단 카테고리 초기값 애니메이션 지정
+	$(".category_type").removeClass("select");
+	if(!category) {$(".All").addClass("select")}
+	if(category == 1) {$(".Men").addClass("select")}
+	if(category == 2) {$(".Women").addClass("select")}
+	if(category == 3) {$(".Other").addClass("select")}
+	// 상단 카테고리 부분
+	$(".category_type").click(function() {
+		// 클릭 효과
+		$(".category_type").removeClass("select");
+		$(this).addClass("select");
+		// 데이터 보내기
+		var categoryNum = $(this).attr("id");
+		URLData(url+"?", null, null, categoryNum, null, null);
+	});
+	
+	// -----< 상단 카테고리 부분 >-----
+	// ===========================================================
+	// -----< 좌특 카테고리 부분 >-----
+	
+	// 옆쪽 카테고리 열고 닫는 애니메이션 
+	$(".moreView").click(function() {
+		$(this).parent().next().slideToggle(200);
+		var rad = $(this).data("rotation") || 0;
+		var newRad = rad + 45;
+		$(this).data("rotation",newRad);
+		$(this).css("transform","rotate("+newRad+"deg)");
+	});
+	// 데이터 보내기
+	$(".category_detail").click(function() {
+		var detailNum = $(this).attr("id");
+		URLData(url+"?", null, null, null, detailNum, null);
+	});
+	
+	// -----< 좌특 카테고리 부분 >-----
+	// ===========================================================
+	// -----< 상단 정렬 부분 >-----
+	
+	// 페이지 실행시 숨기기
 	$(".sort_list").hide();
+	// 정렬 탭 열고 닫는 애니메이션
 	$(".sort_button").click(function() {
 		$(".sort_list").animate({width:"toggle"},200);
 		var rad = $(".sort_button > img").data("rotation") || 0;
@@ -151,86 +122,160 @@ $(document).ready(function() {
 		$(".sort_button > img").data("rotation", newRad);
 		$(".sort_button > img").css("transform","rotate("+newRad+"deg)");
 	});
+	// 상단 정렬 초기값 애니메이션 지정
+	$(".resell_sort").removeClass("active");
+	if(!sort) {$("#latest").addClass("active")}
+	if(sort == "name") {$("#name").addClass("active")}
+	if(sort == "price") {$("#price").addClass("active")}
+	// 정렬 데이터 보내기
+	$(".resell_sort").click(function() {
+		var sortNum = $(this).attr("id");
+		URLData(url+"?", null, null, null, null, sortNum);
+	});
+	
+	// -----< 상단 정렬 부분 >-----
+	// ===========================================================
+	
+	// 게시글 이동 url
+	$(".board_view").click(function() {
+		var boardNum = $(this).attr("id");
+		console.log(url);
+		url += "/board?no="+boardNum+"&";
+		console.log(url);
+		alert("확인");
+		URLData(url, null, null, null, null, null);
+	});	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 });
 
 
-
-// 비동기식(ajax) 데이터 보내기 및 데이터 판별
-function URLData(page, search, category, detail, sort) {
-	// page - 0 : 값 없음(초기값=1) / !0 : 값 있음
-	// search - "" : 값 없음(초기값="") / !"" : 값 있음
-	// category - 0 : 값 없음(초기값=1) / !0 : 값 있음
-	// detail - 0 : 값 없음(초기값=0) / !0 : 값 있음
-	// sort - "" : 값 없음(초기값="latest") /  : 값 있음
+// ===========================================================
 	
-	// 필요한 변수 및 데이터
+// 시간 계산 함수
+function timeDiff(time) {
+	time = new Date(time);
+	var currentTime = new Date();
+	var diff = Math.floor((currentTime - time)/60000);
+	
+	if(diff<1) {return "방금전"}
+	else if(diff < 60) {return diff+"분전"}
+	else if(diff < 1440) {return Math.floor(diff/60)+"시간전"}
+	else if(diff < 10080) {return Math.floor(diff/1440)+"일전"}
+	else if(diff < 43200) {return Math.floor(diff/10080)+"주전"}
+	else if(diff < 525600) {return Math.floor(diff/43200)+"달전"}
+	else {return Math.floor(diff/525600)+"년전"}
+}
+
+// ===========================================================
+
+// 검색 관련 함수
+function search() {
 	var url = window.location.origin + window.location.pathname;
 	var params = window.location.search;
 	var urlParams = new URLSearchParams(params);
+	var search = urlParams.get("search");
+	var addSearch = $("#search_bar").val().trim();
 	
-	var newURL = url+"?";
+	// null값 방지
+	if(!search) {search=""}
+	var newSearch = search;
+	
+	// 검색어 관련 
+	if(addSearch == "") { // 값이 없을시
+		alert("검색어를 입력해주세요.");
+		return false;
+	} else { // 값이 있을시
+		var count = (search ? (search.match(/,/g) || []).length : 0);
+		if(count==2) { // 검색어 3개 이상 입력하려 할시
+			alert("검색어는 최대 3개까지 작성하실수 있습니다.");
+			return false;
+		}
+		// 대소문자 구분 없이 중복 검사
+		var duplicate = search.split(",").some(function(item) {
+			return item.trim().toLowerCase() === addSearch.toLowerCase();
+		});
+        if (duplicate) { // 검색어 중복검사
+            alert("중복된 검색어입니다. 다시 작성해주세요.");
+            return false;
+        }
+        // 검색어 합치기(쉼표로 구별)
+		if(search == null || search == "") {
+			newSearch = addSearch;
+		} else {
+			newSearch += ","+addSearch;
+		}
+		// URLData(O, O, X, X, X); - 페이지 1로 초기화 되야됨
+		URLData(url+"?", 1, newSearch, null, null, null);
+	}
+	return false;
+}
+
+// ===========================================================
+
+// 비동기식(ajax) 데이터 보내기 및 데이터 판별
+function URLData(url, page, search, category, detail, sort) {
+	// 작성 틀 : URLData(url, null, null, null, null, null);
+	// 초기 값 : URLData(url, 1, "", 1, 0, "latest";)
+
+	// 필요한 변수 및 데이터
+	var params = window.location.search;
+	var urlParams = new URLSearchParams(params);
+	var newURL = url;
 	var count = 0;
 	
-	// 바꿀값이 없으면 주소에 있는 값 불러오기
-	if(page == 0) {page = urlParams.get("page")}
-	if(search == "") {search = urlParams.get("search")}
-	if(category == 0) {category = urlParams.get("category")}
-	if(detail == 0) {detail = urlParams.get("detail")}
-	if(sort == "") {sort = urlParams.get("sort")}
+	// 입력한 값이 있는지 판정(없으면 우선 주소창값으로 변경)
+	if(page == null) {page = urlParams.get("page")}
+	if(search == null) {search = urlParams.get("search")}
+	if(category == null) {category = urlParams.get("category")}
+	if(detail == null) {detail = urlParams.get("detail")}
+	if(sort == null) {sort = urlParams.get("sort")}
 	
 	// 변경할 URL주소 만들기
-	if(!page) {
+	if(page) {
 		if(count>=1) {newURL += "&"}
 		newURL += "page="+page;
 		count++;
 	}
-	if(!search) {
+	if(search) {
 		if(count>=1) {newURL += "&"}
 		newURL += "search="+search;
 		count++;
 	}
-	if(!category) {
+	if(category && category != 0) {
 		if(count>=1) {newURL += "&"}
 		newURL += "category="+category;
 		count++;
 	}
-	if(!detail) {
+	if(detail) {
 		if(count>=1) {newURL += "&"}
 		newURL += "detail="+detail;
 		count++;
 	}
-	if(!sort) {
+	if(sort && sort != "latest") {
 		if(count>=1) {newURL += "&"}
 		newURL += "sort="+sort;
 		count++;
 	}
-	
-	// 바꿀 값, 현재 주소의 값 둘다 없을 때 보낼 데이터 초기값 정해주기 
-	if(!page) {page=1};
-	if(!search) {search=""};
-	if(!category) {category=0};
-	if(!detail) {category=1};
-	if(!sort) {sort="latest"};
-	
+
 	// 새로만든 주소 적용하기
 	window.location.href = newURL;
 	
-	// 비동기식 데이터 보내기
-	$.ajax({
-		type : "GET",
-		url : "resell",
-		data : {
-			page : page,
-			search : search,
-			category : category,
-			detail : detail,
-			sort : sort
-		},
-		success : function(d) {
-			console.log("전송 완료");
-		},
-		error : function(d) {
-			console.log("전솔 실패");
-		}
-	});
+	// search부분이 컨트롤러에서는 배열로 받지만, 여기서는 값을
+	// 쉼표로 구분해서 하나의 문자열로 보내는데, 컨트롤러에서 
+	// 자동으로 배열로 넣어준다고 함.
+	
+	return false;
 }
+
+// ===========================================================
