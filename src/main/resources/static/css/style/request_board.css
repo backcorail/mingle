@@ -1,0 +1,195 @@
+/*폰트 적용*/
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 전체 적용 */
+input:focus {outline: none;}
+
+/*전체 페이지 구성도*/
+.page{
+	margin-top: 120px;
+}
+.request_board{
+	width: 80%;
+	min-width: 1280px;
+	display: flex;
+	flex-direction: column;
+}
+.top{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 22px;
+}
+.bottom{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+
+/*글 본문 페이지*/
+.content_wrapper{
+	width:70%;
+	height: auto;
+	min-height: 400px;
+	padding: 50px;
+	border: 1px solid lightgray;
+	border-radius: 15px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+
+/*사이드 바 파트*/
+.side_wrapper{
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-left: 22px;
+}
+/*프로필 파트*/
+.profile_wrapper{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.profileImg{
+	width: 48px;
+	height: 48px;
+}
+.nameDate_wrapper{
+	width: 185px;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Noto Sans KR', sans-serif;
+	padding: 0px 10px;
+}
+.profile_nickname{
+	font-size: 16px;
+	font-weight: bold;
+}
+.writeDate{
+	font-size: 14px;
+	font-weight: bold;
+	color: gray;
+}
+.scrap{
+	width: 67px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border-radius: 16px;
+	color: white;
+	font-size: 13px;
+	background: rgb(255,180,0);
+}
+
+/*타이틀 파트*/
+.title_wrapper{
+	width: 100%;
+	height: auto;
+	margin-top: 50px;
+	padding: 20px;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: rgb(255, 255, 217);
+	box-shadow: 4px 3px 2px rgb(234, 234, 0);
+}
+.title_text{
+	width: 100%;
+	font-size: 17px;
+}
+.title{
+	width: 100%;
+	font-family: 'GmarketSansMedium';
+	font-size: 20px;
+}
+.boardType{
+	width: 45px;
+	height: 26px;
+	line-height: 26px;
+	align-self: self-end;
+	text-align: center;
+	margin-top: 5px;
+	border: 2px solid rgb(255,180,0);
+	border-radius: 5px;
+	font-family: 'GmarketSansMedium';
+	font-size: 17px;
+	color: rgb(255,180,0);
+}
+/*댓글 영역*/
+.reply_wrapper{
+	width: 70%;
+	min-height: 150px;
+}
+.reply_area1{
+	width: 22px;
+	background: greenyellow;
+}
+.reply_area2{
+	width:300px;
+	background: dimgrey;
+}
+.replyTitle{
+	font-family: 'HakgyoansimWoojuR';
+	font-size: 	24.57px;
+	font-weight: bold;
+}
+.replyWrite{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+#comment_input{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	margin-top: 15px;
+	padding: 0px 20px;
+	border: 3px solid rgb(255,180,0);
+	border-radius: 25px;
+	font-family: 'GmarketSansMedium';
+	font-size: 15px;
+}
+/* 작성 버튼 css */
+.btnWrite{
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	margin: 10px 10px;
+	border:none;
+	border-radius: 15px;
+	background: none;
+	font-family: 'GmarketSansMedium';
+	font-size: 15px;
+	align-self: flex-end;
+}
+.btnWrite:hover{
+	transition: all 0.3s;
+	background: rgb(255,180,0);
+	color: white;
+	font-weight: bold;
+	translate: -2px -2px;
+	box-shadow: 3px 5px rgb(219,153,0);
+	
+}
+.btnWrite:active{
+	box-shadow: none;
+	translate: 2px 2px;
+	font-weight: normal;
+}

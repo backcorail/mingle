@@ -315,6 +315,9 @@
 					</div>
 				</div>
 			</div>
+			<c:if test="${authUser!=''}">
+				<div><a href="/mingle/style/request/write">글쓰기</a></div>
+			</c:if>
 		</div>
 	</div>
 </div>

@@ -70,11 +70,6 @@ public class StyleController {
 		return "style/style_write";
 	}
 	
-	@GetMapping("/requestwrite")
-	public String style_requestwrite() {
-		return "style/request_write";
-	}
-	
 	@PostMapping("/writeOk")
 	public ModelAndView styleWriteOk(StyleVO vo, HttpServletRequest request, Principal principal) {
 		ModelAndView mav = new ModelAndView();
