@@ -6,29 +6,23 @@
 	<select id="resell_totalRecord" resultType="int">
 		select count(resell_no) from resell
 		<where>
-			<if test="searchWord1 != null and searchWord1 != ''">
-				and resell_name like '%${searchWord1}%'
-			</if>
-			<if test="searchWord2 != null and searchWord2 != ''">
-				and resell_name like '%${searchWord2}%'
-			</if>
-			<if test="searchWord3 != null and searchWord3 != ''">
-				and resell_name like '%${searchWord3}%'
-			</if>
+			<if test="searchWord1 != ''">and resell_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and resell_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and resell_name like '%${searchWord3}%'</if>
 		</where>
 	</select>
 	
 	<select id="kream_totalRecord" resultType="int">
 	 	select count(item_no) from item
-	 	<where>
-			<if test="searchWord1 != null and searchWord1 != ''">
-				and item_name like '%${searchWord1}%'
-			</if>
-			<if test="searchWord2 != null and searchWord2 != ''">
-				and item_name like '%${searchWord2}%'
-			</if>
-			<if test="searchWord3 != null and searchWord3 != ''">
-				and item_name like '%${searchWord3}%'
+		<where>
+			<if test="searchWord1 != ''">and item_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and item_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and item_name like '%${searchWord3}%'</if>
+			<if test="category != 0">and item_category = '${category}'</if>
+			<if test="category != 3 and detail == 0">or item_category = 0</if>
+			<if test="detail != 0">
+				<if test="detail % 100 != 0">and item_detail = '${detail}'</if>
+				<if test="detail % 100 == 0">and floor(item_detail/100)*100 = '${detail}'</if>
 			</if>
 		</where>
 	</select>
@@ -37,15 +31,9 @@
 		select resell_no, resell_name, resell_seller, item_price, date_format(resell_writedate, '%Y-%m-%d %h:%i:%s') 
 		resell_writedate from resell 
 		<where>
-			<if test="searchWord1 != null and searchWord1 != ''">
-				and resell_name like '%${searchWord1}%'
-			</if>
-			<if test="searchWord2 != null and searchWord2 != ''">
-				and resell_name like '%${searchWord2}%'
-			</if>
-			<if test="searchWord3 != null and searchWord3 != ''">
-				and resell_name like '%${searchWord3}%'
-			</if>
+			<if test="searchWord1 != ''">and resell_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and resell_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and resell_name like '%${searchWord3}%'</if>
 		</where>
 		order by resell_writedate desc limit #{onePageRecord} offset ${offsetPoint};		
 	</select>
@@ -53,17 +41,25 @@
 	<select id="kreamData" resultType="com.project.mingle.vo.ResellVO">
 	    select item_no, item_name, item_price, item_image, item_postdate from item
 	    <where>
-			<if test="searchWord1 != null and searchWord1 != ''">
-				and item_name like '%${searchWord1}%'
-			</if>
-			<if test="searchWord2 != null and searchWord2 != ''">
-				and item_name like '%${searchWord2}%'
-			</if>
-			<if test="searchWord3 != null and searchWord3 != ''">
-				and item_name like '%${searchWord3}%'
+			<if test="searchWord1 != ''">and item_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and item_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and item_name like '%${searchWord3}%'</if>
+			<if test="category != 0">and item_category = '${category}'</if>
+			<if test="category != 3 and detail == 0">or item_category = 0</if>
+			<if test="detail != 0">
+				<if test="detail % 100 != 0">and item_detail = '${detail}'</if>
+				<if test="detail % 100 == 0">and floor(item_detail/100)*100 = '${detail}'</if>
 			</if>
 		</where>
-	    order by item_postdate desc limit #{onePageRecord} offset ${offsetPoint};
+	    order by 
+	    <choose>
+		    <when test="sort == 'name_asc'">item_name asc</when>
+		    <when test="sort == 'price_asc'">item_price asc</when>
+		    <when test="sort == 'latest_asc'">item_postdate asc</when>
+		    <when test="sort == 'name_desc'">item_name desc</when>
+		    <when test="sort == 'price_desc'">item_price desc</when>
+		    <otherwise>item_postdate desc</otherwise>
+		</choose>
+		limit #{onePageRecord} offset ${offsetPoint};
 	</select>
-	
 </mapper>

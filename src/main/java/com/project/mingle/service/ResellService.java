@@ -1,5 +1,6 @@
 package com.project.mingle.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.project.mingle.vo.ResellVO;

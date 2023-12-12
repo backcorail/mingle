@@ -6,13 +6,9 @@
 
 <!-- 위쪽 부분 -->
 <div>
-	<ul class="resell_top">
-		<li id="choose_men" class="choose"><h3>Men</h3></li>
-		<li id="choose_women" class="choose"><h3>Women</h3></li>
-		<li id="choose_shoes" class="choose"><h3>Shoes</h3></li>
-		<li id="choose_bag" class="choose"><h3>Bag</h3></li>
-		<li id="choose_other" class="choose"><h3>Other</h3></li>
-	</ul>
+	<c:forEach var="n" items="${main}" varStatus="n0">
+		<div class="category_type ${n}" id="${n0.index}">${n}</div>
+	</c:forEach>
 </div>
 <div class="resell_board_top">
 	<div class="resell_board_img">
@@ -38,9 +34,9 @@
 					<div>50,000원</div>
 				</div>
 				<div class="modify_remove">
-					<a href="/mingle/resell?page=${rVO.nowPage}<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>">목록</a>
-					<a>수정</a>
-					<a>삭제</a>
+					<div href="/mingle/resell?page=${rVO.nowPage}<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>">목록</div>
+					<div>수정</div>
+					<div>삭제</div>
 				</div>
 			</li>
 			<li class="blank_line"></li>
