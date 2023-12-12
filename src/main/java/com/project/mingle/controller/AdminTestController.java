@@ -93,7 +93,7 @@ public class AdminTestController {
 	}
 	
 	@GetMapping("posts_data")
-	public String posts_data() {
+	public String posts_data() {		
 		return"admin/posts_data";
 	}
 	
