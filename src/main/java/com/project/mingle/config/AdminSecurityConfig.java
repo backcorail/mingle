@@ -13,9 +13,9 @@ import com.project.mingle.handler.security.AdminAuthenticationSuccessHandler;
 import com.project.mingle.handler.security.AdminLogoutSuccessHandler;
 import com.project.mingle.service.Auth.AdminAuthenticationProvider;
 
-@Configuration
-@EnableWebSecurity
-@Order(2)
+//@Configuration
+//@EnableWebSecurity
+//@Order(2)
 public class AdminSecurityConfig {
 
 	@Autowired
@@ -48,8 +48,7 @@ public class AdminSecurityConfig {
 						.logoutSuccessUrl("/") // 로그아웃 성공 시 리디렉션할 URL
 						.invalidateHttpSession(true) // 세션 무효화// 로그인 성공 후 이동할 기본 URL
 						.deleteCookies("JSESSIONID"))// 그리고 http
-				.authenticationProvider(adminAuthenticationProvider)// AuthenticationManagerBuilder 에서 provider를 지정해도
-																		// 된다.
+				.authenticationProvider(adminAuthenticationProvider)
 				.csrf(csrf -> csrf.disable());// 테스트를 위해서
 		return http.build();
 

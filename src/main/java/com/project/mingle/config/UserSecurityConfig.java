@@ -67,7 +67,8 @@ public class UserSecurityConfig {
                 authorizeHttpRequests() // 인가 요청
 //         	.antMatchers("/user/**","/js/**","/css/**","/assets/**","/font/**","/img/**").permitAll()
 //         	.anyRequest().authenticated();
-                .antMatchers("/mypage/**").hasRole("USER")// 마이페이지는 인증받은 사람만 // 인증받지 않으면 exceptionHandling
+                .antMatchers("/mypage/**").authenticated()// 마이페이지는 인증받은 사람만 // 인증받지 않으면 exceptionHandling
+                //.antMatchers("/mypage/**").hasRole("USER")// 마이페이지는 인증받은 사람만 // 인증받지 않으면 exceptionHandling
                 .anyRequest().permitAll(); // 다른 인가 요청은 모두 인증없이 모두 허용
                 // .antMatchers("/user").hasRole("USER") // 인증과 인가에 대해서
         http // http 설정 시작.                
