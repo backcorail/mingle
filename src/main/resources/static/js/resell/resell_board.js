@@ -1,6 +1,34 @@
 
 $(document).ready(function() {
 	/* 최상단 카테고리 선택 */
+	
+	// ===========================================================
+	// -----< 상단 카테고리 부분 >-----
+
+	// 상단 카테고리 초기값 애니메이션 지정
+	$(".category_type").removeClass("select");
+	if(!category) {$(".All").addClass("select")}
+	if(category == 1) {$(".Men").addClass("select")}
+	if(category == 2) {$(".Women").addClass("select")}
+	if(category == 3) {$(".Other").addClass("select")}
+	// 상단 카테고리 부분
+	$(".category_type").click(function() {
+		// 클릭 효과
+		$(".category_type").removeClass("select");
+		$(this).addClass("select");
+		// 데이터 보내기
+		var categoryNum = $(this).attr("id");
+		if(categoryNum == 3) {
+			URLData(url+"?", null, null, categoryNum, 0, null);
+		} else {
+			URLData(url+"?", null, null, categoryNum, null, null);
+		}
+	});
+	
+	// -----< 상단 카테고리 부분 >-----
+	// ===========================================================
+	
+	
 	$(".choose").click(function() {
         $(".choose").removeClass("active");
         $(this).addClass("active");
@@ -42,23 +70,63 @@ $(document).ready(function() {
 	})
 });
 
-$(document).ready(function() {
-	// 현재 페이지 URL 가져오기
-	var url = window.location.search;
-	var urlParams = new URLSearchParams(url);
-	var nowPage = urlParams.get("page");
-	var boardNum = urlParams.get("no");
-	var nowSearch = urlParams.get("search");
-	console.log(nowPage,boardNum);
-	$.ajax({
-		type : "GET",
-		url : "board?no="+boardNum+"&page="+nowPage+"&search="+nowSearch,
-		data : { 
-			page:nowPage,
-			no:boardNum,
-			search:nowSearch,
-		},
-	})
-});
 
 
+// ===========================================================
+
+// 비동기식(ajax) 데이터 보내기 및 데이터 판별
+function URLData(url, page, search, category, detail, sort) {
+	// 작성 틀 : URLData(url, null, null, null, null, null);
+	// 초기 값 : URLData(url, 1, "", 1, 0, "latest";)
+
+	// 필요한 변수 및 데이터
+	var params = window.location.search;
+	var urlParams = new URLSearchParams(params);
+	var newURL = url;
+	var count = 0;
+	
+	// 입력한 값이 있는지 판정(없으면 우선 주소창값으로 변경)
+	if(page == null) {page = urlParams.get("page")}
+	if(search == null) {search = urlParams.get("search")}
+	if(category == null) {category = urlParams.get("category")}
+	if(detail == null) {detail = urlParams.get("detail")}
+	if(sort == null) {sort = urlParams.get("sort")}
+	
+	// 변경할 URL주소 만들기
+	if(page) {
+		if(count>=1) {newURL += "&"}
+		newURL += "page="+page;
+		count++;
+	}
+	if(search) {
+		if(count>=1) {newURL += "&"}
+		newURL += "search="+search;
+		count++;
+	}
+	if(category && category != 0) {
+		if(count>=1) {newURL += "&"}
+		newURL += "category="+category;
+		count++;
+	}
+	if(detail) {
+		if(count>=1) {newURL += "&"}
+		newURL += "detail="+detail;
+		count++;
+	}
+	if(sort && sort != "latest") {
+		if(count>=1) {newURL += "&"}
+		newURL += "sort="+sort;
+		count++;
+	}
+
+	// 새로만든 주소 적용하기
+	window.location.href = newURL;
+	
+	// search부분이 컨트롤러에서는 배열로 받지만, 여기서는 값을
+	// 쉼표로 구분해서 하나의 문자열로 보내는데, 컨트롤러에서 
+	// 자동으로 배열로 넣어준다고 함.
+	
+	return false;
+}
+
+// ===========================================================

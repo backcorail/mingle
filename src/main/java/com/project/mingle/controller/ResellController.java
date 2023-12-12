@@ -36,9 +36,9 @@ public class ResellController {
 			@RequestParam(name="no", defaultValue="0") int no,
 			@RequestParam(name="page", defaultValue="1") int page,
 			@RequestParam(name="search", defaultValue="") String[] search,
-			@RequestParam(name="category", defaultValue="1") int category,
+			@RequestParam(name="category", defaultValue="0") int category,
 			@RequestParam(name="detail", defaultValue="0") int detail,
-			@RequestParam(name="sort", defaultValue="latest") String sort,
+			@RequestParam(name="sort", defaultValue="latest_desc") String sort,
 			ResellVO rVO) {
 		
 		ModelAndView mav = new ModelAndView();
@@ -58,8 +58,6 @@ public class ResellController {
 		mav.addObject("Shose", Shose);
 		mav.addObject("Bag", Bag);
 		
-		rVO.setNowPage(page);
-
 		String searchAll = "";
 		for(int i=0; i<search.length; i++) {
 			searchAll += search[i];
@@ -68,7 +66,13 @@ public class ResellController {
 			}
 		}
 		
+		rVO.setNowPage(page);
 		rVO.setSearchWord(searchAll);
+		rVO.setCategory(category);
+		rVO.setDetail(detail);
+		rVO.setSort(sort);
+		
+		System.out.println(page+","+search+","+category+","+detail+","+sort);
 		
 		if (search.length > 0 && !"".equals(search[0])) {
 			rVO.setSearchWord1(search[0]);

@@ -133,13 +133,13 @@
 	justify-content: flex-end;
 }
 /* 수정, 삭제 글자 */
-.modify_remove > a {
+.modify_remove > div {
 	width:60px;
 	/*font-weight:bold;*/
 	font-size:20px;
 	color:gray;
 }
-.modify_remove > a:hover {
+.modify_remove > div:hover {
 	color:blue;
 	cursor:pointer;
 }

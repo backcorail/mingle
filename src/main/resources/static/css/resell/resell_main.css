@@ -176,6 +176,18 @@
 	overflow:hidden;
 	white-space:nowrap;
 }
+.resell_sort:last-child {
+	width:100px;
+	background:rgba(0, 0, 0, 0.1);
+	border-radius:5px;
+	display:flex;
+	justify-content:space-evenly;
+    align-items: center;
+}
+.resell_sort > img {
+	width:20px;
+	height:20px;
+}
 
 
 /* 중간 왼쪽 탭 부분 */

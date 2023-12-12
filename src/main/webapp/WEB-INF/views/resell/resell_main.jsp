@@ -60,9 +60,15 @@
 					<div>정렬</div>
 					<img src="/mingle/img/resell/sort_slide.png">
 					<div class="sort_list">
-						<div id="latest" class="resell_sort <c:if test="${rVO.sort == 'latest'}">active</c:if>">최신순</div>
-						<div id="name" class="resell_sort <c:if test="${rVO.sort == 'name'}">active</c:if>">이름순</div>
-						<div id="price" class="resell_sort <c:if test="${rVO.sort == 'price'}">active</c:if>">가격순</div>
+						<div id="latest_desc" class="resell_sort <c:if test="${rVO.sort.startsWith('latest') || rVO.sort == ''}">active</c:if>">최신순</div>
+						<div id="name_asc" class="resell_sort <c:if test="${rVO.sort.startsWith('name')}">active</c:if>">이름순</div>
+						<div id="price_asc" class="resell_sort <c:if test="${rVO.sort.startsWith('price')}">active</c:if>">가격순</div>
+						<div id="order_asc" class="resell_sort">
+							<c:if test="${rVO.sort == 'latest_desc' || rVO.sort == 'name_asc' || rVO.sort == 'price_asc'}">
+								오름차순<img src="/mingle/img/resell/order_up.png"></c:if>
+							<c:if test="${rVO.sort == 'latest_asc' || rVO.sort == 'name_desc' || rVO.sort == 'price_desc'}">
+								내림차순<img src="/mingle/img/resell/order_down.png"></c:if>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -109,7 +115,6 @@
 				<div class="list_box">
 					<img referrerpolicy="no-referrer" src="${vo.item_image}">
 					<div class="board_view" id="${vo.item_no}">${vo.item_name}</div>
-					
 					<c:set var="format" value="${vo.item_price}"/>
 					<fmt:formatNumber var="formatPrice" value="${format}" pattern="#,###원"/>
 					<div class="recell_price">${formatPrice}</div>

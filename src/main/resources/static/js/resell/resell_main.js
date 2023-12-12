@@ -87,7 +87,11 @@ $(document).ready(function() {
 		$(this).addClass("select");
 		// 데이터 보내기
 		var categoryNum = $(this).attr("id");
-		URLData(url+"?", null, null, categoryNum, null, null);
+		if(categoryNum == 3) {
+			URLData(url+"?", 1, null, categoryNum, 0, null);
+		} else {
+			URLData(url+"?", 1, null, categoryNum, null, null);
+		}
 	});
 	
 	// -----< 상단 카테고리 부분 >-----
@@ -96,7 +100,9 @@ $(document).ready(function() {
 	
 	// 옆쪽 카테고리 열고 닫는 애니메이션 
 	$(".moreView").click(function() {
-		$(this).parent().next().slideToggle(200);
+		var visible = $(this).parent().next();
+		$(".search_detail").not(visible).slideUp(300);
+		visible.slideToggle(300);
 		var rad = $(this).data("rotation") || 0;
 		var newRad = rad + 45;
 		$(this).data("rotation",newRad);
@@ -105,7 +111,7 @@ $(document).ready(function() {
 	// 데이터 보내기
 	$(".category_detail").click(function() {
 		var detailNum = $(this).attr("id");
-		URLData(url+"?", null, null, null, detailNum, null);
+		URLData(url+"?", 1, null, null, detailNum, null);
 	});
 	
 	// -----< 좌특 카테고리 부분 >-----
@@ -122,14 +128,51 @@ $(document).ready(function() {
 		$(".sort_button > img").data("rotation", newRad);
 		$(".sort_button > img").css("transform","rotate("+newRad+"deg)");
 	});
-	// 상단 정렬 초기값 애니메이션 지정
-	$(".resell_sort").removeClass("active");
-	if(!sort) {$("#latest").addClass("active")}
-	if(sort == "name") {$("#name").addClass("active")}
-	if(sort == "price") {$("#price").addClass("active")}
+	// 오름차순 버튼 누를때 클래스 변경
+	var latest = $(".sort_list").children(":first");
+	var name = $(".sort_list").children(":nth-child(2)");
+	var price = $(".sort_list").children(":nth-child(3)");
+	$("#order_asc").click(function() {
+		// 클래스 삭제
+		latest.removeClass("latest_desc");
+		name.removeClass("name_asc");
+		price.removeClass("price_asc");
+		$(this).removeClass("order_asc");
+		// 클래스 생성
+		latest.addClass("latest_asc");
+		name.addClass("name_desc");
+		price.addClass("price_desc");
+		$(this).addClass("order_desc");
+		// 기타 설정
+		$(this).text("내림차순");
+		$(this).children("img").css("transform","rotate(180deg)");
+	});
+	// 내림차순 버튼 누를때
+	$("#order_desc").click(function() {
+		// 클래스 삭제
+		latest.removeClass("latest_asc");
+		name.removeClass("name_desc");
+		price.removeClass("price_desc");
+		$(this).removeClass("order_desc");
+		// 클래스 생성
+		latest.addClass("latest_desc");
+		name.addClass("name_asc");
+		price.addClass("price_asc");
+		$(this).addClass("order_asc");
+		// 기타 설정
+		$(this).text("오름차순");
+		$(this).children("img").css("transform","rotate(0deg)");
+	});
 	// 정렬 데이터 보내기
 	$(".resell_sort").click(function() {
 		var sortNum = $(this).attr("id");
+		if(!sort) {sort="latest_desc"}
+		if(sortNum.startsWith("order")) {
+			var part = sort.split("_");
+			if(part[1] == "asc") {part[1] = "desc"}
+			else if(part[1] == "desc") {part[1] = "asc"}
+			sortNum = part[0]+"_"+part[1];
+		}
 		URLData(url+"?", null, null, null, null, sortNum);
 	});
 	
@@ -139,26 +182,10 @@ $(document).ready(function() {
 	// 게시글 이동 url
 	$(".board_view").click(function() {
 		var boardNum = $(this).attr("id");
-		console.log(url);
 		url += "/board?no="+boardNum+"&";
-		console.log(url);
-		alert("확인");
 		URLData(url, null, null, null, null, null);
 	});	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 });
-
 
 // ===========================================================
 	
