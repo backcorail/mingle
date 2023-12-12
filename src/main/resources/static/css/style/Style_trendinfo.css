@@ -1,35 +1,39 @@
 @charset "UTF-8";
 
 .page {
-	margin-top : 90px;
+	margin-top : 150px;
 }
 
 .slider-container {
-	width : 500px;
-	height : 650px;
+	width : 650px;
+	height : 780px;
 	display : flex;
 }
 
 
 .slider {
   position: relative;
-  width: 500px;
-  height: 570px;
+  width: 650px;
   overflow: hidden;
   margin : auto;
 }
 
 .slide-show {
   display: flex;
-  width: calc(600px * 3); /* width = slideWidth * numberOfSlides */
+  width: calc(650px * 3); /* width = slideWidth * numberOfSlides */
   transition: all 0.5s ease;
   margin : auto;
-  height : 539px;
+  height : 800px;
+}
+
+.img {
+	width : 650px;
+	height : 770px;
 }
 
 .slide {
-  width: 500px;
-  height: 539px;
+  width: 650px;
+  height: 780px;
 }
 
 .slide-btn {
@@ -76,10 +80,10 @@
 	font-size: 15px;
 	display:flex;
 	flex-direction: row;
-	width : auto;
+	width : 650px;
 	background-color: lightgrey;
 	border-radius: 3px;
-	justify-content: space-around;
+	justify-content: flex-start;
 	align-items: center;
 }
 
@@ -116,8 +120,9 @@
 }
 
 .info {
-	margin-right : 323px;
+	margin-right : 380px;
 	height : 30px;
+	margin-left : 20px;
 }
 
 .text-info {
@@ -139,7 +144,7 @@
 
 .tag-slider {
   position: relative;
-  width: 500px;
+  width: 650px;
   height: 200px;
   overflow: hidden;
   margin : auto;
@@ -147,14 +152,14 @@
 
 .tag-slide-show {
   display: flex;
-  width: calc(600px * 3); /* width = slideWidth * numberOfSlides */
+  width: calc(650px * 5); /* width = slideWidth * numberOfSlides */
   transition: all 0.5s ease;
   margin : auto;
   height : 130px;
 }
 
 .tag-slide {
-  width: 500px;
+  width: 650px;
   height: 200px;
   display : flex;
 }
@@ -188,7 +193,8 @@
 	width : 110px;
 	height : 125px;
 	border-radius: 10px;
-	margin-right : 20px;
+	margin-right : 10px;
+	margin-left : 10px;
 }
 
 
@@ -209,11 +215,13 @@
 }
 
 .tag-items {
-	width : 500px;
+	width : 650px;
+	margin-top : 40px;
+	margin-left : 10px;
 }
 
 .tag-slider-container {
-	width : 500px;
+	width : 650px;
 	height : 200px;
 }
 
@@ -289,7 +297,7 @@
 }
 
 .hashtag {
-	width : 500px;
+	width : 650px;
 	height : auto;
 	font-size : 15px;
 	margin-bottom : 8px;
@@ -301,15 +309,79 @@
 }
 
 .reply-box {
-	width : 500px;
+	width : 650px;
 	height : 300px;
 	border-bottom: 1px solid black;
 	margin-bottom : 10px;
 	display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .no-reply {
 	font-size : 15px;
+}
+
+/* 댓글 */
+#commentInput {
+	width : 650px;
+	height : 100px;
+}
+#comments {
+	display: flex;
+    flex-direction: column-reverse;
+	width : 650px;
+	word-wrap: break-word;
+}
+
+#reply_btn {
+	text-align: right;
+}
+
+#reply_btn_div {
+	width : 650px;
+	text-align: right;
+}
+
+.comment {
+	display: none;
+	width : 650px;
+	height : 80px;
+	border-bottom: 1px solid #ddd;
+}
+
+#comments_box {
+	width : 650px;
+	height : 217px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.comment {
+    position: relative;
+}
+
+.profile-pic {
+	border-radius: 50%;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.usernic {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+}
+
+.comment-text{
+	margin-left : 10px;
+	font-size : 15px;
+}
+
+.comment_road{
+	
 }
