@@ -101,8 +101,8 @@ $(document).ready(function() {
 	// 옆쪽 카테고리 열고 닫는 애니메이션 
 	$(".moreView").click(function() {
 		var visible = $(this).parent().next();
-		$(".search_detail").not(visible).slideUp(300);
-		visible.slideToggle(300);
+		$(".search_detail").not(visible).slideUp(200);
+		visible.slideToggle(200);
 		var rad = $(this).data("rotation") || 0;
 		var newRad = rad + 45;
 		$(this).data("rotation",newRad);

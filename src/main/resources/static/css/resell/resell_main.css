@@ -19,12 +19,7 @@
 	margin-top:10px;
 	padding-bottom:5px;
 }
-.resell_top > li:nth-child(1) { /*나중에 지울거*/
-	width:260px;
-	text-align:left;
-	font-size:0.6em;
-}
-.resell_top > li:nth-child(2) { /*1로 바꿔야함*/
+.resell_top > li:nth-child(1) {
 	width:500px;
 }
 .resell_search {

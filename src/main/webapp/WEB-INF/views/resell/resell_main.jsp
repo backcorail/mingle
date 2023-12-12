@@ -11,12 +11,6 @@
 <!-- 위쪽 카테고리 선택부분 -->
 <div>
 	<ul class="resell_top">
-		<li>
-			총 레코드/페이지 수 = ${rVO.ktotalRecord}/${rVO.ktotalPage}<br>
-			test = ${rVO.searchWord1}/${rVO.searchWord2}/${rVO.searchWord3}<br>
-			1:${rVO.nowPage}, 2:${rVO.ktotalPage}
-		</li>
-		
 		<!-- 검색 부분 -->
 		<li class="resell_search">
 			<div>

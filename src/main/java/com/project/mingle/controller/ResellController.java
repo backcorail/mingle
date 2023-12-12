@@ -72,8 +72,6 @@ public class ResellController {
 		rVO.setDetail(detail);
 		rVO.setSort(sort);
 		
-		System.out.println(page+","+search+","+category+","+detail+","+sort);
-		
 		if (search.length > 0 && !"".equals(search[0])) {
 			rVO.setSearchWord1(search[0]);
 		}
