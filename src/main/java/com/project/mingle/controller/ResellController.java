@@ -1,5 +1,8 @@
 package com.project.mingle.controller;
 
+
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.security.Principal;
 import java.sql.SQLException;
@@ -15,18 +18,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -117,26 +116,34 @@ public class ResellController {
 		mav.setViewName("resell/resell_main");
 		return mav;
 	}
-
+	
+	
+	
 	@GetMapping("/board")
 	public ModelAndView resell_board(
 			@RequestParam(name="no", defaultValue="0") int no,
 			@RequestParam(name="page", defaultValue="1") int page,
 			@RequestParam(name="search", defaultValue="") String[] search,
-			@RequestParam(name="category", defaultValue="1") int category,
+			@RequestParam(name="category", defaultValue="0") int category,
 			@RequestParam(name="detail", defaultValue="0") int detail,
-			@RequestParam(name="sort", defaultValue="latest") String sort,
+			@RequestParam(name="sort", defaultValue="latest_desc") String sort,
+			HttpServletRequest request,
 			ResellVO rVO) {
-		ModelAndView mav = new ModelAndView();
-		//rVO.setNowPage(page);
 		
-		List<ResellVO> kreamList = service.kreamData(rVO);
+		ModelAndView mav = new ModelAndView();
+		
+		String[] main = {"All", "Men", "Women", "Other"};
+		mav.addObject("main", main);
+		
+		ResellVO boardData = service.boardData(no);
+		mav.addObject("boardData", boardData);
 		mav.addObject("rVO", rVO);
-		mav.addObject("klist", kreamList);
 		
 		mav.setViewName("resell/resell_board");
 		return mav;
 	}
+
+	
 	
 	@GetMapping("/write")
 	public ModelAndView resell_write(ResellVO rVO) {
@@ -148,6 +155,8 @@ public class ResellController {
 		return mav; 
 	}
 	
+  
+  
 	@PostMapping("/writeOk")
 	@Transactional(rollbackFor={RuntimeException.class, SQLException.class})
 	public ModelAndView reqeust_writeOk(ResellItemVO rivo, HttpSession session, HttpServletRequest hsr, Principal principal, ResellVO rvo) {
@@ -244,6 +253,12 @@ public class ResellController {
 			
 		}
 		return mav;
+
 		
 	}
+  
+  
+  
+  @GetMapping("/board/delete")
+	public void board_delete() {}
 }

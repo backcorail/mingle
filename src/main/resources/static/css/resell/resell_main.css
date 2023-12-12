@@ -4,7 +4,6 @@
 	padding-top:110px;
 }
 
-
 /* 위쪽 검색창, 탭부분 */
 .resell_top {
 	width:1280px;
@@ -200,6 +199,7 @@
 }
 .resell_left_topic {
 	height:44px;
+	margin-bottom:3px;
 }
 .resell_left_topic > div {
 	margin-left: 5px;

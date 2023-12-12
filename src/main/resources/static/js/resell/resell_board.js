@@ -1,7 +1,18 @@
 
 $(document).ready(function() {
-	/* 최상단 카테고리 선택 */
+	// ===========================================================
+	// -----< 공통 변수 지정 >-----
 	
+	var url = window.location.origin + window.location.pathname;
+	var params = window.location.search;
+	var urlParams = new URLSearchParams(params);
+	var page = urlParams.get("page");
+	var search = urlParams.get("search");
+	var category = urlParams.get("category");
+	var detail = urlParams.get("detail");
+	var sort = urlParams.get("sort");
+	
+	// -----< 공통 변수 지정 >-----
 	// ===========================================================
 	// -----< 상단 카테고리 부분 >-----
 
@@ -11,6 +22,7 @@ $(document).ready(function() {
 	if(category == 1) {$(".Men").addClass("select")}
 	if(category == 2) {$(".Women").addClass("select")}
 	if(category == 3) {$(".Other").addClass("select")}
+	url = window.location.origin+"/mingle/resell";
 	// 상단 카테고리 부분
 	$(".category_type").click(function() {
 		// 클릭 효과
@@ -19,24 +31,19 @@ $(document).ready(function() {
 		// 데이터 보내기
 		var categoryNum = $(this).attr("id");
 		if(categoryNum == 3) {
-			URLData(url+"?", null, null, categoryNum, 0, null);
+			URLData(url+"?", 1, null, categoryNum, 0, null);
 		} else {
-			URLData(url+"?", null, null, categoryNum, null, null);
+			URLData(url+"?", 1, null, categoryNum, null, null);
 		}
 	});
 	
 	// -----< 상단 카테고리 부분 >-----
 	// ===========================================================
+	// -----< 중간 게시글 부분 >-----
 	
-	
-	$(".choose").click(function() {
-        $(".choose").removeClass("active");
-        $(this).addClass("active");
-    });
-    
-	$("#clothes_click1>img").addClass("opacity");
-	
-	$(".clothes_click>img").click(function() {
+	// 메인 옷 선택 애니메이션
+	$("#clothes_click0 > img").addClass("opacity");
+	$(".clothes_click > img").click(function() {
 		var data = $(this)[0].currentSrc;
 		// 작은 사진이 커지는 애니메이션
 		$(".main_img").fadeOut(100, function() {
@@ -46,23 +53,32 @@ $(document).ready(function() {
 		$(".clothes_click>img").removeClass("opacity");
 		$(this).addClass("opacity");
 	});
-	
-	$(".clothes_click>img").hover(
-		function() { // 마우스 오버 시
-			$(this).css("box-shadow", "0 0 10px gray"); // 그림자 효과 추가
-		},
-		function() { // 마우스 아웃 시
-			$(this).css("box-shadow", "none"); // 그림자 효과 제거
-		}
+	// 왼쪽 작은 사진 효과
+	$(".clothes_click > img").hover(
+		function() {$(this).css("box-shadow", "0 0 10px gray");},
+		function() {$(this).css("box-shadow", "none");}
 	);
 	
-	$(".buy_button>button").hover(
-		function() { // 마우스 오버 시
-			$(this).css("color", "blue"); // 그림자 효과 추가
-		},
-		function() { // 마우스 아웃 시
-			$(this).css("color", "white"); // 그림자 효과 제거
-		}
+	// 목록으로 돌아가기
+	$(".board_list").click(function() {
+		url = window.location.origin+"/mingle/resell";
+		URLData(url+"?", 0, null, null, null, null, null);
+	});
+	// 게시글 수정하기
+	$(".board_update").click(function() {
+		url = window.location.origin+"/mingle/resell/write";
+		URLData(url+"?", null, 0, "", 0, 0, "");
+	});
+	// 게시글 삭제하기
+	$(".board_delete").click(function() {
+		
+	});
+	
+	
+	// 구매 요청 버튼 효과
+	$(".buy_button > button").hover(
+		function() {$(this).css("color", "blue");},
+		function() {$(this).css("color", "white");}
 	);
 	
 	$(".buy_button").click({
@@ -75,9 +91,10 @@ $(document).ready(function() {
 // ===========================================================
 
 // 비동기식(ajax) 데이터 보내기 및 데이터 판별
-function URLData(url, page, search, category, detail, sort) {
-	// 작성 틀 : URLData(url, null, null, null, null, null);
-	// 초기 값 : URLData(url, 1, "", 1, 0, "latest";)
+function URLData(url, no, page, search, category, detail, sort) {
+	// 작성 틀 : URLData(url, null, null, null, null, null, null);
+	// 값 제거 : URLData(url, 0, 0, "", 0, 0, "");
+	// null값을 넣으면 기존의 주소 유지, 초기값을 넣으면 제거
 
 	// 필요한 변수 및 데이터
 	var params = window.location.search;
@@ -86,6 +103,7 @@ function URLData(url, page, search, category, detail, sort) {
 	var count = 0;
 	
 	// 입력한 값이 있는지 판정(없으면 우선 주소창값으로 변경)
+	if(no == null) {no = urlParams.get("no")}
 	if(page == null) {page = urlParams.get("page")}
 	if(search == null) {search = urlParams.get("search")}
 	if(category == null) {category = urlParams.get("category")}
@@ -93,6 +111,11 @@ function URLData(url, page, search, category, detail, sort) {
 	if(sort == null) {sort = urlParams.get("sort")}
 	
 	// 변경할 URL주소 만들기
+	if(no) {
+		if(count>=1) {newURL += "&"}
+		newURL += "no="+no;
+		count++;
+	}
 	if(page) {
 		if(count>=1) {newURL += "&"}
 		newURL += "page="+page;

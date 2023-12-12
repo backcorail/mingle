@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page import="java.util.HashMap" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="authUser"/>
+</sec:authorize>
 
 <link rel="stylesheet" href="/mingle/css/resell/resell_main.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap&family=Nanum+Pen+Script&display=swap&family=Abril+Fatface&family=Kanit:ital,wght@1,500&family=Noto+Sans+KR:wght@300" rel="stylesheet">
@@ -92,11 +95,13 @@
 	        </li>
 		</c:forEach>
 		<!-- 글작성 부분 -->
-		<li class="write_recell">
-			<a href="/mingle/resell/write" class="button_container">
-			  	<button class="btn_write_recell"><span>fill out</span></button>
-			</a>
-	 	</li> 
+		<c:if test="${not empty authUser}">
+			<li class="write_recell">
+				<a href="/mingle/resell/write" class="button_container">
+				  	<button class="btn_write_recell"><span>fill out</span></button>
+				</a>
+		 	</li> 
+	 	</c:if>
  	</ul>
 	
 	<!-- 리셀 부분 -->

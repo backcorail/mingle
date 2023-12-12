@@ -26,7 +26,7 @@ $(document).ready(function() {
 	// 데이터 보내기
 	$(".page_box").click(function() {
 		var pageNum = $(this).attr("id");
-		URLData(url+"?", pageNum, null, null, null, null);
+		URLData(url+"?", null, pageNum, null, null, null, null);
 	});
 	
 	// -----< 페이지 부분 >-----
@@ -67,7 +67,7 @@ $(document).ready(function() {
 		});
 		var newSearch = newArray.join(",");
     	$(this).closest("li").remove();
-    	URLData(url+"?", 1, newSearch, null, null, null);
+    	URLData(url+"?", null, 1, newSearch, null, null, null);
 	});
 	
 	// -----< 상단검색바 부분 >-----
@@ -88,9 +88,9 @@ $(document).ready(function() {
 		// 데이터 보내기
 		var categoryNum = $(this).attr("id");
 		if(categoryNum == 3) {
-			URLData(url+"?", 1, null, categoryNum, 0, null);
+			URLData(url+"?", null, 1, null, categoryNum, 0, null);
 		} else {
-			URLData(url+"?", 1, null, categoryNum, null, null);
+			URLData(url+"?", null, 1, null, categoryNum, null, null);
 		}
 	});
 	
@@ -111,7 +111,7 @@ $(document).ready(function() {
 	// 데이터 보내기
 	$(".category_detail").click(function() {
 		var detailNum = $(this).attr("id");
-		URLData(url+"?", 1, null, null, detailNum, null);
+		URLData(url+"?", null, 1, null, null, detailNum, null);
 	});
 	
 	// -----< 좌특 카테고리 부분 >-----
@@ -173,7 +173,7 @@ $(document).ready(function() {
 			else if(part[1] == "desc") {part[1] = "asc"}
 			sortNum = part[0]+"_"+part[1];
 		}
-		URLData(url+"?", null, null, null, null, sortNum);
+		URLData(url+"?", null, null, null, null, null, sortNum);
 	});
 	
 	// -----< 상단 정렬 부분 >-----
@@ -182,8 +182,8 @@ $(document).ready(function() {
 	// 게시글 이동 url
 	$(".board_view").click(function() {
 		var boardNum = $(this).attr("id");
-		url += "/board?no="+boardNum+"&";
-		URLData(url, null, null, null, null, null);
+		url = window.location.origin+"/mingle/resell/board?"
+		URLData(url, boardNum, null, null, null, null, null);
 	});	
 });
 
@@ -243,7 +243,7 @@ function search() {
 			newSearch += ","+addSearch;
 		}
 		// URLData(O, O, X, X, X); - 페이지 1로 초기화 되야됨
-		URLData(url+"?", 1, newSearch, null, null, null);
+		URLData(url+"?", null, 1, newSearch, null, null, null);
 	}
 	return false;
 }
@@ -251,9 +251,9 @@ function search() {
 // ===========================================================
 
 // 비동기식(ajax) 데이터 보내기 및 데이터 판별
-function URLData(url, page, search, category, detail, sort) {
-	// 작성 틀 : URLData(url, null, null, null, null, null);
-	// 초기 값 : URLData(url, 1, "", 1, 0, "latest";)
+function URLData(url, no, page, search, category, detail, sort) {
+	// 작성 틀 : URLData(url, null, null, null, null, null, null);
+	// 초기 값 : URLData(url, 0, 1, "", 0, 0, "latest_desc";)
 
 	// 필요한 변수 및 데이터
 	var params = window.location.search;
@@ -262,6 +262,7 @@ function URLData(url, page, search, category, detail, sort) {
 	var count = 0;
 	
 	// 입력한 값이 있는지 판정(없으면 우선 주소창값으로 변경)
+	if(no == null) {no = urlParams.get("no")}
 	if(page == null) {page = urlParams.get("page")}
 	if(search == null) {search = urlParams.get("search")}
 	if(category == null) {category = urlParams.get("category")}
@@ -269,6 +270,11 @@ function URLData(url, page, search, category, detail, sort) {
 	if(sort == null) {sort = urlParams.get("sort")}
 	
 	// 변경할 URL주소 만들기
+	if(no) {
+		if(count>=1) {newURL += "&"}
+		newURL += "no="+no;
+		count++;
+	}
 	if(page) {
 		if(count>=1) {newURL += "&"}
 		newURL += "page="+page;
