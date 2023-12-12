@@ -3,11 +3,11 @@ package com.project.mingle.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.web.SecurityFilterChain;
 
 import com.project.mingle.handler.security.CustomAuthenticationFailureHandler;
 import com.project.mingle.handler.security.CustomAuthenticationSuccessHandler;
@@ -16,8 +16,8 @@ import com.project.mingle.service.Auth.CustomAuthenticationProvider;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+@Order(1)
+public class UserSecurityConfig {
 
 //	@Autowired
 //	private UserSecDetailsServiceImple userSecDetailsServiceImple;
@@ -28,7 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 	@Autowired
 	private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
-
 	@Autowired
 	private CustomLogoutSuccessHandler customLogoutSuccessHandler;
 
@@ -38,14 +37,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		this.accessDeniedHandler = accessDeniedHandler;
 //	}
 	// 1)인증 예외처리 // static 자원은 인증 제외.
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/js/**", "/css/**", "/assets/**", "/font/**", "/img/**");
-	}
-
+	@Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring().antMatchers("/js/**", "/css/**", "/assets/**", "/font/**", "/img/**");
+    }
 	// 1. 접근 경로 필터링.
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+	@Bean
+	protected SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
 
 //      CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter();
 //      customAuthenticationFilter.setAuthenticationManager(authenticationManagerBean());
@@ -67,10 +65,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //         	.antMatchers("/user/**","/js/**","/css/**","/assets/**","/font/**","/img/**").permitAll()
 //         	.anyRequest().authenticated();
                 .antMatchers("/mypage/**").authenticated()// 마이페이지는 인증받은 사람만 // 인증받지 않으면 exceptionHandling
-                .anyRequest().permitAll() // 다른 인가 요청은 모두 인증없이 모두 허용
+                .anyRequest().permitAll(); // 다른 인가 요청은 모두 인증없이 모두 허용
                 // .antMatchers("/user").hasRole("USER") // 인증과 인가에 대해서
-
-                .and()// 그리고 http
+        http // http 설정 시작.                
                 .formLogin(login -> login. // 폼 로그인 설정
                         loginPage("/user/login_joinForm")
                         // .loginProcessingUrl("/user/loginProc")//Action 스프링 시큐리티가 해당 주소로 요청(request)오는
@@ -90,7 +87,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationProvider(customAuthenticationProvider)//AuthenticationManagerBuilder 에서 provider를 지정해도 된다. 
                 .csrf(csrf -> csrf.disable());// 테스트를 위해서 
         http.oauth2Login(login -> login.loginPage("/user/login_joinForm"));
-        		
+		return http.build();
 //         .successHandler((request, response, authentication) -> {
 //             HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
 //             
@@ -150,10 +147,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		// TODO Auto-generated method stub
 //		auth.userDetailsService(userSecDetailsServiceImple).passwordEncoder(passwordEncoder());
 //	}
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		// TODO Auto-generated method stub
-		return super.authenticationManagerBean();
-	}
+//	@Bean
+//	@Override
+//	public AuthenticationManager authenticationManagerBean() throws Exception {
+//		// TODO Auto-generated method stub
+//		return super.authenticationManagerBean();
+//	}
 }
