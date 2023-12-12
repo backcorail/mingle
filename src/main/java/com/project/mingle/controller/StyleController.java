@@ -7,11 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.mingle.service.StyleService;
+import com.project.mingle.vo.AdminTestVO;
+import com.project.mingle.vo.AdminVO;
+import com.project.mingle.vo.ReplyVO;
 import com.project.mingle.vo.StyleVO;
 
 @Controller
@@ -55,14 +61,22 @@ public class StyleController {
 	}
 	
 	
+	@GetMapping("/trend/info")
+	public ModelAndView style_trendinfo(StyleVO sVO) {
+		ModelAndView mav =  new ModelAndView();
+		
+		List<StyleVO> reply = service.replySelect(sVO);
+		
+		mav.addObject("sVO", sVO);
+		mav.addObject("reply", reply);
+		
+		mav.setViewName("style/style_trendinfo");	
+		return mav;
+	}
+	
 	@GetMapping("/trend")
 	public String style_trend() {
 		return "style/style_trend";
-	}
-	
-	@GetMapping("/trend/info")
-	public String style_trendinfo() {
-		return "style/style_trendinfo";
 	}
 	
 	@GetMapping("/write")
@@ -97,4 +111,24 @@ public class StyleController {
 		return "style/map";
 	}
 
+	
+	@PostMapping("/products_data") // 넣을때
+	public ModelAndView products_data(@RequestBody ReplyVO replyVO) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("replyVO+asd "+replyVO.toString());
+		//게시글 데이터
+		 int result = service.usercomment(replyVO);
+
+		//List<AdminVO> list = service.resell_boardData(styleVo);
+		
+		//사용자 데이터
+		// List<AdminTestVO> userlist = service.usersData(new AdminTestVO());
+		 
+		// mav.addObject("rVO", rVO);
+		// mav.addObject("userlist", userlist);
+		// mav.setViewName("admin/products_data");
+		 
+		return mav;
+	}
+	
 }
