@@ -2,18 +2,21 @@ package com.project.mingle.config.Auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.project.mingle.vo.UserVO;
 
 import lombok.Data;
 
 @Data
-public class UserSecDetails implements UserDetails {
+public class UserSecDetails implements UserDetails ,OAuth2User{
 
 	private UserVO userVO;
+	private Map<String,Object> attributes;
 	
 	public UserSecDetails() {
 	}
@@ -21,6 +24,23 @@ public class UserSecDetails implements UserDetails {
 	public UserSecDetails(UserVO userVO) {
 		this.userVO = userVO;
 	}
+	public UserSecDetails(UserVO userVO, Map<String, Object> attributes) {
+		this.userVO = userVO;
+		this.attributes = attributes;
+	}
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		// TODO Auto-generated method stub
+		return attributes;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	@Override
 	public String getPassword() {
@@ -69,6 +89,7 @@ public class UserSecDetails implements UserDetails {
 		collectors.add(()->{ return userVO.getUser_role();});
 		return null;
 	}
+
 
 
 }
