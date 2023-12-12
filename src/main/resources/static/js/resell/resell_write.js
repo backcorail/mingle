@@ -2,13 +2,22 @@
 //유효성 검사
 function validateForm() {
     var title = document.getElementById("subject").value;
+    var subtitle = document.getElementById("subTitle").value;
+    var price = document.getElementById("price").value;
     var content = document.getElementById("content").value;
 
     if (!title) {
         alert("제목을 입력하세요.");
         return false;
     }
-
+    if (!subtitle) {
+        alert("부제목을 입력하세요.");
+        return false;
+    }
+	if (!price) {
+        alert("가격을 입력하세요.");
+        return false;
+    }
     if (!content) {
         alert("내용을 입력하세요.");
         return false;
@@ -18,7 +27,20 @@ function validateForm() {
         alert("내용은 최소 30자 이상이어야 합니다.");
         return false;
     }
-
+	if(!($('input:radio[name=item_category]').is(':checked'))){
+		alert("카테고리1를 선택하세요...");
+		return false;
+	}
+	if(!($('input:radio[name=item_category]').is(':checked'))){
+		alert("카테고리2를 선택하세요...");
+		return false;
+	}
+	let fileCount = 0;
+	$("input[name=filename]").each(function(){
+		if($(this).val()!=""){
+			fileCount++;
+		}
+	});
     return true;
 }
 ///////////////////////////////////////////////////

@@ -21,8 +21,10 @@ public class ResellVO {
 	// 데이터 관련 변수 목록
 	private int resell_no; // 리셀 게시글 고유번호
 	private String resell_name; // 게시글 이름
-	private int resell_seller; // 판매자 고유 번호
+	private String resell_seller; // 판매자 고유 번호
+	private String resell_comment; // 글 내용
 	private String resell_writedate; // 게시된 날짜
+	private String resell_addr; // 리셀 지역
 	//private int item_price;
 	
 	// 크림 관련 변수 목록

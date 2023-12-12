@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -128,8 +129,20 @@ public class RequestController {
 		
 	}
 	
-	@GetMapping("/board/view")
-	public String request_board() {
-		return "/style/request_board";
+	/*
+	@GetMapping("/view/{request_no}")
+	public ModelAndView request_view(@PathVariable("request_no") int request_no) {
+		ModelAndView mav  = new ModelAndView();
+		//원글선택
+		mav.addObject("vo", service.requestSelect(request_no));
+		
+		List<RequestFileVO> fList = service.getDataFile(request_no);
+		//첨부파일 
+		mav.addObject("fList", fList);//목록
+		mav.addObject("fileCount", fList.size());//첨부파일의 갯수
+		//뷰페이지
+		mav.setViewName("data/dataEdit");
+		return mav;
 	}
+	*/
 }

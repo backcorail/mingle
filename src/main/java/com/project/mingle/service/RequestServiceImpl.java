@@ -24,4 +24,9 @@ public class RequestServiceImpl implements RequestService{
 		System.out.println(list+"1234");
 		return mapper.requestFileInsert(list);
 	}
+
+	@Override
+	public RequestVO requestSelect(int request_no) {
+		return mapper.requestSelect(request_no);
+	}
 }

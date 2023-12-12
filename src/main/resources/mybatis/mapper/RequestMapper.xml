@@ -15,4 +15,7 @@
 			</foreach>
 	    </if>
 	</insert>
+	<select id="dataSelect" resultType="com.project.mingle.vo.RequestVO">
+		select request_no, request_name, request_comment, user_id, request_writedate from request where no=${param1}
+	</select>
 </mapper>
