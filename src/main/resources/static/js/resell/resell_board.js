@@ -31,9 +31,9 @@ $(document).ready(function() {
 		// 데이터 보내기
 		var categoryNum = $(this).attr("id");
 		if(categoryNum == 3) {
-			URLData(url+"?", 1, null, categoryNum, 0, null);
+			URLData(url+"?", null, 1, null, categoryNum, 0, null);
 		} else {
-			URLData(url+"?", 1, null, categoryNum, null, null);
+			URLData(url+"?", null, 1, null, categoryNum, null, null);
 		}
 	});
 	
