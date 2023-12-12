@@ -26,7 +26,7 @@
 		<div class="slide">
 		<h1 class="category_h1">자켓</h1>
 	      	<div class="slide_list">
-	        	<c:forEach var="n" begin="1" end="9">
+	        	<c:forEach var="n" begin="1" end="10">
 					<div class="slide_item1 slide_item${n}" id="slide_item">
 	        			<img class="item-img" src="/mingle/img/cody/jk.jpg">
 	        			<a>자켓${n}</a>
@@ -39,7 +39,7 @@
 	   <div class="slide">
 	   <h1 class="category_h1">맨투맨</h1>
 	      	<div class="slide_list2">
-	        	<c:forEach var="n" begin="1" end="8">
+	        	<c:forEach var="n" begin="1" end="10">
 					<div class="slide_item2">
 	        			<img class="item-img" src="/mingle/img/cody/mtm.jpg">
 	        			<a>맨투맨${n}</a>
@@ -52,7 +52,7 @@
 	   <div class="slide">
 	   <h1 class="category_h1">데님팬츠</h1>
 	      	<div class="slide_list3">
-		        <c:forEach var="n" begin="1" end="5">
+		        <c:forEach var="n" begin="1" end="10">
 					<div class="slide_item3">
 	        			<img class="item-img" src="/mingle/img/cody/dp.jpg">
 	        			<a>데님팬츠${n}</a>

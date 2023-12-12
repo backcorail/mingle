@@ -1,4 +1,4 @@
-package com.project.mingle.controller.cody;
+package com.project.mingle.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,6 @@ public class CodyController {
 	public String cody(){
 		return "cody/cody";
 	}
-	
 	@GetMapping("/cody_board")
 	public String cody_board() {
 		return "cody/cody_board";

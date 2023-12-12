@@ -27,12 +27,6 @@ public class ResellVO {
 	private String resell_addr; // 리셀 지역
 	//private int item_price;
 	
-	// 검색 관련 변수
-	private String searchWord;
-	private String searchWord1; // 검색할 문장1
-	private String searchWord2; // 검색할 문장2
-	private String searchWord3; // 검색할 문장3
-	
 	// 크림 관련 변수 목록
 	private int item_no; // 아이템 고유 번호
 	private String item_image; // 아이템 사진
@@ -41,6 +35,25 @@ public class ResellVO {
 	private String item_postdate; // 아이템 올린 날짜
 	private int ktotalRecord; // 크림 총 레코드수
 	private int ktotalPage; // 크림 총 페이지
+	
+	// 이미지 관련 변수 목록
+	private int img_no; 
+	private String img_url;
+	private String imageData;
+	
+	// 검색 관련 변수
+	private String searchWord;
+	private String searchWord1; // 검색할 문장1
+	private String searchWord2; // 검색할 문장2
+	private String searchWord3; // 검색할 문장3
+	
+	// 정렬,카테고리 관련 변수 목록
+	private String sort; // 정렬 유형
+	private int category; // 상단에 있는 카테고리
+	private int detail; // 왼쪽에 있는 상세 카테고리
+	
+	
+	
     
 	public void setTotalPage() {
 		totalPage = (int)Math.ceil(this.totalRecord / (double)onePageRecord);
