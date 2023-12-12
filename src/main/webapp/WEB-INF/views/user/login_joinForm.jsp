@@ -44,12 +44,26 @@
 			<p class="txt-sns-login">or Sign Up Using</p>
 			<div class="blank-27"></div>
 			<ul class="ul-sns-list">
-				<li><a href=""><img src="/mingle/img/user/naver.png" alt="naver"></a></li>
-				<li><a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}">
-					<img src="/mingle/img/user/kakao.png" alt="naver">
-				</a></li>
-				<li><a href=""><img src="/mingle/img/user/google.png" alt="naver"></a></li>
-				<li><a href=""><img src="/mingle/img/user/facebook.png" alt="naver"></a></li>
+				<li>
+					<a href="/mingle/oauth2/authorization/naver">
+						<img src="/mingle/img/user/naver.png" alt="naver">
+					</a>
+				</li>
+				<li>
+					<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}">
+						<img src="/mingle/img/user/kakao.png" alt="kakao">
+					</a>
+				</li>
+				<li>
+					<a href="/mingle/oauth2/authorization/google">
+						<img src="/mingle/img/user/google.png" alt="google">
+					</a>
+				</li>
+				<li>
+					<a href="/mingle/oauth2/authorization/facebook">
+						<img src="/mingle/img/user/facebook.png" alt="facebook">
+					</a>
+				</li>
 			</ul>
 			<div class="blank-56"></div>
 		</div>
