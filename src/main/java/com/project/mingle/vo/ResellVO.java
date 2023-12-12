@@ -18,18 +18,20 @@ public class ResellVO {
 	private int startPage = 1; // 처음 시작 페이지
 	private int offsetPoint; // 데이터 시작 부분
 	
-	// 데이터 관련 변수 목록
+	// 데이터 관련 변수 목록(resell 테이블)
 	private int resell_no; // 리셀 게시글 고유번호
 	private String resell_name; // 게시글 이름
-	private int resell_seller; // 판매자 고유 번호
+	private String resell_seller; // 판매자 아이디
+	private String resell_buyer; // 구매자 아이디
+	private String resell_addr; // 지역 주소
 	private String resell_writedate; // 게시된 날짜
-	//private int item_price;
+	private int resell_likes;
 	
-	// 크림 관련 변수 목록
+	// 크림 관련 변수 목록(item 테이블)
 	private int item_no; // 아이템 고유 번호
 	private String item_image; // 아이템 사진
 	private String item_name; // 아이템 이름
-	private String item_price; // 아이템 가격
+	private int item_price; // 아이템 가격
 	private String item_postdate; // 아이템 올린 날짜
 	private int ktotalRecord; // 크림 총 레코드수
 	private int ktotalPage; // 크림 총 페이지

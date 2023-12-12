@@ -18,8 +18,10 @@
 			<if test="searchWord1 != ''">and item_name like '%${searchWord1}%'</if>
 			<if test="searchWord2 != ''">and item_name like '%${searchWord2}%'</if>
 			<if test="searchWord3 != ''">and item_name like '%${searchWord3}%'</if>
-			<if test="category != 0">and item_category = '${category}'</if>
-			<if test="category != 3 and detail == 0">or item_category = 0</if>
+			<choose>
+				<when test="category != 0 and category != 3">and (item_category = '${category}' or item_category = 0)</when>
+				<when test="category == 3">and item_category = '${category}'</when>
+			</choose>
 			<if test="detail != 0">
 				<if test="detail % 100 != 0">and item_detail = '${detail}'</if>
 				<if test="detail % 100 == 0">and floor(item_detail/100)*100 = '${detail}'</if>
@@ -44,8 +46,10 @@
 			<if test="searchWord1 != ''">and item_name like '%${searchWord1}%'</if>
 			<if test="searchWord2 != ''">and item_name like '%${searchWord2}%'</if>
 			<if test="searchWord3 != ''">and item_name like '%${searchWord3}%'</if>
-			<if test="category != 0">and item_category = '${category}'</if>
-			<if test="category != 3 and detail == 0">or item_category = 0</if>
+			<choose>
+				<when test="category != 0 and category != 3">and (item_category = '${category}' or item_category = 0)</when>
+				<when test="category == 3">and item_category = '${category}'</when>
+			</choose>
 			<if test="detail != 0">
 				<if test="detail % 100 != 0">and item_detail = '${detail}'</if>
 				<if test="detail % 100 == 0">and floor(item_detail/100)*100 = '${detail}'</if>
@@ -61,5 +65,10 @@
 		    <otherwise>item_postdate desc</otherwise>
 		</choose>
 		limit #{onePageRecord} offset ${offsetPoint};
+	</select>
+	
+	<select id="boardData" resultType="com.project.mingle.vo.ResellVO">
+		select item_no, item_name, item_price, item_image, item_postdate from item
+		where item_no = ${item_no}
 	</select>
 </mapper>

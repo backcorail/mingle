@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .wrapper {
-	padding-top:100px;
+	padding-top:110px;
 }
 
 .resell_board_top {
@@ -27,14 +27,29 @@
 
 
 /* 상단 밑줄 애니메이션 */
-.choose {
+.search_category {
+	width:1280px;
+    display:flex;
+    flex-direction:row;
+    text-decoration:none;
+    text-align:center;
+    justify-content:flex-end;
+    margin-bottom:10px;
+}
+.category_type {
+	font-family: 'Playfair Display', serif;
 	cursor: pointer;
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
-	transition: all 0.3s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	height:40px;
+	width:115px;
+	margin:0px 5px;
+	font-size:1.3em;
+	color:black;
 }
-.choose::before {
+.category_type::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -43,17 +58,15 @@
     width: 0;
     height: 4px;
     background-color: #FFC107;
-    transition: width 0.3s ease-in-out;
+    transition: width 0.2s ease-in-out;
 }
-.choose.active::before {
+.category_type.select::before {
     width: 100%;
     transform: translateX(-50%);
 }
-.choose:hover {
+.category_type:hover {
 	color:#FFC107;
 }
-
-
 
 
 
@@ -150,7 +163,7 @@
 	flex-direction: column;
 }
 .resell_item_name > div:nth-child(1) {
-	font-size:0.8em;
+	font-size:1em;
 	font-weight:bold;
 }
 .resell_item_name > div:nth-child(2) {
