@@ -23,6 +23,7 @@ public class ResellVO {
 	private String resell_name; // 게시글 이름
 	private String resell_seller; // 판매자 아이디
 	private String resell_buyer; // 구매자 아이디
+  private String resell_comment; // 글 내용
 	private String resell_addr; // 지역 주소
 	private String resell_writedate; // 게시된 날짜
 	private int resell_likes;
@@ -52,9 +53,7 @@ public class ResellVO {
 	private int category; // 상단에 있는 카테고리
 	private int detail; // 왼쪽에 있는 상세 카테고리
 	
-	
-	
-    
+  
 	public void setTotalPage() {
 		totalPage = (int)Math.ceil(this.totalRecord / (double)onePageRecord);
 	}

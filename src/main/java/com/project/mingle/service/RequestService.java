@@ -8,4 +8,5 @@ import com.project.mingle.vo.RequestVO;
 public interface RequestService {
 	public int requestInsert(RequestVO rvo);
 	public int requestFileInsert(List<RequestFileVO> list);
+	public RequestVO requestSelect(int request_no);
 }

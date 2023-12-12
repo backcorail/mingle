@@ -66,9 +66,26 @@
 		</choose>
 		limit #{onePageRecord} offset ${offsetPoint};
 	</select>
-	
+
 	<select id="boardData" resultType="com.project.mingle.vo.ResellVO">
 		select item_no, item_name, item_price, item_image, item_postdate from item
 		where item_no = ${item_no}
 	</select>
+  
+	<insert id ="itemInsert" parameterType="com.project.mingle.vo.ResellItemVO" useGeneratedKeys="true" keyProperty="item_no">
+	    insert into item(item_name, item_seller, item_price, item_category, item_detail)
+	    values(#{item_name}, #{item_seller}, #{item_price}, #{item_category}, #{item_detail})
+    </insert>
+    <insert id ="resellInsert" parameterType="com.project.mingle.vo.ResellVO">
+	    insert into resell(item_no, resell_name, resell_seller, resell_comment, resell_addr)
+	    values(#{item_no}, #{resell_name}, #{resell_seller}, #{resell_comment}, #{resell_addr})
+    </insert>
+    <insert id="itemFileInsert" parameterType="java.util.List">
+	    <if test="list != null or !list.isEmpty()">
+		    <foreach item="item" collection="list" open="insert into item_datafile(item_no, item_datafile_dataname) values"
+				separator=",">
+				(${item.item_no}, #{item.item_datafile_dataname})
+			</foreach>
+	    </if>
+	</insert>
 </mapper>
