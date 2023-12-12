@@ -89,7 +89,6 @@
 
 
 <!-- 댓글 부분 -->
-<!-- 
 <div class="row_line"></div>
 
 <div class="resell_reply">
@@ -114,4 +113,3 @@
 		</c:forEach>
 	</ul>
 </div>
- -->
