@@ -79,9 +79,8 @@
 							aria-labelledby="headingMembers"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/members_data">Members
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Sublink
-									2</a>
+								<a class="nav-link" href="/mingle/admintest/members_data">Members Data</a>
+								<a class="nav-link" href="/mingle/admintest/members_charts">Members Charts</a>
 								<!-- ë ë§ì íì ë©ë´ í­ëª©ë¤ ì¶ê° ê°ë¥ -->
 							</nav>
 						</div>
@@ -100,10 +99,9 @@
 						<div class="collapse" id="collapseProducts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/products_data">Products
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Products
-									Delete</a> <a class="nav-link" href="layout-sidenav-light.html">Light
-									Sidenav</a>
+								<a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
+								<a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
 							</nav>
 						</div>
 						<!-- Transactions ë©ë´ -->
@@ -121,9 +119,8 @@
 						<div class="collapse" id="collapseTransactions"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Transactions
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Transactions
-									Delete</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_data">Transactions Data</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_charts">Transactions Charts</a>
 							</nav>
 						</div>
 						<!-- Posts ë©ë´ -->
@@ -141,9 +138,8 @@
 						<div class="collapse" id="collapsePosts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Posts
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Posts
-									Delete</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Posts Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Posts Delete</a>
 							</nav>
 						</div>
 						<!-- Recommend ë©ë´ -->
@@ -161,9 +157,8 @@
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Recommend
-									Write</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
 							</nav>
 						</div>
 						<!-- Server ë©ë´ -->
@@ -181,9 +176,8 @@
 						<div class="collapse" id="collapseServer"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Server
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Server
-									settings</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Server Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Server settings</a>
 							</nav>
 						</div>
 
@@ -256,6 +250,7 @@
 		</div>
 		<div id="layoutSidenav_content">
 			<main>
+			 <div id="products_list">
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">Products Data</h1>
 					<ol class="breadcrumb mb-4">
@@ -264,7 +259,7 @@
 					</ol>
 					<div class="card mb-4">
 						<div class="card-header">
-							<i class="fas fa-table me-1"></i> product List
+							<i class="fas fa-table me-1"></i> Products List
 						</div>
 						<div class="card-body">
 							<table id="datatablesSimple">
@@ -293,8 +288,8 @@
 											<td>${users.user_id}</td>
 											<td>${kItem.item_name}</td>
 											<td>${kItem.item_postdate}</td>
-											<td>Category</td>
-											<td><img src="${kItem.item_image}"/></td>
+											<td>${kItem.item_category}</td>
+											<td><img referrerpolicy="no-referrer" src="${kItem.item_image}" width="100" height="100"/></td>
 										</tr>
 									</c:forEach>
 										</c:forEach>
@@ -303,6 +298,7 @@
 						</div>
 					</div>
 				</div>
+			 </div>
 			</main>
 			<footer class="py-4 bg-light mt-auto">
 				<div class="container-fluid px-4">

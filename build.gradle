@@ -92,6 +92,7 @@ dependencies {
 	implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.15.3'
 	
 	
+	
 	// 5~7번 웹소켓 DI
 	//5. https://mvnrepository.com/artifact/org.java-websocket/Java-WebSocket
 	implementation group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.5.4'

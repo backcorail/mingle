@@ -14,6 +14,7 @@ public class AdminVO {
 	private int onePageRecord = 25; //한페이지 레코드 수
 	
 	private int item_no; //아이템 고유 번호
+	private int item_category;
 	private String item_image;	
     private String item_name;
     private String item_price; // 아이템 가격

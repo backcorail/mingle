@@ -79,9 +79,8 @@
 							aria-labelledby="headingMembers"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/members_data">Members
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Sublink
-									2</a>
+								<a class="nav-link" href="/mingle/admintest/members_data">Members Data</a>
+								<a class="nav-link" href="/mingle/admintest/members_charts">Members Charts</a>
 								<!-- 더 많은 하위 메뉴 항목들 추가 가능 -->
 							</nav>
 						</div>
@@ -100,10 +99,9 @@
 						<div class="collapse" id="collapseProducts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/products_data">Products
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Products
-									Delete</a> <a class="nav-link" href="layout-sidenav-light.html">Light
-									Sidenav</a>
+								<a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
+								<a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
 							</nav>
 						</div>
 						<!-- Transactions 메뉴 -->
@@ -121,9 +119,8 @@
 						<div class="collapse" id="collapseTransactions"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Transactions
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Transactions
-									Delete</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_data">Transactions Data</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_charts">Transactions Charts</a>
 							</nav>
 						</div>
 						<!-- Posts 메뉴 -->
@@ -141,9 +138,8 @@
 						<div class="collapse" id="collapsePosts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Posts
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Posts
-									Delete</a>
+								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Posts Delete</a>
 							</nav>
 						</div>
 						<!-- Recommend 메뉴 -->
@@ -161,9 +157,8 @@
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Recommend
-									Write</a>
+								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
 							</nav>
 						</div>
 						<!-- Server 메뉴 -->
@@ -181,9 +176,8 @@
 						<div class="collapse" id="collapseServer"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Server
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Server
-									settings</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Server Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Server settings</a>
 							</nav>
 						</div>
 

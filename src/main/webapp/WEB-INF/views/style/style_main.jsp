@@ -27,7 +27,6 @@
 		</ul>
 		<hr class="style_header_line">
 		<!-- 수평선 -->
-		<hr class="style_tab_line">
 		<!-- 탭의 내용을 구분하는 선 -->
 		<div class="style_tab_content" id="tabs">
 			<!-- 탭 1의 콘텐츠 -->

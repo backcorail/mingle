@@ -307,7 +307,7 @@
 											<td>${vo.user_gender}</td>
 											<td>${vo.user_tel}</td>
 											<td>${vo.user_addr}</td>
-											<td>${vo.user_img}</td>
+											<td><img src="${vo.user_img}" width="100" height="100"/></td>
 											<td>${vo.user_regdate}</td>
 											<td>${vo.user_secdate}</td>
 											<td>${vo.user_status}</td>
