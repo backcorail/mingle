@@ -5,11 +5,20 @@ import java.security.Principal;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
+
+
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
@@ -70,7 +79,7 @@ public class StyleController {
 		List<StyleVO> kreamList = service.kreamData(sVO);
 		mav.addObject("sVO", sVO);
 		mav.addObject("klist", kreamList);
-		
+		mav.addObject("ReplyVO", sVO);
 		mav.setViewName("style/style_styles");	
 		return mav;
 	}
@@ -216,5 +225,9 @@ public class StyleController {
 		 
 		return mav;
 	}
+	
+	
+
+
 	
 }

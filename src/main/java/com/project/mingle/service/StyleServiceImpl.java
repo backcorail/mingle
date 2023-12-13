@@ -83,4 +83,5 @@ public class StyleServiceImpl  implements StyleService{
 		// TODO Auto-generated method stub
 		return mapper.replycnt(sVO);
 	}
+
 }

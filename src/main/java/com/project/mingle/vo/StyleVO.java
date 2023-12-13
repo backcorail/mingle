@@ -29,7 +29,7 @@ public class StyleVO {
     private String style_reply_comment; // 댓글 내용
     private String param1;
     private int replycnt; // 댓글 개수
-    
+    private int style_likes_no; // 좋아요 수
     public String getParam1() {
         return this.param1;
     }

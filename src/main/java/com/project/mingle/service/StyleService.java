@@ -19,4 +19,8 @@ public interface StyleService {
 	public List<StyleVO> replySelect();
 	public List<StyleVO> replySelect(StyleVO StyleVO);
 	public int replycnt(StyleVO sVO);
+
+	public int gettotallike(ReplyVO replyVO);
+
+
 }
