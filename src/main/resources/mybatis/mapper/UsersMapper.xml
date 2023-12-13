@@ -42,4 +42,17 @@
 	<update id="pwdUpdate">
 		update users set user_pwd =  #{user_pwd} where user_id=#{user_id}
 	</update>
+	
+	<!-- 관리자 확인. -->
+	<select id="adminIddcheck" resultType="com.project.mingle.vo.AdminLoginVO">
+		select * from admin where admin_id = #{checkid}
+	</select>
+	<!-- 관리자 가입 -->
+	 <insert id="adminsave"  >
+		insert into admin
+		( admin_id, admin_pwd, admin_role )  
+		values 
+		(#{admin_id}, #{admin_pwd}, #{admin_role})
+	</insert>
+	
 </mapper>
