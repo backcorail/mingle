@@ -8,4 +8,32 @@
 		resell_writedate from resell 
 		order by resell_writedate desc limit #{onePageRecord} offset ${offsetPoint};		
 	</select>
+	<select id="kreamList" resultType="com.project.mingle.vo.ResellVO">
+	   	select i.item_no, i.item_name, i.item_price, i.item_postdate, i.item_image, j.item_file_name
+		from item i left join (select item_no, min(item_file_name) as item_file_name
+    	from item_file group by item_no) j on i.item_no = j.item_no
+	    <where>
+			<if test="searchWord1 != ''">and item_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and item_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and item_name like '%${searchWord3}%'</if>
+			<choose>
+				<when test="category != 0 and category != 3">and (item_category = '${category}' or item_category = 0)</when>
+				<when test="category == 3">and item_category = '${category}'</when>
+			</choose>
+			<if test="detail != 0">
+				<if test="detail % 100 != 0">and item_detail = '${detail}'</if>
+				<if test="detail % 100 == 0">and floor(item_detail/100)*100 = '${detail}'</if>
+			</if>
+		</where>
+	    order by 
+	    <choose>
+		    <when test="sort == 'name_asc'">item_name asc</when>
+		    <when test="sort == 'price_asc'">item_price asc</when>
+		    <when test="sort == 'latest_asc'">item_postdate asc</when>
+		    <when test="sort == 'name_desc'">item_name desc</when>
+		    <when test="sort == 'price_desc'">item_price desc</when>
+		    <otherwise>item_postdate desc</otherwise>
+		</choose>
+		limit #{onePageRecord} offset ${offsetPoint};
+	</select>
 </mapper>

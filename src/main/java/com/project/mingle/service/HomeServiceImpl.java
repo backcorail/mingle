@@ -19,5 +19,10 @@ public class HomeServiceImpl implements HomeService{
 		return mapper.resellList(rVO);
 	}
 
+	@Override
+	public List<ResellVO> kreamList(ResellVO rVO) {
+		return mapper.kreamList(rVO);
+	}
+
 
 }
