@@ -18,7 +18,7 @@ import com.project.mingle.service.Auth.CustomAuthenticationProvider;
 
 @Configuration
 @EnableWebSecurity
-@Order(1)
+@Order(2)
 public class UserSecurityConfig {
 
 //	@Autowired
@@ -39,10 +39,10 @@ public class UserSecurityConfig {
 //		this.accessDeniedHandler = accessDeniedHandler;
 //	}
 	// 1)인증 예외처리 // static 자원은 인증 제외.
-	@Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/js/**", "/css/**", "/assets/**", "/font/**", "/img/**");
-    }
+//	@Bean
+//    public WebSecurityCustomizer webSecurityCustomizer() {
+//        return (web) -> web.ignoring().antMatchers("/js/**", "/css/**", "/assets/**", "/font/**", "/img/**");
+//    }
 
 	// 1. 접근 경로 필터링.
 	@Bean
@@ -67,7 +67,7 @@ public class UserSecurityConfig {
                 authorizeHttpRequests() // 인가 요청
 //         	.antMatchers("/user/**","/js/**","/css/**","/assets/**","/font/**","/img/**").permitAll()
 //         	.anyRequest().authenticated();
-                .antMatchers("/mypage/**").authenticated()// 마이페이지는 인증받은 사람만 // 인증받지 않으면 exceptionHandling
+                .antMatchers("/mypage/**").hasRole("USER")// 마이페이지는 인증받은 사람만 // 인증받지 않으면 exceptionHandling
                 //.antMatchers("/mypage/**").hasRole("USER")// 마이페이지는 인증받은 사람만 // 인증받지 않으면 exceptionHandling
                 .anyRequest().permitAll(); // 다른 인가 요청은 모두 인증없이 모두 허용
                 // .antMatchers("/user").hasRole("USER") // 인증과 인가에 대해서
@@ -89,7 +89,16 @@ public class UserSecurityConfig {
                         .invalidateHttpSession(true) // 세션 무효화// 로그인 성공 후 이동할 기본 URL
                         .deleteCookies("JSESSIONID"))// 그리고 http
                 .authenticationProvider(customAuthenticationProvider)//AuthenticationManagerBuilder 에서 provider를 지정해도 된다. 
-                .csrf(csrf -> csrf.disable());// 테스트를 위해서 
+                .csrf(csrf -> csrf.disable());// 테스트를 위해서
+        http.exceptionHandling(handling -> handling
+                .authenticationEntryPoint((request, response, authException) -> {
+                    // 주의!!! AuthenticationEntryPoint를 직접 구현하게 되면
+                    // 우리가 만든 로그인 페이지로 이동하게 된다. 
+                    // 스프링 시큐리티가 제공하는 로그인 페이지가 아니다!
+                    System.out.println(" filterChain 호출확인 exceptionHandling");
+                    //response.sendRedirect("/mingle/login");
+                    response.sendRedirect("/mingle/user/login_joinForm");
+                }));
         http.oauth2Login(login -> login.loginPage("/user/login_joinForm"));
 		return http.build();
 //         .successHandler((request, response, authentication) -> {

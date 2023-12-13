@@ -13,9 +13,9 @@ import com.project.mingle.handler.security.AdminAuthenticationSuccessHandler;
 import com.project.mingle.handler.security.AdminLogoutSuccessHandler;
 import com.project.mingle.service.Auth.AdminAuthenticationProvider;
 
-//@Configuration
-//@EnableWebSecurity
-//@Order(2)
+@Configuration
+@EnableWebSecurity
+@Order(1)
 public class AdminSecurityConfig {
 
 	@Autowired
@@ -33,10 +33,13 @@ public class AdminSecurityConfig {
 
 		http. // http 설정 시작.
 				authorizeHttpRequests() // 인가 요청
-				.antMatchers("/admin/**").hasRole("ADMIN");// 마이페이지는 인증받은 사람만 // 인증받지 않으면 exceptionHandling
+				.antMatchers("/admin/**").hasRole("ADMIN")
+//				.antMatchers("/admin/**").authenticated()
+//				.anyRequest().permitAll()// 마이페이지는 인증받은 사람만 // 인증받지 않으면 exceptionHandling
+				;
 		http // http 설정 시작.
 				.formLogin(login -> login. // 폼 로그인 설정
-						loginPage("/admin/login_joinForm")
+						loginPage("/admin/loginForm")
 						.loginProcessingUrl("/admin/loginproc") // 해당 URL 로 접근 시 로그인 프로세스 실행
 						.usernameParameter("adminid") // 사용자아이디 파라미터 name을 정의
 						.passwordParameter("adminpwd") // 비밀번호 파라미터 name을 정의
@@ -49,7 +52,22 @@ public class AdminSecurityConfig {
 						.invalidateHttpSession(true) // 세션 무효화// 로그인 성공 후 이동할 기본 URL
 						.deleteCookies("JSESSIONID"))// 그리고 http
 				.authenticationProvider(adminAuthenticationProvider)
-				.csrf(csrf -> csrf.disable());// 테스트를 위해서
+				.csrf(csrf -> csrf.disable()); // 테스트를 위해서
+        http.exceptionHandling(handling -> handling
+                .authenticationEntryPoint((request, response, authException) -> {
+                    // 주의!!! AuthenticationEntryPoint를 직접 구현하게 되면
+                    // 우리가 만든 로그인 페이지로 이동하게 된다. 
+                    // 스프링 시큐리티가 제공하는 로그인 페이지가 아니다!
+                    System.out.println(" 호출확인 adminFilterChain exceptionHandling");
+                    //response.sendRedirect("/mingle/login");
+                    response.sendRedirect("/mingle/admin/loginForm");
+                }));
+//			     http.accessDeniedHandler((request, response, accessDeniedException) -> {
+//		        	 System.out.println(" 호출확인 accessDeniedHandler");
+//		             response.sendRedirect("/mingle/denied");
+//		         });
+				
+				
 		return http.build();
 
 		/*

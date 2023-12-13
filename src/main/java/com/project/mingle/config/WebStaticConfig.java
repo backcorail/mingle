@@ -10,9 +10,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class WebStaticConfig {
-//	// 1)인증 예외처리 // static 자원은 인증 제외.
-//	@Bean
-//    public WebSecurityCustomizer webSecurityCustomizer() {
-//        return (web) -> web.ignoring().antMatchers("/js/**", "/css/**", "/assets/**", "/font/**", "/img/**");
-//    }
+	// 1)인증 예외처리 // static 자원은 인증 제외.
+	@Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring().antMatchers("/js/**", "/css/**", "/assets/**", "/font/**", "/img/**");
+    }
 }
