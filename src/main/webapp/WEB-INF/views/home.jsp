@@ -146,7 +146,7 @@
 				<div class="homeSubtitle">리셀 상품</div>
 				<!-- List -->
 				<div id="area_List_home">
-					<c:forEach var="vo" items="${list}">
+					<c:forEach var="vo" items="${resellList}">
 						<div class="homePost_resell">
 							<a href="">
 								<img src="" class="homePostImg_resell"/>
