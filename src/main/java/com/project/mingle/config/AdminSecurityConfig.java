@@ -14,8 +14,9 @@ import com.project.mingle.handler.security.AdminLogoutSuccessHandler;
 import com.project.mingle.service.Auth.AdminAuthenticationProvider;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 @Order(1)
+
 public class AdminSecurityConfig {
 
 	@Autowired

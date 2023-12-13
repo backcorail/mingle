@@ -17,7 +17,7 @@ import com.project.mingle.handler.security.CustomLogoutSuccessHandler;
 import com.project.mingle.service.Auth.CustomAuthenticationProvider;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 @Order(2)
 public class UserSecurityConfig {
 
