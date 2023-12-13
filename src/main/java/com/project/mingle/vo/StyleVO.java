@@ -26,7 +26,6 @@ public class StyleVO {
     private String style_name;//리셀 제목	
     private int item_no;
     private String user_img; // 유저 프로필사진
-    private int style_no; // 스타일 글 번호
     private String style_reply_comment; // 댓글 내용
     private String param1;
     private int replycnt; // 댓글 개수

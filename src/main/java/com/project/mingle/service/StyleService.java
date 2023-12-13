@@ -14,7 +14,6 @@ public interface StyleService {
 	public List<StyleVO> kreamData(StyleVO sVO);
 	public int styleInsert(StyleVO vo);
 	public int styleFileInsert(List<StyleFileVO> list);
-    public int styleInsert(StyleVO vo);
     public int usercomment(ReplyVO replyVO);
 	public List<ReplyVO> getAllComments();
 	public List<StyleVO> replySelect();
