@@ -62,7 +62,7 @@
 								<i class="fas fa-tachometer-alt"></i>
 							</div> Dashboard
 						</a>
-						<!-- Members ë©ë´ -->
+						<!-- Members 메뉴 -->
 						<div class="sb-sidenav-menu-heading">Interface</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseMembers" aria-expanded="false"
@@ -74,17 +74,17 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Members íì ë©ë´ -->
+						<!-- Members 하위 메뉴 -->
 						<div class="collapse" id="collapseMembers"
 							aria-labelledby="headingMembers"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/members_data">Members Data</a>
 								<a class="nav-link" href="/mingle/admintest/members_charts">Members Charts</a>
-								<!-- ë ë§ì íì ë©ë´ í­ëª©ë¤ ì¶ê° ê°ë¥ -->
+								<!-- 더 많은 하위 메뉴 항목들 추가 가능 -->
 							</nav>
 						</div>
-						<!-- Products ë©ë´ -->
+						<!-- Products 메뉴 -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseProducts" aria-expanded="false"
 							aria-controls="collapseProducts">
@@ -95,16 +95,15 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Products íì ë©ë´ -->
+						<!-- Products 하위 메뉴 -->
 						<div class="collapse" id="collapseProducts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
-									<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
-									<a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
 							</nav>
 						</div>
-						<!-- Transactions ë©ë´ -->
+						<!-- Transactions 메뉴 -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseTransactions" aria-expanded="false"
 							aria-controls="collapseTransactions">
@@ -115,15 +114,15 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Transactions íì ë©ë´ -->
+						<!-- Transactions 하위 메뉴 -->
 						<div class="collapse" id="collapseTransactions"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/transactions_data">Transactions Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Transactions Delete</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_charts">Transactions Charts</a>
 							</nav>
 						</div>
-						<!-- Posts ë©ë´ -->
+						<!-- Posts 메뉴 -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapsePosts" aria-expanded="false"
 							aria-controls="collapsePosts">
@@ -134,15 +133,14 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Posts íì ë©ë´ -->
+						<!-- Posts 하위 메뉴 -->
 						<div class="collapse" id="collapsePosts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Posts Delete</a>
 							</nav>
 						</div>
-						<!-- Recommend ë©ë´ -->
+						<!-- Recommend 메뉴 -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseRecommend" aria-expanded="false"
 							aria-controls="collapseRecommend">
@@ -153,15 +151,15 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Recommend íì ë©ë´ -->
+						<!-- Recommend 하위 메뉴 -->
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Data</a>
+								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend Data</a>
 								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
 							</nav>
 						</div>
-						<!-- Server ë©ë´ -->
+						<!-- Server 메뉴 -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseServer" aria-expanded="false"
 							aria-controls="collapseServer">
@@ -172,75 +170,14 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Recommend íì ë©ë´ -->
+						<!-- Recommend 하위 메뉴 -->
 						<div class="collapse" id="collapseServer"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Server
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Server
-									settings</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Server Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Server settings</a>
 							</nav>
 						</div>
-
-
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapsePages" aria-expanded="false"
-							aria-controls="collapsePages">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-book-open"></i>
-							</div> Pages
-							<div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div>
-						</a>
-						<div class="collapse" id="collapsePages"
-							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav accordion"
-								id="sidenavAccordionPages">
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-									data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-									aria-controls="pagesCollapseAuth"> Authentication
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								<div class="collapse" id="pagesCollapseAuth"
-									aria-labelledby="headingOne"
-									data-bs-parent="#sidenavAccordionPages">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="login.html">Login</a> <a
-											class="nav-link" href="register.html">Register</a> <a
-											class="nav-link" href="password.html">Forgot Password</a>
-									</nav>
-								</div>
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-									data-bs-target="#pagesCollapseError" aria-expanded="false"
-									aria-controls="pagesCollapseError"> Error
-									<div class="sb-sidenav-collapse-arrow">
-										<i class="fas fa-angle-down"></i>
-									</div>
-								</a>
-								<div class="collapse" id="pagesCollapseError"
-									aria-labelledby="headingOne"
-									data-bs-parent="#sidenavAccordionPages">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="401.html">401 Page</a> <a
-											class="nav-link" href="404.html">404 Page</a> <a
-											class="nav-link" href="500.html">500 Page</a>
-									</nav>
-								</div>
-							</nav>
-						</div>
-						<div class="sb-sidenav-menu-heading">Addons</div>
-						<a class="nav-link" href="/mingle/admintest/charts">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-chart-area"></i>
-							</div> Charts
-						</a> <a class="nav-link" href="/mingle/admintest/tables">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-table"></i>
-							</div> Tables
-						</a>
 					</div>
 				</div>
 				<div class="sb-sidenav-footer">
@@ -265,34 +202,29 @@
 							<table id="datatablesSimple">
 								<thead>
 									<tr>
-										<th>Seller ID</th>
-										<th>Product name</th>
-										<th>Post date</th>
-										<th>Category</th>
-										<th>Image</th>
+										<th>No.</th>
+										<th>Name</th>
+										<th>Seller</th>
+										<th>WritedDate</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th>Seller ID</th>
-										<th>Product name</th>
-										<th>Date</th>
-										<th>Category</th>
-										<th>Image</th>
+										<th>No.</th>
+										<th>Name</th>
+										<th>Seller</th>
+										<th>WritedDate</th>
 									</tr>
 								</tfoot>
 								<tbody>
-									<c:forEach var="kItem" items="${klist}">
-										<c:forEach var="users" items="${userlist}">
+									<c:forEach var="resellBoard" items="${boardList}">
 										<tr>
-											<td>${users.user_id}</td>
-											<td>${kItem.item_name}</td>
-											<td>${kItem.item_postdate}</td>
-											<td>Category</td>
-											<td><img referrerpolicy="no-referrer" src="${kItem.item_image}"/></td>
+											<td>${resellBoard.resell_no}</td>
+											<td>${resellBoard.resell_name}</td>
+											<td>${resellBoard.resell_seller}</td>
+											<td>${resellBoard.resell_writedate}</td>
 										</tr>
 									</c:forEach>
-										</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -320,6 +252,6 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
-	<script src="/mingle/js/admin/datatables-simple-demo.js"></script>
+	<script src="/mingle/js/admin/datatables-simple-demo2.js"></script>
 </body>
 </html>
