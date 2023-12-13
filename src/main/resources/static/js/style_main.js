@@ -22,6 +22,12 @@ $(document).ready(function() {
 			});
 			break;
 		default :
+		case "4" :
+			$.get("style/request", function(d) {
+				const data = $(d).find(".all_select");
+				$("#tabs").html(data);
+			});
+			break;
 	}
 	
 	if(!tabs) {tabs = 1};
@@ -30,27 +36,7 @@ $(document).ready(function() {
 		url:"style",
 		data:{tabs:tabs}
 	});
-	
-	if(!tabs) {tabs = 2};
-	$.ajax({
-		type:"GET",
-		url:"style",
-		data:{tabs:tabs}
-	});
-	
-	if(!tabs) {tabs = 3};
-	$.ajax({
-		type:"GET",
-		url:"style",
-		data:{tabs:tabs}
-	});
-	
-	if(!tabs) {tabs = 4};
-	$.ajax({
-		type:"GET",
-		url:"style",
-		data:{tabs:tabs}
-	});
+
 });
 
 
