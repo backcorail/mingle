@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <sec:authorize access="isAuthenticated()">
@@ -14,6 +15,7 @@
 <!-- 위쪽 카테고리 선택부분 -->
 <div>
 	<ul class="resell_top">
+		<li><div class="board_reset">초기화</div></li>
 		<!-- 검색 부분 -->
 		<li class="resell_search">
 			<div>
@@ -112,7 +114,15 @@
 			</c:if>
 			<c:forEach var="vo" items="${klist}">
 				<div class="list_box">
-					<img referrerpolicy="no-referrer" src="${vo.item_image}">
+					<c:choose>
+						<c:when test="${empty vo.item_image}">	
+							<c:set var="firstImg" value="${pageContext.request.contextPath}/uploadfile/${vo.item_file_name}"/>
+						</c:when>
+						<c:otherwise>
+							<c:set var="firstImg" value="${vo.item_image}"/>
+						</c:otherwise>
+					</c:choose>
+					<img referrerpolicy="no-referrer" src="${firstImg}">
 					<div class="board_view" id="${vo.item_no}">${vo.item_name}</div>
 					<c:set var="format" value="${vo.item_price}"/>
 					<fmt:formatNumber var="formatPrice" value="${format}" pattern="#,###원"/>
