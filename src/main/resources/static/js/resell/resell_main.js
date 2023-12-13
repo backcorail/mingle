@@ -98,6 +98,11 @@ $(document).ready(function() {
 	// ===========================================================
 	// -----< 좌특 카테고리 부분 >-----
 	
+	// 카테고리 분류 완전 초기화
+	$(".board_reset").click(function() {
+		URLData(url, 0, 0, "", 0, 0, "");
+	});
+	
 	// 옆쪽 카테고리 열고 닫는 애니메이션 
 	$(".moreView").click(function() {
 		var visible = $(this).parent().next();
@@ -253,7 +258,7 @@ function search() {
 // 비동기식(ajax) 데이터 보내기 및 데이터 판별
 function URLData(url, no, page, search, category, detail, sort) {
 	// 작성 틀 : URLData(url, null, null, null, null, null, null);
-	// 초기 값 : URLData(url, 0, 1, "", 0, 0, "latest_desc";)
+	// 초기 값 : URLData(url, 0, 0, "", 0, 0, "");
 
 	// 필요한 변수 및 데이터
 	var params = window.location.search;

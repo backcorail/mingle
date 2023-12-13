@@ -7,9 +7,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.project.mingle.mapper.ResellMapper;
-import com.project.mingle.vo.RequestVO;
-import com.project.mingle.vo.ItemFileVO;
-import com.project.mingle.vo.ResellItemVO;
 import com.project.mingle.vo.ResellVO;
 
 @Service
@@ -42,19 +39,32 @@ public class ResellServiceImpl implements ResellService {
 	public ResellVO boardData(int no) {
 		return mapper.boardData(no);
 	}
-  
-  @Override
-	public int itemInsert(ResellItemVO rivo) {
-		return mapper.itemInsert(rivo);
+
+	@Override
+	public ResellVO itemData(int no) {
+		return mapper.itemData(no);
 	}
 
 	@Override
-	public int resellInsert(ResellVO rvo) {
-		return mapper.resellInsert(rvo);
+	public List<String> imageData(int no) {
+		return mapper.imageData(no);
 	}
 
 	@Override
-	public int itemFileInsert(List<ItemFileVO> list) {
-		return mapper.itemFileInsert(list);
+	public int item_insert(ResellVO rVO) {
+		return mapper.item_insert(rVO);
 	}
+
+	@Override
+	public int resell_insert(ResellVO rVO) {
+		return mapper.resell_insert(rVO);
+	}
+
+	@Override
+	public int item_file_insert(List<ResellVO> list) {
+		return mapper.item_file_insert(list);
+	}
+
+	
+
 }

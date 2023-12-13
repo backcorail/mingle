@@ -2,6 +2,8 @@ package com.project.mingle.controller;
 
 
 import java.util.List;
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.security.Principal;
@@ -12,11 +14,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.eclipse.jdt.internal.compiler.ast.CombinedBinaryExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,10 +38,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.mingle.service.ResellService;
-import com.project.mingle.vo.RequestFileVO;
-import com.project.mingle.vo.RequestVO;
-import com.project.mingle.vo.ItemFileVO;
-import com.project.mingle.vo.ResellItemVO;
 import com.project.mingle.vo.ResellVO;
 
 @Controller
@@ -135,8 +135,20 @@ public class ResellController {
 		String[] main = {"All", "Men", "Women", "Other"};
 		mav.addObject("main", main);
 		
+		// no를 통한 게시글 데이터 받아오기
 		ResellVO boardData = service.boardData(no);
+		// no를 통한 아이템 데이터 받아오기
+		ResellVO itemData = service.itemData(no);
+		// no를 통한 이미지 데이터 받아오기
+		List<String> imageData = service.imageData(no);
+		
+		System.out.println(boardData);
+		System.out.println(itemData);
+		System.out.println(imageData);
+		
 		mav.addObject("boardData", boardData);
+		mav.addObject("itemData", itemData);
+		mav.addObject("imageData", imageData);
 		mav.addObject("rVO", rVO);
 		
 		mav.setViewName("resell/resell_board");
@@ -160,7 +172,6 @@ public class ResellController {
 	@PostMapping("/writeOk")
 	@Transactional(rollbackFor={RuntimeException.class, SQLException.class})
 	public ModelAndView resell_writeOk(
-			ResellItemVO rivo,
 			HttpSession session,
 			HttpServletRequest hsr,
 			Principal principal,
@@ -182,7 +193,7 @@ public class ResellController {
 		//mr객체 내에 파일의 수만큼 MultipartFile객체가 있다.
 		List<MultipartFile> filesList = mr.getFiles("filename"); //input 태그의 name 속성값
 		// 업로드 한 파일목록을 보관 DatafileVO -> List
-		List<ItemFileVO> uploadFileList = new ArrayList<ItemFileVO>();
+		List<ResellVO> uploadFileList = new ArrayList<ResellVO>();
 		
 		if(filesList != null){//업로드 파일이 있을때
 			for(int i=0; i<filesList.size(); i++) {// 첨부된 파일 만큼 반복수행
@@ -211,7 +222,6 @@ public class ResellController {
 								break;
 							}//if 4
 						}// for2
-						
 					}//if3
 					//업로드
 					try {
@@ -219,8 +229,11 @@ public class ResellController {
 					}catch(Exception e) {}
 					
 					//업로드 
-					ItemFileVO ifVO = new ItemFileVO();
+					ResellVO ifVO = new ResellVO();
 					ifVO.setItem_file_name(orgFilename);
+					if(ifVO.getItem_image() == "") {
+						ifVO.setItem_image(orgFilename);
+					}
 					uploadFileList.add(ifVO);
 				}//if2
 			}//for1
@@ -228,44 +241,49 @@ public class ResellController {
 		}//if1
 		try {
 			//아이템 업로드
-			int result = service.itemInsert(rivo);
-			System.out.println("result : "+result+" --- 3");
+			service.item_insert(rVO);
 			
 			//글 업로드
-			rVO.setItem_no(rivo.getItem_no());
-			int result1 = service.resellInsert(rVO);
-			System.out.println("result : "+result1+" --- 4");
+			service.resell_insert(rVO);
 			
 			//업로드아이템 사진 파일명
-			for(ItemFileVO ifVO: uploadFileList) {
-				ifVO.setItem_no(rivo.getItem_no());
-			}
+			for(ResellVO ifVO: uploadFileList) {ifVO.setItem_no(rVO.getItem_no());}
+			
+			
 			System.out.println(uploadFileList+"123456"+" --- 5");
-			int fileResult = service.itemFileInsert(uploadFileList);
+			int fileResult = service.item_file_insert(uploadFileList);
+			
 			System.out.println("fileResult"+fileResult+" --- 6");
+			
+			if(!uploadFileList.isEmpty()) {
+				ResellVO firstFile = uploadFileList.get(0);
+				String firstFileName = firstFile.getItem_file_name();
+				System.out.println(firstFileName + " --- 7");
+				
+			}
+			
 			//4. 추가 성공하면 -> 자료실목록
 			
 			TransactionAspectSupport.currentTransactionStatus().flush();
-			mav.setViewName("home");
+			mav.setViewName("redirect:/resell");
 			
-		}catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 			//5. 실패하면 레코드와, 파일을 삭제하고 글올리기 폼으로 이동
 			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 			//이미 업로드된 파일을 삭제
-			for(ItemFileVO ifVO : uploadFileList) {
+			for(ResellVO ifVO : uploadFileList) {
 				File f = new File(path, ifVO.getItem_file_name());
 				f.delete();
 			}
 			
 			//글등록폼으로 이동
 			mav.addObject("msg", "등록");	
-			mav.setViewName("resell/write_result");
+			mav.setViewName("/resell/write_result");
 			
 		}
-		return mav;
 
-		
+		return mav;
 	}
   
   

@@ -1,5 +1,7 @@
 package com.project.mingle.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,10 +32,14 @@ public class ResellVO {
 	
 	// 크림 관련 변수 목록(item 테이블)
 	private int item_no; // 아이템 고유 번호
-	private String item_image; // 아이템 사진
 	private String item_name; // 아이템 이름
+	private int	item_category; // 아이템 카테고리
+	private String item_image; // 아이템 사진
+	private int	item_detail; // 아이템 세부 분류
 	private int item_price; // 아이템 가격
+	private String item_condition; // 아이템 상태
 	private String item_postdate; // 아이템 올린 날짜
+	private String item_status; // 아이템 판매 상태
 	private int ktotalRecord; // 크림 총 레코드수
 	private int ktotalPage; // 크림 총 페이지
 	
@@ -41,6 +47,7 @@ public class ResellVO {
 	private int img_no; 
 	private String img_url;
 	private String imageData;
+	private String item_file_name;
 	
 	// 검색 관련 변수
 	private String searchWord;
@@ -52,6 +59,14 @@ public class ResellVO {
 	private String sort; // 정렬 유형
 	private int category; // 상단에 있는 카테고리
 	private int detail; // 왼쪽에 있는 상세 카테고리
+	
+	// 유저관련 변수 목록
+	private String user_id;
+	private String user_nick;
+	
+
+	
+	
 	
   
 	public void setTotalPage() {
