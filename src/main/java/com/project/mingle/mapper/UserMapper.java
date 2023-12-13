@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.project.mingle.vo.AdminLoginVO;
 import com.project.mingle.vo.UserVO;
 
 @Mapper
@@ -15,6 +16,13 @@ public interface UserMapper {
 	
 	// 아이디 중복체크
 	public UserVO iddcheck(@Param("checkid")String checkid);
+	
+	//관리자 가입
+	public int adminsave(AdminLoginVO adminLoginVO);
+	
+	//관리자 중복체크
+	public AdminLoginVO adminIddcheck(@Param("checkid")String checkid);
+	
 
 	// 닉네임 중복체크
 	public UserVO nickcheck(@Param("checknick")String checknick);
