@@ -15,12 +15,9 @@ public interface StyleService {
 	public int styleInsert(StyleVO vo);
 	public int styleFileInsert(List<StyleFileVO> list);
     public int usercomment(ReplyVO replyVO);
-	public List<ReplyVO> getAllComments();
-	public List<StyleVO> replySelect();
 	public List<StyleVO> replySelect(StyleVO StyleVO);
 	public int replycnt(StyleVO sVO);
-
-	public int gettotallike(ReplyVO replyVO);
+	
 
 
 }

@@ -64,24 +64,15 @@ public class StyleServiceImpl  implements StyleService{
 	}
 
 
-	@Override
-	public List<ReplyVO> getAllComments() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public List<StyleVO> replySelect() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
+	
 	@Override
 	public int replycnt(StyleVO sVO) {
 		// TODO Auto-generated method stub
 		return mapper.replycnt(sVO);
 	}
+
+
+	
+		
 
 }
