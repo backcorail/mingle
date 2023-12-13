@@ -64,6 +64,7 @@
   
   margin-top: calc(11.43px * var(--default-size));
   
+   overflow:hidden; display:block; text-overflow: ellipsis; white-space:nowrap;
   font: 700 
   calc(25px * var(--default-size))
   "Inika-Bold";
@@ -119,6 +120,10 @@
   margin-top: calc(39.84px * var(--default-size));
 }
 
+.div-my-detail-data .div-buy-data-num .div-title-txt h1{
+    overflow:hidden; display:block; text-overflow: ellipsis; white-space:nowrap;
+  width:10rem;
+}
 .ul-templete-mydata{
   display: flex;
   justify-content: space-evenly;

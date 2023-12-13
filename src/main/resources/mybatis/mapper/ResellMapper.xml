@@ -73,8 +73,8 @@
 	</select>
   
 	<insert id ="itemInsert" parameterType="com.project.mingle.vo.ResellItemVO" useGeneratedKeys="true" keyProperty="item_no">
-	    insert into item(item_name, item_seller, item_price, item_category, item_detail)
-	    values(#{item_name}, #{item_seller}, #{item_price}, #{item_category}, #{item_detail})
+	    insert into item(item_name, item_price, item_category, item_detail, item_image)
+	    values(#{item_name}, #{item_price}, #{item_category}, #{item_detail}, #{item_image})
     </insert>
     <insert id ="resellInsert" parameterType="com.project.mingle.vo.ResellVO">
 	    insert into resell(item_no, resell_name, resell_seller, resell_comment, resell_addr)
@@ -82,9 +82,9 @@
     </insert>
     <insert id="itemFileInsert" parameterType="java.util.List">
 	    <if test="list != null or !list.isEmpty()">
-		    <foreach item="item" collection="list" open="insert into item_datafile(item_no, item_datafile_dataname) values"
+		    <foreach item="item" collection="list" open="insert into item_file(item_no, item_file_name) values"
 				separator=",">
-				(${item.item_no}, #{item.item_datafile_dataname})
+				(${item.item_no}, #{item.item_file_name})
 			</foreach>
 	    </if>
 	</insert>

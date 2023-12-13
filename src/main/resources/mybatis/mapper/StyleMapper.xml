@@ -26,3 +26,17 @@
 	    </if>
   </insert>
 </mapper>
+  <select id="gettotallike" resultType="int">
+  	select count(style_likes_no) from style_likes where style_no = #{param1}
+  </select>
+  <insert id ="usercomment">
+      insert into style_reply(style_reply_comment, user_id, style_no)
+      values(#{comment}, #{usernic}, #{styleno})
+    </insert>
+    <select id="replySelect" resultType="com.project.mingle.vo.StyleVO">
+		select style_reply_no, style_no, style_reply_comment, user_id from style_reply where style_no = #{param1} 
+	</select>
+	<select id ="replycnt" resultType="int">
+    select count(style_reply_no) from style_reply
+  	</select>
+</mapper>

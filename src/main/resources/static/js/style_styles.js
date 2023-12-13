@@ -14,25 +14,3 @@ $(document).ready(function() {
         window.location.href = "/mingle/style/trend/info";
     });
 });
-
-
-// 좋아요 기능
-$('.heart-btn').click(function() {
-    var likesDiv = $(this).siblings('.style_likes_check');
-
-    $.ajax({
-        url: '/mingle/style?tabs=2',
-        type: 'POST',
-        data: { 
-            like: 1
-        },
-        success: function(response) {
-            likesDiv.text(response); 
-            console.log("aasd");
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.log(textStatus, errorThrown);
-        	console.log(jqXHR, textStatus, errorThrown);
-        }
-    });
-});

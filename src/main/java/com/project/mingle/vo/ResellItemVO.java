@@ -12,4 +12,6 @@ public class ResellItemVO {
 	private int item_detail;//아이템 세부 카테고리
 	private String item_seller;//아이템 판매자
 	private String item_postdate;//아이템 게시일
+	private String item_image;
+	
 }

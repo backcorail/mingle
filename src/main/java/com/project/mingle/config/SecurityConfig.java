@@ -90,7 +90,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .deleteCookies("JSESSIONID"))// 그리고 http
                 .authenticationProvider(customAuthenticationProvider)//AuthenticationManagerBuilder 에서 provider를 지정해도 된다. 
                 .csrf(csrf -> csrf.disable());// 테스트를 위해서 
-                
+        http.oauth2Login(login -> login.loginPage("/user/login_joinForm"));
+
 //         .successHandler((request, response, authentication) -> {
 //             HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
 //             

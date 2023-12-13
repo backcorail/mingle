@@ -159,15 +159,22 @@ public class ResellController {
   
 	@PostMapping("/writeOk")
 	@Transactional(rollbackFor={RuntimeException.class, SQLException.class})
-	public ModelAndView reqeust_writeOk(ResellItemVO rivo, HttpSession session, HttpServletRequest hsr, Principal principal, ResellVO rvo) {
+	public ModelAndView resell_writeOk(
+			ResellItemVO rivo,
+			HttpSession session,
+			HttpServletRequest hsr,
+			Principal principal,
+			ResellVO rVO) {
+		
 		ModelAndView mav = new ModelAndView();
-		rvo.setResell_seller(principal.getName());
-		System.out.println(principal.getName());
+		
+		rVO.setResell_seller(principal.getName());
+		System.out.println(principal.getName()+" --- 1");
 		
 		//2. 파일업로드 (rename)
 		//업로드할 위치 폴더(절대주소로 구한다.)구하기
 		String path = session.getServletContext().getRealPath("/uploadfile");
-		System.out.println("path->"+ path);
+		System.out.println("path->"+ path+" --- 2");
 		
 		// HttpServletRequest -> MultipartHttpServletRequest객체를 구한다.
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)hsr;
@@ -213,7 +220,7 @@ public class ResellController {
 					
 					//업로드 
 					ItemFileVO ifVO = new ItemFileVO();
-					ifVO.setItem_datafile_dataname(orgFilename);
+					ifVO.setItem_file_name(orgFilename);
 					uploadFileList.add(ifVO);
 				}//if2
 			}//for1
@@ -222,19 +229,23 @@ public class ResellController {
 		try {
 			//아이템 업로드
 			int result = service.itemInsert(rivo);
-			System.out.println("result"+result);
+			System.out.println("result : "+result+" --- 3");
+			
 			//글 업로드
-			rvo.setItem_no(rivo.getItem_no());
-			int result1 = service.resellInsert(rvo);
-			System.out.println("result1"+result1);
+			rVO.setItem_no(rivo.getItem_no());
+			int result1 = service.resellInsert(rVO);
+			System.out.println("result : "+result1+" --- 4");
+			
 			//업로드아이템 사진 파일명
 			for(ItemFileVO ifVO: uploadFileList) {
 				ifVO.setItem_no(rivo.getItem_no());
 			}
-			System.out.println(uploadFileList+"123456");
+			System.out.println(uploadFileList+"123456"+" --- 5");
 			int fileResult = service.itemFileInsert(uploadFileList);
-			System.out.println("fileResult"+fileResult);
+			System.out.println("fileResult"+fileResult+" --- 6");
 			//4. 추가 성공하면 -> 자료실목록
+			
+			TransactionAspectSupport.currentTransactionStatus().flush();
 			mav.setViewName("home");
 			
 		}catch(Exception e) {
@@ -243,7 +254,7 @@ public class ResellController {
 			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 			//이미 업로드된 파일을 삭제
 			for(ItemFileVO ifVO : uploadFileList) {
-				File f = new File(path, ifVO.getItem_datafile_dataname());
+				File f = new File(path, ifVO.getItem_file_name());
 				f.delete();
 			}
 			
