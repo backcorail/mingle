@@ -17,9 +17,6 @@ public class UserSecDetails implements UserDetails ,OAuth2User{
 
 	private UserVO userVO;
 	private Map<String,Object> attributes;
-	
-	public UserSecDetails() {
-	}
 
 	public UserSecDetails(UserVO userVO) {
 		this.userVO = userVO;
@@ -63,7 +60,7 @@ public class UserSecDetails implements UserDetails ,OAuth2User{
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -76,9 +73,9 @@ public class UserSecDetails implements UserDetails ,OAuth2User{
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		// 유저상태를 2는 비활성화 1은 활성화
-		if(userVO.getUser_status()==2) {
-			return false;
-		}
+//		if(userVO.getUser_status()==2) {
+//			return false;
+//		}
 		return true;
 	}
 	
@@ -87,7 +84,7 @@ public class UserSecDetails implements UserDetails ,OAuth2User{
 		// TODO Auto-generated method stub
 		Collection<GrantedAuthority> collectors = new ArrayList();
 		collectors.add(()->{ return userVO.getUser_role();});
-		return null;
+		return collectors;
 	}
 
 

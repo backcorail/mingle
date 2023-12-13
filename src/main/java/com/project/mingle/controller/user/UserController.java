@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,13 +54,13 @@ public class UserController {
 	// http://localhost:9998/mingle/user/login_joinForm
 	@GetMapping("/user/login_joinForm")
 	public String joinForm(Model model) {
-		System.out.println("joinForm 맵핑");
+		System.out.println("UserController.joinForm() -> joinForm : ");
 		model.addAttribute("REST_API_KEY", app_key);
 		model.addAttribute("REDIRECT_URI", "http://localhost:9998/mingle/user/kakao/callback");
 		return "user/login_joinForm";
 	}
 	
-	@GetMapping("/mypage")
+//	@GetMapping("/mypage")
 	//1)
 	public String mypage(HttpSession session) {
 	//2)
@@ -68,7 +69,7 @@ public class UserController {
 //	public String mypage(HttpSession session, Authentication authentication) {
 	//4)
 //	public String mypage(HttpSession session,@AuthenticationPrincipal UserSecDetails secDetails) {
-		System.out.println("mypage 맵핑");
+		System.out.println("UserController.mypage() ->session : " + session);
 		
 		// 1) 실패) 컨택스트에서 직접가져오는 방법
 //		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
@@ -188,17 +189,34 @@ public class UserController {
 		// 가입자 혹은 비가입자 체크 해서 처리
 		UserVO originUser = userService.iddcheck(kakaoUser.getUserid());
 		
+		System.out.println("기존가입 결과 확인 : ");
 		// null 이면 가입 처리
 		if(originUser== null) { 
 			System.out.println("기존 회원이 아닙니다..........................................!!!");
 			userService.saveOauth(kakaoUser);
+		}else {
+			System.out.println("기존 회원이 맞습니다.!!!");
 		}
 		System.out.println("자동 로그인을 진행합니다.");
-		Authentication authentication = 
-				authenticationManager.authenticate(
-							new UsernamePasswordAuthenticationToken( kakaoUser.getUserid(), kakaoUser.getUserpwd()));
-		SecurityContextHolder.getContext().setAuthentication(authentication);
+		if(authenticationManager==null) {
+			System.out.println("UserController.kakaoCallBack() ->authenticationManager : null " );
+		}else {
+			System.out.println("UserController.kakaoCallBack() ->authenticationManager : not null " );
+		}
+		System.out.println("자동 로그인을 진행합니다.");
 		
+		try {
+		    Authentication authentication = 
+		            authenticationManager.authenticate(
+		                new UsernamePasswordAuthenticationToken(kakaoUser.getUserid(), kakaoUser.getUserpwd()));
+		    System.out.println("UserController.kakaoCallBack() ->세션넣기 전: " + authentication.getPrincipal());
+		    SecurityContextHolder.getContext().setAuthentication(authentication);
+		} catch (AuthenticationException e) {
+		    e.printStackTrace(); // 예외 정보 출력
+		}
+		
+		System.out.println("UserController.kakaoCallBack() ->authentication. 세션넣기 후 : ");
+		System.out.println("페이지 이동합니다.");
 		return "redirect:/";
 	}
 	

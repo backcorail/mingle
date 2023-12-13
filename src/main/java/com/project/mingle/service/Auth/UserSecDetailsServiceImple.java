@@ -28,7 +28,11 @@ public class UserSecDetailsServiceImple implements UserDetailsService {
         	System.out.println("UserSecDetailsServiceImple 사용자 없음.");
 //            throw new UsernameNotFoundException("사용자를 찾을수 없습니다.: " + userid);
         	 return null;
+        }else {
+        	System.out.println("UserSecDetailsServiceImple 기존가입자.");
+        	System.out.println("UserSecDetailsServiceImple.loadUserByUsername() ->userVO.getUser_id() : " + userVO.getUser_id());
         }
+        
         return new UserSecDetails(userVO);
     }
 }
