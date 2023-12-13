@@ -146,14 +146,22 @@
 				<div class="homeSubtitle">리셀 상품</div>
 				<!-- List -->
 				<div id="area_List_home">
-					<c:forEach var="vo" items="${resellList}">
+					<c:forEach var="vo" items="${kreamList}">
 						<div class="homePost_resell">
 							<a href="">
-								<img src="" class="homePostImg_resell"/>
-								<div class="homePostTitle_resell">${vo.resell_name}</div>
+								<c:choose>
+									<c:when test="${empty vo.item_image}">	
+										<c:set var="firstImg" value="${pageContext.request.contextPath}/uploadfile/${vo.item_file_name}"/>
+									</c:when>
+									<c:otherwise>
+										<c:set var="firstImg" value="${vo.item_image}"/>
+									</c:otherwise>
+								</c:choose>
+								<img src="${firstImg}" class="homePostImg_resell"/>
+								<div class="homePostTitle_resell">${vo.item_name}</div>
 								<div class="textBottom_homePost">
-									<div class="homePostPrice_resell">25000</div>
-									<div class="homePostTime_resell">${vo.resell_writedate}</div>
+									<div class="homePostPrice_resell">${vo.item_price}</div>
+									<div class="homePostTime_resell">${vo.item_postdate}</div>
 								</div>
 							</a>
 						</div>
@@ -176,7 +184,7 @@
 					<div class="adv_homeLink">
 						<div class="row columns">
 					      <ul class="menu align-center expanded text-center SMN_effect-11">
-					        <li><a href="" data-hover="cody next>"><span id="homeContentLink_cody">cody next></span></a></li>
+					        <li><a href="/mingle/cody" data-hover="cody next>"><span id="homeContentLink_cody">cody next></span></a></li>
 					      </ul>
 					    </div>
 					</div> 
