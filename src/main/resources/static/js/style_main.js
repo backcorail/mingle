@@ -21,6 +21,12 @@ $(document).ready(function() {
 				$("#tabs").html(data);
 			});
 			break;
+		case "4" :
+			$.get("style/request", function(d) {
+				const data = $(d).find(".all_select");
+				$("#tabs").html(data);
+			});
+			break;
 		default :
 	}
 	
