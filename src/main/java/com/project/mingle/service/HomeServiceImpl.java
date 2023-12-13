@@ -15,8 +15,9 @@ public class HomeServiceImpl implements HomeService{
 	HomeMapper mapper;
 
 	@Override
-	public List<ResellVO> homeResellList(int num) {
-		return mapper.homeResellList(num);
+	public List<ResellVO> resellList(ResellVO rVO) {
+		return mapper.resellList(rVO);
 	}
+
 
 }

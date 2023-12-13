@@ -8,5 +8,5 @@ import com.project.mingle.vo.ResellVO;
 
 @Mapper
 public interface HomeMapper {
-	public List<ResellVO> homeResellList(int num);// 메인페이지 resell데이터 가져오기
+	public List<ResellVO> resellList(ResellVO rVO); // 데이터 가져오기
 }
