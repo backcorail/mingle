@@ -263,34 +263,29 @@
 							<table id="datatablesSimple">
 								<thead>
 									<tr>
-										<th>Seller ID</th>
-										<th>Product name</th>
-										<th>Post date</th>
-										<th>Category</th>
-										<th>Image</th>
+										<th>No.</th>
+										<th>Name</th>
+										<th>Seller</th>
+										<th>WritedDate</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th>Seller ID</th>
-										<th>Product name</th>
-										<th>Date</th>
-										<th>Category</th>
-										<th>Image</th>
+										<th>No.</th>
+										<th>Name</th>
+										<th>Seller</th>
+										<th>WritedDate</th>
 									</tr>
 								</tfoot>
 								<tbody>
-									<c:forEach var="kItem" items="${klist}">
-										<c:forEach var="users" items="${userlist}">
+									<c:forEach var="resellBoard" items="${boardList}">
 										<tr>
-											<td>${users.user_id}</td>
-											<td>${kItem.item_name}</td>
-											<td>${kItem.item_postdate}</td>
-											<td>Category</td>
-											<td><img src="${kItem.item_image}"/></td>
+											<td>${resellBoard.resell_no}</td>
+											<td>${resellBoard.resell_name}</td>
+											<td>${resellBoard.resell_seller}</td>
+											<td>${resellBoard.resell_writedate}</td>
 										</tr>
 									</c:forEach>
-										</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -318,6 +313,6 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
-	<script src="/mingle/js/admin/datatables-simple-demo.js"></script>
+	<!--  --><script src="/mingle/js/admin/datatables-simple-demo2.js"></script>
 </body>
 </html>

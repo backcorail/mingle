@@ -17,6 +17,7 @@ $(document).ready(function() {
         }
     });
 
+    
     // Members Charts AJAX 요청 및 차트 초기화
     $.ajax({
         url: '/mingle/admintest/members_charts',

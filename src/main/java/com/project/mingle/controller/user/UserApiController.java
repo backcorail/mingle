@@ -84,6 +84,7 @@ public class UserApiController {
 	public ResponseDto<String> save(@RequestBody JoinUserVO joinUserVO){
 		System.out.println("\n joinUserVO 브라우저에서 오는값");
 		System.out.println(joinUserVO.toString());
+		
 		int saveResult = userService.save(joinUserVO);
 		if(saveResult < 1 ) return  new ResponseDto<String>(UserResp.JOINFAILD.getValue(),"회원가입에 실패 하였습니다.");
 		return new ResponseDto<String>(UserResp.JOINSUCCESS.getValue(),"회원가입 완료");

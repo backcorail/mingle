@@ -41,7 +41,9 @@
 	</select>
 	
 	<select id="kreamData" resultType="com.project.mingle.vo.ResellVO">
-	    select item_no, item_name, item_price, item_image, item_postdate from item
+	   	select i.item_no, i.item_name, i.item_price, i.item_postdate, i.item_image, j.item_file_name
+		from item i left join (select item_no, min(item_file_name) as item_file_name
+    	from item_file group by item_no) j on i.item_no = j.item_no
 	    <where>
 			<if test="searchWord1 != ''">and item_name like '%${searchWord1}%'</if>
 			<if test="searchWord2 != ''">and item_name like '%${searchWord2}%'</if>
@@ -67,23 +69,34 @@
 		limit #{onePageRecord} offset ${offsetPoint};
 	</select>
 
+	<!-- 보드 페이지 데이터 받아오기 -->
 	<select id="boardData" resultType="com.project.mingle.vo.ResellVO">
+		select resell_name, resell_seller, resell_comment, resell_addr, resell_writedate from resell
+		where item_no = ${item_no}
+	</select>
+	<select id="itemData" resultType="com.project.mingle.vo.ResellVO">
 		select item_no, item_name, item_price, item_image, item_postdate from item
 		where item_no = ${item_no}
 	</select>
-  
-	<insert id ="itemInsert" parameterType="com.project.mingle.vo.ResellItemVO" useGeneratedKeys="true" keyProperty="item_no">
-	    insert into item(item_name, item_price, item_category, item_detail, item_image)
-	    values(#{item_name}, #{item_price}, #{item_category}, #{item_detail}, #{item_image})
+	<select id="imageData" resultType="java.lang.String">
+		select item_file_name from item_file where item_no = #{item_no}
+	</select>
+	
+	
+	
+	<insert id ="item_insert" parameterType="com.project.mingle.vo.ResellVO" useGeneratedKeys="true" keyProperty="item_no">
+	    insert into item(item_name, item_category, item_detail, item_price, item_image)
+	    values(#{item_name}, #{item_category},  #{item_detail}, #{item_price}, #{item_image})
     </insert>
-    <insert id ="resellInsert" parameterType="com.project.mingle.vo.ResellVO">
-	    insert into resell(item_no, resell_name, resell_seller, resell_comment, resell_addr)
-	    values(#{item_no}, #{resell_name}, #{resell_seller}, #{resell_comment}, #{resell_addr})
+    
+    <insert id ="resell_insert" parameterType="com.project.mingle.vo.ResellVO">
+	    insert into resell(resell_name, resell_seller, item_no, resell_comment, resell_addr)
+	    values(#{resell_name}, #{resell_seller}, #{item_no}, #{resell_comment}, #{resell_addr})
     </insert>
-    <insert id="itemFileInsert" parameterType="java.util.List">
+    
+    <insert id="item_file_insert" parameterType="java.util.List">
 	    <if test="list != null or !list.isEmpty()">
-		    <foreach item="item" collection="list" open="insert into item_file(item_no, item_file_name) values"
-				separator=",">
+		    <foreach item="item" collection="list" open="insert into item_file(item_no, item_file_name) values" separator=",">
 				(${item.item_no}, #{item.item_file_name})
 			</foreach>
 	    </if>

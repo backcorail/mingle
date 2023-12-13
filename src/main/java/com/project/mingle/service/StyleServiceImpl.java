@@ -3,6 +3,7 @@ package com.project.mingle.service;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import com.project.mingle.mapper.StyleMapper;
+import com.project.mingle.vo.StyleFileVO;
 import com.project.mingle.vo.AdminTestVO;
 import com.project.mingle.vo.ReplyVO;
 import com.project.mingle.vo.StyleVO;
@@ -47,6 +48,9 @@ public class StyleServiceImpl  implements StyleService{
 
 
 	@Override
+	public int styleFileInsert(List<StyleFileVO> list) {
+		return mapper.styleFileInsert(list);
+	}
 	public int usercomment(ReplyVO replyVO) {
 		// TODO Auto-generated method stub
 		return mapper.usercomment(replyVO);
@@ -79,14 +83,5 @@ public class StyleServiceImpl  implements StyleService{
 		// TODO Auto-generated method stub
 		return mapper.replycnt(sVO);
 	}
-
-
-	@Override
-	public int gettotallike(ReplyVO replyVO) {
-		// TODO Auto-generated method stub
-		return mapper.gettotallike(replyVO);
-	}
-
-
 
 }

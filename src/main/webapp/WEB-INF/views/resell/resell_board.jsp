@@ -20,19 +20,36 @@
 <div class="resell_board_top">
 	<div class="resell_board_img">
 		<div class="resell_mini_img">
-			<c:forEach var="n" begin="0" end="5">
-				<div id="clothes_click${n}" class="clothes_click">
-					<c:if test="${n == 0}">
-						<img referrerpolicy="no-referrer" src="${boardData.item_image}">
-					</c:if>
-					<c:if test="${n != 0}">
-						<img src="/mingle/img/resell/cloth_sam${n}.jpg">
-					</c:if>
-				</div>
-			</c:forEach>
+			<c:choose>
+				<c:when test="${empty imageData}">
+					<!-- 이미지 데이터 없을때 -->
+					<c:forEach var="n" begin="0" end="5">
+						<div id="clothes_click${n}" class="clothes_click">
+							<c:if test="${n == 0}">
+								<img referrerpolicy="no-referrer" src="${itemData.getItem_image()}">
+								<c:set var="mainImg" value="${itemData.getItem_image()}"/>
+							</c:if>
+							<c:if test="${n != 0}">
+								<img src="/mingle/img/resell/cloth_sam${n}.jpg">
+							</c:if>
+						</div>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<!-- 이미지 데이터 있을때 -->
+					<c:forEach var="n" items="${imageData}" varStatus="num">
+						<div id="clothes_click${num.index}" class="clothes_click">
+							<img src="${pageContext.request.contextPath}/uploadfile/${n}">
+							<c:if test="${num.index == 0}">
+								<c:set var="mainImg" value="${pageContext.request.contextPath}/uploadfile/${n}"/>
+							</c:if>
+						</div>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="resell_main_img">
-			<img class="main_img" src="${boardData.item_image}">
+			<img class="main_img" src="${mainImg}">
 			<img class="select_img" src="/mingle/img/resell/icon_heart.png">
 			<img class="select_img" src="/mingle/img/resell/icon_shopBag.png">
 		</div>
@@ -57,8 +74,8 @@
 			</li>
 			<li class="blank_line"></li>
 			<li class="resell_item_name">
-				<div>${boardData.item_name}</div>
-				<div>${boardData.item_name}</div>
+				<div>${boardData.resell_name}</div>
+				<div>${itemData.item_name}</div>
 			</li>
 			<li class="blank_line"></li>
 			<li class="buy_button"><button>구매요청하기</button></li>
@@ -89,16 +106,14 @@
 
 
 <!-- 댓글 부분 -->
-<div class="row_line"></div>
 
 <div class="resell_reply">
 	<div class="resell_reply_main">
-		<h2>댓글 5개</h2>
-		<button>댓글 작성하기</button>
+		<h2>구매 신청 현황</h2>
 	</div>
 	<div class="row_line"></div>
 	<ul class="resell_reply_list">
-		<c:forEach var="n" begin="1" end="5">
+		<c:forEach var="n" begin="1" end="1">
 			<li class="resell_reply_each">
 				<img src="/mingle/img/resell/magnifier.png">
 				<div>

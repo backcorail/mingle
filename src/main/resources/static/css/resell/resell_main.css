@@ -18,7 +18,24 @@
 	margin-top:10px;
 	padding-bottom:5px;
 }
-.resell_top > li:nth-child(1) {
+
+.resell_top > li:first-child {
+	display:flex;
+	align-items: flex-end;
+    justify-content: center;
+}
+.board_reset {
+	background:rgba(0, 0, 0, 0.6);
+	border-radius:5px;
+	color:white;
+	width:60px;
+	height:24px;
+	line-height:24px;
+	font-size:0.7em;
+	margin-bottom:-10px;
+	cursor:pointer;
+}
+.resell_top > li:nth-child(2) {
 	width:500px;
 }
 .resell_search {

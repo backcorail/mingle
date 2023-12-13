@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/mingle/css/style/style_write.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="/mingle/js/style/style_write.js"></script>
 
 <div class="page_style">
 	<!-- 글제목 -->
@@ -22,15 +21,15 @@
 			<!-- 헤더 -->
 			<div class="header_style">
 				<div class="profileImg_wrapper">
-					<img src="" id="profileImg">
+					<img id="profileImg" src="${!empty authUser.userVO.user_img ? authUser.userVO.user_img : '/mingle/img/user/profileEX.png'}" alt="" >
 				</div>
 				<div class="user_wrapper">
-					<div id="username">username</div>
-					<div id="datetime">10일전</div>
+					<div id="username">${authUser.userVO.user_nick}</div>
+					<div id="datetime"></div>
 				</div>
 			</div>
 			<div class="middle">
-				<input type="file" class="real-upload" accept="image/*" required multiple>
+				<input type="file" class="real-upload" accept="image/*" name="filename" required multiple>
 				<div class="swiper mySwiper">
 				    <div class="swiper-wrapper"></div>
 				    <div class="swiper-button-next"></div>
@@ -39,7 +38,6 @@
 			    </div>
 		  	</div>
 		  	<!-- 이미지 업로드 버튼 -->
-		  	
 		  	<a href="#" class="buttonu type--A upload">
 		  		<div class="buttonu__line"></div>
 			    <div class="buttonu__line"></div>
@@ -48,77 +46,10 @@
 			  	<div class="buttonu__drow2"></div>
 			</a>
 		  	<div class="footer_style">
-			  	<div class="tag-items">
-				<div class="tag">태그상품</div>
-				</div>
-			  	<!-- 태그 상품 완료 -->
-				<div class="tag-slider-container">
-					<div class="tag-slider">
-						<div class="tag-slide-show">
-							<div class="tag-slide">
-								<div class="tag-items-infobox">
-									<img class="tag-img" src="/mingle/img/style/aaa.jpg" alt="Image 3" />
-									<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-										White</div>
-								</div>
-								<div class="tag-items-infobox">
-									<img class="tag-img" src="/mingle/img/style/aaa.jpg" alt="Image 3" />
-									<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-										White</div>
-								</div>
-								<div class="tag-items-infobox">
-									<img class="tag-img" src="/mingle/img/style/aaa.jpg" alt="Image 3" />
-									<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-										White</div>
-								</div>
-								<div class="tag-items-infobox">
-									<img class="tag-img" src="/mingle/img/style/aaa.jpg" alt="Image 3" />
-									<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-										White</div>
-								</div>
-								<div class="tag-items-infobox">
-									<img class="tag-img" src="/mingle/img/style/aaa.jpg" alt="Image 3" />
-									<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-										White</div>
-								</div>
-							</div>
-							<div class="tag-slide">
-								<div class="tag-items-infobox">
-									<img class="tag-img" src="/mingle/img/style/aaa.jpg" alt="Image 3" />
-									<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-										White</div>
-								</div>
-								<div class="tag-items-infobox">
-									<img class="tag-img" src="/mingle/img/style/aaa.jpg" alt="Image 3" />
-									<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-										White</div>
-								</div>
-								<div class="tag-items-infobox">
-									<img class="tag-img" src="/mingle/img/style/aaa.jpg" alt="Image 3" />
-									<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-										White</div>
-								</div>
-								<div class="tag-items-infobox">
-									<img class="tag-img" src="/mingle/img/style/aaa.jpg" alt="Image 3" />
-									<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-										White</div>
-								</div>
-								<div class="tag-items-infobox">
-									<img class="tag-img" src="/mingle/img/style/aaa.jpg" alt="Image 3" />
-									<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-										White</div>
-								</div>
-							</div>
-							
-						</div>
-						<button type="button" class="tag-slide-btn" id="tag-prevBtn">❮</button>
-						<button type="button" class="tag-slide-btn" id="tag-nextBtn">❯</button>
-					</div>
-				</div>
 				<!-- 글제목 작성 -->
 				<div class="style_title">
 					<div class="style_title_subject">글 제목을 입력하세요.</div>
-					<textarea class="style_title_text" id="style_subject" name="subject"></textarea>
+					<input type="text" class="style_title_text" id="style_subject" name="style_name">
 				</div>
 		  	</div>
 		  	<!-- 작성,취소 버튼 -->
@@ -131,5 +62,6 @@
 		<!-- Swiper JS -->
 		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 		<script src="/mingle/js/style/style_write_slider.js"></script>
+		<script src="/mingle/js/style/style_write.js"></script>
 	</form>
 </div>
