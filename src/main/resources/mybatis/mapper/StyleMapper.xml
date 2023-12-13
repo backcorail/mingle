@@ -25,7 +25,6 @@
 			</foreach>
 	    </if>
   </insert>
-</mapper>
   <select id="gettotallike" resultType="int">
   	select count(style_likes_no) from style_likes where style_no = #{param1}
   </select>
