@@ -62,9 +62,13 @@ public class ResellVO {
 	
 	// 유저관련 변수 목록
 	private String user_id;
+	private String user_email;
 	private String user_nick;
-	
-
+	private String user_tel;
+	private String user_regdate;
+	private int user_status;
+	private String user_oauth;
+	private String user_img;
 	
 	
 	

@@ -49,6 +49,11 @@ public class ResellServiceImpl implements ResellService {
 	public List<String> imageData(int no) {
 		return mapper.imageData(no);
 	}
+	
+	@Override
+	public ResellVO userData(String id) {
+		return mapper.userData(id);
+	}
 
 	@Override
 	public int item_insert(ResellVO rVO) {
@@ -64,7 +69,4 @@ public class ResellServiceImpl implements ResellService {
 	public int item_file_insert(List<ResellVO> list) {
 		return mapper.item_file_insert(list);
 	}
-
-	
-
 }

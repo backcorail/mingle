@@ -81,7 +81,19 @@
 	<select id="imageData" resultType="java.lang.String">
 		select item_file_name from item_file where item_no = #{item_no}
 	</select>
+	<select id="userData" resultType="com.project.mingle.vo.ResellVO">
+		select user_nick, user_img from users where user_id = #{user_id}
+	</select>
 	
+	<!-- 데이터 수정하기 -->
+	<update id="boardData_update">
+	    update resell set resell_name = #{resell_name}, resell_comment = #{resell_comment}, resell_addr = #{resell_addr}, resell_writedate = #{resell_writedate}
+	    where item_no = #{item_no}
+	</update>
+	<update id="itemData_update">
+		update item set item_name = #{item_name}, item_price = #{item_price}, item_postdate = #{item_postdate}
+		where item_no = ${item_no}
+	</update>
 	
 	
 	<insert id ="item_insert" parameterType="com.project.mingle.vo.ResellVO" useGeneratedKeys="true" keyProperty="item_no">

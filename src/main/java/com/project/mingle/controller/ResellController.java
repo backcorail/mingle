@@ -141,10 +141,16 @@ public class ResellController {
 		ResellVO itemData = service.itemData(no);
 		// no를 통한 이미지 데이터 받아오기
 		List<String> imageData = service.imageData(no);
+		// id를 통한 이미지 데이터 받아오기
 		
-		System.out.println(boardData);
-		System.out.println(itemData);
-		System.out.println(imageData);
+		if (boardData != null) {
+			ResellVO userData = service.userData(boardData.getResell_seller());
+			mav.addObject("userData", userData);
+			System.out.println(boardData.getResell_seller());
+			System.out.println(userData);
+		} else {
+			System.out.println("값이 없음");
+		}
 		
 		mav.addObject("boardData", boardData);
 		mav.addObject("itemData", itemData);
@@ -158,11 +164,39 @@ public class ResellController {
 	
 	
 	@GetMapping("/write")
-	public ModelAndView resell_write(ResellVO rVO) {
+	public ModelAndView resell_write(
+			@RequestParam(name="no", defaultValue="0") int no,
+			ResellVO rVO) {
+		
 		ModelAndView mav = new ModelAndView();
-		List<ResellVO> kreamList = service.kreamData(rVO);
+		
+		String[] main = {"all", "men", "women", "other"};
+		String[] title = {"Top", "Outer", "Bottom", "Shose", "Bag"};;
+		String[] Top = {"전체", "맨투맨/스웨트 셔츠", "니트/스웨터", "긴소매 티셔츠", "카라 티셔츠", "반소매 티셔츠", "민소매 티셔츠", "후드 티셔츠", "스포츠 상의", "셔츠/블라우스", "기타 상의"};
+		String[] Outer = {"전체", "후드 집업", "블루종", "라이더 재킷", "트러커 재킷", "슈트/블레이저 재킷", "무스탕/퍼", "카디건", "아노락", "코트", "패딩", "나일론/코치 재킷", "기타 아우터"};
+		String[] Bottom = {"전체", "데님팬츠", "코튼 팬트", "슈트 팬츠/슬랙스", "트레이닝/조거 팬츠", "숏 팬츠", "스포츠 하의", "기타 바지"};
+		String[] Shose = {"전체", "구두", "부츠", "힐/펌프스", "운동화", "슬리퍼", "샌들", "기타 신발"};
+		String[] Bag = {"전체", "백팩", "크로스백/매신저백", "슬링백", "핸드백", "지갑", "기타 가방"};
+		mav.addObject("main", main);
+		mav.addObject("title", title);
+		mav.addObject("Top", Top);
+		mav.addObject("Outer", Outer);
+		mav.addObject("Bottom", Bottom);
+		mav.addObject("Shose", Shose);
+		mav.addObject("Bag", Bag);
+		
+		// no를 통한 게시글 데이터 받아오기
+		ResellVO boardData = service.boardData(no);
+		// no를 통한 아이템 데이터 받아오기
+		ResellVO itemData = service.itemData(no);
+		// no를 통한 이미지 데이터 받아오기
+		List<String> imageData = service.imageData(no);
+		
+		mav.addObject("boardData", boardData);
+		mav.addObject("itemData", itemData);
+		mav.addObject("imageData", imageData);
 		mav.addObject("rVO", rVO);
-		mav.addObject("klist", kreamList);
+		
 		mav.setViewName("resell/resell_write");
 		return mav; 
 	}
@@ -172,6 +206,7 @@ public class ResellController {
 	@PostMapping("/writeOk")
 	@Transactional(rollbackFor={RuntimeException.class, SQLException.class})
 	public ModelAndView resell_writeOk(
+			@RequestParam(name="no", defaultValue="0") int no,
 			HttpSession session,
 			HttpServletRequest hsr,
 			Principal principal,
@@ -240,11 +275,13 @@ public class ResellController {
 			
 		}//if1
 		try {
-			//아이템 업로드
-			service.item_insert(rVO);
-			
-			//글 업로드
-			service.resell_insert(rVO);
+			if(no == 0) {
+				service.item_insert(rVO); //아이템 업로드
+				service.resell_insert(rVO); //글 업로드
+			} else if (no != 0) {
+				//service.item_update(rVO); // 아이템 업데이트
+				//service.resell_update(rVO); // 글 업데이트
+			}
 			
 			//업로드아이템 사진 파일명
 			for(ResellVO ifVO: uploadFileList) {ifVO.setItem_no(rVO.getItem_no());}

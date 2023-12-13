@@ -1,6 +1,5 @@
 package com.project.mingle.service;
 
-import java.io.IOException;
 import java.util.List;
 
 import com.project.mingle.vo.ResellVO;
@@ -14,6 +13,7 @@ public interface ResellService {
 	public ResellVO boardData(int no); // 보드 데이터 가져오기
 	public ResellVO itemData(int no); // 아이템 데이터 가져오기
 	public List<String> imageData(int no); // 이미지 데이터 가져오기
+	public ResellVO userData(String id); // 유저 데이터 가져오기
 
 	public int item_insert(ResellVO rVO); // 아이템 입력
 	public int resell_insert(ResellVO rVO); // 리셀 글 작성
