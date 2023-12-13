@@ -270,17 +270,24 @@ public class ResellController {
 						ifVO.setItem_image(orgFilename);
 					}
 					uploadFileList.add(ifVO);
+					
+					
 				}//if2
 			}//for1
 			
 		}//if1
 		try {
+			System.out.println(uploadFileList+" --- 3");
+			System.out.println(rVO.getItem_price()+"/"+rVO.getResell_addr()+" --- 3.5");
+			
 			if(no == 0) {
 				service.item_insert(rVO); //아이템 업로드
 				service.resell_insert(rVO); //글 업로드
+				System.out.println(" --- 4(추가)");
 			} else if (no != 0) {
-				//service.item_update(rVO); // 아이템 업데이트
-				//service.resell_update(rVO); // 글 업데이트
+				service.item_update(rVO); // 아이템 업데이트
+				service.resell_update(rVO); // 글 업데이트
+				System.out.println(" --- 4(수정)");
 			}
 			
 			//업로드아이템 사진 파일명
@@ -288,9 +295,15 @@ public class ResellController {
 			
 			
 			System.out.println(uploadFileList+"123456"+" --- 5");
-			int fileResult = service.item_file_insert(uploadFileList);
+			int fileResult;
+			if(no == 0) {
+				fileResult = service.item_file_insert(uploadFileList);
+				System.out.println("fileResult"+fileResult+" --- 6(추가)");
+			} else {
+				fileResult = service.item_file_update(uploadFileList);
+				System.out.println("fileResult"+fileResult+" --- 6(수정)");
+			}
 			
-			System.out.println("fileResult"+fileResult+" --- 6");
 			
 			if(!uploadFileList.isEmpty()) {
 				ResellVO firstFile = uploadFileList.get(0);

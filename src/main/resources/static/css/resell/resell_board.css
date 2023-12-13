@@ -229,9 +229,15 @@
 	width:600px;
 	height:160px;
 }
-
-
-
+.marker_info {
+	text-align:center;
+	padding:6px 10px;
+	width:150px;
+	height:30px;
+	font-size:0.8em;
+	line-height:15px;
+	border-radius:5px;
+}
 
 /* 중간 설명 부분 */
 .resell_board_bottom {

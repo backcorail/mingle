@@ -75,7 +75,7 @@
 		where item_no = ${item_no}
 	</select>
 	<select id="itemData" resultType="com.project.mingle.vo.ResellVO">
-		select item_no, item_name, item_price, item_image, item_postdate from item
+		select item_no, item_name, item_category, item_detail, item_price, item_image, item_postdate from item
 		where item_no = ${item_no}
 	</select>
 	<select id="imageData" resultType="java.lang.String">
@@ -85,17 +85,7 @@
 		select user_nick, user_img from users where user_id = #{user_id}
 	</select>
 	
-	<!-- 데이터 수정하기 -->
-	<update id="boardData_update">
-	    update resell set resell_name = #{resell_name}, resell_comment = #{resell_comment}, resell_addr = #{resell_addr}, resell_writedate = #{resell_writedate}
-	    where item_no = #{item_no}
-	</update>
-	<update id="itemData_update">
-		update item set item_name = #{item_name}, item_price = #{item_price}, item_postdate = #{item_postdate}
-		where item_no = ${item_no}
-	</update>
-	
-	
+	<!-- 데이터 입력하기 -->
 	<insert id ="item_insert" parameterType="com.project.mingle.vo.ResellVO" useGeneratedKeys="true" keyProperty="item_no">
 	    insert into item(item_name, item_category, item_detail, item_price, item_image)
 	    values(#{item_name}, #{item_category},  #{item_detail}, #{item_price}, #{item_image})
@@ -113,4 +103,20 @@
 			</foreach>
 	    </if>
 	</insert>
+	
+	<!-- 데이터 수정하기 -->
+	<update id="boardData_update">
+	    update resell set resell_name = #{resell_name}, resell_comment = #{resell_comment}, resell_addr = #{resell_addr}, resell_writedate = #{resell_writedate}
+	    where item_no = #{item_no}
+	</update>
+	<update id="itemData_update">
+		update item set item_name = #{item_name}, item_category = #{item_category}, item_detail = #{item_detail}, item_price = #{item_price}, item_postdate = #{item_postdate}
+		where item_no = ${item_no}
+	</update>
+	<update id="item_file_update" parameterType="java.util.List">
+	    <foreach collection="list" item="data" separator=";">
+	        update item_file set item_file_name = #{data.item_file_name}
+	        where item_no = #{data.item_no}
+	    </foreach>
+	</update>
 </mapper>

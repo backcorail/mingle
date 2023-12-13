@@ -1,6 +1,4 @@
 
-
-
 $(document).ready(function() {
 	// ===========================================================
 	// -----< 공통 변수 지정 >-----
@@ -56,28 +54,36 @@ $(document).ready(function() {
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption);
 	
+	var addrPos = document.querySelector(".resell_addr > div");
+	var addr = addrPos.textContent;
+	
+	var geocoder = new kakao.maps.services.Geocoder();
+	
+	geocoder.addressSearch(addr, function(result, status) {
+	     if (status === kakao.maps.services.Status.OK) {
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div class="marker_info">'+addr+'</div>'
+	        });
+	        infowindow.open(map, marker);
+	        map.setCenter(coords);
+	        
+	        var marker = $(".marker_info").parent().parent();
+			marker.css("height","30px");
+			marker.css("border-radius","5px");
+	    }
+	});
+	
+	
+	
 	
 	/*
 	// 주소 선택 api
-		new daum.Postcode({
-	    oncomplete: function(data) {
-	       var addr = data.sigungu+" "+data.bname;
-	       document.getElementById('sellPlace').value = addr;
-	       document.getElementById('sellPlace').style.display = "block";
-	       document.getElementById('map').style.display = "block";
-	
-			
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			    mapOption = {
-			        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			        level: 5 // 지도의 확대 레벨
-			    };  
-			
-			// 지도를 생성합니다    
-			var map = new kakao.maps.Map(mapContainer, mapOption); 
-			
-			// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-			var mapTypeControl = new kakao.maps.MapTypeControl();
+			 
 			
 			// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
 			// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다

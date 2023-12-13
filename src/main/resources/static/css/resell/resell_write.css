@@ -419,6 +419,15 @@ input{
 	border: 4px solid black;
 	box-shadow: 2px 2px 2px;
 }
+.marker_info {
+	text-align:center;
+	padding:6px 10px;
+	width:150px;
+	height:30px;
+	font-size:0.8em;
+	line-height:15px;
+	border-radius:5px;
+}
 /*작성,취소 버튼*/
 .pushBack_box{
 	margin-bottom: 20px;
