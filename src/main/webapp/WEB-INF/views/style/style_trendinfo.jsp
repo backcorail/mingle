@@ -112,9 +112,9 @@
 		</button>
 
 	</div>
+	
 
-
-	<div class="like-cnt">좋아요 61개</div>
+	<div class="like-cnt">좋아요 ${sVO.style_likes_no}개</div>
 
 	<div class="hashtag">추워지니까 더 잘 신어지는 세실리아반센x아식스 #데일리슈즈 #OOTD
 		#11월코디 #FW신발 #아식스코디 #아식스운동화 #데일리코디 #세실리에반센</div>

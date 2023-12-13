@@ -81,5 +81,12 @@ public class StyleServiceImpl  implements StyleService{
 	}
 
 
+	@Override
+	public int gettotallike(ReplyVO replyVO) {
+		// TODO Auto-generated method stub
+		return mapper.gettotallike(replyVO);
+	}
+
+
 
 }
