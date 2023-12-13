@@ -48,7 +48,8 @@ public class AdminSecurityConfig {
 						.logoutSuccessUrl("/") //
 						.invalidateHttpSession(true) //
 						.deleteCookies("JSESSIONID"))//
-				.authenticationProvider(adminAuthenticationProvider).csrf(csrf -> csrf.disable()); //
+				.authenticationProvider(adminAuthenticationProvider)//
+				.csrf(csrf -> csrf.disable()); //
 		http.exceptionHandling(handling -> handling//
 				.authenticationEntryPoint((request, response, authException) -> {//
 					System.out.println(" 호출확인 adminFilterChain exceptionHandling");//
