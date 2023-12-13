@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.mingle.service.AdminService;
+import com.project.mingle.service.ResellService;
 import com.project.mingle.vo.AdminTestVO;
 import com.project.mingle.vo.AdminVO;
+import com.project.mingle.vo.ResellVO;
 
 @Controller
 
@@ -20,6 +22,8 @@ import com.project.mingle.vo.AdminVO;
 public class AdminTestController {
 	@Autowired
 	AdminService service; 
+	@Autowired
+	ResellService resellservice;
 	
 	@GetMapping("")
 	public String admintest() {
@@ -93,10 +97,16 @@ public class AdminTestController {
 	}
 	
 	@GetMapping("posts_data")
-	public String posts_data() {		
-		return"admin/posts_data";
+	public ModelAndView postsData() {
+	    ResellVO rVO = new ResellVO(); // 적절한 초기화가 필요할 수 있습니다.
+	    List<ResellVO> boardList = resellservice.resell_boardData(rVO);
+
+	    ModelAndView mav = new ModelAndView();
+	    mav.addObject("boardList", boardList); // 모델에 게시글 목록 추가
+	    mav.setViewName("admin/posts_data"); // 뷰 이름 설정
+	    return mav;
 	}
-	
+
 	@GetMapping("recommend_data")
 	public String recommend_data() {
 		return"admin/recommend_data";
