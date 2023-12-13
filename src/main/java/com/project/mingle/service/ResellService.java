@@ -3,8 +3,6 @@ package com.project.mingle.service;
 import java.io.IOException;
 import java.util.List;
 
-import com.project.mingle.vo.ItemFileVO;
-import com.project.mingle.vo.ResellItemVO;
 import com.project.mingle.vo.ResellVO;
 
 public interface ResellService {

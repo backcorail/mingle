@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.project.mingle.vo.ItemFileVO;
 import com.project.mingle.vo.ResellVO;
 
 @Mapper
