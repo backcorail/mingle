@@ -99,10 +99,9 @@
 						<div class="collapse" id="collapseProducts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/products_data">Products
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Products
-									Delete</a> <a class="nav-link" href="layout-sidenav-light.html">Light
-									Sidenav</a>
+								<a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
+								<a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
 							</nav>
 						</div>
 						<!-- Transactions 메뉴 -->
@@ -120,9 +119,8 @@
 						<div class="collapse" id="collapseTransactions"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Transactions
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Transactions
-									Delete</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_data">Transactions Data</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_charts">Transactions Charts</a>
 							</nav>
 						</div>
 						<!-- Posts 메뉴 -->
@@ -140,9 +138,8 @@
 						<div class="collapse" id="collapsePosts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Posts
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Posts
-									Delete</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Posts Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Posts Delete</a>
 							</nav>
 						</div>
 						<!-- Recommend 메뉴 -->
@@ -160,9 +157,8 @@
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Recommend
-									Write</a>
+								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
 							</nav>
 						</div>
 						<!-- Server 메뉴 -->
@@ -180,9 +176,8 @@
 						<div class="collapse" id="collapseServer"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/layout_static">Server
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Server
-									settings</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Server Data</a>
+								<a class="nav-link" href="/mingle/admintest/layout_static">Server settings</a>
 							</nav>
 						</div>
 
@@ -291,8 +286,7 @@
 								<div class="card-body">Transactions</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-white stretched-link" href="#">View
-										Details</a>
+									<a class="small text-white stretched-link" href="/mingle/admintest/transactions_data">View Details</a>
 									<div class="small text-white">
 										<i class="fas fa-angle-right"></i>
 									</div>
@@ -304,8 +298,7 @@
 								<div class="card-body">Posts</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-white stretched-link" href="#">View
-										Details</a>
+									<a class="small text-white stretched-link" href="/mingle/admintest/posts_data">View Details</a>
 									<div class="small text-white">
 										<i class="fas fa-angle-right"></i>
 									</div>
@@ -313,32 +306,11 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-xl-6">
-							<div class="card mb-4">
-								<div class="card-header">
-									<i class="fas fa-chart-area me-1"></i> Members Charts
-								</div>
-								<div class="card-body">
-									<canvas id="myAreaChart" width="100%" height="40"></canvas>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-6">
-							<div class="card mb-4">
-								<div class="card-header">
-									<i class="fas fa-chart-bar me-1"></i> Transactions Charts
-								</div>
-								<div class="card-body">
-									<canvas id="myBarChart" width="100%" height="40"></canvas>
-								</div>
-							</div>
-						</div>
-					</div>
+					<!-- members Charts 데이터 불러오는 곳 -->
+						<div id="members_Charts_container"></div>
 					<main>
-						<div id="data-container">
-						<!-- 데이터 불러오는 곳 -->
-						</div>
+					<!-- Products Data 데이터 불러오는 곳 -->
+						<div id="products_data_container"></div>
 					</main>
 				</div>
 			</main>
@@ -359,7 +331,6 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
-	<script src="/mingle/js/admin/scripts.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 		crossorigin="anonymous"></script>
@@ -369,5 +340,6 @@
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 	<script src="/mingle/js/admin/datatables-simple-demo.js"></script>
+	<script src="/mingle/js/admin/scripts.js"></script>
 </body>
 </html>

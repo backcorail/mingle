@@ -3,7 +3,7 @@ function searchAddr(){
 	new daum.Postcode({
     oncomplete: function(data) {
        var addr = data.sigungu+" "+data.bname;
-       document.getElementById('sellPlace').innerText = "판매 희망위치는 "+addr+"입니다.";
+       document.getElementById('sellPlace').value = addr;
        document.getElementById('sellPlace').style.display = "block";
        document.getElementById('map').style.display = "block";
 

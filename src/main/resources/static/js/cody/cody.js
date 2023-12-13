@@ -210,8 +210,6 @@ $(document).ready(function(){
 	$('#wedding').on('click',printCityWeather);
 	$('#business').on('click',printCityWeather);
 	$('#daily').on('click',printCityWeather);
-	
-	
 });
 
 

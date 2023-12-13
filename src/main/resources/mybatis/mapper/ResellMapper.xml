@@ -6,29 +6,25 @@
 	<select id="resell_totalRecord" resultType="int">
 		select count(resell_no) from resell
 		<where>
-			<if test="searchWord1 != null and searchWord1 != ''">
-				and resell_name like '%${searchWord1}%'
-			</if>
-			<if test="searchWord2 != null and searchWord2 != ''">
-				and resell_name like '%${searchWord2}%'
-			</if>
-			<if test="searchWord3 != null and searchWord3 != ''">
-				and resell_name like '%${searchWord3}%'
-			</if>
+			<if test="searchWord1 != ''">and resell_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and resell_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and resell_name like '%${searchWord3}%'</if>
 		</where>
 	</select>
 	
 	<select id="kream_totalRecord" resultType="int">
 	 	select count(item_no) from item
-	 	<where>
-			<if test="searchWord1 != null and searchWord1 != ''">
-				and item_name like '%${searchWord1}%'
-			</if>
-			<if test="searchWord2 != null and searchWord2 != ''">
-				and item_name like '%${searchWord2}%'
-			</if>
-			<if test="searchWord3 != null and searchWord3 != ''">
-				and item_name like '%${searchWord3}%'
+		<where>
+			<if test="searchWord1 != ''">and item_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and item_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and item_name like '%${searchWord3}%'</if>
+			<choose>
+				<when test="category != 0 and category != 3">and (item_category = '${category}' or item_category = 0)</when>
+				<when test="category == 3">and item_category = '${category}'</when>
+			</choose>
+			<if test="detail != 0">
+				<if test="detail % 100 != 0">and item_detail = '${detail}'</if>
+				<if test="detail % 100 == 0">and floor(item_detail/100)*100 = '${detail}'</if>
 			</if>
 		</where>
 	</select>
@@ -37,33 +33,72 @@
 		select resell_no, resell_name, resell_seller, item_price, date_format(resell_writedate, '%Y-%m-%d %h:%i:%s') 
 		resell_writedate from resell 
 		<where>
-			<if test="searchWord1 != null and searchWord1 != ''">
-				and resell_name like '%${searchWord1}%'
-			</if>
-			<if test="searchWord2 != null and searchWord2 != ''">
-				and resell_name like '%${searchWord2}%'
-			</if>
-			<if test="searchWord3 != null and searchWord3 != ''">
-				and resell_name like '%${searchWord3}%'
-			</if>
+			<if test="searchWord1 != ''">and resell_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and resell_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and resell_name like '%${searchWord3}%'</if>
 		</where>
 		order by resell_writedate desc limit #{onePageRecord} offset ${offsetPoint};		
 	</select>
 	
 	<select id="kreamData" resultType="com.project.mingle.vo.ResellVO">
-	    select item_no, item_name, item_price, item_image, item_postdate from item
+	   	select i.item_no, i.item_name, i.item_price, i.item_postdate, i.item_image, j.item_file_name
+		from item i left join (select item_no, min(item_file_name) as item_file_name
+    	from item_file group by item_no) j on i.item_no = j.item_no
 	    <where>
-			<if test="searchWord1 != null and searchWord1 != ''">
-				and item_name like '%${searchWord1}%'
-			</if>
-			<if test="searchWord2 != null and searchWord2 != ''">
-				and item_name like '%${searchWord2}%'
-			</if>
-			<if test="searchWord3 != null and searchWord3 != ''">
-				and item_name like '%${searchWord3}%'
+			<if test="searchWord1 != ''">and item_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and item_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and item_name like '%${searchWord3}%'</if>
+			<choose>
+				<when test="category != 0 and category != 3">and (item_category = '${category}' or item_category = 0)</when>
+				<when test="category == 3">and item_category = '${category}'</when>
+			</choose>
+			<if test="detail != 0">
+				<if test="detail % 100 != 0">and item_detail = '${detail}'</if>
+				<if test="detail % 100 == 0">and floor(item_detail/100)*100 = '${detail}'</if>
 			</if>
 		</where>
-	    order by item_postdate desc limit #{onePageRecord} offset ${offsetPoint};
+	    order by 
+	    <choose>
+		    <when test="sort == 'name_asc'">item_name asc</when>
+		    <when test="sort == 'price_asc'">item_price asc</when>
+		    <when test="sort == 'latest_asc'">item_postdate asc</when>
+		    <when test="sort == 'name_desc'">item_name desc</when>
+		    <when test="sort == 'price_desc'">item_price desc</when>
+		    <otherwise>item_postdate desc</otherwise>
+		</choose>
+		limit #{onePageRecord} offset ${offsetPoint};
+	</select>
+
+	<!-- 보드 페이지 데이터 받아오기 -->
+	<select id="boardData" resultType="com.project.mingle.vo.ResellVO">
+		select resell_name, resell_seller, resell_comment, resell_addr, resell_writedate from resell
+		where item_no = ${item_no}
+	</select>
+	<select id="itemData" resultType="com.project.mingle.vo.ResellVO">
+		select item_no, item_name, item_price, item_image, item_postdate from item
+		where item_no = ${item_no}
+	</select>
+	<select id="imageData" resultType="java.lang.String">
+		select item_file_name from item_file where item_no = #{item_no}
 	</select>
 	
+	
+	
+	<insert id ="item_insert" parameterType="com.project.mingle.vo.ResellVO" useGeneratedKeys="true" keyProperty="item_no">
+	    insert into item(item_name, item_category, item_detail, item_price, item_image)
+	    values(#{item_name}, #{item_category},  #{item_detail}, #{item_price}, #{item_image})
+    </insert>
+    
+    <insert id ="resell_insert" parameterType="com.project.mingle.vo.ResellVO">
+	    insert into resell(resell_name, resell_seller, item_no, resell_comment, resell_addr)
+	    values(#{resell_name}, #{resell_seller}, #{item_no}, #{resell_comment}, #{resell_addr})
+    </insert>
+    
+    <insert id="item_file_insert" parameterType="java.util.List">
+	    <if test="list != null or !list.isEmpty()">
+		    <foreach item="item" collection="list" open="insert into item_file(item_no, item_file_name) values" separator=",">
+				(${item.item_no}, #{item.item_file_name})
+			</foreach>
+	    </if>
+	</insert>
 </mapper>

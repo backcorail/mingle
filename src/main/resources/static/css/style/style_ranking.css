@@ -9,15 +9,16 @@
 
 .board_list_now {
 	display : flex;
-	width : 800px;
+	width : 1180px;
 	height : auto;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	margin-top : 30px;
 }
 
 .board_list_now_hidden {
 	display : none;
-	width : 800px;
+	width : 1180px;
 	height : auto;
 	justify-content: space-between;
 	flex-wrap: wrap;
@@ -29,20 +30,20 @@
 
 .board_list_week {
 	display : flex;
-	width : 800px;
+	width : 1180px;
 	height : auto;
 }
 
 .board_list_month {
 	display : flex;
-	width : 800px;
+	width : 1180px;
 	height : auto;
 	
 }
 
 .board_items {
-	width : 170px;
-	height : auto;
+	width : 270px;
+	height : 449px;
 	display : inline-block;
 	justify-content: center;
 	margin-bottom : 20px;
@@ -58,17 +59,29 @@
     float: right;
 }
 
-.heart-btn {
+.like1 {
 	background-color: white;
 	cursor : pointer;
 	border : white;
-	width : 25px;
+	width : 20px;
 	height : 20px;
+	margin-right : 10px;
+	margin-left : 20px;
+}
+
+.like2 {
+	background-color: white;
+	cursor : pointer;
+	border : white;
+	width : 20px;
+	height : 20px;
+	margin-right : 10px;
+	margin-left : 20px;
 }
 
 .img{
-	width : 150px;
-	height : 200px;
+	width : 270px;
+	height : 367px;
 	border-radius: 10px;
 	margin-bottom : 5px;
 	cursor : pointer;
@@ -90,18 +103,22 @@
 }
 
 .hashtag {
+	height : 50px;
 	font-size : 10px;
 	cursor : pointer;
+	margin-top : 25px;
 }
 
 .username {
 	font-size : 15px;
+	cursor : pointer;
 }
 
 
 .board-content {
 	font-size : 15px;
-	width : 150px;
+	width : 270px;
+	height : auto;
 }
 
 .board-name {
@@ -147,7 +164,7 @@
 }
 
 .board_items_hidden {
-	width : 170px;
+	width : 270px;
 	height : auto;
 	display : inline-block;
 	justify-content: center;
@@ -160,10 +177,38 @@
 	margin-top : 20px;
 }
 
-.username:hover {
+.hashtag:hover {
     text-decoration: underline;
 }
 
-.hashtag:hover {
-    text-decoration: underline;
+.style_likes_check {
+	width : 20px;
+	height: 20px;
+	float : right;
+}
+
+
+/* 좋아요 */
+.like-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.like-button:focus {
+  outline: none;
+}
+
+.far.fa-heart {
+  color: gray;
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.fas.fa-heart {
+  color: red;
+  font-size: 24px;
+  margin-right: 5px;
 }

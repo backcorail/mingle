@@ -1,30 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="authUser"/>
+</sec:authorize>
 
 <link rel="stylesheet" href="/mingle/css/resell/resell_board.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap&family=Nanum+Pen+Script&display=swap&family=Abril+Fatface&family=Kanit:ital,wght@1,500&family=Noto+Sans+KR:wght@300" rel="stylesheet">
 <script src="/mingle/js/resell/resell_board.js"></script>
 
 <!-- 위쪽 부분 -->
-<div>
-	<ul class="resell_top">
-		<li id="choose_men" class="choose"><h3>Men</h3></li>
-		<li id="choose_women" class="choose"><h3>Women</h3></li>
-		<li id="choose_shoes" class="choose"><h3>Shoes</h3></li>
-		<li id="choose_bag" class="choose"><h3>Bag</h3></li>
-		<li id="choose_other" class="choose"><h3>Other</h3></li>
-	</ul>
+<div class="search_category">
+	<c:forEach var="n" items="${main}" varStatus="n0">
+		<div class="category_type ${n}" id="${n0.index}">${n}</div>
+	</c:forEach>
 </div>
 <div class="resell_board_top">
 	<div class="resell_board_img">
 		<div class="resell_mini_img">
-			<c:forEach var="n" begin="1" end="5">
-				<div id="clothes_click${n}" class="clothes_click">
-					<img src="/mingle/img/resell/cloth_sam${n}.jpg">
-				</div>
-			</c:forEach>
+			<c:choose>
+				<c:when test="${empty imageData}">
+					<!-- 이미지 데이터 없을때 -->
+					<c:forEach var="n" begin="0" end="5">
+						<div id="clothes_click${n}" class="clothes_click">
+							<c:if test="${n == 0}">
+								<img referrerpolicy="no-referrer" src="${itemData.getItem_image()}">
+								<c:set var="mainImg" value="${itemData.getItem_image()}"/>
+							</c:if>
+							<c:if test="${n != 0}">
+								<img src="/mingle/img/resell/cloth_sam${n}.jpg">
+							</c:if>
+						</div>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<!-- 이미지 데이터 있을때 -->
+					<c:forEach var="n" items="${imageData}" varStatus="num">
+						<div id="clothes_click${num.index}" class="clothes_click">
+							<img src="${pageContext.request.contextPath}/uploadfile/${n}">
+							<c:if test="${num.index == 0}">
+								<c:set var="mainImg" value="${pageContext.request.contextPath}/uploadfile/${n}"/>
+							</c:if>
+						</div>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="resell_main_img">
-			<img class="main_img" src="/mingle/img/resell/cloth_sam1.jpg">
+			<img class="main_img" src="${mainImg}">
 			<img class="select_img" src="/mingle/img/resell/icon_heart.png">
 			<img class="select_img" src="/mingle/img/resell/icon_shopBag.png">
 		</div>
@@ -35,18 +60,22 @@
 			<li>
 				<div class="purchase_price">
 					<div>구매가</div>
-					<div>50,000원</div>
+					<c:set var="format" value="${boardData.item_price}"/>
+					<fmt:formatNumber var="formatPrice" value="${format}" pattern="#,###원"/>
+					<div>${formatPrice}</div>
 				</div>
 				<div class="modify_remove">
-					<a href="/mingle/resell?page=${rVO.nowPage}<c:if test="${rVO.searchWord!=null}">&search=${rVO.searchWord}</c:if>">목록</a>
-					<a>수정</a>
-					<a>삭제</a>
+					<div class="board_list">목록</div>
+					<c:if test="${not empty authUser}">
+						<div class="board_update">수정</div>
+						<div class="board_delete">삭제</div>
+					</c:if>
 				</div>
 			</li>
 			<li class="blank_line"></li>
 			<li class="resell_item_name">
-				<div>${rVO.item_name}</div>
-				<div>${rVO.item_name}</div>
+				<div>${boardData.resell_name}</div>
+				<div>${itemData.item_name}</div>
 			</li>
 			<li class="blank_line"></li>
 			<li class="buy_button"><button>구매요청하기</button></li>
@@ -77,17 +106,14 @@
 
 
 <!-- 댓글 부분 -->
-<!-- 
-<div class="row_line"></div>
 
 <div class="resell_reply">
 	<div class="resell_reply_main">
-		<h2>댓글 5개</h2>
-		<button>댓글 작성하기</button>
+		<h2>구매 신청 현황</h2>
 	</div>
 	<div class="row_line"></div>
 	<ul class="resell_reply_list">
-		<c:forEach var="n" begin="1" end="5">
+		<c:forEach var="n" begin="1" end="1">
 			<li class="resell_reply_each">
 				<img src="/mingle/img/resell/magnifier.png">
 				<div>
@@ -102,4 +128,3 @@
 		</c:forEach>
 	</ul>
 </div>
- -->

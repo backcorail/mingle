@@ -34,4 +34,37 @@ public class ResellServiceImpl implements ResellService {
 	public List<ResellVO> kreamData(ResellVO rVO) {
 		return mapper.kreamData(rVO);
 	}
+
+	@Override
+	public ResellVO boardData(int no) {
+		return mapper.boardData(no);
+	}
+
+	@Override
+	public ResellVO itemData(int no) {
+		return mapper.itemData(no);
+	}
+
+	@Override
+	public List<String> imageData(int no) {
+		return mapper.imageData(no);
+	}
+
+	@Override
+	public int item_insert(ResellVO rVO) {
+		return mapper.item_insert(rVO);
+	}
+
+	@Override
+	public int resell_insert(ResellVO rVO) {
+		return mapper.resell_insert(rVO);
+	}
+
+	@Override
+	public int item_file_insert(List<ResellVO> list) {
+		return mapper.item_file_insert(list);
+	}
+
+	
+
 }
