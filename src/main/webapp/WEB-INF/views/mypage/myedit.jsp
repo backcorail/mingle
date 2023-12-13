@@ -15,6 +15,7 @@
 			<!-- 경계선 굵은것 -->
 			<div class="div-underline-bold"></div>
 			<div class="div-edit-area">
+			<!-- 이미지 -->
 				<c:if test="${empty userVO.user_img }">
 					<img id="img-profile" src="/mingle/img/user/profileEX.png" alt="">
 				</c:if>

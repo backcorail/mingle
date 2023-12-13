@@ -288,7 +288,7 @@
 											<td>${users.user_id}</td>
 											<td>${kItem.item_name}</td>
 											<td>${kItem.item_postdate}</td>
-											<td>Category</td>
+											<td>${kItem.item_category}</td>
 											<td><img referrerpolicy="no-referrer" src="${kItem.item_image}" width="100" height="100"/></td>
 										</tr>
 									</c:forEach>

@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
     				.user_pwd(encodedPwd)
     				.user_nick(joinUserVO.getUsernick())
     				.user_tel(joinUserVO.getUsertel())
+    				.user_role("ROLE_USER")
     				.user_status(1)
     				.build();
     		System.out.println("\n 서비스 레이어 userVO build 이후 값");
@@ -78,6 +79,7 @@ public class UserServiceImpl implements UserService {
     				.user_pwd(encodedPwd)
     				.user_nick(oauthJoinUserVO.getUsernick())
     				.user_Oauth(oauthJoinUserVO.getUserOauth())
+    				.user_role("ROLE_USER")
     				.user_status(1)
     				.build();
     		System.out.println("\n 서비스 레이어 userVO build 이후 값");

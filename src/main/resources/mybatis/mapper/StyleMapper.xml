@@ -14,4 +14,28 @@
     select item_no, item_name, item_image from item
     limit ${onepagerecord}
   </select>
+  <insert id ="styleInsert" parameterType="com.project.mingle.vo.StyleVO" useGeneratedKeys="true" keyProperty="style_no">
+	    insert into style(style_name, user_id) values(#{style_name}, #{user_id})
+  </insert>
+  <insert id="styleFileInsert" parameterType="java.util.List">
+  		<if test="list != null or !list.isEmpty()">
+		    <foreach item="item" collection="list" open="insert into style_file(style_no, style_file_name) values"
+				separator=",">
+				(${item.style_no}, #{item.style_file_name})
+			</foreach>
+	    </if>
+  </insert>
+  <select id="gettotallike" resultType="int">
+  	select count(style_likes_no) from style_likes where style_no = #{param1}
+  </select>
+  <insert id ="usercomment">
+      insert into style_reply(style_reply_comment, user_id, style_no)
+      values(#{comment}, #{usernic}, #{styleno})
+    </insert>
+    <select id="replySelect" resultType="com.project.mingle.vo.StyleVO">
+		select style_reply_no, style_no, style_reply_comment, user_id from style_reply where style_no = #{param1} 
+	</select>
+	<select id ="replycnt" resultType="int">
+    select count(style_reply_no) from style_reply
+  	</select>
 </mapper>
