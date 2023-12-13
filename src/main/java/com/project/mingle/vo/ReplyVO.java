@@ -14,4 +14,5 @@ public class ReplyVO {
     private String styleno; // 게시글 번호
     private int replyno;
 	private int no;
+	private int style_likes_no; // 좋아요 수
 }

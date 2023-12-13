@@ -5,15 +5,15 @@
     <!-- 회원가입 -->
     <insert id="save"  >
 		insert into users
-		( user_id, user_pwd, user_nick, user_status, user_tel )  
+		( user_id, user_pwd, user_nick, user_status, user_tel ,user_role)  
 		values 
-		(#{user_id}, #{user_pwd}, #{user_nick}, #{user_status}, #{user_tel})
+		(#{user_id}, #{user_pwd}, #{user_nick}, #{user_status}, #{user_tel}, #{user_role})
 	</insert>
 	 <insert id="saveOauth"  >
 		insert into users
-		( user_id, user_pwd, user_nick, user_status, user_Oauth )  
+		( user_id, user_pwd, user_nick, user_status, user_Oauth, user_role )  
 		values 
-		(#{user_id}, #{user_pwd}, #{user_nick}, #{user_status}, #{user_Oauth})
+		(#{user_id}, #{user_pwd}, #{user_nick}, #{user_status}, #{user_Oauth}, #{user_role})
 	</insert>
 	<!-- 아이디 중복체크 -->
 	<select id="iddcheck" resultType="com.project.mingle.vo.UserVO">

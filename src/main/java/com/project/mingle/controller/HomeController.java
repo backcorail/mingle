@@ -23,9 +23,7 @@ public class HomeController {
 		List<ResellVO> kreamList = service.kreamList(rvo);
 		model.addAttribute("rvo", rvo);
 		model.addAttribute("kreamList", kreamList.subList(1, 6));
-		
-		
-		
+    
 		return "home";
 	}
 }

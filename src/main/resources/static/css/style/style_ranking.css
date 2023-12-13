@@ -59,12 +59,24 @@
     float: right;
 }
 
-#like {
+.like1 {
 	background-color: white;
 	cursor : pointer;
 	border : white;
 	width : 20px;
 	height : 20px;
+	margin-right : 10px;
+	margin-left : 20px;
+}
+
+.like2 {
+	background-color: white;
+	cursor : pointer;
+	border : white;
+	width : 20px;
+	height : 20px;
+	margin-right : 10px;
+	margin-left : 20px;
 }
 
 .img{
@@ -99,6 +111,7 @@
 
 .username {
 	font-size : 15px;
+	cursor : pointer;
 }
 
 
@@ -162,10 +175,6 @@
 
 .all_select {
 	margin-top : 20px;
-}
-
-.username:hover {
-    text-decoration: underline;
 }
 
 .hashtag:hover {
