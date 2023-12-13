@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StyleVO {
+	private int style_no;// 스타일 글번호
 	private int onepagerecord = 32; // 페이지당 개수
 	private String item_image;	// 아이템 사진
     private String item_name;  // 아이템 이름

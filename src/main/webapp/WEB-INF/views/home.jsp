@@ -24,7 +24,7 @@
 	<ul id="category_homeresell">
 	<!-- men category -->
 		<li id="men_HC">
-			<a href="">
+			<a href="/mingle/resell?page=1&category=1">
 				<div class="main-content" id="main-content">
 				    <div class="titleCont">
 				        <h1 class="main-title" id="main-title">
@@ -38,7 +38,7 @@
 		</li>
 	<!-- women category -->
 		<li id="women_HC">
-			<a href="">
+			<a href="/mingle/resell?page=1&category=2">
 				<div id="body_women_HC">
 					<svg viewbox="0 0 100 20" id="svg_women_HC">
 					  <defs>
@@ -67,13 +67,13 @@
 		</li>
 	<!-- bag category -->
 		<li id="bag_HC">
-			<a href="">
+			<a href="/mingle/resell?page=1&detail=500">
 				<h1 id="h1_bag_HC"><span>B</span><span>A</span><span>G</span></h1>
 			</a>
 		</li>
 	<!-- shoes category -->
 		<li id="shoes_HC">
-			<a href="">
+			<a href="/mingle/resell?page=1&detail=400">
 				<div id="body_shoes_HC">
 					<div class="container">
 					  <svg viewBox="0 0 960 300">
@@ -101,31 +101,31 @@
 			              <div>How about</div>
 			              <div id='master-container-scroller'>
 			                <div class='master-container-scroller_item'>
-			                  <a class='cta-link' href='#'>CAP</a>.
+			                  <a class='cta-link' href='/mingle/resell?page=1&category=3'>CAP</a>.
 			                </div>
 			                <div class='master-container-scroller_item'>
-			                  <a class='cta-link' href='#'>Fedora</a>.
+			                  <a class='cta-link' href='/mingle/resell?page=1&category=3'>Fedora</a>.
 			                </div>
 			                <div class='master-container-scroller_item'>
-			                  <a class='cta-link' href='#'>Gloves</a>.
+			                  <a class='cta-link' href='/mingle/resell?page=1&category=3'>Gloves</a>.
 			                </div>
 			                <div class='master-container-scroller_item'>
-			                  <a class='cta-link' href='#'>Scarf</a>.
+			                  <a class='cta-link' href='/mingle/resell?page=1&category=3'>Scarf</a>.
 			                </div>
 			                <div class='master-container-scroller_item'>
-			                  <a class='cta-link' href='#'>Watch</a>.
+			                  <a class='cta-link' href='/mingle/resell?page=1&category=3'>Watch</a>.
 			                </div>
 			                <div class='master-container-scroller_item'>
-			                  <a class='cta-link' href='#'>Necklace</a>.
+			                  <a class='cta-link' href='/mingle/resell?page=1&category=3'>Necklace</a>.
 			                </div>
 			                <div class='master-container-scroller_item'>
-			                  <a class='cta-link' href='#'>Ring</a>.
+			                  <a class='cta-link' href='/mingle/resell?page=1&category=3'>Ring</a>.
 			                </div>
 			                <div class='master-container-scroller_item'>
-			                  <a class='cta-link' href='#'>Bracelet</a>.
+			                  <a class='cta-link' href='/mingle/resell?page=1&category=3'>Bracelet</a>.
 			                </div>
 			                <div class='master-container-scroller_item'>
-			                  <a class='cta-link' href='#'>Mask</a>.
+			                  <a class='cta-link' href='/mingle/resell?page=1&category=3'>Mask</a>.
 			                </div>
 			                <div class='master-container-scroller_item'>Trooper.</div>
 			              </div>
@@ -146,58 +146,20 @@
 				<div class="homeSubtitle">리셀 상품</div>
 				<!-- List -->
 				<div id="area_List_home">
-					<div class="homePost_resell">
-						<a href="">
-							<img src="" class="homePostImg_resell"/>
-							<div class="homePostTitle_resell">불꽃 핫바지 조거 트레이닝 팬츠</div>
-							<div class="textBottom_homePost">
-								<div class="homePostPrice_resell">25000</div>
-								<div class="homePostTime_resell">2023.05.10</div>
-							</div>
-						</a>
-					</div>
-					<div class="homePost_resell">
-						<a href="">
-							<img src="" class="homePostImg_resell"/>
-							<div class="homePostTitle_resell">불꽃 핫바지 조거 트레이닝 팬츠</div>
-							<div class="textBottom_homePost">
-								<div class="homePostPrice_resell">25000</div>
-								<div class="homePostTime_resell">2023.05.10</div>
-							</div>
-						</a>
-					</div>
-					<div class="homePost_resell">
-						<a href="">
-							<img src="" class="homePostImg_resell"/>
-							<div class="homePostTitle_resell">불꽃 핫바지 조거 트레이닝 팬츠</div>
-							<div class="textBottom_homePost">
-								<div class="homePostPrice_resell">25000</div>
-								<div class="homePostTime_resell">2023.05.10</div>
-							</div>
-						</a>
-					</div>
-					<div class="homePost_resell">
-						<a href="">
-							<img src="" class="homePostImg_resell"/>
-							<div class="homePostTitle_resell">불꽃 핫바지 조거 트레이닝 팬츠</div>
-							<div class="textBottom_homePost">
-								<div class="homePostPrice_resell">25000</div>
-								<div class="homePostTime_resell">2023.05.10</div>
-							</div>
-						</a>
-					</div>
-					<div class="homePost_resell">
-						<a href="">
-							<img src="" class="homePostImg_resell"/>
-							<div class="homePostTitle_resell">불꽃 핫바지 조거 트레이닝 팬츠</div>
-							<div class="textBottom_homePost">
-								<div class="homePostPrice_resell">25000</div>
-								<div class="homePostTime_resell">2023.05.10</div>
-							</div>
-						</a>
-					</div>
+					<c:forEach var="vo" items="${list}">
+						<div class="homePost_resell">
+							<a href="">
+								<img src="" class="homePostImg_resell"/>
+								<div class="homePostTitle_resell">${vo.resell_name}</div>
+								<div class="textBottom_homePost">
+									<div class="homePostPrice_resell">25000</div>
+									<div class="homePostTime_resell">${vo.resell_writedate}</div>
+								</div>
+							</a>
+						</div>
+					</c:forEach>
 				</div>
-				<a href="#" class="homeMore">
+				<a href="/mingle/resell" class="homeMore">
 					<div class="buttons">
 					    <button class="btn-hover color-8">more</button>
 					</div>

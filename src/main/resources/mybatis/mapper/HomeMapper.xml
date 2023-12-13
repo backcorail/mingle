@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mingle.mapper.HomeMapper">
+	<select id="homeResellList" resultType="com.project.mingle.mapper.HomeMapper">
+		select resell_name, date_format(resell_writedate, '%m-%d %h:%i') resell_writedate
+		from resell order by resell_no desc limit ${param1}; <!-- 따음표없애기 위해서 $사용 -->
+	</select>
+</mapper>
