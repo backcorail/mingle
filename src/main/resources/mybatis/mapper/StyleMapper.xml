@@ -14,4 +14,15 @@
     select item_no, item_name, item_image from item
     limit ${onepagerecord}
   </select>
+  <insert id ="styleInsert" parameterType="com.project.mingle.vo.StyleVO" useGeneratedKeys="true" keyProperty="style_no">
+	    insert into style(style_name, user_id) values(#{style_name}, #{user_id})
+  </insert>
+  <insert id="styleFileInsert" parameterType="java.util.List">
+  		<if test="list != null or !list.isEmpty()">
+		    <foreach item="item" collection="list" open="insert into style_file(style_no, style_file_name) values"
+				separator=",">
+				(${item.style_no}, #{item.style_file_name})
+			</foreach>
+	    </if>
+  </insert>
 </mapper>

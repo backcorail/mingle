@@ -17,6 +17,11 @@
     font-weight: 700;
     font-style: normal;
 }
+
+/* 전체 적용 */
+a{
+	color: black;
+}
 /*사이드 버튼 숨기기*/
 #area_sideBtn{
 	display: none;

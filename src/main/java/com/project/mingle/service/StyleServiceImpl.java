@@ -3,6 +3,7 @@ package com.project.mingle.service;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import com.project.mingle.mapper.StyleMapper;
+import com.project.mingle.vo.StyleFileVO;
 import com.project.mingle.vo.StyleVO;
 import java.util.List;
 import javax.inject.Inject;
@@ -41,5 +42,11 @@ public class StyleServiceImpl  implements StyleService{
   	@Override
 	public int styleInsert(StyleVO vo) {
 		return mapper.styleInsert(vo);
+	}
+
+
+	@Override
+	public int styleFileInsert(List<StyleFileVO> list) {
+		return mapper.styleFileInsert(list);
 	}
 }
