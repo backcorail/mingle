@@ -80,8 +80,6 @@
 	overflow: hidden;
 }
 
-
-
 .slide_list1{
 	height: 180px;
 	font-size: 12px;
@@ -140,14 +138,7 @@
 	background-color: white;
 	border-radius:5px;
 }
-.slide_item5{
-	width:150px;
-	height:150px;
-	float:left;
-	margin-right: 20px;
-	background-color: white;
-	border-radius:5px;
-}
+
 .item-img{
 	width:150px;
 	height:150px;

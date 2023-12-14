@@ -17,9 +17,9 @@
 	</div>
 	<div class="codiTap">
 		<h2 style="text-align:center;"><b>추천 코디</b></h2>
-		<img class="codi" src="/mingle/img/cody/2.jpg"><br>
+		<img class="codi" src="${imgUrl}"><br>
 		
-		<a>무난무난하고 깔끔한 데일리 켐퍼스룩</a>
+		<a><b>${detail[0]}#${detail[1]}#${detail[2]}#${detail[3]}</b></a>
 		</div>
 	<div class="cody_item">
 	<c:forEach varStatus="n1" items="${detail}" var="detail">
@@ -27,10 +27,11 @@
 		<div class="slide">
 		<h1 class="category_h1">${detail}</h1>
 	      	<div class="slide_list${n1.count}">
-	        	<c:forEach var="n" begin="1" end="10">
-					<div class="slide_item${n1.count} slide_item${n}" id="slide_item">
-	        			<img class="item-img" src="/mingle/img/cody/jk.jpg">
-	        			<a>${detail}${n}</a>
+	      	<c:set var="cody_boardData" value="cody_boardData${n1.count}" />
+	        	<c:forEach varStatus="n" items="${requestScope[cody_boardData]}" var="data">
+					<div class="slide_item${n1.count} slideex${n.count}" id="slide_item">
+	        			<img class="item-img" referrerpolicy="no-referrer" src="${data.item_image}">
+	        			<a>${data.item_name}</a>
 	        		</div>
 				</c:forEach>
 	      </div>

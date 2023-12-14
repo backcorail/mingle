@@ -26,19 +26,27 @@ var $count2 = $('.slide_item2').length;
 var $count3 = $('.slide_item3').length;
 var $count4 = $('.slide_item4').length;
 
-var $slidebox = $item*$count+50;
-var countS = 0;
+console.log($count);
+console.log($count2);
+console.log($count3);
+console.log($count4);
+
+var $slidebox = $item*$count;
+var $slidebox2 = $item*$count2;
+var $slidebox3 = $item*$count3;
+var $slidebox4 = $item*$count4;
+var count1 = 0;
 var count2 = 0;
 var count3 = 0;
 var count4 = 0;
 
 function moveSlider(){
 	var check = $(this).attr('data-btn');
-	if(check==0&& countS>0){
-		countS -= 1;
+	if(check==0&& count1>0){
+		count1 -= 1;
 		$('.slide_list1').animate({left : '+='+$item+'px'},300,slideEnd)
-	}else if(check == 1&&countS<($count-7)){
-		countS += 1;
+	}else if(check == 1&&count1<($count-4)){
+		count1 += 1;
 		$('.slide_list1').animate({left : '-='+$item+'px'},300,slideEnd)
 	}
 }
@@ -47,30 +55,30 @@ function moveSlider2(){
 	var check = $(this).attr('data-btn');
 	if(check==0&& count2>0){
 		count2 -= 1;
-		$('.slide_list2').animate({left : '+='+$item+'px'},300,slideEnd)
-	}else if(check == 1&&count2<($count2-7)){
+		$('.slide_list2').animate({left : '+='+$item+'px'},300,slideEnd2)
+	}else if(check == 1&&count2<($count2-4)){
 		count2 += 1;
-		$('.slide_list2').animate({left : '-='+$item+'px'},300,slideEnd)
+		$('.slide_list2').animate({left : '-='+$item+'px'},300,slideEnd2)
 	}
 }
 function moveSlider3(){
 	var check = $(this).attr('data-btn');
 	if(check==0&& count3>0){
 		count3 -= 1;
-		$('.slide_list3').animate({left : '+='+$item+'px'},300,slideEnd)
-	}else if(check == 1&&count3<($count3-7)){
+		$('.slide_list3').animate({left : '+='+$item+'px'},300,slideEnd3)
+	}else if(check == 1&&count3<($count3-4)){
 		count3 += 1;
-		$('.slide_list3').animate({left : '-='+$item+'px'},300,slideEnd)
+		$('.slide_list3').animate({left : '-='+$item+'px'},300,slideEnd3)
 	}
 }
 function moveSlider4(){
 	var check = $(this).attr('data-btn');
 	if(check==0&& count4>0){
 		count4 -= 1;
-		$('.slide_list4').animate({left : '+='+$item+'px'},300,slideEnd)
-	}else if(check == 1&&count4<($count4-7)){
+		$('.slide_list4').animate({left : '+='+$item+'px'},300,slideEnd4)
+	}else if(check == 1&&count4<($count4-4)){
 		count4 += 1;
-		$('.slide_list4').animate({left : '-='+$item+'px'},300,slideEnd)
+		$('.slide_list4').animate({left : '-='+$item+'px'},300,slideEnd4)
 	}
 }
 
@@ -85,6 +93,38 @@ function slideEnd(){
 		$('.slide_list1').animate({right : 0});
 	}
 }
+
+function slideEnd(){
+	var nowLeft = $('.slide_list1').position().right;
+	var end = -($slidebox2-710);
+	
+	if(nowLeft<=end){
+		$('.slide_list1').animate({right : end});
+	}else if(nowLeft>0){
+		$('.slide_list1').animate({right : 0});
+	}
+}
+function slideEnd2(){
+	var nowLeft = $('.slide_list1').position().right;
+	var end = -($slidebox3-710);
+	
+	if(nowLeft<=end){
+		$('.slide_list1').animate({right : end});
+	}else if(nowLeft>0){
+		$('.slide_list1').animate({right : 0});
+	}
+}
+function slideEnd3(){
+	var nowLeft = $('.slide_list1').position().right;
+	var end = -($slidebox4-710);
+	
+	if(nowLeft<=end){
+		$('.slide_list1').animate({right : end});
+	}else if(nowLeft>0){
+		$('.slide_list1').animate({right : 0});
+	}
+}
+
 
 window.onload=function(){
 	setTimeout(function(){
@@ -114,9 +154,9 @@ function headerLogoToggle(){
 
 $(document).ready(function(){
 		$('.slide_list1').css('width',$slidebox);
-		$('.slide_list2').css('width',$slidebox);
-		$('.slide_list3').css('width',$slidebox);
-		$('.slide_list4').css('width',$slidebox);
+		$('.slide_list2').css('width',$slidebox2);
+		$('.slide_list3').css('width',$slidebox3);
+		$('.slide_list4').css('width',$slidebox4);
 		
 		$('.leftBtn1').on('click',moveSlider);
 		$('.rightBtn1').on('click',moveSlider);
@@ -157,7 +197,7 @@ $(document).ready(function(){
 			   	var temp_max = resp.main.temp_max - 273.15;
 	            var temp_min = resp.main.temp_min - 273.15;
 	            
-	            const weatherIcon = resp.weather[0].icon;
+	            const weatherIcon = "13d";
 	            const weatherIconAdrs = "http://openweathermap.org/img/wn/"+weatherIcon+"@2x.png";
 	            
 	            $("#weather_Icon").attr("src", weatherIconAdrs);
@@ -181,6 +221,7 @@ $(document).ready(function(){
 					$("#header_logo, #btn_login").attr("style", "color:#FECB02");
 				}else{
 					$("#codyboard_background").attr("style", "background-image:url('/mingle/img/cody/day_rainny/rainny.png');");
+					$("#codyboard_background").css("color", "black");
 					$(".BtnImg").attr("src","/mingle/img/cody/day_rainny/icon_arrow.png");
 					$(".codi").attr("style","box-shadow: 5px 5px 5px grey;");
 					$("#header_logo, #btn_login").attr("style", "color:black");
