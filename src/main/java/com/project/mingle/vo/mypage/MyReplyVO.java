@@ -1,6 +1,5 @@
 package com.project.mingle.vo.mypage;
 
-import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReplyVO {
+public class MyReplyVO {
     private String userid; // 유저 닉네임
     private String comment; 
     private String styleno; // 게시글 번호

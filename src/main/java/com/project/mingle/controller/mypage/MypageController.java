@@ -1,20 +1,28 @@
 package com.project.mingle.controller.mypage;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.mingle.service.mypage.MypageService;
 import com.project.mingle.service.user.UserService;
 import com.project.mingle.vo.UserVO;
+import com.project.mingle.vo.mypage.MyActInfo;
 
 @Controller
 public class MypageController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	MypageService mypageService;
+	
+
 	
 	//1)
 	@GetMapping("/mypage/mybasket")
@@ -26,12 +34,15 @@ public class MypageController {
 		modelAndView.setViewName("/mypage/mybasket");
 		return modelAndView;
 	}
-	//2)
+	//2) 내활동 -게시글 첫번째 
 	@GetMapping("/mypage/myboard")
-	public ModelAndView myboard() {
+	public ModelAndView myboard(	Principal principal) {
 		ModelAndView modelAndView = new ModelAndView();
 		// 내작성글 가져오기
-		
+		System.out.println("MypageController.myboard() ->principal.getName() : " + principal.getName());
+		String userid = principal.getName();
+		List<MyActInfo> actInfos = mypageService.myboard(userid);
+		modelAndView.addObject("actInfos", actInfos);
 		modelAndView.setViewName("/mypage/myboard");
 		return modelAndView;
 	}

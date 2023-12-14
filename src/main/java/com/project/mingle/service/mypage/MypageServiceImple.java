@@ -1,11 +1,17 @@
 package com.project.mingle.service.mypage;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.project.mingle.mapper.MypageMapper;
 import com.project.mingle.vo.UserVO;
+import com.project.mingle.vo.mypage.MyActInfo;
+import com.project.mingle.vo.mypage.MyRequestVO;
+import com.project.mingle.vo.mypage.MyResellVO;
+import com.project.mingle.vo.mypage.MyStyleVO;
 import com.project.mingle.vo.user.CheckVO;
 import com.project.mingle.vo.user.ResponseDto;
 import com.project.mingle.vo.user.UserResp;
@@ -18,6 +24,46 @@ public class MypageServiceImple implements MypageService {
 	
 	@Autowired
 	PasswordEncoder passwordEncoder;
+	
+
+	@Override
+	public List<MyActInfo> myboard(String userid) {
+		// TODO Auto-generated method stub
+				
+		int defalutGetNo=9;
+		List<MyRequestVO> myRequestVOs = mypageMapper.getMyRequest(userid,defalutGetNo);
+		List<MyResellVO> myResellVOs = mypageMapper.getMyResell(userid,defalutGetNo);
+		List<MyStyleVO> myStyleVOs = mypageMapper.getMyReStyle(userid,defalutGetNo);
+		return null;
+	}
+	
+//	@Override
+//	public List<MyActInfo> myboard(String userid) {
+//		// TODO Auto-generated method stub
+//		
+//		
+//		int defalutGetNo=9;
+//		
+//		List<MyRequestVO> myRequestVOs = mypageMapper.getMyRequest(userid,defalutGetNo);
+//		System.out.println("MypageServiceImple.myboard() ->myRequestVOs.size() : " + myRequestVOs.size());
+//		
+//		List<MyResellVO> myResellVOs = mypageMapper.getMyResell(userid,defalutGetNo);
+//		System.out.println("MypageServiceImple.myboard() ->myResellVOs.size() : " + myResellVOs.size());
+//		
+//		List<MyStyleVO> myStyleVOs = mypageMapper.getMyReStyle(userid,defalutGetNo);
+//		System.out.println("MypageServiceImple.myboard() ->myStyleVOs.size() : " + myStyleVOs.size());
+//		
+//		
+//		return null;
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@Override
 	public ResponseDto<String> userPut(String userid, CheckVO checkVO) {
@@ -143,10 +189,9 @@ public class MypageServiceImple implements MypageService {
 	public int userOut(String userid) {
 		// TODO Auto-generated method stub
 		int resultDel =  mypageMapper.userOut(userid);
-
-
 		return resultDel ;
 	}
+
 
 	
 }
