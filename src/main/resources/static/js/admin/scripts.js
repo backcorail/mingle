@@ -24,3 +24,11 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+$(document).ready(function() {
+  $("header").hide();
+})
+
+$(document).ready(function() {
+  $("footer").hide();
+})

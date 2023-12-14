@@ -100,7 +100,6 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
-								<a class="nav-link" href="/mingle/admintest/products_charts">Products Charts</a>
 							</nav>
 						</div>
 						<!-- Transactions 메뉴 -->
@@ -160,7 +159,7 @@
 								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
 							</nav>
 						</div>
-						<!-- Server 메뉴 -->
+						<!-- Server 메뉴
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseServer" aria-expanded="false"
 							aria-controls="collapseServer">
@@ -171,14 +170,14 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Recommend 하위 메뉴 -->
+						<!-- Recommend 하위 메뉴
 						<div class="collapse" id="collapseServer"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/layout_static">Server Data</a>
 								<a class="nav-link" href="/mingle/admintest/layout_static">Server settings</a>
 							</nav>
-						</div>
+						</div>  -->
 					</div>
 				</div>
 				<div class="sb-sidenav-footer">
@@ -203,7 +202,7 @@
 							<table id="datatablesSimple">
 								<thead>
 									<tr>
-										<th>No.</th>
+										<th>No</th>
 										<th>Name</th>
 										<th>Seller</th>
 										<th>WritedDate</th>
@@ -212,7 +211,7 @@
 								</thead>
 								<tfoot>
 									<tr>
-										<th>No.</th>
+										<th>No</th>
 										<th>Name</th>
 										<th>Seller</th>
 										<th>WritedDate</th>
@@ -220,13 +219,13 @@
 									</tr>
 								</tfoot>
 								<tbody>
-									<c:forEach var="resellBoard" items="${boardList}">
+									<c:forEach var="reVO" items="${boardList}">
 										<tr>
-											<td>${resellBoard.resell_no}</td>
-											<td>${resellBoard.resell_name}</td>
-											<td>${resellBoard.resell_seller}</td>
-											<td>${resellBoard.resell_writedate}</td>
-											<td>${resellBoard.resell_addr}</td>
+											<td>${reVO.resell_no}</td>
+											<td>${reVO.resell_name}</td>
+											<td>${reVO.resell_seller}</td>
+											<td>${reVO.resell_writedate}</td>
+											<td>${reVO.resell_addr}</td>
 										</tr>
 									</c:forEach>
 								</tbody>

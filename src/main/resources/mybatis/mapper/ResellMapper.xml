@@ -30,7 +30,7 @@
 	</select>
 	
 	<select id="resell_boardData" resultType="com.project.mingle.vo.ResellVO">
-		select resell_no, resell_name, resell_seller, item_price, date_format(resell_writedate, '%Y-%m-%d %h:%i:%s') 
+		select resell_no, resell_name, resell_seller, item_price, resell_addr, date_format(resell_writedate, '%Y-%m-%d %h:%i:%s') 
 		resell_writedate from resell 
 		<where>
 			<if test="searchWord1 != ''">and resell_name like '%${searchWord1}%'</if>
