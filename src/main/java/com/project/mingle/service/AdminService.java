@@ -13,5 +13,9 @@ public interface AdminService {
 	public List<AdminTestVO> usersData(AdminTestVO rVO);
 	
 	//유저 수 카운팅
-	int countUsers();
+	public int countUsers();
+	
+	//성별 카운팅
+	public int countByGender(int i);
+	
 }

@@ -46,7 +46,7 @@
 					<li><a class="dropdown-item" href="#!">Settings</a></li>
 					<li><a class="dropdown-item" href="#!">Activity Log</a></li>
 					<li><hr class="dropdown-divider" /></li>
-					<li><a class="dropdown-item" href="#!">Logout</a></li>
+					<li><a class="dropdown-item" href="/mingle/myadmin/logout">Logout</a></li>
 				</ul></li>
 		</ul>
 	</nav>
@@ -100,7 +100,7 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
+								<a class="nav-link" href="/mingle/admintest/products_charts">Products Charts</a>
 							</nav>
 						</div>
 						<!-- Transactions 메뉴 -->
@@ -138,6 +138,7 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
+								<a class="nav-link" href="/mingle/admintest/posts_charts">Posts Charts</a>
 							</nav>
 						</div>
 						<!-- Recommend 메뉴 -->
@@ -251,11 +252,6 @@
 						</div>
 					</div>
 					<div style="height: 100vh"></div>
-					<div class="card mb-4">
-						<div class="card-body">When scrolling, the navigation stays
-							at the top of the page. This is the end of the static navigation
-							demo.</div>
-					</div>
 				</div>
 			</main>
 			<footer class="py-4 bg-light mt-auto">

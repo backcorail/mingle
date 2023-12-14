@@ -46,7 +46,7 @@
 					<li><a class="dropdown-item" href="#!">Settings</a></li>
 					<li><a class="dropdown-item" href="#!">Activity Log</a></li>
 					<li><hr class="dropdown-divider" /></li>
-					<li><a class="dropdown-item" href="#!">Logout</a></li>
+					<li><a class="dropdown-item" href="/mingle/myadmin/logout">Logout</a></li>
 				</ul></li>
 		</ul>
 	</nav>
@@ -203,7 +203,6 @@
 							<table id="datatablesSimple">
 								<thead>
 									<tr>
-										<th>Seller ID</th>
 										<th>Product name</th>
 										<th>Post date</th>
 										<th>Category</th>
@@ -212,7 +211,6 @@
 								</thead>
 								<tfoot>
 									<tr>
-										<th>Seller ID</th>
 										<th>Product name</th>
 										<th>Date</th>
 										<th>Category</th>
@@ -223,7 +221,6 @@
 									<c:forEach var="kItem" items="${klist}">
 										<c:forEach var="users" items="${userlist}">
 										<tr>
-											<td>${users.user_id}</td>
 											<td>${kItem.item_name}</td>
 											<td>${kItem.item_postdate}</td>
 											<td>${kItem.item_category}</td>

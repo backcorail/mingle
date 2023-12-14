@@ -46,7 +46,7 @@
 					<li><a class="dropdown-item" href="#!">Settings</a></li>
 					<li><a class="dropdown-item" href="#!">Activity Log</a></li>
 					<li><hr class="dropdown-divider" /></li>
-					<li><a class="dropdown-item" href="#!">Logout</a></li>
+					<li><a class="dropdown-item" href="/mingle/myadmin/logout">Logout</a></li>
 				</ul></li>
 		</ul>
 	</nav>
@@ -100,7 +100,7 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
+								<a class="nav-link" href="/mingle/admintest/products_charts">Products Charts</a>
 							</nav>
 						</div>
 						<!-- Transactions 메뉴 -->
@@ -138,6 +138,7 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
+								<a class="nav-link" href="/mingle/admintest/posts_charts">Posts Charts</a>
 							</nav>
 						</div>
 						<!-- Recommend 메뉴 -->
@@ -206,6 +207,7 @@
 										<th>Name</th>
 										<th>Seller</th>
 										<th>WritedDate</th>
+										<th>addr</th>
 									</tr>
 								</thead>
 								<tfoot>
@@ -214,6 +216,7 @@
 										<th>Name</th>
 										<th>Seller</th>
 										<th>WritedDate</th>
+										<th>addr</th>
 									</tr>
 								</tfoot>
 								<tbody>
@@ -223,6 +226,7 @@
 											<td>${resellBoard.resell_name}</td>
 											<td>${resellBoard.resell_seller}</td>
 											<td>${resellBoard.resell_writedate}</td>
+											<td>${resellBoard.resell_addr}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
