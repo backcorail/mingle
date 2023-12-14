@@ -48,7 +48,7 @@
 							<sec:authorize access="hasRole('ADMIN')">
 								<!-- ADMIN 사용자를 위한 콘텐츠 또는 아무것도 표시하지 않음 -->
 							</sec:authorize>
-						</c:otherwise>
+						</c:otherwise> 
 					</c:choose>
 				</div>
 			</div>

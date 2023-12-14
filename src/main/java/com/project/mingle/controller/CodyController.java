@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.mingle.service.CodyService;
+import com.project.mingle.service.user.UserService;
 import com.project.mingle.vo.CodyTestVO;
-import com.project.mingle.vo.ResellVO;
+import com.project.mingle.vo.UserVO;
 
 
 @Controller
@@ -25,7 +27,6 @@ public class CodyController {
 	
 	@Autowired
 	CodyService service;
-	
 	
 	
 	int[] item_number = {
@@ -59,14 +60,12 @@ public class CodyController {
 		try {
 			CodyTestVO cVO = new CodyTestVO();
 			int[] array = new int[4];
-			int gender = 2;
 			String urlstr = "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",kr&appid=43e709e6a39f22a1a3734e13c7720b45";
 			URL url = new URL(urlstr);
 			BufferedReader bf;
 			String line;
             String result="";
-            
-            
+            int gender = 2;
             
             //날씨 정보를 받아온다.
             bf = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -343,6 +342,8 @@ public class CodyController {
 		}catch(Exception e){
             System.out.println(e.getMessage());
         }
+		
+		
 		
 		
 		mav.setViewName("cody/cody_board");
