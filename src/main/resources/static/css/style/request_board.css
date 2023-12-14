@@ -42,6 +42,9 @@ input:focus {outline: none;}
 	width:70%;
 	height: auto;
 	min-height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	padding: 50px;
 	border: 1px solid lightgray;
 	border-radius: 15px;
@@ -139,11 +142,9 @@ input:focus {outline: none;}
 }
 .reply_area1{
 	width: 22px;
-	background: greenyellow;
 }
 .reply_area2{
 	width:300px;
-	background: dimgrey;
 }
 .replyTitle{
 	font-family: 'HakgyoansimWoojuR';
@@ -184,12 +185,12 @@ input:focus {outline: none;}
 	background: rgb(255,180,0);
 	color: white;
 	font-weight: bold;
-	translate: -2px -2px;
-	box-shadow: 3px 5px rgb(219,153,0);
+	translate: 0px -2px;
+	box-shadow: 0px 5px rgb(219,153,0);
 	
 }
 .btnWrite:active{
 	box-shadow: none;
-	translate: 2px 2px;
+	translate: 0px 2px;
 	font-weight: normal;
 }

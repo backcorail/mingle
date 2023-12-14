@@ -8,6 +8,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RequestVO {
+	// 페이지 관련 변수 목록
+	private int nowPage = 1; // 현재페이지
+	private int totalRecord; // 레코드 수
+	private int onePageRecord = 16; // 한 페이지 레코드 수
+	private int totalPage; // 총 페이지
+	private int onePageCount = 5; // 출력할 페이지 수
+	private int startPage = 1; // 처음 시작 페이지
+	private int offsetPoint; // 데이터 시작 부분
 	
 	//글쓰기 관련 변수 목록
 	private int request_no;

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.project.mingle.mapper.RequestMapper;
 import com.project.mingle.vo.RequestFileVO;
 import com.project.mingle.vo.RequestVO;
+import com.project.mingle.vo.ResellVO;
 
 @Service
 public class RequestServiceImpl implements RequestService{
@@ -21,12 +22,21 @@ public class RequestServiceImpl implements RequestService{
 	
 	@Override
 	public int requestFileInsert(List<RequestFileVO> list) {
-		System.out.println(list+"1234");
 		return mapper.requestFileInsert(list);
 	}
 
 	@Override
 	public RequestVO requestSelect(int request_no) {
 		return mapper.requestSelect(request_no);
+	}
+
+	@Override
+	public List<RequestVO> requestList(RequestVO rVO) {
+		return mapper.requestList(rVO);
+	}
+
+	@Override
+	public List<RequestFileVO> getImgFile(RequestFileVO rfvo) {
+		return mapper.getImgFile(rfvo);
 	}
 }

@@ -15,7 +15,14 @@
 			</foreach>
 	    </if>
 	</insert>
-	<select id="dataSelect" resultType="com.project.mingle.vo.RequestVO">
-		select request_no, request_name, request_comment, user_id, request_writedate from request where no=${param1}
+	<select id="requestSelect" resultType="com.project.mingle.vo.RequestVO">
+		select request_no, request_name, request_type, request_comment, user_id, request_writedate from request where request_no=${param1}
+	</select>
+	<select id="requestList" resultType="com.project.mingle.vo.RequestVO">
+		select request_no, request_name, user_id, request_writedate from request
+		order by request_writedate desc limit #{onePageRecord} offset ${offsetPoint};		
+	</select>
+	<select id="getImgFile" resultType="com.project.mingle.vo.RequestFileVO">
+		select request_no, request_datafile_dataname from request_datafile order by request_no desc;
 	</select>
 </mapper>

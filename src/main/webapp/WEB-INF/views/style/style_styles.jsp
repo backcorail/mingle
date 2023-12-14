@@ -14,9 +14,6 @@
 
 
 <div class="page">
-
-
-
 	<div class="all_select">
 
 		<div class="board-wrap">
@@ -44,7 +41,6 @@
 					</div>
 				</c:forEach>
 			</div>
-			
 			<div class="board_list_now">
 				<c:forEach var="n" items="${klist}">
 					<div class="board_items_hidden" data-item-no="${n.item_no}">
@@ -67,7 +63,6 @@
 			</div>
 			<!--  <button class ="moreview">더보기</button> -->
 		</div>
-
 	</div>
 </div>
 
