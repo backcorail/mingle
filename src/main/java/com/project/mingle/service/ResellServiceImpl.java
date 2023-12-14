@@ -35,20 +35,20 @@ public class ResellServiceImpl implements ResellService {
 
 	// 유저가 올린 데이터 가져오기
 	@Override
-	public ResellVO boardData(int no) {
-		return mapper.boardData(no);
+	public ResellVO resell_select(int no) {
+		return mapper.resell_select(no);
 	}
 	@Override
-	public ResellVO itemData(int no) {
-		return mapper.itemData(no);
+	public ResellVO item_select(int no) {
+		return mapper.item_select(no);
 	}
 	@Override
-	public List<String> imageData(int no) {
-		return mapper.imageData(no);
+	public List<String> image_select(int no) {
+		return mapper.image_select(no);
 	}
 	@Override
-	public ResellVO userData(String id) {
-		return mapper.userData(id);
+	public ResellVO user_select(String id) {
+		return mapper.user_select(id);
 	}
 
 	// 데이터 추가하기
@@ -61,8 +61,8 @@ public class ResellServiceImpl implements ResellService {
 		return mapper.resell_insert(rVO);
 	}
 	@Override
-	public int item_file_insert(List<ResellVO> list) {
-		return mapper.item_file_insert(list);
+	public int image_insert(List<ResellVO> list) {
+		return mapper.image_insert(list);
 	}
 	
 	// 데이터 수정하기
@@ -75,21 +75,21 @@ public class ResellServiceImpl implements ResellService {
 		return mapper.resell_update(rVO);
 	}
 	@Override
-	public int item_file_update(List<ResellVO> list) {
-		return mapper.item_file_update(list);
+	public int image_update(List<ResellVO> list) {
+		return mapper.image_update(list);
 	}
 	
 	// 데이터 삭제하기
 	@Override
-	public int resell_delete(ResellVO rVO) {
-		return mapper.resell_delete(rVO);
+	public int resell_delete(int no) {
+		return mapper.resell_delete(no);
 	}
 	@Override
-	public int item_delete(ResellVO rVO) {
-		return mapper.item_delete(rVO);
+	public int item_delete(int no) {
+		return mapper.item_delete(no);
 	}
 	@Override
-	public int item_file_delete(List<ResellVO> list) {
-		return mapper.item_file_delete(list);
+	public int image_delete(int no) {
+		return mapper.image_delete(no);
 	}
 }

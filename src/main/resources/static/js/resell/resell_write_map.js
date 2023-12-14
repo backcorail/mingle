@@ -1,7 +1,9 @@
 // 주소 선택 api
 
 $(document).ready(function() {
-	var addr = $("#sellPlace").text();
+	$(".addr_post").hide();
+	$(".addr_box").hide();
+	var addr = $(".addr_post").val();
 	if(addr != "") {
 		updateUI(addr);
 		initMap(addr);
@@ -19,9 +21,11 @@ function searchAddr() {
 }
 
 function updateUI(addr) {
-	document.getElementById('sellPlace').textContent = addr;
-    document.getElementById('sellPlace').style.display = "block";
-    document.getElementById('map').style.display = "block";
+	console.log("주소변경 - "+addr);
+	$(".addr_post").val(addr);
+	$(".addr_box").text(addr);
+	$(".addr_box").show();
+	$("#map").show();
 }
 
 function initMap(addr){

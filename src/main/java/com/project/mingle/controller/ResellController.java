@@ -82,6 +82,13 @@ public class ResellController {
 			}
 		}
 		
+		
+		ResellVO boardData = service.resell_select(no); // no를 통한 게시글 데이터 받아오기
+		ResellVO itemData = service.item_select(no); // no를 통한 아이템 데이터 받아오기
+		List<String> imageData = service.image_select(no); // no를 통한 이미지 데이터 받아오기
+		mav.addObject("itemData", itemData);
+		
+		
 		rVO.setNowPage(page);
 		rVO.setSearchWord(searchAll);
 		rVO.setCategory(category);
@@ -136,18 +143,17 @@ public class ResellController {
 		mav.addObject("main", main);
 		
 		// no를 통한 게시글 데이터 받아오기
-		ResellVO boardData = service.boardData(no);
+		ResellVO boardData = service.resell_select(no);
 		// no를 통한 아이템 데이터 받아오기
-		ResellVO itemData = service.itemData(no);
+		ResellVO itemData = service.item_select(no);
 		// no를 통한 이미지 데이터 받아오기
-		List<String> imageData = service.imageData(no);
-		// id를 통한 이미지 데이터 받아오기
+		List<String> imageData = service.image_select(no);
 		
 		if (boardData != null) {
-			ResellVO userData = service.userData(boardData.getResell_seller());
+			ResellVO userData = service.user_select(boardData.getResell_seller());
 			mav.addObject("userData", userData);
-			System.out.println(boardData.getResell_seller());
-			System.out.println(userData);
+			System.out.println("글 작성자(user_id) -> "+boardData.getResell_seller());
+			System.out.println("글 데이터(ResellVO) -> "+userData);
 		} else {
 			System.out.println("값이 없음");
 		}
@@ -186,11 +192,11 @@ public class ResellController {
 		mav.addObject("Bag", Bag);
 		
 		// no를 통한 게시글 데이터 받아오기
-		ResellVO boardData = service.boardData(no);
+		ResellVO boardData = service.resell_select(no);
 		// no를 통한 아이템 데이터 받아오기
-		ResellVO itemData = service.itemData(no);
+		ResellVO itemData = service.item_select(no);
 		// no를 통한 이미지 데이터 받아오기
-		List<String> imageData = service.imageData(no);
+		List<String> imageData = service.image_select(no);
 		
 		mav.addObject("boardData", boardData);
 		mav.addObject("itemData", itemData);
@@ -228,7 +234,8 @@ public class ResellController {
 		//mr객체 내에 파일의 수만큼 MultipartFile객체가 있다.
 		List<MultipartFile> filesList = mr.getFiles("filename"); //input 태그의 name 속성값
 		// 업로드 한 파일목록을 보관 DatafileVO -> List
-		List<ResellVO> uploadFileList = new ArrayList<ResellVO>();
+		List<ResellVO> uploadFileList = new ArrayList<>();
+		List<String> filelist = new ArrayList<>();
 		
 		if(filesList != null){//업로드 파일이 있을때
 			for(int i=0; i<filesList.size(); i++) {// 첨부된 파일 만큼 반복수행
@@ -261,59 +268,36 @@ public class ResellController {
 					//업로드
 					try {
 						mf.transferTo(f);//서버에 실제 업로드 되는 시점.
-					}catch(Exception e) {}
+					} catch(Exception e) {}
 					
-					//업로드 
-					ResellVO ifVO = new ResellVO();
-					ifVO.setItem_file_name(orgFilename);
-					if(ifVO.getItem_image() == "") {
-						ifVO.setItem_image(orgFilename);
-					}
-					uploadFileList.add(ifVO);
-					
-					
+					//업로드
+					ResellVO otherVO = rVO;
+					otherVO.setItem_file_name(orgFilename);
+					otherVO.setItem_no(no);
+					ResellVO imageVO = new ResellVO(rVO);
+					uploadFileList.add(imageVO);
 				}//if2
 			}//for1
 			
 		}//if1
 		try {
-			System.out.println(uploadFileList+" --- 3");
-			System.out.println(rVO.getItem_price()+"/"+rVO.getResell_addr()+" --- 3.5");
-			
-			if(no == 0) {
+			System.out.println(uploadFileList);
+			if(no == 0) { // 새로 작성할때
 				service.item_insert(rVO); //아이템 업로드
 				service.resell_insert(rVO); //글 업로드
-				System.out.println(" --- 4(추가)");
-			} else if (no != 0) {
+				service.image_insert(uploadFileList); // 이미지 업로드
+			} else if (no != 0) { // 수정할때
 				service.item_update(rVO); // 아이템 업데이트
 				service.resell_update(rVO); // 글 업데이트
-				System.out.println(" --- 4(수정)");
+				service.image_delete(no); // 이미지 삭제
+				service.image_insert(uploadFileList); // 이미지 다시 추가
 			}
-			
-			//업로드아이템 사진 파일명
-			for(ResellVO ifVO: uploadFileList) {ifVO.setItem_no(rVO.getItem_no());}
-			
-			
-			System.out.println(uploadFileList+"123456"+" --- 5");
-			int fileResult;
-			if(no == 0) {
-				fileResult = service.item_file_insert(uploadFileList);
-				System.out.println("fileResult"+fileResult+" --- 6(추가)");
-			} else {
-				fileResult = service.item_file_update(uploadFileList);
-				System.out.println("fileResult"+fileResult+" --- 6(수정)");
-			}
-			
 			
 			if(!uploadFileList.isEmpty()) {
 				ResellVO firstFile = uploadFileList.get(0);
 				String firstFileName = firstFile.getItem_file_name();
 				System.out.println(firstFileName + " --- 7");
-				
 			}
-			
-			//4. 추가 성공하면 -> 자료실목록
-			
 			TransactionAspectSupport.currentTransactionStatus().flush();
 			mav.setViewName("redirect:/resell");
 			
@@ -330,14 +314,40 @@ public class ResellController {
 			//글등록폼으로 이동
 			mav.addObject("msg", "등록");	
 			mav.setViewName("/resell/write_result");
-			
 		}
-
 		return mav;
 	}
+	
+	
   
-  
-  
-  @GetMapping("/board/delete")
-	public void board_delete() {}
+	@GetMapping("/delete")
+	public ModelAndView board_delete(
+			@RequestParam(name="no", defaultValue="0") int no,
+			HttpServletRequest request,
+			HttpSession session,
+			ResellVO rVO) {
+		ModelAndView mav = new ModelAndView();
+		String path = session.getServletContext().getRealPath("/uploadfile");
+		File file = new File(path);
+		
+		List<String> fileList = service.image_select(no);
+		
+		int result1 = service.resell_delete(no);
+		int result2 = service.image_delete(no);
+		int result3 = service.item_delete(no);
+		if(result1 > 0 && result2 > 0 && result3 > 0) {
+			
+			
+			
+			mav.setViewName("redirect:/resell");
+		} else {
+			String referer = request.getHeader("referer");
+			mav.setViewName("redirect:" + (referer != null ? referer : "/"));
+		}
+		
+		
+		
+		
+		return mav;
+	}
 }

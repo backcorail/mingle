@@ -17,8 +17,9 @@ $(function() {
 });
 </script>
 <div class="page">
-	<form method="post" action="${pageContext.servletContext.contextPath}/resell/writeOk" class="write_form" onsubmit="return validateForm()" enctype="multipart/form-data">
+	<form method="post" action="${pageContext.servletContext.contextPath}/resell/writeOk<c:if test='${not empty itemData.item_no}'>?no=${itemData.item_no}</c:if>" class="write_form" onsubmit="return validateForm()" enctype="multipart/form-data">
 	<div id="writeForm_back">
+		${itemData.item_no}
 		<div id="writeForm_title">MIXING VARIOUS FASHIONS INTO ONE</div>
 		<!-- 글 종류 선택 -->
 		<div class="writeType_select">
@@ -112,8 +113,9 @@ $(function() {
 	  	<!-- 판매희망주소 --><!-- api 적용시, 분리하면 에러남 -->
 	  	<div class="sellAddr_area">
 		  	<input type="button" onclick="searchAddr()" value="PLACE SELECT" class="addr_btn">
-		  	<div id="sellPlace" style="display:none;">${boardData.getResell_addr()}</div>
-		  	<div id="map" style="width:100%; height:350px; display:none;"></div>
+		  	<input type="text" class="addr_post" name="resell_addr" value="${boardData.getResell_addr()}">
+		  	<div class="addr_box">${boardData.getResell_addr()}</div>
+		  	<div id="map"></div>
 	  	</div>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=32c66affb1cc55e17a82c794a21905ab&libraries=services,clusterer,drawing"></script>
 	  	<hr/>

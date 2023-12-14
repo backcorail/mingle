@@ -1,7 +1,5 @@
 package com.project.mingle.vo;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,7 +44,6 @@ public class ResellVO {
 	// 이미지 관련 변수 목록
 	private int img_no; 
 	private String img_url;
-	private String imageData;
 	private String item_file_name;
 	
 	// 검색 관련 변수
@@ -71,7 +68,11 @@ public class ResellVO {
 	private String user_img;
 	
 	
-	
+	// 복사 생성자
+	public ResellVO(ResellVO other) {
+		this.item_file_name = other.item_file_name;
+		this.item_no = other.item_no;
+	}
   
 	public void setTotalPage() {
 		totalPage = (int)Math.ceil(this.totalRecord / (double)onePageRecord);
