@@ -18,5 +18,5 @@ public class CodyTestVO {
 	private int item_gender;	//아이템 성별
 	private int item_category;	//아이템 카테고리
 	
-	private int user_gender=0;	//유저 성별
+	private int user_gender=0;	//유저 성별  
 }
