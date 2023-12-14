@@ -10,6 +10,7 @@ import com.project.mingle.mapper.RequestMapper;
 import com.project.mingle.vo.RequestFileVO;
 import com.project.mingle.vo.RequestVO;
 import com.project.mingle.vo.ResellVO;
+import com.project.mingle.vo.UserVO;
 
 @Service
 public class RequestServiceImpl implements RequestService{

@@ -43,6 +43,7 @@ input:focus {outline: none;}
 	height: auto;
 	min-height: 400px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	padding: 50px;
@@ -83,6 +84,7 @@ input:focus {outline: none;}
 .profile_nickname{
 	font-size: 16px;
 	font-weight: bold;
+	overflow: hidden;
 }
 .writeDate{
 	font-size: 14px;
