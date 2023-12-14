@@ -69,9 +69,20 @@
 }
 
 .div-item-list-area{
-  display: flex;
-  flex-direction: column;
-  padding-top: calc(15px * var(--default-size));
+	flex:1;
+	display: flex;
+	flex-direction: column;
+	
+	overflow: auto;
+	padding-top: calc(15px * var(--default-size));
+	
+	    /* 스크롤바 숨기기 (WebKit 기반 브라우저용) */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 스크롤바 숨기기 (Firefox용) */
+    scrollbar-width: none;
 }
 .div-track{
   height:calc(73px * var(--default-size));
