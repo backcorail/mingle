@@ -25,11 +25,11 @@
 	</select> -->
 	
 	<select id="kreamData" resultType="com.project.mingle.vo.AdminVO">
-	    select item_no, item_name, item_price, item_image, item_postdate, item_category from item 
-	    <if test="searchWord!=null">
-	   		where item_name like '%${searchWord}%'
-	    </if>
-			order by item_postdate desc limit #{onePageRecord} offset ${offsetPoint};
+	   	select i.item_no, i.item_name, i.item_price, i.item_postdate, i.item_image, i.item_detail, i.item_category, j.item_file_name, i.item_status
+		from item i left join (select item_no, min(item_file_name) as item_file_name
+    	from item_file group by item_no) j on i.item_no = j.item_no
+
+		order by item_postdate desc limit #{onePageRecord} offset ${offsetPoint};
 	</select>
 	
 	<select id="usersData" resultType="com.project.mingle.vo.AdminTestVO">

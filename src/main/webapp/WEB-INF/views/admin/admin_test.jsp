@@ -156,11 +156,10 @@
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
+								<a class="nav-link" href="/mingle/style/write">Recommend Write</a>
 							</nav>
 						</div>
-						<!-- Server 메뉴 -->
+						<!-- Server 메뉴
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseServer" aria-expanded="false"
 							aria-controls="collapseServer">
@@ -171,14 +170,14 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Recommend 하위 메뉴 -->
+						Server 하위 메뉴
 						<div class="collapse" id="collapseServer"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/layout_static">Server Data</a>
 								<a class="nav-link" href="/mingle/admintest/layout_static">Server settings</a>
 							</nav>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<!-- <div class="sb-sidenav-footer">

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 <meta charset="utf-8" />
@@ -79,8 +80,9 @@
 							aria-labelledby="headingMembers"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/members_data">Members Data</a>
-								<a class="nav-link" href="/mingle/admintest/members_charts">Members Charts</a>
+								<a class="nav-link" href="/mingle/admintest/members_data">Members
+									Data</a> <a class="nav-link"
+									href="/mingle/admintest/members_charts">Members Charts</a>
 								<!-- 더 많은 하위 메뉴 항목들 추가 가능 -->
 							</nav>
 						</div>
@@ -99,8 +101,8 @@
 						<div class="collapse" id="collapseProducts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
+								<a class="nav-link" href="/mingle/admintest/products_data">Products
+									Data</a>
 							</nav>
 						</div>
 						<!-- Transactions 메뉴 -->
@@ -118,8 +120,10 @@
 						<div class="collapse" id="collapseTransactions"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/transactions_data">Transactions Data</a>
-								<a class="nav-link" href="/mingle/admintest/transactions_charts">Transactions Charts</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_data">Transactions
+									Data</a> <a class="nav-link"
+									href="/mingle/admintest/transactions_charts">Transactions
+									Charts</a>
 							</nav>
 						</div>
 						<!-- Posts 메뉴 -->
@@ -137,7 +141,8 @@
 						<div class="collapse" id="collapsePosts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
+								<a class="nav-link" href="/mingle/admintest/posts_data">Posts
+									Data</a>
 							</nav>
 						</div>
 						<!-- Recommend 메뉴 -->
@@ -155,11 +160,12 @@
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
+								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend
+									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Recommend
+									Write</a>
 							</nav>
 						</div>
-						<!-- Server 메뉴 -->
+						<!-- Server 메뉴
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseServer" aria-expanded="false"
 							aria-controls="collapseServer">
@@ -170,14 +176,14 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<!-- Recommend 하위 메뉴 -->
+						<!-- Recommend 하위 메뉴
 						<div class="collapse" id="collapseServer"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/layout_static">Server Data</a>
 								<a class="nav-link" href="/mingle/admintest/layout_static">Server settings</a>
 							</nav>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="sb-sidenav-footer">
@@ -188,52 +194,83 @@
 		</div>
 		<div id="layoutSidenav_content">
 			<main>
-			 <div id="products_list">
-				<div class="container-fluid px-4">
-					<h1 class="mt-4">Products Data</h1>
-					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="/mingle/admintest">Dashboard</a></li>
-						<li class="breadcrumb-item active">Products Navigation</li>
-					</ol>
-					<div class="card mb-4">
-						<div class="card-header">
-							<i class="fas fa-table me-1"></i> Products List
-						</div>
-						<div class="card-body">
-							<table id="datatablesSimple">
-								<thead>
-									<tr>
-										<th>Product name</th>
-										<th>Post date</th>
-										<th>Category</th>
-										<th>Image</th>
-									</tr>
-								</thead>
-								<tfoot>
-									<tr>
-										<th>Product name</th>
-										<th>Date</th>
-										<th>Category</th>
-										<th>Image</th>
-									</tr>
-								</tfoot>
-								<tbody>
-									<c:forEach var="kItem" items="${klist}">
-										<c:forEach var="users" items="${userlist}">
+				<div id="products_list">
+					<div class="container-fluid px-4">
+						<h1 class="mt-4">Products Data</h1>
+						<ol class="breadcrumb mb-4">
+							<li class="breadcrumb-item"><a href="/mingle/admintest">Dashboard</a></li>
+							<li class="breadcrumb-item active">Products Navigation</li>
+						</ol>
+						<div class="card mb-4">
+							<div class="card-header">
+								<i class="fas fa-table me-1"></i> Products List
+							</div>
+							<div class="card-body">
+								<table id="datatablesSimple">
+									<thead>
 										<tr>
-											<td>${kItem.item_name}</td>
-											<td>${kItem.item_postdate}</td>
-											<td>${kItem.item_category}</td>
-											<td><img referrerpolicy="no-referrer" src="${kItem.item_image}" width="100" height="100"/></td>
+											<th>Product name</th>
+											<th>Post date</th>
+											<th>Category</th>
+											<th>Detail</th>
+											<th>Image</th>
 										</tr>
-									</c:forEach>
+									</thead>
+									<tfoot>
+										<tr>
+											<th>Product name</th>
+											<th>Post date</th>
+											<th>Category</th>
+											<th>Detail</th>
+											<th>Image</th>
+										</tr>
+									</tfoot>
+									<tbody>
+										<c:forEach var="kItem" items="${klist}">
+											<tr>
+												<td>${kItem.item_name}</td>
+												<td>${kItem.item_postdate}</td>
+												<td><c:out value="${main[kItem.item_category]}" /></td>
+												<td>
+													<c:set var="num" value="${kItem.item_detail}"/>
+													        <c:set var="divide" value="${num / 100}"/>
+													        <c:choose>
+													            <c:when test="${divide < 2}">
+													                <c:set var="detail" value="${Top[num%100]}"/>
+													            </c:when>
+													            <c:when test="${divide < 3}">
+													                <c:set var="detail" value="${Outer[num%100]}"/>
+													            </c:when>
+													            <c:when test="${divide < 4}">
+													                <c:set var="detail" value="${Bottom[num%100]}"/>
+													            </c:when>
+													            <c:when test="${divide < 5}">
+													                <c:set var="detail" value="${Shose[num%100]}"/>
+													            </c:when>
+													            <c:when test="${divide < 6}">
+													                <c:set var="detail" value="${Bag[num%100]}"/>
+													            </c:when>
+													            <c:otherwise>
+													                <c:set var="detail" value="기타"/>
+													            </c:otherwise>
+													        </c:choose>
+													        <c:out value="${detail}"/></td>
+												<td><c:choose>
+														<c:when test="${empty kItem.item_image}">
+															<c:set var="firstImg" value="${pageContext.request.contextPath}/uploadfile/${kItem.item_file_name}" />
+														</c:when>
+															<c:otherwise>
+																<c:set var="firstImg" value="${kItem.item_image}" />
+															</c:otherwise>
+													</c:choose> <img referrerpolicy="no-referrer" src="${firstImg}"  width="100" height="100"></td>
+											</tr>
 										</c:forEach>
-								</tbody>
-							</table>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-			 </div>
 			</main>
 			<footer class="py-4 bg-light mt-auto">
 				<div class="container-fluid px-4">
