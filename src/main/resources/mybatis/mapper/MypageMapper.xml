@@ -39,6 +39,52 @@
 		where user_id = #{userid} AND style_no &lt; #{offset}  
 		order by style_writedate desc  limit #{limit} 
 	</select>
-
 	<!-- 게시글 가져오기 끝 -->
+	
+	<!-- 댓글 가져오기 -->
+	<select id="getMyRequestReply" resultType="com.project.mingle.vo.mypage.MyRequestReplyVO">
+	
+		SELECT
+            rr.request_reply_no,
+            rr.request_no,
+            rr.user_id,
+            rr.request_reply_comment,
+            DATE_FORMAT(rr.request_reply_writedate, '%Y-%m-%d %H:%i:%s') AS request_reply_writedate,
+            r.request_name
+        FROM
+            mingledb.request_reply rr
+        LEFT JOIN
+            mingledb.request r ON rr.request_no = r.request_no
+        WHERE
+            rr.user_id = #{userid} 
+		AND request_reply_no &lt; #{offset}
+		order by request_reply_writedate  desc limit #{limit}		 
+	</select>
+	
+	<select id="getMyReStyleReply" 	resultType="com.project.mingle.vo.mypage.MyStyleReplyVO">
+		SELECT
+            sr.style_reply_no,
+            sr.style_no,
+            sr.user_id,
+            sr.style_reply_comment,
+            DATE_FORMAT(sr.style_reply_writedate, '%Y-%m-%d %H:%i:%s') AS style_reply_writedate,
+            s.style_name
+        FROM
+            mingledb.style_reply sr
+        LEFT JOIN
+            mingledb.style s ON sr.style_no = s.style_no
+        WHERE
+            sr.user_id = #{userid}
+            AND style_reply_no &lt; #{offset}  
+		order by style_reply_writedate desc  limit #{limit} 
+	</select>
+	
+	
+	<!-- 댓글 가져오기  끝-->
+	
+	
+	
+	
+	
+	
 </mapper>

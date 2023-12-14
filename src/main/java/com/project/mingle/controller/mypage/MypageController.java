@@ -134,7 +134,7 @@ public class MypageController {
 		System.out.println("MypageController.myreply() ->principal.getName() : " + principal.getName());
 		String userid = principal.getName();
 		MyboardRequestVO myboardRequestVO =new MyboardRequestVO(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
-		List<MyActInfo> actInfos = mypageService.myboard(userid,myboardRequestVO);
+		List<MyActInfo> actInfos = mypageService.myReply(userid,myboardRequestVO);
 		
 		System.out.println("MypageController.myreply() ->actInfos.size() : " + actInfos.size());
 		Map<String, Integer> lastmap = new HashMap<>();

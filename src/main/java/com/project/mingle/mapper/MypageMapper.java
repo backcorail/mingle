@@ -7,10 +7,11 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.project.mingle.vo.UserVO;
+import com.project.mingle.vo.mypage.MyRequestReplyVO;
 import com.project.mingle.vo.mypage.MyRequestVO;
 import com.project.mingle.vo.mypage.MyResellVO;
+import com.project.mingle.vo.mypage.MyStyleReplyVO;
 import com.project.mingle.vo.mypage.MyStyleVO;
-import com.project.mingle.vo.user.ResponseDto;
 
 @Mapper
 @Repository
@@ -29,5 +30,9 @@ public interface MypageMapper {
 	public List<MyResellVO> getMyResell(@Param("userid") String userid, @Param("limit") int limit, @Param("offset") int offset);
 
 	public List<MyStyleVO> getMyReStyle(@Param("userid") String userid, @Param("limit") int limit, @Param("offset") int offset);
+
+	public List<MyRequestReplyVO> getMyRequestReply(@Param("userid") String userid, @Param("limit") int limit, @Param("offset") int offset);
+
+	public List<MyStyleReplyVO> getMyReStyleReply(@Param("userid") String userid, @Param("limit") int limit, @Param("offset") int offset);
 
 }

@@ -8,42 +8,43 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MyRequestReplyVO implements MyActInfo{
-//	private int type=2; //
-	
-	//글쓰기 관련 변수 목록
-	private int request_no;
-	private String user_id;//유저 아이디
-	private int request_type;//글 종류 1->요청 2->질문
-	private String request_name;//글 제목	
-	private String request_comment;//글내용
-	private String request_writedate;//작성일자
-	private int resell_likes; // 좋아요.
-	
-	@Override
-	public String getType() {
-		// TODO Auto-generated method stub
-//		return "MyRequestVO";
-		return "리퀘스트";
-	}
-	@Override
-	public String getTitle() {
-		// TODO Auto-generated method stub
-		return getRequest_name();
-	}
-	@Override
-	public int getNo() {
-		// TODO Auto-generated method stub
-		return getRequest_no();
-	}	
-	@Override
-	public String getContents() {
-		// TODO Auto-generated method stub
-		return getRequest_comment();
-	}
-	@Override
-	public String getWriteDate() {
-		// TODO Auto-generated method stub
-		return getRequest_writedate();
-	}
+	// 6개
+		//기본 데이터
+		private int request_reply_no;// 리퀘스트 리플 글번호
+		private int request_no;// 리퀘스트 글번호
+		private String user_id; //작성자
+		
+		private String request_reply_comment;
+		private String request_reply_writedate;//작성일자
+		
+		//추가 데이터
+		private String  request_name; // 리퀘스트제목	
+		
+		@Override
+		public String getType() {
+			// TODO Auto-generated method stub
+//			return "MyStyleVO";
+			return "리퀘스트";
+		}
+		@Override
+		public String getTitle() { //리퀘스트보드의 제목
+			// TODO Auto-generated method stub
+			return getRequest_name();
+		}
+		@Override
+		public String getContents() { //리퀘스트 댓글 내용
+			// TODO Auto-generated method stub
+			return getRequest_reply_comment();
+		}
+		@Override
+		public String getWriteDate() { //댓글 작성일자.
+			// TODO Auto-generated method stub
+			return getRequest_reply_writedate();
+		}
+		@Override
+		public int getNo() { //댓글테이블 넘버.
+			// TODO Auto-generated method stub
+			return getRequest_no();
+		}
 
 }

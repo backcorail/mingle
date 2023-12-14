@@ -14,5 +14,7 @@ public interface MypageService {
 	int userOut(String name);
 
 	List<MyActInfo> myboard(String userid, MyboardRequestVO myboardRequestVO);
+	
+	List<MyActInfo> myReply(String userid, MyboardRequestVO myboardRequestVO);
 
 }

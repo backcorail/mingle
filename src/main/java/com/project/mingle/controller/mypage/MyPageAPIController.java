@@ -43,7 +43,53 @@ public class MyPageAPIController {
 	public MyPageAPIController(UserSecDetailsServiceImple userSecDetailsServiceImple, PasswordEncoder passwordEncoder) {
 		this.userSecDetailsServiceImple = userSecDetailsServiceImple;
 	}
+	
+	@GetMapping("/mypage/myreply/add")
+	public MyboardDto myreplyAdd(MyboardRequestVO myboardRequestVO, Principal principal) {
+		System.out.println("MyPageAPIController.myreplyAdd()  ");
+		System.out.println("myreplyAdd.getRequestno : " + myboardRequestVO.getRequestno());
+		System.out.println("myreplyAdd.getStyleno : " + myboardRequestVO.getStyleno());
+		// 내작성글 가져오기
+		System.out.println("MyPageAPIController.myreplyAdd() ->principal.getName() : " + principal.getName());
+		String userid = principal.getName();
+		List<MyActInfo> actInfos = mypageService.myReply(userid,myboardRequestVO);
 
+		System.out.println("MyPageAPIController.myreplyAdd() ->actInfos.size() : " + actInfos.size());
+		Map<String, Integer> lastmap = new HashMap<>();
+		lastmap.put("리퀘스트", myboardRequestVO.getRequestno());
+		lastmap.put("스타일", myboardRequestVO.getStyleno());
+		lastmap.put("리셀", myboardRequestVO.getResellno());
+
+		for (MyActInfo myActInfo : actInfos) {
+			System.out.println("myActInfo.getNo : " + myActInfo.getNo());
+			System.out.println("myActInfo.getTitle : " + myActInfo.getType());
+
+			if ("리퀘스트".equals(myActInfo.getType())) {
+				if (lastmap.get("리퀘스트") > myActInfo.getNo()) {
+					lastmap.put("리퀘스트", myActInfo.getNo());
+				}
+			} else if ("스타일".equals(myActInfo.getType())) {
+				if (lastmap.get("스타일") > myActInfo.getNo()) {
+					lastmap.put("스타일", myActInfo.getNo());
+				}
+			} 
+		}
+		System.out.println("lastmap.리퀘스트.getNo : " + lastmap.get("리퀘스트"));
+		System.out.println("lastmap.스타일.getNo : " + lastmap.get("스타일"));
+		System.out.println("lastmap.리셀.getNo : " + lastmap.get("리셀"));
+
+		MyboardDto myboardDto = new MyboardDto();
+		myboardDto.setActInfos(actInfos);
+		myboardDto.setLastmap(lastmap);
+
+		return myboardDto;
+	}
+	
+	
+	
+	
+	
+	
 	@GetMapping("/mypage/myboard/add")
 	public MyboardDto myboardAdd(MyboardRequestVO myboardRequestVO, Principal principal) {
 		System.out.println("MyPageAPIController.myboardAdd()  ");
