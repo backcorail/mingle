@@ -32,6 +32,19 @@ public class RequestController {
 	@Autowired
 	RequestService service;
 	
+	@GetMapping("/list")
+	public ModelAndView boardList(RequestVO vo, RequestFileVO rfvo) {
+		ModelAndView mav = new ModelAndView();
+		List<RequestVO> list = service.requestList(vo);
+		List<RequestFileVO> fileList = service.getImgFile(rfvo);
+		System.out.println(fileList);
+		mav.addObject("rfvo", rfvo);
+		mav.addObject("list", list);
+		mav.addObject("fileList", fileList);
+		mav.setViewName("style/style_request");
+		return mav;
+	}
+	
 	@GetMapping("/write")
 	public String request_write() {
 		return "style/request_write";
@@ -129,20 +142,15 @@ public class RequestController {
 		
 	}
 	
-	/*
-	@GetMapping("/view/{request_no}")
+	@GetMapping("/{request_no}")
 	public ModelAndView request_view(@PathVariable("request_no") int request_no) {
 		ModelAndView mav  = new ModelAndView();
 		//원글선택
-		mav.addObject("vo", service.requestSelect(request_no));
-		
-		List<RequestFileVO> fList = service.getDataFile(request_no);
+		RequestVO vo = service.requestSelect(request_no);
 		//첨부파일 
-		mav.addObject("fList", fList);//목록
-		mav.addObject("fileCount", fList.size());//첨부파일의 갯수
+		mav.addObject("vo", vo);//목록
 		//뷰페이지
-		mav.setViewName("data/dataEdit");
+		mav.setViewName("style/request_board");
 		return mav;
 	}
-	*/
 }

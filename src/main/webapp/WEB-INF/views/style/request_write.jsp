@@ -59,7 +59,7 @@ $(function() {
 			<div class="imgUpload_area">
 				<div class="imgUpload_textArea">Image<br/>Upload</div>
 				<div class="imgUpload_contArea upload">
-					<input type="file" class="real-upload" name="filename" accept="image/*" required multiple>
+					<input type="file" class="real-upload" name="filename" accept="image/*">
 					<ul class="image_preview">상단 노출 제품 관련 이미지를 선택해주세요.</ul>
 				</div>
 		  	</div>
