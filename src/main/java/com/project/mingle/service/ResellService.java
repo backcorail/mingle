@@ -22,4 +22,8 @@ public interface ResellService {
 	public int item_update(ResellVO rVO); // 아이템 수정
 	public int resell_update(ResellVO rVO); // 게시글 수정
 	public int item_file_update(List<ResellVO> list); // 이미지 수정
+	
+	public int resell_delete(ResellVO rVO); // 게시글 삭제
+	public int item_delete(ResellVO rVO); // 아이템 삭제
+	public int item_file_delete(List<ResellVO> list); // 이미지 삭제
 }

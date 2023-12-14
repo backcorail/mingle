@@ -18,12 +18,16 @@ public interface ResellMapper {
 	public List<String> imageData(int no); // 이미지 데이터 가져오기
 	public ResellVO userData(String id); // 유저 데이터 가져오기
 	
-	public int item_insert(ResellVO rVO); // 아이템 입력
 	public int resell_insert(ResellVO rVO); // 게시글 작성
+	public int item_insert(ResellVO rVO); // 아이템 입력
 	public int item_file_insert(List<ResellVO> list); // 이미지 데이터 넣기
 	
-	public int item_update(ResellVO rVO); // 아이템 수정
 	public int resell_update(ResellVO rVO); // 게시글 수정
+	public int item_update(ResellVO rVO); // 아이템 수정
 	public int item_file_update(List<ResellVO> list); // 이미지 수정
+	
+	public int resell_delete(ResellVO rVO); // 게시글 삭제
+	public int item_delete(ResellVO rVO); // 아이템 삭제
+	public int item_file_delete(List<ResellVO> list); // 이미지 삭제
 }
  

@@ -105,11 +105,11 @@
 	</insert>
 	
 	<!-- 데이터 수정하기 -->
-	<update id="boardData_update">
+	<update id="resell_update">
 	    update resell set resell_name = #{resell_name}, resell_comment = #{resell_comment}, resell_addr = #{resell_addr}, resell_writedate = #{resell_writedate}
 	    where item_no = #{item_no}
 	</update>
-	<update id="itemData_update">
+	<update id="item_update">
 		update item set item_name = #{item_name}, item_category = #{item_category}, item_detail = #{item_detail}, item_price = #{item_price}, item_postdate = #{item_postdate}
 		where item_no = ${item_no}
 	</update>
@@ -119,4 +119,16 @@
 	        where item_no = #{data.item_no}
 	    </foreach>
 	</update>
+	
+	<delete id="boardData_delete">
+		delete from resell where item_no = #{item_no}
+	</delete>
+	<delete id="itemData_delete">
+		delete from item where item_no = #{item_no}
+	</delete>
+	<delete id="item_file_delete">
+		delete from item_file where item_no = #{item_no}
+	</delete>
+	
+	
 </mapper>

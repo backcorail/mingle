@@ -15,6 +15,7 @@ public class ResellServiceImpl implements ResellService {
 	@Inject
 	ResellMapper mapper;
 	
+	// 크림관련 데이터 가져오기
 	@Override
 	public int resell_totalRecord(ResellVO rVO) {
 		return mapper.resell_totalRecord(rVO);
@@ -32,8 +33,7 @@ public class ResellServiceImpl implements ResellService {
 		return mapper.kreamData(rVO);
 	}
 
-	
-	
+	// 유저가 올린 데이터 가져오기
 	@Override
 	public ResellVO boardData(int no) {
 		return mapper.boardData(no);
@@ -51,8 +51,7 @@ public class ResellServiceImpl implements ResellService {
 		return mapper.userData(id);
 	}
 
-	
-	
+	// 데이터 추가하기
 	@Override
 	public int item_insert(ResellVO rVO) {
 		return mapper.item_insert(rVO);
@@ -66,8 +65,7 @@ public class ResellServiceImpl implements ResellService {
 		return mapper.item_file_insert(list);
 	}
 	
-	
-	
+	// 데이터 수정하기
 	@Override
 	public int item_update(ResellVO rVO) {
 		return mapper.item_update(rVO);
@@ -79,5 +77,19 @@ public class ResellServiceImpl implements ResellService {
 	@Override
 	public int item_file_update(List<ResellVO> list) {
 		return mapper.item_file_update(list);
+	}
+	
+	// 데이터 삭제하기
+	@Override
+	public int resell_delete(ResellVO rVO) {
+		return mapper.resell_delete(rVO);
+	}
+	@Override
+	public int item_delete(ResellVO rVO) {
+		return mapper.item_delete(rVO);
+	}
+	@Override
+	public int item_file_delete(List<ResellVO> list) {
+		return mapper.item_file_delete(list);
 	}
 }
