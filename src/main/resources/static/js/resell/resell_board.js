@@ -6,6 +6,7 @@ $(document).ready(function() {
 	var url = window.location.origin + window.location.pathname;
 	var params = window.location.search;
 	var urlParams = new URLSearchParams(params);
+	var no = urlParams.get("no");
 	var page = urlParams.get("page");
 	var search = urlParams.get("search");
 	var category = urlParams.get("category");
@@ -39,6 +40,48 @@ $(document).ready(function() {
 	
 	// -----< 상단 카테고리 부분 >-----
 	// ===========================================================
+	// -----< 상단 지도 부분 >-----+
+	
+	
+	
+	// 지도 api
+
+	var mapContainer = document.getElementById('map') // 지도를 표시할 div 
+    var mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 5, // 지도의 확대 레벨
+        draggable : false
+    };  
+			
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+	
+	var addrPos = document.querySelector(".resell_addr > div");
+	var addr = addrPos.textContent;
+	
+	var geocoder = new kakao.maps.services.Geocoder();
+	
+	geocoder.addressSearch(addr, function(result, status) {
+	     if (status === kakao.maps.services.Status.OK) {
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div class="marker_info">'+addr+'</div>'
+	        });
+	        infowindow.open(map, marker);
+	        map.setCenter(coords);
+	        
+	        var marker = $(".marker_info").parent().parent();
+			marker.css("height","30px");
+			marker.css("border-radius","5px");
+	    }
+	});
+	
+	// -----< 상단 지도 부분 >-----
+	// ===========================================================
 	// -----< 중간 게시글 부분 >-----
 	
 	// 메인 옷 선택 애니메이션
@@ -71,7 +114,16 @@ $(document).ready(function() {
 	});
 	// 게시글 삭제하기
 	$(".board_delete").click(function() {
-		
+		// 사용자에게 확인 또는 취소를 선택하도록 하는 알림 창
+		var userResponse = confirm("게시글을 삭제하시겠습니까?");
+	
+		// 사용자가 확인을 선택한 경우
+		if (userResponse) {
+			alert("삭제되었습니다.");
+			url = url+"/delete?";
+			console.log(url);
+			URLData(url, null, null, null, null, null, null);
+		} else {}
 	});
 	
 	
@@ -153,3 +205,6 @@ function URLData(url, no, page, search, category, detail, sort) {
 }
 
 // ===========================================================
+
+
+

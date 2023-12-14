@@ -9,6 +9,10 @@
 
 <link rel="stylesheet" href="/mingle/css/resell/resell_board.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap&family=Nanum+Pen+Script&display=swap&family=Abril+Fatface&family=Kanit:ital,wght@1,500&family=Noto+Sans+KR:wght@300" rel="stylesheet">
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=32c66affb1cc55e17a82c794a21905ab&libraries=services,clusterer,drawing"></script>
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="/mingle/js/resell/resell_board.js"></script>
 
 <!-- 위쪽 부분 -->
@@ -60,13 +64,13 @@
 			<li>
 				<div class="purchase_price">
 					<div>구매가</div>
-					<c:set var="format" value="${boardData.item_price}"/>
+					<c:set var="format" value="${itemData.getItem_price()}"/>
 					<fmt:formatNumber var="formatPrice" value="${format}" pattern="#,###원"/>
 					<div>${formatPrice}</div>
 				</div>
 				<div class="modify_remove">
 					<div class="board_list">목록</div>
-					<c:if test="${not empty authUser}">
+					<c:if test="${authUser.userVO.user_id == boardData.resell_seller}">
 						<div class="board_update">수정</div>
 						<div class="board_delete">삭제</div>
 					</c:if>
@@ -74,17 +78,52 @@
 			</li>
 			<li class="blank_line"></li>
 			<li class="resell_item_name">
-				<div>${boardData.resell_name}</div>
-				<div>${itemData.item_name}</div>
+				<c:if test="${boardData.getResell_name() == null}">
+					<div>${itemData.getItem_name()}</div>
+				</c:if>
+				<c:if test="${boardData.getResell_name() != null}">
+					<div>${boardData.getResell_name()}</div>
+				</c:if>
+				<div>${itemData.getItem_name()}</div>
 			</li>
 			<li class="blank_line"></li>
+			<li class="seller_data">
+				<div>
+					<c:if test="${not empty userData.getUser_img()}">
+						<img src="${userData.getUser_img()}">
+					</c:if>
+					<c:if test="${empty userData.getUser_img()}">
+						<img src="/mingle/img/resell/profileEX.png">
+					</c:if>
+				</div>
+				<div class="seller_nick">
+					<c:if test="${not empty userData.getUser_nick()}">
+						<div>판매자</div>
+						<div>${userData.getUser_nick()}</div>
+					</c:if>
+					<c:if test="${empty userData.getUser_nick()}">
+						<div>관리자</div>
+						<div>admin</div>
+					</c:if>
+				</div>
+				<div class="writedate">
+					<c:if test="${not empty boardData.getResell_writedate()}">
+						<div>글 작성일</div>
+						<div>${boardData.getResell_writedate()}</div>
+					</c:if>
+					<c:if test="${empty boardData.getResell_writedate()}">
+						<div>글 작성일</div>
+						<div>${itemData.getItem_postdate()}</div>
+					</c:if>
+				</div>
+			</li>
 			<li class="buy_button"><button>구매요청하기</button></li>
 			<li class="blank_line"></li>
 			<li class="blank_line"></li>
 			<li class="resell_locate"><div>판매 희망 지역</div></li>
-			<li class="resell_addr"><div>전라북도 익산시 익산대로 460</div></li>
+			<li class="resell_addr"><div>${boardData.getResell_addr()}</div></li>
 			<li class="resell_map">
-				<img src="/mingle/img/resell/map_sample.png">
+				<div id="map"></div>
 			</li>
 		</ul>
 	</div>
@@ -93,14 +132,7 @@
 
 <!-- 글 내용 부분 -->
 <div class="resell_board_bottom">
-	<div class="resell_board_bottom_img">
-		<img src="/mingle/img/resell/sample.jpg">
-		<img src="/mingle/img/resell/sample.jpg">
-		<img src="/mingle/img/resell/sample.jpg">
-	</div>
-	<div class="resell_board_bottom_text">
-	(여기가 물품 설명글)
-	</div>
+	<div>${boardData.getResell_comment()}</div>
 	<div class="row_line"></div>
 </div>
 

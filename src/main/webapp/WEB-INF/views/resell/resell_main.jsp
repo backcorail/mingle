@@ -15,7 +15,7 @@
 <!-- 위쪽 카테고리 선택부분 -->
 <div>
 	<ul class="resell_top">
-		<li><div class="board_reset">초기화</div></li>
+		<li><div class="board_reset">카테고리 초기화</div></li>
 		<!-- 검색 부분 -->
 		<li class="resell_search">
 			<div>
@@ -126,12 +126,17 @@
 					<div class="board_view" id="${vo.item_no}">${vo.item_name}</div>
 					<c:set var="format" value="${vo.item_price}"/>
 					<fmt:formatNumber var="formatPrice" value="${format}" pattern="#,###원"/>
-					<div class="recell_price">${formatPrice}</div>
-					<div class="recell_time">
-						<div>
-							${vo.item_postdate} / 
-							<script>document.write(timeDiff('${vo.item_postdate}'));</script>
-						</div>
+					<div class="resell_price">${formatPrice}</div>
+					<div class="resell_time">
+						<c:choose>
+							<c:when test="${vo.item_status == '판매완료'}">
+								<div class="resell_status on_sale">판매완료</div>
+							</c:when>
+							<c:otherwise>
+								<div class="resell_status sale_complete">판매중</div>
+							</c:otherwise>
+						</c:choose>
+						<div><script>document.write(timeDiff('${vo.item_postdate}'));</script></div>
 					</div>
 				</div>
 			</c:forEach>

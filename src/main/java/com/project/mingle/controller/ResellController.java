@@ -82,6 +82,13 @@ public class ResellController {
 			}
 		}
 		
+		
+		ResellVO boardData = service.resell_select(no); // no를 통한 게시글 데이터 받아오기
+		ResellVO itemData = service.item_select(no); // no를 통한 아이템 데이터 받아오기
+		List<String> imageData = service.image_select(no); // no를 통한 이미지 데이터 받아오기
+		mav.addObject("itemData", itemData);
+		
+		
 		rVO.setNowPage(page);
 		rVO.setSearchWord(searchAll);
 		rVO.setCategory(category);
@@ -136,15 +143,20 @@ public class ResellController {
 		mav.addObject("main", main);
 		
 		// no를 통한 게시글 데이터 받아오기
-		ResellVO boardData = service.boardData(no);
+		ResellVO boardData = service.resell_select(no);
 		// no를 통한 아이템 데이터 받아오기
-		ResellVO itemData = service.itemData(no);
+		ResellVO itemData = service.item_select(no);
 		// no를 통한 이미지 데이터 받아오기
-		List<String> imageData = service.imageData(no);
+		List<String> imageData = service.image_select(no);
 		
-		System.out.println(boardData);
-		System.out.println(itemData);
-		System.out.println(imageData);
+		if (boardData != null) {
+			ResellVO userData = service.user_select(boardData.getResell_seller());
+			mav.addObject("userData", userData);
+			System.out.println("글 작성자(user_id) -> "+boardData.getResell_seller());
+			System.out.println("글 데이터(ResellVO) -> "+userData);
+		} else {
+			System.out.println("값이 없음");
+		}
 		
 		mav.addObject("boardData", boardData);
 		mav.addObject("itemData", itemData);
@@ -158,11 +170,39 @@ public class ResellController {
 	
 	
 	@GetMapping("/write")
-	public ModelAndView resell_write(ResellVO rVO) {
+	public ModelAndView resell_write(
+			@RequestParam(name="no", defaultValue="0") int no,
+			ResellVO rVO) {
+		
 		ModelAndView mav = new ModelAndView();
-		List<ResellVO> kreamList = service.kreamData(rVO);
+		
+		String[] main = {"all", "men", "women", "other"};
+		String[] title = {"Top", "Outer", "Bottom", "Shose", "Bag"};;
+		String[] Top = {"전체", "맨투맨/스웨트 셔츠", "니트/스웨터", "긴소매 티셔츠", "카라 티셔츠", "반소매 티셔츠", "민소매 티셔츠", "후드 티셔츠", "스포츠 상의", "셔츠/블라우스", "기타 상의"};
+		String[] Outer = {"전체", "후드 집업", "블루종", "라이더 재킷", "트러커 재킷", "슈트/블레이저 재킷", "무스탕/퍼", "카디건", "아노락", "코트", "패딩", "나일론/코치 재킷", "기타 아우터"};
+		String[] Bottom = {"전체", "데님팬츠", "코튼 팬트", "슈트 팬츠/슬랙스", "트레이닝/조거 팬츠", "숏 팬츠", "스포츠 하의", "기타 바지"};
+		String[] Shose = {"전체", "구두", "부츠", "힐/펌프스", "운동화", "슬리퍼", "샌들", "기타 신발"};
+		String[] Bag = {"전체", "백팩", "크로스백/매신저백", "슬링백", "핸드백", "지갑", "기타 가방"};
+		mav.addObject("main", main);
+		mav.addObject("title", title);
+		mav.addObject("Top", Top);
+		mav.addObject("Outer", Outer);
+		mav.addObject("Bottom", Bottom);
+		mav.addObject("Shose", Shose);
+		mav.addObject("Bag", Bag);
+		
+		// no를 통한 게시글 데이터 받아오기
+		ResellVO boardData = service.resell_select(no);
+		// no를 통한 아이템 데이터 받아오기
+		ResellVO itemData = service.item_select(no);
+		// no를 통한 이미지 데이터 받아오기
+		List<String> imageData = service.image_select(no);
+		
+		mav.addObject("boardData", boardData);
+		mav.addObject("itemData", itemData);
+		mav.addObject("imageData", imageData);
 		mav.addObject("rVO", rVO);
-		mav.addObject("klist", kreamList);
+		
 		mav.setViewName("resell/resell_write");
 		return mav; 
 	}
@@ -172,6 +212,7 @@ public class ResellController {
 	@PostMapping("/writeOk")
 	@Transactional(rollbackFor={RuntimeException.class, SQLException.class})
 	public ModelAndView resell_writeOk(
+			@RequestParam(name="no", defaultValue="0") int no,
 			HttpSession session,
 			HttpServletRequest hsr,
 			Principal principal,
@@ -193,7 +234,8 @@ public class ResellController {
 		//mr객체 내에 파일의 수만큼 MultipartFile객체가 있다.
 		List<MultipartFile> filesList = mr.getFiles("filename"); //input 태그의 name 속성값
 		// 업로드 한 파일목록을 보관 DatafileVO -> List
-		List<ResellVO> uploadFileList = new ArrayList<ResellVO>();
+		List<ResellVO> uploadFileList = new ArrayList<>();
+		List<String> filelist = new ArrayList<>();
 		
 		if(filesList != null){//업로드 파일이 있을때
 			for(int i=0; i<filesList.size(); i++) {// 첨부된 파일 만큼 반복수행
@@ -226,44 +268,36 @@ public class ResellController {
 					//업로드
 					try {
 						mf.transferTo(f);//서버에 실제 업로드 되는 시점.
-					}catch(Exception e) {}
+					} catch(Exception e) {}
 					
-					//업로드 
-					ResellVO ifVO = new ResellVO();
-					ifVO.setItem_file_name(orgFilename);
-					if(ifVO.getItem_image() == "") {
-						ifVO.setItem_image(orgFilename);
-					}
-					uploadFileList.add(ifVO);
+					//업로드
+					ResellVO otherVO = rVO;
+					otherVO.setItem_file_name(orgFilename);
+					otherVO.setItem_no(no);
+					ResellVO imageVO = new ResellVO(rVO);
+					uploadFileList.add(imageVO);
 				}//if2
 			}//for1
 			
 		}//if1
 		try {
-			//아이템 업로드
-			service.item_insert(rVO);
-			
-			//글 업로드
-			service.resell_insert(rVO);
-			
-			//업로드아이템 사진 파일명
-			for(ResellVO ifVO: uploadFileList) {ifVO.setItem_no(rVO.getItem_no());}
-			
-			
-			System.out.println(uploadFileList+"123456"+" --- 5");
-			int fileResult = service.item_file_insert(uploadFileList);
-			
-			System.out.println("fileResult"+fileResult+" --- 6");
+			System.out.println(uploadFileList);
+			if(no == 0) { // 새로 작성할때
+				service.item_insert(rVO); //아이템 업로드
+				service.resell_insert(rVO); //글 업로드
+				service.image_insert(uploadFileList); // 이미지 업로드
+			} else if (no != 0) { // 수정할때
+				service.item_update(rVO); // 아이템 업데이트
+				service.resell_update(rVO); // 글 업데이트
+				service.image_delete(no); // 이미지 삭제
+				service.image_insert(uploadFileList); // 이미지 다시 추가
+			}
 			
 			if(!uploadFileList.isEmpty()) {
 				ResellVO firstFile = uploadFileList.get(0);
 				String firstFileName = firstFile.getItem_file_name();
 				System.out.println(firstFileName + " --- 7");
-				
 			}
-			
-			//4. 추가 성공하면 -> 자료실목록
-			
 			TransactionAspectSupport.currentTransactionStatus().flush();
 			mav.setViewName("redirect:/resell");
 			
@@ -280,14 +314,40 @@ public class ResellController {
 			//글등록폼으로 이동
 			mav.addObject("msg", "등록");	
 			mav.setViewName("/resell/write_result");
-			
 		}
-
 		return mav;
 	}
+	
+	
   
-  
-  
-  @GetMapping("/board/delete")
-	public void board_delete() {}
+	@GetMapping("/delete")
+	public ModelAndView board_delete(
+			@RequestParam(name="no", defaultValue="0") int no,
+			HttpServletRequest request,
+			HttpSession session,
+			ResellVO rVO) {
+		ModelAndView mav = new ModelAndView();
+		String path = session.getServletContext().getRealPath("/uploadfile");
+		File file = new File(path);
+		
+		List<String> fileList = service.image_select(no);
+		
+		int result1 = service.resell_delete(no);
+		int result2 = service.image_delete(no);
+		int result3 = service.item_delete(no);
+		if(result1 > 0 && result2 > 0 && result3 > 0) {
+			
+			
+			
+			mav.setViewName("redirect:/resell");
+		} else {
+			String referer = request.getHeader("referer");
+			mav.setViewName("redirect:" + (referer != null ? referer : "/"));
+		}
+		
+		
+		
+		
+		return mav;
+	}
 }
