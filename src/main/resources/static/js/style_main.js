@@ -28,12 +28,6 @@ $(document).ready(function() {
 			});
 			break;
 		default :
-		case "4" :
-			$.get("style/request", function(d) {
-				const data = $(d).find(".all_select");
-				$("#tabs").html(data);
-			});
-			break;
 	}
 	
 	if(!tabs) {tabs = 1};
