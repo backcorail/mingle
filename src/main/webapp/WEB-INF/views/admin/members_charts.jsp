@@ -46,7 +46,7 @@
 					<li><a class="dropdown-item" href="#!">Settings</a></li>
 					<li><a class="dropdown-item" href="#!">Activity Log</a></li>
 					<li><hr class="dropdown-divider" /></li>
-					<li><a class="dropdown-item" href="#!">Logout</a></li>
+					<li><a class="dropdown-item" href="/mingle/myadmin/logout">Logout</a></li>
 				</ul></li>
 		</ul>
 	</nav>
@@ -100,7 +100,7 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
+								<a class="nav-link" href="/mingle/admintest/products_charts">Products Charts</a>
 							</nav>
 						</div>
 						<!-- Transactions 메뉴 -->
@@ -138,6 +138,7 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
+								<a class="nav-link" href="/mingle/admintest/posts_charts">Posts Charts</a>
 							</nav>
 						</div>
 						<!-- Recommend 메뉴 -->
@@ -192,13 +193,12 @@
                         <h1 class="mt-4">Members Charts</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="/mingle/admintest">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Charts</li>
+                            <li class="breadcrumb-item active">Members Charts</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-                                <a target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a>
-                                .
+                                회원에 대한 정보를 확인할 수 있습니다.
+                                변동이 있을 시 반영되고 업데이트 날짜가 갱신됩니다.
                             </div>
                         </div>
                         <div id="total_users">
@@ -228,10 +228,12 @@
 	                                <div class="card mb-4">
 	                                    <div class="card-header">
 	                                        <i class="fas fa-chart-pie me-1"></i>
-	                                        Pie Chart Example
+	                                        Users Gender
 	                                    </div>
-	                                    <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
-	                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+	                                    <!-- userGender 데이터 저장 -->
+	                                    <div id="countUsersGender" data-male-count="${maleCount}" data-female-count="${femaleCount}"></div>
+	                                    <div class="card-body"><canvas id="GenderCharts" width="100%" height="50"></canvas></div>
+	                                    <div class="card-footer small text-muted">Updated ${currentDateTime}</div>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -255,7 +257,5 @@
 	        <script src="/mingle/js/admin/scripts.js"></script>
 	        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 			<script src="/mingle/js/admin/members_charts.js"></script>
-	        <script src="/mingle/js/admin/chart-bar-demo.js"></script>
-	        <script src="/mingle/js/admin/chart-pie-demo.js"></script>
 	    </body>
 	</html>

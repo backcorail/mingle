@@ -46,7 +46,7 @@
 					<li><a class="dropdown-item" href="#!">Settings</a></li>
 					<li><a class="dropdown-item" href="#!">Activity Log</a></li>
 					<li><hr class="dropdown-divider" /></li>
-					<li><a class="dropdown-item" href="#!">Logout</a></li>
+					<li><a class="dropdown-item" href="/mingle/myadmin/logout">Logout</a></li>
 				</ul></li>
 		</ul>
 	</nav>
@@ -100,7 +100,7 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/products_data">Products Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Products Delete</a>
+								<a class="nav-link" href="/mingle/admintest/products_charts">Products Charts</a>
 							</nav>
 						</div>
 						<!-- Transactions 메뉴 -->
@@ -138,6 +138,7 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
+								<a class="nav-link" href="/mingle/admintest/posts_charts">Posts Charts</a>
 							</nav>
 						</div>
 						<!-- Recommend 메뉴 -->
@@ -180,10 +181,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="sb-sidenav-footer">
+				<!-- <div class="sb-sidenav-footer">
 					<div class="small">Logged in as:</div>
 					Start Bootstrap
-				</div>
+				</div>-->
 			</nav>
 		</div>
 		<div id="layoutSidenav_content">
@@ -253,18 +254,6 @@
 					</main>
 				</div>
 			</main>
-			<footer class="py-4 bg-light mt-auto">
-				<div class="container-fluid px-4">
-					<div
-						class="d-flex align-items-center justify-content-between small">
-						<div class="text-muted">Copyright &copy; Your Website 2023</div>
-						<div>
-							<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
-								&amp; Conditions</a>
-						</div>
-					</div>
-				</div>
-			</footer>
 		</div>
 	</div>
 	<script

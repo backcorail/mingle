@@ -65,8 +65,15 @@ public class AdminTestController {
 		int userCount = service.countUsers();
 		System.out.println("User Count : " +userCount);
 		
+		//성별 카운트
+		 int maleCount = service.countByGender(1); // 남성 카운트
+		 int femaleCount = service.countByGender(2); // 여성 카운트
+		 
+		
 		mav.addObject("currentDateTime", formattedDate);
 		mav.addObject("userCount", userCount);
+		mav.addObject("maleCount", maleCount); 
+		mav.addObject("femaleCount", femaleCount); 
 		mav.setViewName("admin/members_charts");
 		return mav;
 		
@@ -88,6 +95,11 @@ public class AdminTestController {
 		mav.addObject("userlist", userlist);
 		mav.setViewName("admin/products_data");
 		return mav;
+	}
+	
+	@GetMapping("products_charts")
+	public String products_charts() {
+		return "admin/products_charts";
 	}
 	
 	@GetMapping("transactions_data")
@@ -117,6 +129,11 @@ public class AdminTestController {
 	    mav.addObject("boardList", boardList);
 	    mav.setViewName("admin/posts_data");
 	    return mav;
+	}
+	
+	@GetMapping("posts_charts")
+	public String posts_charts() {
+		return "admin/posts_charts";
 	}
 
 	@GetMapping("recommend_data")

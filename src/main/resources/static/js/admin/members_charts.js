@@ -5,12 +5,18 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 // Area Chart Example
 
 document.addEventListener("DOMContentLoaded", function() {
+	
 	// userCount 데이터 읽기
 	var countUsersElement = document.getElementById('countUsersData');
 	var countUsers = parseInt(countUsersElement.dataset.countUsers);
 	console.log("Count Users: ", countUsers);
+	
+	// genderCount 데이터 읽기
+    var genderDataElement = document.getElementById('countUsersGender');
+    var maleCount = parseInt(genderDataElement.dataset.maleCount);
+    var femaleCount = parseInt(genderDataElement.dataset.femaleCount);
 
-	// 차트 구성
+	// 유저수 차트 구성
 	var ctx = document.getElementById("membersCharts");
 	var myLineChart = new Chart(ctx, {
 		type: 'line',
@@ -60,4 +66,18 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 		}
 	});
+	
+	// 성별 차트 구성
+    var ctx = document.getElementById("GenderCharts");
+	console.log(document.getElementById("GenderCharts"))
+	var myPieChart = new Chart(ctx, {
+  		type: 'pie',
+  		data: {
+    		labels: ["남성", "여성"],
+    		datasets: [{
+      		data: [maleCount, femaleCount],
+      		backgroundColor: ['#007bff', '#dc3545']
+    }],
+  },
+});
 });

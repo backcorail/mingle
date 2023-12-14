@@ -19,4 +19,7 @@ public interface AdminMapper {
 	//유저 수 카운팅
 	int countUsers();
 	
+	//성별 카운팅
+	public int countByGender(int gender);
+	
 }

@@ -21,7 +21,6 @@ public class AdminServiceImpl implements AdminService{
 
 		@Override
 		public int kream_totalRecord(AdminVO rVO) {
-			// TODO Auto-generated method stub
 			return mapper.kream_totalRecord(rVO);
 		}
 
@@ -33,19 +32,21 @@ public class AdminServiceImpl implements AdminService{
 
 		@Override
 		public List<AdminVO> kreamData(AdminVO rVO) {
-			// TODO Auto-generated method stub
 			return mapper.kreamData(rVO);
 		}
 
 		@Override
 		public List<AdminTestVO> usersData(AdminTestVO rVO) {
-			// TODO Auto-generated method stub
 			return mapper.usersData(rVO);
 		}
 
 		@Override
 		public int countUsers() {
-			// TODO Auto-generated method stub
 			return mapper.countUsers();
+		}
+
+		@Override
+		public int countByGender(int i) {
+			return mapper.countByGender(i);
 		}
 }
