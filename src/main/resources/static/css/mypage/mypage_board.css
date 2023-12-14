@@ -69,8 +69,16 @@
 	display: flex;
 	flex-direction: column;
 	
-	overflow: hidden;
+	overflow: auto;
 	padding-top: calc(15px * var(--default-size));
+	
+	    /* 스크롤바 숨기기 (WebKit 기반 브라우저용) */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 스크롤바 숨기기 (Firefox용) */
+    scrollbar-width: none;
 }
 
 .div-track {
@@ -102,6 +110,13 @@
 
 .div-track .div-board-title-area .div-board-title {
 	width: calc(408px * var(--default-size));
+	display: flex;
+	align-items: center
+}
+.div-track .div-board-title-area .div-board-title:hover {
+	/* 타이틀 호버용 */
+	color: #FFD600;
+	font-weight: bold;
 }
 
 /* 등록일 */

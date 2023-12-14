@@ -25,7 +25,7 @@ public class MyResellVO implements MyActInfo{
 	@Override
 	public String getType() {
 		// TODO Auto-generated method stub
-		return "MyResellVO";
+		return "리셀";
 	}
 	@Override
 	public int getNo() {

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MyRequestVO implements MyActInfo{
+public class MyRequestReplyVO implements MyActInfo{
 //	private int type=2; //
 	
 	//글쓰기 관련 변수 목록

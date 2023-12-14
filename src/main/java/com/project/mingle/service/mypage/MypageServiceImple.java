@@ -1,6 +1,9 @@
 package com.project.mingle.service.mypage;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,6 +15,7 @@ import com.project.mingle.vo.mypage.MyActInfo;
 import com.project.mingle.vo.mypage.MyRequestVO;
 import com.project.mingle.vo.mypage.MyResellVO;
 import com.project.mingle.vo.mypage.MyStyleVO;
+import com.project.mingle.vo.mypage.MyboardRequestVO;
 import com.project.mingle.vo.user.CheckVO;
 import com.project.mingle.vo.user.ResponseDto;
 import com.project.mingle.vo.user.UserResp;
@@ -27,14 +31,28 @@ public class MypageServiceImple implements MypageService {
 	
 
 	@Override
-	public List<MyActInfo> myboard(String userid) {
+	public List<MyActInfo> myboard(String userid , MyboardRequestVO myboardRequestVO) {
 		// TODO Auto-generated method stub
 				
-		int defalutGetNo=9;
-		List<MyRequestVO> myRequestVOs = mypageMapper.getMyRequest(userid,defalutGetNo);
-		List<MyResellVO> myResellVOs = mypageMapper.getMyResell(userid,defalutGetNo);
-		List<MyStyleVO> myStyleVOs = mypageMapper.getMyReStyle(userid,defalutGetNo);
-		return null;
+		int limit=9;
+		int offset =myboardRequestVO.getRequestno();
+		List<MyRequestVO> myRequestVOs = mypageMapper.getMyRequest(userid,limit,offset);
+		
+		offset =myboardRequestVO.getResellno();
+		List<MyResellVO> myResellVOs = mypageMapper.getMyResell(userid,limit,offset);
+		
+		offset =myboardRequestVO.getStyleno();
+		List<MyStyleVO> myStyleVOs = mypageMapper.getMyReStyle(userid,limit,offset);
+		
+		  // 리스트 병합 및 정렬
+	    List<MyActInfo> combinedList = new ArrayList<>();
+	    combinedList.addAll(myRequestVOs);
+	    combinedList.addAll(myResellVOs);
+	    combinedList.addAll(myStyleVOs);
+	    combinedList.sort(Comparator.comparing(MyActInfo::getWriteDate).reversed());
+
+	    // 결과 반환
+	    return combinedList.stream().limit(limit).collect(Collectors.toList());
 	}
 	
 //	@Override

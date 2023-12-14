@@ -3,6 +3,7 @@ package com.project.mingle.service.mypage;
 import java.util.List;
 
 import com.project.mingle.vo.mypage.MyActInfo;
+import com.project.mingle.vo.mypage.MyboardRequestVO;
 import com.project.mingle.vo.user.CheckVO;
 import com.project.mingle.vo.user.ResponseDto;
 
@@ -12,6 +13,6 @@ public interface MypageService {
 
 	int userOut(String name);
 
-	List<MyActInfo> myboard(String userid);
+	List<MyActInfo> myboard(String userid, MyboardRequestVO myboardRequestVO);
 
 }

@@ -20,7 +20,8 @@ public class MyStyleVO implements MyActInfo{
 	@Override
 	public String getType() {
 		// TODO Auto-generated method stub
-		return "MyStyleVO";
+//		return "MyStyleVO";
+		return "스타일";
 	}
 	@Override
 	public String getTitle() {

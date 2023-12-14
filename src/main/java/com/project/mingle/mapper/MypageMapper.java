@@ -24,10 +24,10 @@ public interface MypageMapper {
 
 	public int userOut(String userid);
 
-	public List<MyRequestVO> getMyRequest(@Param("userid") String userid, @Param("defalutGetNo") int defalutGetNo);
+	public List<MyRequestVO> getMyRequest(@Param("userid") String userid, @Param("limit") int limit ,@Param("offset") int offset);
 
-	public List<MyResellVO> getMyResell(@Param("userid") String userid, @Param("defalutGetNo") int defalutGetNo);
+	public List<MyResellVO> getMyResell(@Param("userid") String userid, @Param("limit") int limit, @Param("offset") int offset);
 
-	public List<MyStyleVO> getMyReStyle(@Param("userid") String userid, @Param("defalutGetNo") int defalutGetNo);
+	public List<MyStyleVO> getMyReStyle(@Param("userid") String userid, @Param("limit") int limit, @Param("offset") int offset);
 
 }

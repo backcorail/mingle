@@ -19,21 +19,25 @@
 	</delete>
 	<!-- 게시글 가져오기 시작 -->
 	<select id="getMyRequest" resultType="com.project.mingle.vo.mypage.MyRequestVO">
+	
 		select request_no, request_name, date_format(request_writedate, '%Y-%m-%d %h:%i:%s') request_writedate
-		from request where user_id = #{userid} 
-		order by request_writedate desc 	limit #{defalutGetNo} 
+		from request 
+		where user_id = #{userid} AND request_no &lt; #{offset}
+		order by request_writedate desc 	limit #{limit}		 
 	</select>
 	
 	<select id="getMyResell" resultType="com.project.mingle.vo.mypage.MyResellVO">
 		select resell_no, resell_name, date_format(resell_writedate, '%Y-%m-%d %h:%i:%s') resell_writedate
-		from resell where resell_seller = #{userid} 
-		order by resell_writedate desc limit #{defalutGetNo} 
+		from resell 
+		where resell_seller = #{userid}  AND resell_no &lt; #{offset} 
+		order by resell_writedate desc limit #{limit} 
 	</select>
 	
 	<select id="getMyReStyle" 	resultType="com.project.mingle.vo.mypage.MyStyleVO">
 		select style_no, style_name, date_format(style_writedate, '%Y-%m-%d %h:%i:%s') style_writedate
-		from style where user_id = #{userid} 
-		order by style_writedate desc  limit #{defalutGetNo} 
+		from style 
+		where user_id = #{userid} AND style_no &lt; #{offset}  
+		order by style_writedate desc  limit #{limit} 
 	</select>
 
 	<!-- 게시글 가져오기 끝 -->
