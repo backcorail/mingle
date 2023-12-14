@@ -9,10 +9,8 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <script src="/mingle/js/style_main.js"></script>
 <script src="/mingle/js/style_styles.js"></script>
-<link rel="stylesheet" href="/mingle/css/style/style_main.css">
+<link rel="stylesheet" href="/mingle/css/style/style/style_main.css">
 <link rel="stylesheet" href="/mingle/css/style/style_ranking.css">
-
-
 
 
 <div class="page">
@@ -32,11 +30,12 @@
 						</div>
 						<div class="board-content">
 							<img class="profile-img" herf="${sVO.user_img}" /> 
-							<a class="username">닉네임 :db값 넣으면 나옴${comment.user_id}</a>
+							<a class="username" href="">닉네임 :db값 넣으면 나옴${comment.user_id}</a>
 
-						<!--  	<a href="#" class="likeLink1">
+							<a href="#" class="likeLink1">
   								  <img class="like1" src="/mingle/img/img_mingle/page_recell/icon_heart.png"><span>0</span>
-							</a>	-->					
+							</a>						
+							
 
 							<a class="hashtag"
 								href="/mingle/style/trend/info?no=${n.item_no}">드뎌 겨울
@@ -54,11 +53,11 @@
 								src="${n.item_image}" />
 						</div>
 						<div class="board-content">
-							<img class="profile-img" src="/mingle/img/style/aaa.jpg" /> 
-							<a class="username">닉네임 :db값 넣으면 나옴${comment.user_id}</a>
-						<!--  	<a href="#" class="likeLink1">
+							<img class="profile-img" src="/mingle/img/style/aaa.jpg" /> <a
+								class="username" href="">닉네임 :db값 넣으면 나옴${comment.user_id}</a>
+							<a href="#" class="likeLink1">
   								  <img class="like1" src="/mingle/img/img_mingle/page_recell/icon_heart.png"><span>0</span>
-							</a>-->
+							</a>
 							<a class="hashtag"
 								href="/mingle/style/trend/info?no=${n.item_no}">드뎌 겨울 #아우터코디
 								#OOTD #데일리 슈즈 #일교차패션 #FW신발 #핫아이템</a>
@@ -71,3 +70,4 @@
 
 	</div>
 </div>
+

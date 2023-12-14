@@ -36,27 +36,7 @@ $(document).ready(function() {
 		url:"style",
 		data:{tabs:tabs}
 	});
-	
-	if(!tabs) {tabs = 2};
-	$.ajax({
-		type:"GET",
-		url:"style",
-		data:{tabs:tabs}
-	});
-	
-	if(!tabs) {tabs = 3};
-	$.ajax({
-		type:"GET",
-		url:"style",
-		data:{tabs:tabs}
-	});
-	
-	if(!tabs) {tabs = 4};
-	$.ajax({
-		type:"GET",
-		url:"style",
-		data:{tabs:tabs}
-	});
+
 });
 
 
