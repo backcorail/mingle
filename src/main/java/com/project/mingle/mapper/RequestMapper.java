@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.project.mingle.vo.RequestFileVO;
 import com.project.mingle.vo.RequestVO;
-import com.project.mingle.vo.ResellVO;
 
 @Mapper
 public interface RequestMapper {

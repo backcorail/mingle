@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.mingle.service.RequestService;
 import com.project.mingle.vo.RequestFileVO;
 import com.project.mingle.vo.RequestVO;
+import com.project.mingle.vo.UserVO;
 
 
 @Controller
@@ -33,11 +34,11 @@ public class RequestController {
 	RequestService service;
 	
 	@GetMapping("/list")
-	public ModelAndView boardList(RequestVO vo, RequestFileVO rfvo) {
+	public ModelAndView boardList(RequestVO vo, RequestFileVO rfvo, UserVO uvo) {
 		ModelAndView mav = new ModelAndView();
-		List<RequestVO> list = service.requestList(vo);
-		List<RequestFileVO> fileList = service.getImgFile(rfvo);
-		System.out.println(fileList);
+		List<RequestVO> list = service.requestList(vo);//글 리스트 불러오기
+		List<RequestFileVO> fileList = service.getImgFile(rfvo);//글 이미지 불러오기
+		System.out.println(list);
 		mav.addObject("rfvo", rfvo);
 		mav.addObject("list", list);
 		mav.addObject("fileList", fileList);
@@ -122,7 +123,7 @@ public class RequestController {
 			int fileResult = service.requestFileInsert(uploadFileList);
 			
 			//4. 추가 성공하면 -> 자료실목록
-			mav.setViewName("style/style_ranking");
+			mav.setViewName("style/style_request");
 			
 		}catch(Exception e) {
 			e.printStackTrace();

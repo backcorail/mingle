@@ -19,8 +19,15 @@
 		select request_no, request_name, request_type, request_comment, user_id, request_writedate from request where request_no=${param1}
 	</select>
 	<select id="requestList" resultType="com.project.mingle.vo.RequestVO">
-		select request_no, request_name, user_id, request_writedate from request
-		order by request_writedate desc limit #{onePageRecord} offset ${offsetPoint};		
+	    SELECT
+	        r.request_no, r.request_name, r.user_id, r.request_writedate, u.user_img, r.request_comment
+	    FROM
+	        request r
+	    JOIN
+	        users u ON r.user_id = u.user_id
+	    ORDER BY
+	        r.request_writedate DESC
+	    LIMIT #{onePageRecord} OFFSET ${offsetPoint};
 	</select>
 	<select id="getImgFile" resultType="com.project.mingle.vo.RequestFileVO">
 		select request_no, request_datafile_dataname from request_datafile order by request_no desc;
