@@ -200,7 +200,8 @@ function printCityWeather(){
 		alert("거주지를 선택해 주세요.");
 	}else{
 		var check = $(this).attr('name');
-		$(this).attr("href", "cody_board?city="+city+"&situation="+check);
+		
+		$(this).attr("href", "cody/cody_board?city="+city+"&situation="+check);
 	}
 	
 }
