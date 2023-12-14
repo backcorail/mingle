@@ -19,7 +19,7 @@
 		<h2 style="text-align:center;"><b>추천 코디</b></h2>
 		<img class="codi" src="${imgUrl}"><br>
 		
-		<a><b>#${detail[0]}#${detail[1]}#${detail[2]}#${detail[3]}${gender}</b></a>
+		<a><b>#${detail[0]}#${detail[1]}#${detail[2]}#${detail[3]}</b></a>
 		</div>
 	<div class="cody_item">
 	<c:forEach varStatus="n1" items="${detail}" var="detail">
