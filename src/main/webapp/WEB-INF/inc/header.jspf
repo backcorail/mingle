@@ -57,22 +57,19 @@
 					<div class="area_tabMenu" id="area_tabMenu_1" onmouseover="showSubMenu(1)" onmouseout="showSubHidden(1)">
 						<a href="/mingle/style?tabs=1" class="title_tabMenu">STYLE</a>
 						<ul class="subtitle_tabMenu" id="subMenu_1">
-
 							<li><a href="/mingle/style?tabs=1">ranking</a></li>
 							<li><a href="/mingle/style?tabs=2">style</a></li>
 							<li><a href="/mingle/style?tabs=3">trend</a></li>
 							<li><a href="/mingle/style?tabs=4">request</a></li>
-
 						</ul>
 					</div>
 					<div class="area_tabMenu" id="area_tabMenu_2" onmouseover="showSubMenu(2)" onmouseout="showSubHidden(2)">
 						<a href="/mingle/resell" class="title_tabMenu">RESELL</a>
 						<ul class="subtitle_tabMenu" id="subMenu_2">
-							<li><a href="#">men</a></li>
-							<li><a href="#">women</a></li>
-							<li><a href="/mingle/style/write">shoes</a></li>
-							<li><a href="/mingle/kream">bag</a></li>
-							<li><a href="#">other</a></li>
+							<li><a href="/mingle/resell?category=0">all</a></li>
+							<li><a href="/mingle/resell?category=1">men</a></li>
+							<li><a href="/mingle/resell?category=2">women</a></li>
+							<li><a href="/mingle/resell?category=3">other</a></li>
 						</ul>
 					</div>
 					<div class="area_tabMenu">
