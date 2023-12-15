@@ -254,7 +254,7 @@
 					</div>
 					
 				</div>
-				<a href="#" class="homeMore">
+				<a href="/mingle/style?tabs=1" class="homeMore">
 					<div class="buttons">
 					    <button class="btn-hover color-8">more</button>
 					</div>
@@ -279,7 +279,7 @@
 					<div id="adv_homeLink_style">
 						<div class="row columns">
 					      <ul class="menu align-center expanded text-center SMN_effect-11">
-					        <li><a href="" data-hover="style next>"><span id="homeContentLink_style">style next></span></a></li>
+					        <li><a href="/mingle/style?tabs=1" data-hover="style next>"><span id="homeContentLink_style">style next></span></a></li>
 					      </ul>
 					    </div>
 					</div>

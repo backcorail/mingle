@@ -30,7 +30,7 @@
 			<li class="tab"><a href="/mingle/style?tabs=1" id="ranking_tab">RANKING</a></li>
 			<li class="tab"><a href="/mingle/style?tabs=2" id="style_tab">STYLE</a></li>
 			<li class="tab"><a href="/mingle/style?tabs=3" id="trend_tab">TREND</a></li>
-			<li class="tab"><a href="/mingle/style?tabs=4" id="request_tab">REQUEST</a></li>
+			<li class="tab"><a href="/mingle/style/request/list" id="request_tab">REQUEST</a></li>
 		</ul>
 		<hr class="style_header_line">
 		<!-- 수평선 -->
