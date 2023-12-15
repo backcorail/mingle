@@ -19,4 +19,6 @@ public interface MypageService {
 
 	List<MyActInfo> mysellist(String userid, MyboardRequestVO myboardRequestVO);
 
+	List<MyActInfo> mybuylist(String userid, MyboardRequestVO myboardRequestVO);
+
 }
