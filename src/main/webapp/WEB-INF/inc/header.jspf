@@ -61,7 +61,7 @@
 							<li><a href="/mingle/style?tabs=1">ranking</a></li>
 							<li><a href="/mingle/style?tabs=2">style</a></li>
 							<li><a href="/mingle/style?tabs=3">trend</a></li>
-							<li><a href="/mingle/style?tabs=4">request</a></li>
+							<li><a href="/mingle/style/request/list">request</a></li>
 
 						</ul>
 					</div>
