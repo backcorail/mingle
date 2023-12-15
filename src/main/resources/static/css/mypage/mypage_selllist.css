@@ -113,9 +113,18 @@
 }
 
 .div-item-list-area{
-  display: flex;
-  flex-direction: column;  
-  padding-top: calc(37px * var(--default-size));
+	flex: 1;
+	display: flex;
+	flex-wrap: wrap;
+	overflow: auto;
+	padding-top: calc(37px * var(--default-size));
+		    /* 스크롤바 숨기기 (WebKit 기반 브라우저용) */
+	&::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 스크롤바 숨기기 (Firefox용) */
+    scrollbar-width: none;
 }
 .div-track{
   display: flex;
@@ -126,11 +135,15 @@
 
 }
 
-.div-eye-items-box{
-  width: calc(223.42px * var(--default-size));
-  height: calc(340px * var(--default-size));
-
+.div-eye-items-box {
+    width: calc(223.42px * var(--default-size));
+    height: calc(294px * var(--default-size));
+    margin-right: calc(21px * var(--default-size));
 }
+.div-eye-items-box:nth-child(6n) {
+    margin-right: 0;
+}
+
 .div-eye-items-box img{
   
   width: calc(223.42px * var(--default-size));
@@ -141,14 +154,17 @@
 
 .div-eye-items-box .div-eye-item-title{
   width: calc(223.42px * var(--default-size));
-  height: calc(14.94px * var(--default-size));
+  height: calc(22.94px * var(--default-size));
+   overflow:hidden; display:block; text-overflow: ellipsis; white-space:nowrap;
 }
 
 .div-eye-items-box .div-eye-item-script{
   width: calc(223.42px * var(--default-size));
   height: calc(52px * var(--default-size));
   padding-top: calc(10px * var(--default-size));
-  word-break: keep-all;
+  /* word-break: keep-all; */
+    overflow:hidden; display:block; text-overflow: ellipsis; white-space:nowrap;
+      font-size: 10px;
 }
 .div-forsale{
   width: calc(80px * var(--default-size));
@@ -186,6 +202,10 @@
 .btn-more-data:hover{
   cursor: pointer;
   background: var(--btn-click-ybg);
+}
+
+.div-blank-45 {
+	height: calc(30px * var(--default-size));
 }
 
 

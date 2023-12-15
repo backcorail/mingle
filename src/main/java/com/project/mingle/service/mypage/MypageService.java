@@ -17,4 +17,6 @@ public interface MypageService {
 	
 	List<MyActInfo> myReply(String userid, MyboardRequestVO myboardRequestVO);
 
+	List<MyActInfo> mysellist(String userid, MyboardRequestVO myboardRequestVO);
+
 }

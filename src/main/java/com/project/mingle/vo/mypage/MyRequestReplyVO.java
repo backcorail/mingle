@@ -46,5 +46,10 @@ public class MyRequestReplyVO implements MyActInfo{
 			// TODO Auto-generated method stub
 			return getRequest_no();
 		}
+		@Override
+		public String getImg() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
 }

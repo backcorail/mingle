@@ -78,11 +78,29 @@
             AND style_reply_no &lt; #{offset}  
 		order by style_reply_writedate desc  limit #{limit} 
 	</select>
-	
-	
 	<!-- 댓글 가져오기  끝-->
 	
-	
+	<!-- 마이리셀리스트 -->
+		<select id="getMysellist" resultType="com.project.mingle.vo.mypage.MyResellVO">
+		 SELECT
+            r.resell_no,
+            r.resell_name,
+            r.resell_seller,
+            r.resell_buyer,
+            r.item_no,
+            r.resell_comment,
+            r.item_price,
+            r.resell_addr,
+            DATE_FORMAT(r.resell_writedate, '%Y-%m-%d %H:%i:%s') AS resell_writedate,
+            r.resell_likes,
+            (SELECT GROUP_CONCAT(rf.resell_file_name SEPARATOR ', ')
+             FROM mingledb.resell_file rf
+             WHERE rf.resell_no = r.resell_no) AS resell_file_name
+        FROM
+            mingledb.resell r
+		where resell_seller = #{userid}  AND resell_no &lt; #{offset} 
+		order by resell_writedate desc limit #{limit} 
+	</select>
 	
 	
 	

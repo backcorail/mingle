@@ -6,4 +6,5 @@ public interface MyActInfo {
 	String getTitle();
 	String getContents();
 	String getWriteDate();
+	String getImg();
 }

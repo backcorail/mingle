@@ -29,6 +29,7 @@ public class UserApiController {
 	@PostMapping("/user/iddcheck")
 	public ResponseDto<String> iddcheck(@RequestBody CheckVO checkVO ){
 		System.out.println("checkVO : " + checkVO.getData());
+		System.out.println("UserApiController.iddcheck() ->idd 호출확인 : ");
 		UserVO userVO = userService.iddcheck(checkVO.getData());
 		if(userVO==null) {
 			return new ResponseDto<String>(UserResp.USERIDOK.getValue(),"사용가능한 아이디입니다.");//101
