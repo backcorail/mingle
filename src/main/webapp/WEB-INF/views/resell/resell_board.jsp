@@ -117,7 +117,23 @@
 					</c:if>
 				</div>
 			</li>
-			<li class="buy_button"><button>구매요청하기</button></li>
+			<li class="buy_button">
+				<c:choose>
+					<c:when test="${empty authUser}">
+						<c:set var="buy_status" value="loginNo_buy"/>
+					</c:when>
+					<c:when test="${boardData.getResell_buyer() == userData.getUser_id()}">
+						<c:set var="buy_status" value="buyer_buy"/>
+					</c:when>
+					<c:when test="${not empty boardData.getResell_buyer()}">
+						<c:set var="buy_status" value="exist_buy"/>
+					</c:when>
+					<c:otherwise>
+						<c:set var="buy_status" value="loginOk_buy"/>
+					</c:otherwise>
+				</c:choose>
+				<button id="${buy_status}">구매요청하기</button>
+			</li>
 			<li class="blank_line"></li>
 			<li class="blank_line"></li>
 			<li class="resell_locate"><div>판매 희망 지역</div></li>
@@ -145,18 +161,31 @@
 	</div>
 	<div class="row_line"></div>
 	<ul class="resell_reply_list">
-		<c:forEach var="n" begin="1" end="1">
-			<li class="resell_reply_each">
-				<img src="/mingle/img/resell/magnifier.png">
-				<div>
-					<div>brobaro</div>
-					<div>
-						<div>${n} - 댓글 내용입니다.</div>
-						<div>2023.11.23 13:49</div>
-					</div>
-				</div>
-			</li>
-			<div class="row_line"></div>
-		</c:forEach>
+		<li class="resell_reply_each">
+			<c:choose>
+				<c:when test="${empty boardData.getResell_buyer()}">
+					<div>상품을 신청한 유저가 없습니다.</div>
+				</c:when>
+				<c:otherwise>
+					<c:choose>
+						<c:when test="${empty userData.getUser_img()}">
+							<img src="/mingle/img/resell/profileEX.png">
+							<div>
+								<div>${userData.getUser_nick()}님께서 구매신청을 하였습니다.</div>
+								<div>2023.12.15 13:24</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<img src="${pageContext.request.contextPath}/uploadfile/${userData.getUser_img()}">
+							<div>
+								<div>${userData.getUser_nick()}님께서 구매신청을 하였습니다.</div>
+								<div>2023.12.15 13:24</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</c:otherwise>
+			</c:choose>
+		</li>
+		<div class="row_line"></div>
 	</ul>
 </div>

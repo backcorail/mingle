@@ -26,4 +26,6 @@ public interface ResellService {
 	public int resell_delete(int no); // 게시글 삭제
 	public int item_delete(int no); // 아이템 삭제
 	public int image_delete(int no); // 이미지 삭제
+	
+	public int resell_buyer(ResellVO rVO); // 구매자 등록
 }

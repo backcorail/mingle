@@ -37,7 +37,7 @@
 			<if test="searchWord2 != ''">and resell_name like '%${searchWord2}%'</if>
 			<if test="searchWord3 != ''">and resell_name like '%${searchWord3}%'</if>
 		</where>
-		order by resell_writedate desc limit #{onePageRecord} offset ${offsetPoint};		
+		order by resell_writedate desc limit #{onePageRecord} offset ${offsetPoint};
 	</select>
 	
 	<select id="kreamData" resultType="com.project.mingle.vo.ResellVO">
@@ -71,7 +71,7 @@
 
 	<!-- 보드 페이지 데이터 받아오기 -->
 	<select id="resell_select" resultType="com.project.mingle.vo.ResellVO">
-		select resell_name, resell_seller, resell_comment, resell_addr, resell_writedate from resell
+		select resell_name, resell_seller, resell_buyer, resell_comment, resell_addr, resell_writedate from resell
 		where item_no = ${item_no}
 	</select>
 	<select id="item_select" resultType="com.project.mingle.vo.ResellVO">
@@ -82,7 +82,7 @@
 		select item_file_name from item_file where item_no = #{item_no}
 	</select>
 	<select id="user_select" resultType="com.project.mingle.vo.ResellVO">
-		select user_nick, user_img from users where user_id = #{user_id}
+		select user_id, user_nick, user_img from users where user_id = #{user_id}
 	</select>
 	
 	<!-- 데이터 입력하기 -->
@@ -91,13 +91,13 @@
 	    values(#{resell_name}, #{resell_seller}, #{item_no}, #{resell_comment}, #{resell_addr})
     </insert>
 	<insert id ="item_insert" parameterType="com.project.mingle.vo.ResellVO" useGeneratedKeys="true" keyProperty="item_no">
-	    insert into item(item_name, item_category, item_detail, item_price, item_image)
-	    values(#{item_name}, #{item_category},  #{item_detail}, #{item_price}, #{item_image})
+	    insert into item(item_name, item_category, item_detail, item_price, item_image, item_status)
+	    values(#{item_name}, #{item_category},  #{item_detail}, #{item_price}, #{item_image}, #{item_status})
     </insert>
     <insert id="image_insert" parameterType="java.util.List">
 	    <if test="list != null or !list.isEmpty()">
 		    <foreach item="item" collection="list" open="insert into item_file(item_no, item_file_name) values" separator=",">
-				(${item.item_no}, #{item.item_file_name})
+				(#{item.item_no}, #{item.item_file_name})
 			</foreach>
 	    </if>
 	</insert>
@@ -123,5 +123,11 @@
 		delete from item_file where item_no = #{item_no}
 	</delete>
 	
+	<!-- 구매 관련 -->
+	
+	<update id="resell_buyer">
+		update resell set resell_buyer = #{resell_buyer}
+		where item_no = #{item_no}
+	</update>
 	
 </mapper>
