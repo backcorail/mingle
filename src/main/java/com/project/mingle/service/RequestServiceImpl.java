@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import com.project.mingle.mapper.RequestMapper;
 import com.project.mingle.vo.RequestFileVO;
 import com.project.mingle.vo.RequestVO;
-import com.project.mingle.vo.ResellVO;
-import com.project.mingle.vo.UserVO;
 
 @Service
 public class RequestServiceImpl implements RequestService{
@@ -39,5 +37,25 @@ public class RequestServiceImpl implements RequestService{
 	@Override
 	public List<RequestFileVO> getImgFile(RequestFileVO rfvo) {
 		return mapper.getImgFile(rfvo);
+	}
+
+	@Override
+	public int replyInsert(RequestVO rvo) {
+		return mapper.replyInsert(rvo);
+	}
+
+	@Override
+	public List<RequestVO> replySelect(int no) {
+		return mapper.replySelect(no);
+	}
+
+	@Override
+	public int replyUpdate(RequestVO rvo) {
+		return mapper.replyUpdate(rvo);
+	}
+
+	@Override
+	public int replyDelete(int request_reply_no) {
+		return mapper.replyDelete(request_reply_no);
 	}
 }

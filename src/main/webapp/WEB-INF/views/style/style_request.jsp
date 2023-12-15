@@ -6,6 +6,7 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <script src="/mingle/js/style_main.js"></script>
 <script src="/mingle/js/style_styles.js"></script>
+<script src="/mingle/js/style/request_board.js"></script>
 <link rel="stylesheet" href="/mingle/css/style/style_main.css">
 <link rel="stylesheet" href="/mingle/css/style/style_request.css">
 

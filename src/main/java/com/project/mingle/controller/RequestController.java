@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,9 +35,9 @@ public class RequestController {
 	RequestService service;
 	
 	@GetMapping("/list")
-	public ModelAndView boardList(RequestVO vo, RequestFileVO rfvo, UserVO uvo) {
+	public ModelAndView boardList(RequestVO rvo, RequestFileVO rfvo, UserVO uvo) {
 		ModelAndView mav = new ModelAndView();
-		List<RequestVO> list = service.requestList(vo);//글 리스트 불러오기
+		List<RequestVO> list = service.requestList(rvo);//글 리스트 불러오기
 		List<RequestFileVO> fileList = service.getImgFile(rfvo);//글 이미지 불러오기
 		System.out.println(list);
 		mav.addObject("rfvo", rfvo);
@@ -144,14 +145,43 @@ public class RequestController {
 	}
 	
 	@GetMapping("/{request_no}")
-	public ModelAndView request_view(@PathVariable("request_no") int request_no) {
+	public ModelAndView request_view(@PathVariable("request_no") int request_no, RequestVO rvo) {
 		ModelAndView mav  = new ModelAndView();
 		//원글선택
 		RequestVO vo = service.requestSelect(request_no);
+		System.out.println("1111"+vo);
 		//첨부파일 
 		mav.addObject("vo", vo);//목록
+		mav.addObject("rvo", rvo);
 		//뷰페이지
 		mav.setViewName("style/request_board");
 		return mav;
+	}
+	
+	@PostMapping("/requestReply/write")
+	@ResponseBody
+	public String replyWrite(@PathVariable("request_no") int request_no, RequestVO rvo, Principal principal) {
+		rvo.setUser_id(principal.getName());
+		System.out.println("222"+rvo);
+		rvo.setRequest_no(request_no);
+		int result = service.replyInsert(rvo);
+		
+		return result+"";
+	}
+	@GetMapping("/requestReply/list")
+	@ResponseBody
+	public List<RequestVO> replyList(int no) {
+		List<RequestVO> replyList = service.replySelect(no);
+		return replyList;
+	}
+	@PostMapping("/requestReply/editOk")
+	@ResponseBody
+	public String replyEditOk(RequestVO rvo) {
+		return service.replyUpdate(rvo) + "";
+	}
+	@GetMapping("/requestReply/delete")
+	@ResponseBody
+	public String replyDelete(int request_reply_no) {
+		return service.replyDelete(request_reply_no) + "";
 	}
 }

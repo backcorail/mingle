@@ -32,4 +32,19 @@
 	<select id="getImgFile" resultType="com.project.mingle.vo.RequestFileVO">
 		select request_no, request_datafile_dataname from request_datafile order by request_no desc;
 	</select>
+	<insert id ="replyInsert">
+		insert into request_reply (request_no, user_id, request_reply_comment) 
+		values(${request_no}, #{user_id}, #{request_reply_comment})
+	</insert>
+	<select id ="replySelect" resultType="com.project.mingle.vo.RequestVO">
+		select request_reply_no, request_no, request_reply_comment, user_id, request_reply_writedate 
+		from request_reply where request_no=${param1} order by request_reply_no desc;
+	</select>
+	<update id ="replyUpdate">
+		update request_reply set request_reply_comment=#{request_reply_comment} 
+		where request_reply_no=${request_reply_no}
+	</update>
+	<delete id ="replyDelete">
+		delete from request_reply where request_reply_no=${param1}
+	</delete>
 </mapper>
