@@ -22,6 +22,8 @@ import javax.servlet.http.HttpSession;
 
 import org.eclipse.jdt.internal.compiler.ast.CombinedBinaryExpression;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
@@ -60,7 +62,7 @@ public class ResellController {
 		ModelAndView mav = new ModelAndView();
 		
 		String[] main = {"All", "Men", "Women", "Other"};
-		String[] title = {"Top", "Outer", "Bottom", "Shose", "Bag"};;
+		String[] title = {"Top", "Outer", "Bottom", "Shose", "Bag"};
 		String[] Top = {"전체", "맨투맨/스웨트 셔츠", "니트/스웨터", "긴소매 티셔츠", "카라 티셔츠", "반소매 티셔츠", "민소매 티셔츠", "후드 티셔츠", "스포츠 상의", "셔츠/블라우스", "기타 상의"};
 		String[] Outer = {"전체", "후드 집업", "블루종", "라이더 재킷", "트러커 재킷", "슈트/블레이저 재킷", "무스탕/퍼", "카디건", "아노락", "코트", "패딩", "나일론/코치 재킷", "기타 아우터"};
 		String[] Bottom = {"전체", "데님팬츠", "코튼 팬트", "슈트 팬츠/슬랙스", "트레이닝/조거 팬츠", "숏 팬츠", "스포츠 하의", "기타 바지"};
@@ -81,13 +83,11 @@ public class ResellController {
 				searchAll += ",";
 			}
 		}
-		
-		
+
 		ResellVO boardData = service.resell_select(no); // no를 통한 게시글 데이터 받아오기
 		ResellVO itemData = service.item_select(no); // no를 통한 아이템 데이터 받아오기
 		List<String> imageData = service.image_select(no); // no를 통한 이미지 데이터 받아오기
 		mav.addObject("itemData", itemData);
-		
 		
 		rVO.setNowPage(page);
 		rVO.setSearchWord(searchAll);
@@ -148,7 +148,8 @@ public class ResellController {
 		ResellVO itemData = service.item_select(no);
 		// no를 통한 이미지 데이터 받아오기
 		List<String> imageData = service.image_select(no);
-		
+		// 유저 데이터 가져오기 위한 객체 생성
+
 		if (boardData != null) {
 			ResellVO userData = service.user_select(boardData.getResell_seller());
 			mav.addObject("userData", userData);
@@ -161,6 +162,7 @@ public class ResellController {
 		mav.addObject("boardData", boardData);
 		mav.addObject("itemData", itemData);
 		mav.addObject("imageData", imageData);
+		
 		mav.addObject("rVO", rVO);
 		
 		mav.setViewName("resell/resell_board");
@@ -212,7 +214,7 @@ public class ResellController {
 	@PostMapping("/writeOk")
 	@Transactional(rollbackFor={RuntimeException.class, SQLException.class})
 	public ModelAndView resell_writeOk(
-			@RequestParam(name="no", defaultValue="0") int no,
+			@RequestParam(name="no", defaultValue="0") Integer no,
 			HttpSession session,
 			HttpServletRequest hsr,
 			Principal principal,
@@ -270,11 +272,13 @@ public class ResellController {
 						mf.transferTo(f);//서버에 실제 업로드 되는 시점.
 					} catch(Exception e) {}
 					
-					//업로드
-					ResellVO otherVO = rVO;
-					otherVO.setItem_file_name(orgFilename);
-					otherVO.setItem_no(no);
+					// 이미지 이름 저장하기
 					ResellVO imageVO = new ResellVO(rVO);
+					// 여기에 원하는 변수 넣으면됨.
+					imageVO.setItem_status("판매중");
+					imageVO.setItem_file_name(orgFilename);
+					if(no != 0) {imageVO.setItem_no(no);}
+					// 배열에 추가
 					uploadFileList.add(imageVO);
 				}//if2
 			}//for1
@@ -284,6 +288,10 @@ public class ResellController {
 			System.out.println(uploadFileList);
 			if(no == 0) { // 새로 작성할때
 				service.item_insert(rVO); //아이템 업로드
+				System.out.println("확인중..."+rVO);
+				for(int i=0; i<uploadFileList.size(); i++) {
+					uploadFileList.get(i).setItem_no(rVO.getItem_no());
+				}
 				service.resell_insert(rVO); //글 업로드
 				service.image_insert(uploadFileList); // 이미지 업로드
 			} else if (no != 0) { // 수정할때
@@ -336,18 +344,34 @@ public class ResellController {
 		int result2 = service.image_delete(no);
 		int result3 = service.item_delete(no);
 		if(result1 > 0 && result2 > 0 && result3 > 0) {
-			
-			
-			
 			mav.setViewName("redirect:/resell");
 		} else {
 			String referer = request.getHeader("referer");
 			mav.setViewName("redirect:" + (referer != null ? referer : "/"));
 		}
-		
-		
-		
-		
 		return mav;
 	}
+	
+	
+	@GetMapping("/itemBuy")
+	public ModelAndView item_buy (
+			@RequestParam(name="no", defaultValue="0") int no,
+			HttpServletRequest request,
+			Principal principal,
+			ResellVO rVO) {
+		ModelAndView mav = new ModelAndView();
+		String userId = principal.getName();
+        rVO.setResell_buyer(userId);
+		rVO.setItem_no(no);
+        service.resell_buyer(rVO);
+		System.out.println(rVO);
+		if(true) {
+			mav.setViewName("redirect:/resell");
+		} else {
+			
+		}
+		return mav;
+	}
+	
+	
 }

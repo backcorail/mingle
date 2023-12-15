@@ -281,8 +281,11 @@
 	height:50px;
 }
 .resell_reply_each>div {
+	display:flex;
 	width:1200px;
 	margin:0 10px;
+	justify-content: space-between;
+    align-items: center;
 }
 .resell_reply_each>div>div {
 	display:flex;

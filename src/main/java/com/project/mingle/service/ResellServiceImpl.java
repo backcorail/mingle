@@ -92,4 +92,10 @@ public class ResellServiceImpl implements ResellService {
 	public int image_delete(int no) {
 		return mapper.image_delete(no);
 	}
+	
+	// 구매자 등록
+	@Override
+	public int resell_buyer(ResellVO rVO) {
+		return mapper.resell_buyer(rVO);
+	}
 }

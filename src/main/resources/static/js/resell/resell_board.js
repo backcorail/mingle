@@ -133,9 +133,26 @@ $(document).ready(function() {
 		function() {$(this).css("color", "white");}
 	);
 	
-	$(".buy_button").click({
-		
-	})
+	// 비로그인 상태에서 버튼 누를때
+	$("#loginNo_buy").click(function() {
+		alert("로그인을 먼저 해주세요.");
+	});
+	// 자신이 구매한 상품을 다시 구입하려 할때ㅐ
+	$("#buyer_buy").click(function() {
+		alert("이미 구매한 상품입니다.");
+	});
+	// 이미 상품을 구매했을때
+	$("#exist_buy").click(function() {
+		alert("이미 판매된 상품입니다.");
+	});
+	// 로그인 상태에서 버튼 누를때
+	$("#loginOk_buy").click(function() {
+		alert("구매 신청이 완료되었습니다.\n구매내역은 마이페이지에서 확인 가능합니다.");
+		url = url+"/itemBuy?";
+		URLData(url, no, 0, "", 0, 0, "");
+	});
+	
+	
 });
 
 
