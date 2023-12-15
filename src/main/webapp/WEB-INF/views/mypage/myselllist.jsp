@@ -22,6 +22,7 @@
             <div class="Kanit-Regular-25b">상품정보</div>
           </div>
           <div class="div-item-list-area">
+          <input id="resellno" type="hidden" value="${lastmap['리셀']}">
  		<!-- 관심상품 list-box1 -->
               <c:forEach var="actInfo" items="${actInfos}">
               <div class="div-eye-items-box">
@@ -29,16 +30,21 @@
                   <img src="/mingle/uploadfile/${actInfo.img}" alt="" class="div-eye-itme">
                   <div class="div-eye-item-title Inika-bold-18" >${actInfo.title}</div>
                   <div class="div-eye-item-script Inika-Regular-16">${actInfo.contents}</div>
-                  ${actInfo.selldone}
-                  <div class="div-soldout"></div>
-                  <div class="div-forsale"></div>
+		            <c:choose>
+		                <c:when test="${not empty actInfo.selldone}">
+		                    <div class="div-soldout"></div>
+		                </c:when>
+		                <c:otherwise>
+		                    <div class="div-forsale"></div>
+		                </c:otherwise>
+		            </c:choose>
                 </div>
               </div><!-- 관심상품 list-box1 -->
 			</c:forEach>             
               
           </div>
                <div class="div-blank-45"></div>
-          <input type="button" value="더보기" class="btn-more-data Inika-bold-20w">
+          <input id="btn-more-sell" type="button" value="더보기" class="btn-more-data Inika-bold-20w">
 		<div class="div-blank-45"></div>
 
           
