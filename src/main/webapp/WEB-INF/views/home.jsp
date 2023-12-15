@@ -148,7 +148,7 @@
 				<div id="area_List_home">
 					<c:forEach var="vo" items="${kreamList}">
 						<div class="homePost_resell">
-							<a href="">
+							<a href="/mingle/resell/board?no=${vo.item_no}">
 								<c:choose>
 									<c:when test="${empty vo.item_image}">	
 										<c:set var="firstImg" value="${pageContext.request.contextPath}/uploadfile/${vo.item_file_name}"/>
