@@ -25,4 +25,9 @@ public class RequestVO {
 	private String request_comment;//글내용
 	private String request_writedate;//작성일자
 	private String user_img;//유저이미지
+	
+	//댓글 관련 변수
+	private int request_reply_no;
+	private String request_reply_comment;
+	private String request_reply_writedate;
 }
