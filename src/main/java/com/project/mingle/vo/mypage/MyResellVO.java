@@ -22,12 +22,19 @@ public class MyResellVO implements MyActInfo{
 	private String resell_addr; // 지역 주소
 	private String resell_writedate; // 게시된 날짜
 	private int resell_likes;
-	private String item_file;
+	private String item_file_name;
+	
+	@Override
+	public String getSelldone() {
+		// TODO Auto-generated method stub
+		return getResell_buyer();
+	}
+	
 	
 	@Override
 	public String getImg() {
 		// TODO Auto-generated method stub
-		return getItem_file();
+		return getItem_file_name();
 	}
 	
 	@Override
@@ -55,6 +62,5 @@ public class MyResellVO implements MyActInfo{
 		// TODO Auto-generated method stub
 		return getResell_writedate();
 	}
-
 
 }

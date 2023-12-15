@@ -38,7 +38,6 @@ public class MypageServiceImple implements MypageService {
 		int limit = 12;
 		int offset = myboardRequestVO.getResellno();
 		List<MyResellVO> myResellVOs = mypageMapper.getMysellist(userid, limit, offset);
-
 		// 리스트 병합 및 정렬
 		List<MyActInfo> combinedList = new ArrayList<>();
 		combinedList.addAll(myResellVOs);

@@ -48,5 +48,10 @@ public class MyStyleVO implements MyActInfo{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public String getSelldone() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

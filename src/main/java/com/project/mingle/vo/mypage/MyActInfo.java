@@ -7,4 +7,5 @@ public interface MyActInfo {
 	String getContents();
 	String getWriteDate();
 	String getImg();
+	String getSelldone();
 }

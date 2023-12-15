@@ -201,6 +201,7 @@ public class MypageController {
 		for (MyActInfo myActInfo : actInfos) {
 			System.out.println("myActInfo.getNo : " + myActInfo.getNo());
 			System.out.println("myActInfo.getTitle : " + myActInfo.getType());
+			System.out.println("myActInfo.getImg : " + myActInfo.getImg());
 			
 			if("리퀘스트".equals(myActInfo.getType())) {
 				if(lastmap.get("리퀘스트") > myActInfo.getNo()) {

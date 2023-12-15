@@ -82,7 +82,7 @@
 	
 	<!-- 마이리셀리스트 -->
 		<select id="getMysellist" resultType="com.project.mingle.vo.mypage.MyResellVO">
-		 SELECT
+		SELECT
             r.resell_no,
             r.resell_name,
             r.resell_seller,
@@ -93,14 +93,17 @@
             r.resell_addr,
             DATE_FORMAT(r.resell_writedate, '%Y-%m-%d %H:%i:%s') AS resell_writedate,
             r.resell_likes,
-            (SELECT GROUP_CONCAT(rf.resell_file_name SEPARATOR ', ')
-             FROM mingledb.resell_file rf
-             WHERE rf.resell_no = r.resell_no) AS resell_file_name
+            (SELECT f.item_file_name 
+             FROM mingledb.item_file f 
+             WHERE f.item_no = r.item_no 
+             LIMIT 1) AS item_file_name
         FROM
             mingledb.resell r
-		where resell_seller = #{userid}  AND resell_no &lt; #{offset} 
-		order by resell_writedate desc limit #{limit} 
+        WHERE
+            r.resell_seller = #{userid} AND r.resell_no &lt; #{offset} 
+		order by r.resell_writedate desc limit #{limit} 
 	</select>
+	
 	
 	
 	

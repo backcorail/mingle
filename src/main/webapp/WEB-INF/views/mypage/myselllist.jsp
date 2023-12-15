@@ -22,28 +22,19 @@
             <div class="Kanit-Regular-25b">상품정보</div>
           </div>
           <div class="div-item-list-area">
-            
-              <!-- 임시데이터 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-forsale"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
+ 		<!-- 관심상품 list-box1 -->
               <c:forEach var="actInfo" items="${actInfos}">
               <div class="div-eye-items-box">
                 <div class="div-eye-item">
-                  <img src="${actInfo.img}" alt="" class="div-eye-itme">
+                  <img src="/mingle/uploadfile/${actInfo.img}" alt="" class="div-eye-itme">
                   <div class="div-eye-item-title Inika-bold-18" >${actInfo.title}</div>
                   <div class="div-eye-item-script Inika-Regular-16">${actInfo.contents}</div>
+                  ${actInfo.selldone}
                   <div class="div-soldout"></div>
+                  <div class="div-forsale"></div>
                 </div>
               </div><!-- 관심상품 list-box1 -->
-			</c:forEach>
-              
-              
+			</c:forEach>             
               
           </div>
                <div class="div-blank-45"></div>
