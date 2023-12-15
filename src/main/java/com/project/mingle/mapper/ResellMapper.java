@@ -31,5 +31,6 @@ public interface ResellMapper {
 	public int image_delete(int no); // 이미지 삭제
 	
 	public int resell_buyer(ResellVO rVO); // 구매자 등록
+	public int item_buyer(ResellVO rVO); // 구매자 등록
 }
  
