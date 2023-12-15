@@ -20,9 +20,9 @@ public class HomeController {
 	
 	@GetMapping("")
 	public String home(Model model, ResellVO rvo) {
-		List<ResellVO> kreamList = service.kreamList(rvo);
+		/*List<ResellVO> kreamList = service.kreamList(rvo);
 		model.addAttribute("rvo", rvo);
-		model.addAttribute("kreamList", kreamList.subList(1, 6));
+		model.addAttribute("kreamList", kreamList.subList(1, 6));*/
     
 		return "home";
 	}

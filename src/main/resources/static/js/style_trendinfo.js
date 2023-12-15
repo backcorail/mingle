@@ -130,10 +130,11 @@ document.getElementById('reply_btn').addEventListener('click', function() {
     // commentText = document.getElementById('commentInput').value;
     console.log(document.getElementById('commentInput').value);
     var useridText = document.querySelector('#test3').value;
-    var stylenoText = 'a'; // 글작성 완성 후 작성
+    var stylenoText = document.querySelector('#test4').value; // 글작성 완성 후 작성
     console.log(document.querySelector('#test3'));
 	console.log('확인'+commentText);
-	console.log('확인'+useridText);
+	console.log('확인2'+useridText);
+	console.log('확인3'+stylenoText);
     // 서버에 POST 요청을 보냅니다.
     fetch('/mingle/style/products_data', { // 
         method: 'POST',
@@ -161,7 +162,7 @@ document.getElementById('reply_btn').addEventListener('click', function() {
     // 댓글 내용을 초기화합니다.
     document.getElementById('commentInput').value = '';
     
-    location.reload();
+    
 });
 
 

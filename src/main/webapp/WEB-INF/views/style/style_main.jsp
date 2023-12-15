@@ -10,6 +10,14 @@
 <link rel="stylesheet" href="/mingle/css/style/style_main.css">
 <link rel="stylesheet" href="/mingle/css/style/style_ranking.css">
 
+<%@ page import="javax.servlet.http.HttpSession" %>
+
+<c:if test="${empty sessionScope.executed}">
+    <c:set var="executed" value="true" scope="session"/>
+    <c:if test="${empty tab}">
+        <script>location.href = 'style?tabs=1'; </script>
+    </c:if>
+</c:if>
 
 
 <main class="style_main">
@@ -32,4 +40,4 @@
 		</div>
 	</div>
 </main>
-
+<a class = "fillout" href="/mingle/style/write">fill out</a>

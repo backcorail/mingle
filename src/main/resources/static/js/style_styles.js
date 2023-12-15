@@ -33,6 +33,5 @@ $(document).on('click', '.likeLink1, .likeLink2', function(e) {
 $(document).ready(function() {
 	$("body").on('click', '.hashtag', function() {
 		console.log("in");
-        window.location.href = "/mingle/style/trend/info";
     });
 });

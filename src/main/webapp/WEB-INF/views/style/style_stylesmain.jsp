@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="/mingle/css/style/style_main.css">
 <link rel="stylesheet" href="/mingle/css/style/style_ranking.css">
 
+<C:if test="${empty tab}">
+	<script>location.href = '/mingle/style?tabs=1'; </script>
+</C:if>
 
 
 <main class="style_main">

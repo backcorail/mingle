@@ -23,13 +23,19 @@ public class StyleVO {
     private String user_id;
     private String style_writedate;//작성일자
     private int resell_no;//리셀 글번호 - 태그상품 위해서
-    private String style_name;//리셀 제목	
+    private String style_name; //리셀 제목	
     private int item_no;
     private String user_img; // 유저 프로필사진
     private String style_reply_comment; // 댓글 내용
     private String param1;
     private int replycnt; // 댓글 개수
     private int style_likes_no; // 좋아요 수
+    private int style_file_no;
+    private int offsetPoint; // 데이터 시작 부분
+    private String style_file_name; // 사진 정보
+    private int onePageRecord = 16;
+    
+    
     public String getParam1() {
         return this.param1;
     }
