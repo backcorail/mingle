@@ -11,4 +11,8 @@
 		<if test="gender == 2">and item_category!=1 limit 10</if>
 		</where>
 	</select>
+	<select id="getgender" resultType="com.project.mingle.vo.UserVO">
+		select *  from users where user_id =#{ userid} ;
+
+	</select>
 </mapper>

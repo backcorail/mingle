@@ -2,6 +2,7 @@ package com.project.mingle.controller;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.security.Principal;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -27,6 +28,10 @@ public class CodyController {
 	
 	@Autowired
 	CodyService service;
+	
+	@Autowired
+	UserService userService;
+	
 	
 	
 	int[] item_number = {
@@ -54,7 +59,9 @@ public class CodyController {
 	@GetMapping("/cody_board")
 	public ModelAndView cody_board(
 			@RequestParam(name="city", defaultValue="") String city,
-			@RequestParam(name="situation", defaultValue="daily") String situation) {
+			@RequestParam(name="situation", defaultValue="daily") String situation
+			,Principal principal
+			) {
 		
 		ModelAndView mav= new ModelAndView();
 		try {
@@ -65,7 +72,14 @@ public class CodyController {
 			BufferedReader bf;
 			String line;
             String result="";
-            int gender = 2;
+            int gender=2;
+//          Principal principal;
+	          
+	        UserVO userVO = service.getgender(principal.getName());
+	        gender=userVO.getUser_gender();
+	     
+            
+            
             
             //날씨 정보를 받아온다.
             bf = new BufferedReader(new InputStreamReader(url.openStream()));
