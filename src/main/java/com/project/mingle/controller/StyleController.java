@@ -3,26 +3,19 @@ package com.project.mingle.controller;
 import java.io.File;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
-
-import java.util.HashMap;
-
 import javax.servlet.http.HttpSession;
 
-import java.util.ArrayList;
-
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,17 +25,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.mingle.service.StyleService;
-import com.project.mingle.vo.RequestFileVO;
-import com.project.mingle.vo.StyleFileVO;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.project.mingle.service.StyleService;
-import com.project.mingle.vo.AdminTestVO;
-import com.project.mingle.vo.AdminVO;
+import com.project.mingle.vo.Comment;
 import com.project.mingle.vo.ReplyVO;
+import com.project.mingle.vo.StyleFileVO;
+import com.project.mingle.vo.StyleInfo;
+import com.project.mingle.vo.StyleInfoDTO;
 import com.project.mingle.vo.StyleVO;
+import com.project.mingle.vo.Stylefile;
 
 @Controller
 
@@ -63,17 +52,25 @@ public class StyleController {
 	}
 	
 	@GetMapping("/ranking")
-	public ModelAndView style_ranking(StyleVO sVO) {
-		ModelAndView mav =  new ModelAndView();
+	  public String listStyles1(Model model) {
+		 
+		 List<StyleInfo> styleInfos = service.getAllStyleInfo();
+		 System.out.println("listStyles");
+		 System.out.println(styleInfos.size());
 		
-		List<StyleVO> kreamList = service.kreamData(sVO);
-		System.out.println(kreamList);
-		mav.addObject("sVO", sVO);
-		mav.addObject("klist", kreamList);
-		mav.addObject("ReplyVO", sVO);
-		mav.setViewName("style/style_ranking");	
-		return mav;
-	}
+		 
+		 for (StyleInfo styleInfo : styleInfos) {
+			// System.out.println("styleInfo" + styleInfo.getStyleFileName());
+			// System.out.println("styleInfo" + styleInfo.getStyleName());
+			 System.out.println("styleInfo" + styleInfo.getStyle_no());
+			// System.out.println("styleInfo" + styleInfo.getUserId());
+			// System.out.println("styleInfo" + styleInfo.getUserImg());
+			// System.out.println(styleInfo.toString());
+		}
+	        model.addAttribute("styles", styleInfos);
+	        System.out.println("실행");
+	        return "style/style_ranking"; // JSP 파일 이름
+	    }
 	
 	
 	
@@ -82,28 +79,60 @@ public class StyleController {
 		return "style/style_request";
 	}
 	
-	@GetMapping("/styles")
+	//@GetMapping("/styles")
 	public ModelAndView style_styles(StyleVO sVO) {
 		ModelAndView mav =  new ModelAndView();
-		
+		List<StyleVO> list = service.styleList(sVO);
+		List<StyleVO> fileList = service.styleImgFile(sVO);
 		List<StyleVO> kreamList = service.kreamData(sVO);
 		System.out.println(kreamList);
+		mav.addObject("fileList", fileList);
 		mav.addObject("sVO", sVO);
 		mav.addObject("klist", kreamList);
+		mav.addObject("list", sVO);
 		mav.addObject("ReplyVO", sVO);
+		mav.addObject("StyleVO", sVO);
 		mav.setViewName("style/style_styles");	
 		return mav;
 	}
 	
+	 @GetMapping("/styles")
+	    public String listStyles(Model model) {
+		 
+		 List<StyleInfo> styleInfos = service.getAllStyleInfo();
+		 System.out.println("listStyles");
+		 System.out.println(styleInfos.size());
+		
+		 
+		 for (StyleInfo styleInfo : styleInfos) {
+			// System.out.println("styleInfo" + styleInfo.getStyleFileName());
+			// System.out.println("styleInfo" + styleInfo.getStyleName());
+		
+			// System.out.println("styleInfo" + styleInfo.getUserId());
+			// System.out.println("styleInfo" + styleInfo.getUserImg());
+			// System.out.println(styleInfo.toString());
+		}
+	        model.addAttribute("styles", styleInfos);
+	        System.out.println("실행");
+	        return "style/style_styles"; // JSP 파일 이름
+	    }
 	
-	@GetMapping("/trend/info")
-	public ModelAndView style_trendinfo(StyleVO sVO) {
+	
+	 @GetMapping("/trend/info/{style_no}")
+	 public ModelAndView style_trendinfo(@PathVariable("style_no") int style_no) {
+	     
 		ModelAndView mav =  new ModelAndView();
+		List<Stylefile> files = service.getfiles(style_no);
+		List<Comment> comments = service.getcomments(style_no);
 		
-		List<StyleVO> reply = service.replySelect(sVO);
+		StyleInfoDTO info = service.getStyleDetails(style_no);
+		info.setFiles(files);
+		info.setComment(comments);
+		mav.addObject("info", info);
 		
-		mav.addObject("sVO", sVO);
-		mav.addObject("reply", reply);
+		//System.out.println(sVO.toString());
+		//mav.addObject("reply", reply);
+		
 		
 		mav.setViewName("style/style_trendinfo");	
 		return mav;
@@ -134,6 +163,11 @@ public class StyleController {
 	@Transactional(rollbackFor={RuntimeException.class, SQLException.class})
 	public ModelAndView styleWriteOk(StyleVO vo, HttpSession session, HttpServletRequest hsr, Principal principal) {
 		ModelAndView mav = new ModelAndView();
+		String username = principal.getName();
+		if(username == null) {
+			mav.setViewName("user/login_joinForm");
+			return mav;
+		}
 		vo.setUser_id(principal.getName());
 		
 		//2. 파일업로드 (rename)
@@ -202,7 +236,8 @@ public class StyleController {
 			int fileResult = service.styleFileInsert(uploadFileList);
 			
 			//4. 추가 성공하면 -> 자료실목록
-			mav.setViewName("style/style_ranking");
+			mav.addObject("tab", "tab");
+			mav.setViewName("style/style_main");
 			
 		}catch(Exception e) {
 			e.printStackTrace();

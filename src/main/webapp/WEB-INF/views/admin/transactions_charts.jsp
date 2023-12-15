@@ -18,7 +18,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="/mingle/admintest">Mingle</a>
+		<a class="navbar-brand ps-3" href="/mingle/">Mingle</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
@@ -136,9 +136,7 @@
 						<div class="collapse" id="collapsePosts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
-								<a class="nav-link" href="/mingle/admintest/posts_charts">Posts Charts</a>
-								
+								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>	
 							</nav>
 						</div>
 						<!-- Recommend 메뉴 -->
@@ -156,8 +154,7 @@
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
+								<a class="nav-link" href="/mingle/style/write">Recommend Write</a>
 							</nav>
 						</div>
 						<!-- Server 메뉴
@@ -190,19 +187,18 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Charts</h1>
+                        <h1 class="mt-4">Transactions Charts</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="/mingle/admintest">Dashboard</a></li>
                             <li class="breadcrumb-item active">Charts</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-                                <a target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a>
-                                .
+                               	거래되는 지역을 확인할 수 있습니다.
+                                변동이 있을 시 반영되고 업데이트 날짜가 갱신됩니다.
                             </div>
                         </div>
-                        <div class="card mb-4">
+                        <!--  <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-area me-1"></i>
                                 Area Chart Example
@@ -220,17 +216,26 @@
                                     <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
                                     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-pie me-1"></i>
-                                        Pie Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                                </div>
-                            </div>
+                            </div> -->
+								<div class="col-lg-6">
+								    <div class="card mb-4">
+								        <div class="card-header">
+								            <i class="fas fa-chart-pie me-1"></i>
+								            Trading Area
+								        </div>
+								        <!-- Trading Area 데이터 저장 -->
+								        <div id="countArea" data-area-count="${areaCount}"></div>
+								        <div class="card-body">
+								            <canvas id="countAreaChart" width="100%" height="50"></canvas>
+								        </div>
+								        <div class="card-footer small text-muted">Updated ${currentDateTime}</div>
+								        <script type="text/javascript">
+								            // 서버에서 전달된 boardList를 JSON으로 변환
+								            var boardListData = <c:out value="${boardListJson}" escapeXml="false" />;
+								            // 여기에 차트를 구성하는 JavaScript 코드 추가
+								        </script>
+								    </div>
+								</div>
                         </div>
                     </div>
                 </main>
@@ -251,8 +256,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/mingle/js/admin/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-		<script src="/mingle/js/admin/chart-area-demo.js"></script>
-        <script src="/mingle/js/admin/chart-bar-demo.js"></script>
-        <script src="/mingle/js/admin/chart-pie-demo.js"></script>
+		<script src="/mingle/js/admin/transactions_charts.js"></script>
     </body>
 </html>

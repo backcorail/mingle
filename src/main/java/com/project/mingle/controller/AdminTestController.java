@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.mingle.service.AdminService;
 import com.project.mingle.service.RequestService;
 import com.project.mingle.service.ResellService;
@@ -136,10 +137,34 @@ public class AdminTestController {
 		return mav;
 	}
 	
-	@GetMapping("transactions_charts")
-	public String transactions_charts() {
-		return "admin/transactions_charts";
-	}
+	 @GetMapping("transactions_charts")
+	    public ModelAndView transactionsCharts() {
+	        ModelAndView mav = new ModelAndView();
+	        ResellVO rVO = new ResellVO();
+	        
+			// 현재 날짜와 시간 가져오기
+			LocalDateTime now = LocalDateTime.now();
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy 'at' hh:mm a");
+			String formattedDate = now.format(formatter);
+	        
+	        // 리셀 데이터
+	        List<ResellVO> boardList = resellservice.resell_boardData(rVO);
+
+	        // boardList를 JSON 문자열로 변환
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        try {
+	            String boardListJson = objectMapper.writeValueAsString(boardList);
+	            mav.addObject("boardListJson", boardListJson);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            // 오류 처리
+	        }
+	        
+	        mav.addObject("currentDateTime", formattedDate);
+	        mav.setViewName("admin/transactions_charts");
+	        return mav;
+	    }
 	
 	@GetMapping("posts_data")
 	public ModelAndView postsData() {

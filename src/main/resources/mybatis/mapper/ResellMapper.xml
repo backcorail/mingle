@@ -124,10 +124,12 @@
 	</delete>
 	
 	<!-- 구매 관련 -->
-	
 	<update id="resell_buyer">
 		update resell set resell_buyer = #{resell_buyer}
 		where item_no = #{item_no}
 	</update>
-	
+	<update id="item_buyer">
+		update item set item_status = #{item_status}
+		where item_no = #{item_no}
+	</update>
 </mapper>

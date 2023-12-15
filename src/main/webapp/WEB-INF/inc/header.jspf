@@ -60,7 +60,7 @@
 							<li><a href="/mingle/style?tabs=1">ranking</a></li>
 							<li><a href="/mingle/style?tabs=2">style</a></li>
 							<li><a href="/mingle/style?tabs=3">trend</a></li>
-							<li><a href="/mingle/style?tabs=4">request</a></li>
+							<li><a href="/mingle/style/request/list">request</a></li>
 						</ul>
 					</div>
 					<div class="area_tabMenu" id="area_tabMenu_2" onmouseover="showSubMenu(2)" onmouseout="showSubHidden(2)">

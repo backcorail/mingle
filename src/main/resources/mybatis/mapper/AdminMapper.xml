@@ -49,4 +49,9 @@
     <select id="countByGender" parameterType="int" resultType="int">
     	select count(*) from users where user_gender = #{gender}
     </select>
+    
+   	   <!-- 지역 카운팅 -->
+   	 <select id="countArea" resultType="int">
+   	 	select count(*) from users where resell_addr = #{areaCount}
+   	 </select>
 </mapper>

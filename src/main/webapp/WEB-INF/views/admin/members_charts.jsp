@@ -18,7 +18,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="/mingle/admintest">Mingle</a>
+		<a class="navbar-brand ps-3" href="/mingle/">Mingle</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
@@ -137,7 +137,6 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
-								<a class="nav-link" href="/mingle/admintest/posts_charts">Posts Charts</a>
 							</nav>
 						</div>
 						<!-- Recommend 메뉴 -->
@@ -155,8 +154,7 @@
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend Data</a>
-								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
+								<a class="nav-link" href="/mingle/style/write">Recommend Write</a>
 							</nav>
 						</div>
 						<!-- Server 메뉴 
@@ -196,7 +194,7 @@
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                회원에 대한 정보를 확인할 수 있습니다.
+                                총 회원 수와 성별을 확인할 수 있습니다.
                                 변동이 있을 시 반영되고 업데이트 날짜가 갱신됩니다.
                             </div>
                         </div>
@@ -212,7 +210,7 @@
 	                            <div class="card-footer small text-muted">Updated ${currentDateTime}</div>
 	                    </div>
 	                        </div>
-	                        <div class="row">
+	                        <!-- <div class="row">
 	                            <div class="col-lg-6">
 	                                <div class="card mb-4">
 	                                    <div class="card-header">
@@ -222,7 +220,7 @@
 	                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
 	                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 	                                </div>
-	                            </div>
+	                            </div>-->
 	                            <div class="col-lg-6">
 	                                <div class="card mb-4">
 	                                    <div class="card-header">
