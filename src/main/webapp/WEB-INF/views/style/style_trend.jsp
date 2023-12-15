@@ -71,3 +71,10 @@
 	</div>
 </div>
 
+<Script>
+$(document).ready(function() {
+	$("body").on('click', '.hashtag', function() {
+		console.log("in");
+    });
+});
+</Script>
