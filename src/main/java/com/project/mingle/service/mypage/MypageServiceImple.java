@@ -31,6 +31,22 @@ public class MypageServiceImple implements MypageService {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
+	@Override
+	public List<MyActInfo> mybuylist(String userid, MyboardRequestVO myboardRequestVO) {
+		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
+		int limit = 12;
+		int offset = myboardRequestVO.getResellno();
+		List<MyResellVO> myResellVOs = mypageMapper.getmybuylist(userid, limit, offset);
+		// 리스트 병합 및 정렬
+		List<MyActInfo> combinedList = new ArrayList<>();
+		combinedList.addAll(myResellVOs);
+		combinedList.sort(Comparator.comparing(MyActInfo::getWriteDate).reversed());
+
+		// 결과 반환
+		return combinedList.stream().limit(limit).collect(Collectors.toList());
+	}
+	
 
 	@Override
 	public List<MyActInfo> mysellist(String userid, MyboardRequestVO myboardRequestVO) {
@@ -223,6 +239,12 @@ public class MypageServiceImple implements MypageService {
 		int resultDel = mypageMapper.userOut(userid);
 		return resultDel;
 	}
+
+
+
+
+
+
 
 
 }

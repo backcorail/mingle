@@ -88,6 +88,7 @@ public class ResellController {
 		ResellVO itemData = service.item_select(no); // no를 통한 아이템 데이터 받아오기
 		List<String> imageData = service.image_select(no); // no를 통한 이미지 데이터 받아오기
 		mav.addObject("itemData", itemData);
+		mav.addObject("boardData", boardData);
 		
 		rVO.setNowPage(page);
 		rVO.setSearchWord(searchAll);
@@ -275,7 +276,7 @@ public class ResellController {
 					// 이미지 이름 저장하기
 					ResellVO imageVO = new ResellVO(rVO);
 					// 여기에 원하는 변수 넣으면됨.
-					imageVO.setItem_status("판매중");
+					
 					imageVO.setItem_file_name(orgFilename);
 					if(no != 0) {imageVO.setItem_no(no);}
 					// 배열에 추가
@@ -287,6 +288,7 @@ public class ResellController {
 		try {
 			System.out.println(uploadFileList);
 			if(no == 0) { // 새로 작성할때
+				rVO.setItem_status("판매중");
 				service.item_insert(rVO); //아이템 업로드
 				System.out.println("확인중..."+rVO);
 				for(int i=0; i<uploadFileList.size(); i++) {
@@ -363,15 +365,13 @@ public class ResellController {
 		String userId = principal.getName();
         rVO.setResell_buyer(userId);
 		rVO.setItem_no(no);
+		rVO.setItem_status("판매완료");
         service.resell_buyer(rVO);
+        service.item_buyer(rVO);
 		System.out.println(rVO);
 		if(true) {
 			mav.setViewName("redirect:/resell");
-		} else {
-			
 		}
 		return mav;
 	}
-	
-	
 }

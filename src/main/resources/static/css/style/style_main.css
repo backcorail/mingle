@@ -97,3 +97,20 @@
 .tab:hover {
     color:blue;
 }
+
+.fillout {
+	width : 187px;
+	height : 51px;
+background: #FFEFBA;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+position: fixed;
+bottom: 600px;
+left: 80px;
+text-align: center;
+padding: 10px 0;
+box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+font-weight: 700;
+text-transform: uppercase;
+cursor: pointer;
+}

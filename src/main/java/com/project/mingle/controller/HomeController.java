@@ -29,7 +29,7 @@ public class HomeController {
 		model.addAttribute("sVO", sVO);
 		model.addAttribute("kreamList", kreamList.subList(1, 6));
 		model.addAttribute("kreamList2", kreamList2.subList(1, 7));
-    
+   
 		return "home";
 	}
 }

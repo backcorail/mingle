@@ -4,8 +4,8 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mingle.mapper.StyleMapper">
   <insert id ="boardInsert">
-      insert into style(style_name, user_id, style_image, user_img)
-      values(#{style_name}, #{user_id}, #{style_image}, #{user_img})
+      insert into style(style_name, user_id, style_image, user_img, style_writedate)
+      values(#{style_name}, #{user_id}, #{style_image}, #{user_img}, #{style_writedate})
     </insert>
   <select id ="kream_totalRecord" resultType="int">
     select count(item_no) from item
@@ -28,14 +28,88 @@
   <select id="gettotallike" resultType="int">
   	select count(style_likes_no) from style_likes where style_no = #{param1}
   </select>
+  
+  
   <insert id ="usercomment">
       insert into style_reply(style_reply_comment, user_id, style_no)
-      values(#{comment}, #{usernic}, #{styleno})
+      values(#{comment}, #{userid}, #{styleno})
     </insert>
+    
+    
     <select id="replySelect" resultType="com.project.mingle.vo.StyleVO">
 		select style_reply_no, style_no, style_reply_comment, user_id from style_reply where style_no = #{param1} 
 	</select>
 	<select id ="replycnt" resultType="int">
     select count(style_reply_no) from style_reply
   	</select>
+  	
+  	
+  	<select id="styleSelect" resultType="com.project.mingle.vo.StyleVO">
+		select style_no, style_name, user_id, style_writedate from style where style_no=${param1}
+	</select>
+  	<select id="styleList" resultType="com.project.mingle.vo.StyleVO">
+		select style_no, style_name, user_id, style_writedate from style
+		order by style_writedate desc limit #{onePageRecord} offset ${offsetPoint};		
+	</select>
+	<select id="styleImgFile" resultType="com.project.mingle.vo.StyleVO">
+		select * from style_file order by style_no desc;
+	</select>
+	
+	 <select id="getAllStyleInfo" resultType="com.project.mingle.vo.StyleInfo">
+          SELECT 
+            s.style_no, 
+            s.style_name, 
+            u.user_nick,
+            u.user_img,  <!-- 유저 이미지 필드 추가 -->
+            sf.style_file_name
+        FROM 
+            mingledb.style s
+        INNER JOIN 
+            mingledb.users u ON s.user_id = u.user_id
+        INNER JOIN 
+            mingledb.style_file sf ON s.style_no = sf.style_no
+    </select>
+	
+	<select id="getStyleDetails" resultType="com.project.mingle.vo.StyleInfoDTO">
+        SELECT
+            s.style_no,
+            s.style_name,
+            u.user_nick,
+            sf.style_file_name,
+            (SELECT COUNT(*) FROM mingledb.style_reply WHERE style_no = s.style_no) AS style_reply_no,
+            u.user_img
+        FROM
+            mingledb.style s
+        INNER JOIN
+            mingledb.users u ON s.user_id = u.user_id
+        LEFT JOIN
+            mingledb.style_file sf ON s.style_no = sf.style_no
+        LEFT JOIN
+            mingledb.style_reply sr ON s.style_no = sr.style_no
+        WHERE
+            s.style_no = #{styleNo} limit 1
+    </select>
+	
+	<select id="getfiles" resultType="com.project.mingle.vo.Stylefile">
+		select * from style_file where style_no = #{styleNo}
+	</select>
+	
+	<select id="getcomments" resultType="com.project.mingle.vo.Comment">
+    SELECT
+        sr.style_no AS styleno,
+        sr.style_reply_no AS replyno,
+        u.user_id,
+        u.user_nick,
+        u.user_img,
+        sr.style_reply_comment,
+        (SELECT COUNT(*) FROM mingledb.style_likes WHERE style_no = sr.style_no) AS style_likes_no
+    FROM
+        mingledb.style_reply sr
+    LEFT JOIN
+        mingledb.users u ON sr.user_id = u.user_id
+    WHERE
+        sr.style_no = #{styleNo}
+	</select>
+	
+	
 </mapper>

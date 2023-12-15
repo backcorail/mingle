@@ -37,4 +37,6 @@ public interface MypageMapper {
 
 	public List<MyResellVO> getMysellist(@Param("userid") String userid, @Param("limit") int limit, @Param("offset") int offset);
 
+	public List<MyResellVO> getmybuylist(@Param("userid") String userid, @Param("limit") int limit, @Param("offset") int offset);
+
 }

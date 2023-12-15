@@ -98,4 +98,8 @@ public class ResellServiceImpl implements ResellService {
 	public int resell_buyer(ResellVO rVO) {
 		return mapper.resell_buyer(rVO);
 	}
+	@Override
+	public int item_buyer(ResellVO rVO) {
+		return mapper.item_buyer(rVO);
+	}
 }

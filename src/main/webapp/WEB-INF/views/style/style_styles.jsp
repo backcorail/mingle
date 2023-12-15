@@ -18,45 +18,42 @@
 
 		<div class="board-wrap">
 			<!-- <a class="board-name">🔥 실시간 랭킹</a> -->
-			<div class="board_list_now">
-				<c:forEach var="n" items="${klist}">
-					<div class="board_items" data-item-no="${n.item_no}">
+			<div class="board_list_now">						
+				<c:forEach var="style" items="${styles}">
+					<div class="board_items" data-item-no="${style.style_no}">
 						<div class="imgdiv">
 							<img class="img" referrerpolicy="no-referrer"
-								src="${n.item_image}" />
+								src="/mingle/uploadfile/${style.style_file_name}" />
 						</div>
 						<div class="board-content">
-							<img class="profile-img" herf="${sVO.user_img}" /> 
-							<a class="username" href="">닉네임 :db값 넣으면 나옴${comment.user_id}</a>
+							<img class="profile-img" src="${style.user_img}" /> 
+							<a class="username" href="">${style.user_nick}</a>
 
 							<a href="#" class="likeLink1">
   								  <img class="like1" src="/mingle/img/img_mingle/page_recell/icon_heart.png"><span>0</span>
-							</a>						
+							</a>												
+							<a class="hashtag" href="/mingle/style/trend/info/${style.style_no}">${style.style_name}</a>
 							
-
-							<a class="hashtag"
-								href="/mingle/style/trend/info?no=${n.item_no}">드뎌 겨울
-								#아우터코디 #OOTD #데일리 슈즈 #일교차패션 #FW신발 #핫아이템</a>
 						</div>
 					</div>
 				</c:forEach>
 			</div>
-			<div class="board_list_now">
-				<c:forEach var="n" items="${klist}">
-					<div class="board_items_hidden" data-item-no="${n.item_no}">
+			<div class="board_list_now">						
+				<c:forEach var="style"  begin='15' end='36' items="${styles}">
+					<div class="board_items_hidden" data-item-no="${style.style_no}">
 						<div class="imgdiv">
 							<img class="img" referrerpolicy="no-referrer"
-								src="${n.item_image}" />
+								src="/mingle/uploadfile/${style.style_file_name}" />
 						</div>
 						<div class="board-content">
-							<img class="profile-img" src="/mingle/img/style/aaa.jpg" /> <a
-								class="username" href="">닉네임 :db값 넣으면 나옴${comment.user_id}</a>
+							<img class="profile-img" src="${style.user_img}" /> 
+							<a class="username" href="">${style.user_nick}</a>
+
 							<a href="#" class="likeLink1">
   								  <img class="like1" src="/mingle/img/img_mingle/page_recell/icon_heart.png"><span>0</span>
-							</a>
-							<a class="hashtag"
-								href="/mingle/style/trend/info?no=${n.item_no}">드뎌 겨울 #아우터코디
-								#OOTD #데일리 슈즈 #일교차패션 #FW신발 #핫아이템</a>
+							</a>												
+							<a class="hashtag" href="/mingle/style/trend/info/${style.style_no}">${style.style_name}</a>
+							
 						</div>
 					</div>
 				</c:forEach>
