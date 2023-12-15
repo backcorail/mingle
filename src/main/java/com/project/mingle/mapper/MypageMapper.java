@@ -35,4 +35,6 @@ public interface MypageMapper {
 
 	public List<MyStyleReplyVO> getMyReStyleReply(@Param("userid") String userid, @Param("limit") int limit, @Param("offset") int offset);
 
+	public List<MyResellVO> getMysellist(@Param("userid") String userid, @Param("limit") int limit, @Param("offset") int offset);
+
 }

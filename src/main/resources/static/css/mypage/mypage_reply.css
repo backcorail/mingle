@@ -115,6 +115,12 @@
 .div-track .div-board-title-area .div-board-title{
   width: calc(408px * var(--default-size));
 }
+.div-track .div-board-title-area .div-board-title:hover{
+	/* 타이틀 호버용 */
+	color: #FFD600;
+	font-weight: bold;
+}
+
 
 /* 댓글내용 */
 .div-track .div-reply-content-area{

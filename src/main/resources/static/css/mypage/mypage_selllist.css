@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   /* width: calc(1548.35px * var(--default-size)); */
-  height: calc(1133px * var(--default-size));
+  height: calc(1189px * var(--default-size));
 
   padding-top: calc(18px * var(--default-size));
   padding-right: calc(47.27px * var(--default-size));
@@ -113,9 +113,18 @@
 }
 
 .div-item-list-area{
-  display: flex;
-  flex-direction: column;  
-  padding-top: calc(37px * var(--default-size));
+	flex: 1;
+	display: flex;
+	flex-wrap: wrap;
+	overflow: auto;
+	padding-top: calc(37px * var(--default-size));
+		    /* 스크롤바 숨기기 (WebKit 기반 브라우저용) */
+	&::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 스크롤바 숨기기 (Firefox용) */
+    scrollbar-width: none;
 }
 .div-track{
   display: flex;
@@ -126,11 +135,18 @@
 
 }
 
-.div-eye-items-box{
-  width: calc(223.42px * var(--default-size));
-  height: calc(340px * var(--default-size));
-
+.div-eye-items-box {
+    width: calc(223.42px * var(--default-size));
+    height: calc(294px * var(--default-size));
+    margin-right: calc(21px * var(--default-size));
 }
+.div-eye-items-box:nth-of-type(6n) {
+    margin-right: 0;
+}
+.div-eye-items-box:nth-of-type(n+7) {
+   margin-top: 20px;
+}
+
 .div-eye-items-box img{
   
   width: calc(223.42px * var(--default-size));
@@ -141,14 +157,17 @@
 
 .div-eye-items-box .div-eye-item-title{
   width: calc(223.42px * var(--default-size));
-  height: calc(14.94px * var(--default-size));
+  height: calc(22.94px * var(--default-size));
+   overflow:hidden; display:block; text-overflow: ellipsis; white-space:nowrap;
 }
 
 .div-eye-items-box .div-eye-item-script{
   width: calc(223.42px * var(--default-size));
   height: calc(52px * var(--default-size));
   padding-top: calc(10px * var(--default-size));
-  word-break: keep-all;
+  /* word-break: keep-all; */
+    overflow:hidden; display:block; text-overflow: ellipsis; white-space:nowrap;
+      font-size: 10px;
 }
 .div-forsale{
   width: calc(80px * var(--default-size));
@@ -159,12 +178,11 @@
   background-image: url('/mingle/img/user/forsale.png');
   background-size: cover;
 }
-
 .div-soldout{
   width: calc(99px * var(--default-size));
   height: calc(30px * var(--default-size));
 
-  margin-top: calc(20px * var(--default-size));
+  margin-top: calc(5px * var(--default-size));
   border-radius: 5px;
   background-image: url('/mingle/img/user/soldout.png');
   background-size: cover;
@@ -186,6 +204,10 @@
 .btn-more-data:hover{
   cursor: pointer;
   background: var(--btn-click-ybg);
+}
+
+.div-blank-45 {
+	height: calc(30px * var(--default-size));
 }
 
 

@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="authUser"/>
-</sec:authorize>
 <link rel="stylesheet" href="/mingle/css/mypage/mypage_init.css">
 <link rel="stylesheet" href="/mingle/css/mypage/mypage_selllist.css">
     <main>
@@ -26,112 +22,30 @@
             <div class="Kanit-Regular-25b">상품정보</div>
           </div>
           <div class="div-item-list-area">
-            <div class="div-track">
-              <!-- 임시데이터 -->
+          <input id="resellno" type="hidden" value="${lastmap['리셀']}">
+ 		<!-- 관심상품 list-box1 -->
+              <c:forEach var="actInfo" items="${actInfos}">
               <div class="div-eye-items-box">
                 <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-forsale"></div>
+                  <img src="/mingle/uploadfile/${actInfo.img}" alt="" class="div-eye-itme">
+                  <div class="div-eye-item-title Inika-bold-18" >${actInfo.title}</div>
+                  <div class="div-eye-item-script Inika-Regular-16">${actInfo.contents}</div>
+		            <c:choose>
+		                <c:when test="${not empty actInfo.selldone}">
+		                    <div class="div-soldout"></div>
+		                </c:when>
+		                <c:otherwise>
+		                    <div class="div-forsale"></div>
+		                </c:otherwise>
+		            </c:choose>
                 </div>
               </div><!-- 관심상품 list-box1 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-forsale"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-forsale"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-soldout"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-soldout"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-soldout"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
-            </div><!-- track 끝 -->
-
-            <div class="div-track">
-              <!-- 임시데이터 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-soldout"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-soldout"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-soldout"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-soldout"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-soldout"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
-              <div class="div-eye-items-box">
-                <div class="div-eye-item">
-                  <img src="" alt="" class="div-eye-itme">
-                  <div class="div-eye-item-title Inika-bold-18" >Stone Island</div>
-                  <p class="div-eye-item-script Inika-Regular-16">Stone Island 40723 Garment Dyed Crinkle Reps Recycl..</p>
-                  <div class="div-soldout"></div>
-                </div>
-              </div><!-- 관심상품 list-box1 -->
-            </div><!-- track 끝 -->
-            
-            <input type="button" value="더보기" class="btn-more-data Inika-bold-20w">
+			</c:forEach>             
+              
           </div>
+               <div class="div-blank-45"></div>
+          <input id="btn-more-sell" type="button" value="더보기" class="btn-more-data Inika-bold-20w">
+		<div class="div-blank-45"></div>
 
           
         </div> <!-- mypage main 끝  -->

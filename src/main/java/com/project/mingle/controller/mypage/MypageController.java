@@ -180,12 +180,49 @@ public class MypageController {
 		modelAndView.setViewName("/mypage/myscrap");
 		return modelAndView;
 	}
-	//9)
+	//9) 판매내역
 	@GetMapping("/mypage/myselllist")
-	public ModelAndView myselllist() {
+	public ModelAndView myselllist(Principal principal) {
 		ModelAndView modelAndView = new ModelAndView();
 		// 데이터 가져오기
 		// 판매내역 가져오기
+		
+		System.out.println("MypageController.myselllist() ->principal.getName() : " + principal.getName());
+		String userid = principal.getName();
+		MyboardRequestVO myboardRequestVO =new MyboardRequestVO(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
+		List<MyActInfo> actInfos = mypageService.mysellist(userid,myboardRequestVO);
+		
+		System.out.println("MypageController.myselllist() ->actInfos.size() : " + actInfos.size());
+		Map<String, Integer> lastmap = new HashMap<>();
+		lastmap.put("리퀘스트", Integer.MAX_VALUE);
+		lastmap.put("스타일", Integer.MAX_VALUE);
+		lastmap.put("리셀", Integer.MAX_VALUE);
+		
+		for (MyActInfo myActInfo : actInfos) {
+			System.out.println("myActInfo.getNo : " + myActInfo.getNo());
+			System.out.println("myActInfo.getTitle : " + myActInfo.getType());
+			System.out.println("myActInfo.getImg : " + myActInfo.getImg());
+			
+			if("리퀘스트".equals(myActInfo.getType())) {
+				if(lastmap.get("리퀘스트") > myActInfo.getNo()) {
+					lastmap.put("리퀘스트", myActInfo.getNo());
+				}					
+			} else if("스타일".equals(myActInfo.getType())) {
+				if(lastmap.get("스타일") > myActInfo.getNo()) {
+					lastmap.put("스타일", myActInfo.getNo());
+				}					
+			}else if("리셀".equals(myActInfo.getType())) {
+				if(lastmap.get("리셀") > myActInfo.getNo()) {
+					lastmap.put("리셀", myActInfo.getNo());
+				}					
+			}
+		}
+		System.out.println("lastmap.리퀘스트.getNo : " + lastmap.get("리퀘스트"));
+		System.out.println("lastmap.스타일.getNo : " + lastmap.get("스타일"));
+		System.out.println("lastmap.리셀.getNo : " + lastmap.get("리셀"));
+		
+		modelAndView.addObject("lastmap", lastmap);
+		modelAndView.addObject("actInfos", actInfos);
 
 
 		modelAndView.setViewName("/mypage/myselllist");

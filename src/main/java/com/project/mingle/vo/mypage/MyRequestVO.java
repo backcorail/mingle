@@ -45,5 +45,15 @@ public class MyRequestVO implements MyActInfo{
 		// TODO Auto-generated method stub
 		return getRequest_writedate();
 	}
+	@Override
+	public String getImg() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getSelldone() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
