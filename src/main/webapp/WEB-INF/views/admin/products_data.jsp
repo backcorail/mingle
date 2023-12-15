@@ -19,7 +19,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="/mingle/admintest">Mingle</a>
+		<a class="navbar-brand ps-3" href="/mingle/">Mingle</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
@@ -120,10 +120,8 @@
 						<div class="collapse" id="collapseTransactions"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/transactions_data">Transactions
-									Data</a> <a class="nav-link"
-									href="/mingle/admintest/transactions_charts">Transactions
-									Charts</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_data">Transactions Data</a>
+								<a class="nav-link" href="/mingle/admintest/transactions_charts">Transactions Charts</a>
 							</nav>
 						</div>
 						<!-- Posts 메뉴 -->
@@ -141,8 +139,7 @@
 						<div class="collapse" id="collapsePosts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/posts_data">Posts
-									Data</a>
+								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
 							</nav>
 						</div>
 						<!-- Recommend 메뉴 -->
@@ -160,9 +157,7 @@
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend
-									Data</a> <a class="nav-link" href="/mingle/admintest/layout_static">Recommend
-									Write</a>
+						<a class="nav-link" href="/mingle/style/write">Recommend Write</a>
 							</nav>
 						</div>
 						<!-- Server 메뉴

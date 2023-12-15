@@ -137,8 +137,6 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="/mingle/admintest/posts_data">Posts Data</a>
-								<a class="nav-link" href="/mingle/admintest/posts_charts">Posts Charts</a>
-								
 							</nav>
 						</div>
 						<!-- Recommend 메뉴 -->
@@ -156,7 +154,6 @@
 						<div class="collapse" id="collapseRecommend"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="/mingle/admintest/recommend_data">Recommend Data</a>
 								<a class="nav-link" href="/mingle/admintest/layout_static">Recommend Write</a>
 							</nav>
 						</div>
