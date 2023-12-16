@@ -13,7 +13,7 @@
 	<!-- 글 종류 선택 -->
 	<div class="writeType_select">
 		<div class="resell"><a href="/mingle/resell/write" class="writeType_link">RESELL</a></div>
-		<div class="request"><a href="/mingle/style/requestwrite" class="writeType_link">REQUEST</a></div>
+		<div class="request"><a href="/mingle/style/request/write" class="writeType_link">REQUEST</a></div>
 		<div class="style"><a href="/mingle/style/write" class="writeType_link">STYLE</a></div>
 	</div>
 	<form method="post" action="${pageContext.servletContext.contextPath}/style/writeOk" id="frm" class="styleWrite" onsubmit="return validateForm()" enctype="multipart/form-data">

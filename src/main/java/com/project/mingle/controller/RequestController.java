@@ -16,6 +16,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,6 +24,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.mingle.service.RequestService;
+import com.project.mingle.vo.ReplyVO;
 import com.project.mingle.vo.RequestFileVO;
 import com.project.mingle.vo.RequestVO;
 import com.project.mingle.vo.UserVO;
@@ -160,10 +162,9 @@ public class RequestController {
 	
 	@PostMapping("/requestReply/write")
 	@ResponseBody
-	public String replyWrite(@PathVariable("request_no") int request_no, RequestVO rvo, Principal principal) {
+	public String replyWrite(Principal principal, RequestVO rvo) {
 		rvo.setUser_id(principal.getName());
 		System.out.println("222"+rvo);
-		rvo.setRequest_no(request_no);
 		int result = service.replyInsert(rvo);
 		
 		return result+"";

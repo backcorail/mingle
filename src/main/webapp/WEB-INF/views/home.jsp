@@ -184,7 +184,18 @@
 					<div class="adv_homeLink">
 						<div class="row columns">
 					      <ul class="menu align-center expanded text-center SMN_effect-11">
-					        <li><a href="/mingle/cody" data-hover="cody next>"><span id="homeContentLink_cody">cody next></span></a></li>
+					        	<li>
+					        		<c:if test="${empty authUser}"> 
+	 									<a href="javascript:goLogin()" data-hover="cody next>">
+						        			<span id="homeContentLink_cody">cody next></span>
+						        		</a>
+	 								</c:if>
+					        		<c:if test="${not empty authUser}"> 
+					        			<a href="/mingle/cody" data-hover="cody next>">
+						        			<span id="homeContentLink_cody">cody next></span>
+						        		</a>
+					        		</c:if>
+					        	</li>
 					      </ul>
 					    </div>
 					</div> 
@@ -198,60 +209,17 @@
 				<div class="homeTitle">Daily style</div>
 				<div class="homeSubtitle"">#일주일 코디 배틀</div>
 				<div id="homePost_style">
-					<div class="homePostImg_style">
-						<a href="">
-							<img src="/mingle/img/home/img_homeList_style.jpg"/>
-							<div class="onContent_img">
-								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-								<div class="homePostImg_userid_style">@d3fi5g</div>
-							</div>
-						</a>
-					</div>
-					<div class="homePostImg_style">
-						<a href="">
-							<img src="/mingle/img/home/img_homeList_style.jpg"/>
-							<div class="onContent_img">
-								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-								<div class="homePostImg_userid_style">@d3fi5g</div>
-							</div>
-						</a>
-					</div>
-					<div class="homePostImg_style">
-						<a href="">
-							<img src="/mingle/img/home/img_homeList_style.jpg"/>
-							<div class="onContent_img">
-								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-								<div class="homePostImg_userid_style">@d3fi5g</div>
-							</div>
-						</a>
-					</div>
-					<div class="homePostImg_style">
-						<a href="">
-							<img src="/mingle/img/home/img_homeList_style.jpg"/>
-							<div class="onContent_img">
-								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-								<div class="homePostImg_userid_style">@d3fi5g</div>
-							</div>
-						</a>
-					</div>
-					<div class="homePostImg_style">
-						<a href="">
-							<img src="/mingle/img/home/img_homeList_style.jpg"/>
-							<div class="onContent_img">
-								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-								<div class="homePostImg_userid_style">@d3fi5g</div>
-							</div>
-						</a>
-					</div>
-					<div class="homePostImg_style">
-						<a href="">
-							<img src="/mingle/img/home/img_homeList_style.jpg"/>
-							<div class="onContent_img">
-								<img src="/mingle/img/home/icon_profile.png" class="homePostImg_profile_style"/>
-								<div class="homePostImg_userid_style">@d3fi5g</div>
-							</div>
-						</a>
-					</div>
+					<c:forEach var="style" items="${styles}">
+						<div class="homePostImg_style">
+							<a href="/mingle/style/trend/info/${style.style_no}">
+								<img src="/mingle/uploadfile/${style.style_file_name}"/>
+								<div class="onContent_img">
+									<img src="${style.user_img}" class="homePostImg_profile_style"/>
+									<div class="homePostImg_userid_style">@${style.user_nick}</div>
+								</div>
+							</a>
+						</div>
+					</c:forEach>
 					
 				</div>
 				<a href="/mingle/style?tabs=1" class="homeMore">

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.project.mingle.service.HomeService;
 import com.project.mingle.service.StyleService;
 import com.project.mingle.vo.ResellVO;
+import com.project.mingle.vo.StyleInfo;
 import com.project.mingle.vo.StyleVO;
 
 @Controller
@@ -24,11 +25,11 @@ public class HomeController {
 	@GetMapping("")
 	public String home(Model model, ResellVO rvo, StyleVO sVO) {
 		List<ResellVO> kreamList = service.kreamList(rvo);
-		List<StyleVO> kreamList2 = service2.kreamData(sVO);
+		List<StyleInfo> styleInfos = service2.getAllStyleInfo();
 		model.addAttribute("rvo", rvo);
 		model.addAttribute("sVO", sVO);
 		model.addAttribute("kreamList", kreamList.subList(1, 6));
-		model.addAttribute("kreamList2", kreamList2.subList(1, 7));
+		model.addAttribute("styles", styleInfos.subList(1, 7));
    
 		return "home";
 	}
