@@ -1263,6 +1263,7 @@ a{
 	height:261px;
 	border-radius: 10px;
 	background: ghostwhite;
+	border: 1px solid gainsboro;
 }
 .homePostTitle_resell{
 	font-family: 'Noto Sans KR', sans-serif;
@@ -1432,8 +1433,9 @@ a{
 	justify-content: space-between;
 }
 .homePostImg_style{
-	width: 220px;
-	height: 300px;
+	width: 222px;
+	height: 302px;
+	border: 1px solid gainsboro;
 	border-radius: 10px;
 }
 .homePostImg_style>a{
@@ -1457,11 +1459,13 @@ a{
 	line-height: 39px;
 	margin: 5px;
 	border-radius: 100%;
+	background: lightgray;
 }
 .homePostImg_userid_style{
 	margin: 5px;
 	font-family: 'Poppins', sans-serif;
 	color: white;
+	text-shadow: 1px 1px darkgray;
 }
 
 /*banner_style*/

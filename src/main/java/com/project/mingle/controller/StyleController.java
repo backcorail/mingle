@@ -270,6 +270,7 @@ public class StyleController {
 		System.out.println("replyVO+asd "+replyVO.toString());
 		//게시글 데이터
 		 int result = service.usercomment(replyVO);
+		 System.out.println(result);
 
 		//List<AdminVO> list = service.resell_boardData(styleVo);
 		
