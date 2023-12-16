@@ -43,9 +43,9 @@
 					class="fas fa-user fa-fw"></i></a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="#!">Settings</a></li>
+<!-- 					<li><a class="dropdown-item" href="#!">Settings</a></li>
 					<li><a class="dropdown-item" href="#!">Activity Log</a></li>
-					<li><hr class="dropdown-divider" /></li>
+					<li><hr class="dropdown-divider" /></li> -->
 					<li><a class="dropdown-item" href="/mingle/myadmin/logout">Logout</a></li>
 				</ul></li>
 		</ul>
@@ -178,10 +178,10 @@
 						</div>-->
 					</div>
 				</div>
-				<div class="sb-sidenav-footer">
+<!-- 				<div class="sb-sidenav-footer">
 					<div class="small">Logged in as:</div>
 					Start Bootstrap
-				</div>
+				</div> -->
 			</nav>
 		</div>
 		<div id="layoutSidenav_content">
@@ -234,18 +234,6 @@
 					</div>
 				</div>
 			</main>
-			<footer class="py-4 bg-light mt-auto">
-				<div class="container-fluid px-4">
-					<div
-						class="d-flex align-items-center justify-content-between small">
-						<div class="text-muted">Copyright &copy; Your Website 2023</div>
-						<div>
-							<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
-								&amp; Conditions</a>
-						</div>
-					</div>
-				</div>
-			</footer>
 		</div>
 	</div>
 	<script
