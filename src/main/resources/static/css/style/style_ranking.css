@@ -115,6 +115,9 @@
 	color : black;
 	position: relative;
 	display : flex;
+	white-space:nowrap;/*줄바꾸지 않음*/
+	overflow:hidden;/*넘친데이터 숨기기*/
+	text-overflow:ellipsis;/*넘친데이터가 있으면 ... 표시하기*/
 }
 
 .username {
