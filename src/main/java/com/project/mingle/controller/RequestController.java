@@ -16,7 +16,6 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,7 +23,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.mingle.service.RequestService;
-import com.project.mingle.vo.ReplyVO;
 import com.project.mingle.vo.RequestFileVO;
 import com.project.mingle.vo.RequestVO;
 import com.project.mingle.vo.UserVO;
@@ -35,6 +33,8 @@ import com.project.mingle.vo.UserVO;
 public class RequestController {
 	@Autowired
 	RequestService service;
+	
+	private int globalRequestNo;
 	
 	@GetMapping("/list")
 	public ModelAndView boardList(RequestVO rvo, RequestFileVO rfvo, UserVO uvo) {
@@ -152,6 +152,9 @@ public class RequestController {
 		//원글선택
 		RequestVO vo = service.requestSelect(request_no);
 		System.out.println("1111"+vo);
+		
+		// 전역 변수에 값 설정
+        this.globalRequestNo = request_no;
 		//첨부파일 
 		mav.addObject("vo", vo);//목록
 		mav.addObject("rvo", rvo);
@@ -162,9 +165,12 @@ public class RequestController {
 	
 	@PostMapping("/requestReply/write")
 	@ResponseBody
-	public String replyWrite(Principal principal, RequestVO rvo) {
+	public String replyWrite(RequestVO rvo, Principal principal) {
 		rvo.setUser_id(principal.getName());
 		System.out.println("222"+rvo);
+		// 전역 변수 값 사용
+        int request_no = this.globalRequestNo;
+		rvo.setRequest_no(request_no);
 		int result = service.replyInsert(rvo);
 		
 		return result+"";
