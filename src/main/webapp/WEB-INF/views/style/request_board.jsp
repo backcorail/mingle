@@ -20,25 +20,26 @@ $(function() {
 				
 				$(result).each(function(i, rVO) {
 					tag += '<div class="comment_view"><div class="info">';
-					tag += '<dl><dt>글쓴이　</dt><dd id="comment_author">' + rVO.userid + '</dd></dl>';
-					tag += '<dl><dt>작성일　</dt><dd id="comment_date">' + rVO.writedate + '</dd></dl>';
+					tag += '<div id="reply_profile"><img src="'+rVO.user_img+'" class="reply_userImg" id="comment_authorImg">';
+					tag += '<div id="comment_author">' + rVO.user_nick + '</div></div>';
+					tag += "<div class = 'comment_output' id = 'comment_content'>" + rVO.request_reply_comment + "</div></div>"; //댓글내용
+					tag += '<div id="comment_date">' + rVO.request_reply_writedate + '</div>';
 
 					//수정, 삭제버튼은 로그인 아이디와 댓글쓴이의 아이디가 같을때
 					//goguma == 'goguma'
-					if ('${logId}' == rVO.userid) {
-						tag += "<input type='button' value='Edit'/>";
-						tag += "<input type='button' value='Del' title='"+rVO.replyno+"' />";
-												
-						tag += "<div class = 'comment_output' id = 'comment_content'>" + rVO.content + "</div></div>"; //댓글내용
+					if ('${authUser.userVO.user_id}' == rVO.user_id) {
+						tag += "<input type='button' value='Edit' class='reply_btn'/>";
+						tag += "<input type='button' value='Del' class='reply_btn' title='"+rVO.request_reply_no+"' />";
+						tag += "<hr>";
 						
 						//수정폼 -> 댓글 글번호, 댓글내용이 폼에 있어야함.
 						tag += "<div style = 'display: none'><form method = 'post'>";
-						tag += "<input type='hidden' name='replyno' value='"+ rVO.replyno +"'/>";
-						tag += "<textarea name='content' style='width: 400px; height: 80px; padding: 10px;'>" + rVO.content + "</textarea>";
+						tag += "<input type='hidden' name='replyno' value='"+ rVO.request_reply_no +"'/>";
+						tag += "<textarea name='content' style='width: 400px; height: 80px; padding: 10px;'>" + rVO.request_reply_comment + "</textarea>";
 						tag += "<input type='submit' value='댓글수정하기'/>";
 						tag += "</form></div>";
 					} else {
-						tag += "<div class = 'comment_output' id = 'comment_content'>" + rVO.content + "</div></div>"; //댓글내용
+						tag += "<hr>";
 					}
 					tag += "</li>";
 				});
@@ -142,10 +143,10 @@ $(function() {
 		<div class="side_wrapper">
 			<div class="profile_wrapper">
 				<div class="profileImg_wrapper">
-					<img src="/mingle/img/home/icon_profile.png" class="profileImg">
+					<img src="${vo.user_img}" class="profileImg">
 				</div>
 				<div class="nameDate_wrapper">
-					<div class="profile_nickname">${vo.user_id}</div>
+					<div class="profile_nickname">${vo.user_nick}</div>
 					<div class="writeDate">${vo.request_writedate}</div>
 				</div>
 				<div class="scrap">스크랩</div>
@@ -166,7 +167,7 @@ $(function() {
 		<div class="reply_wrapper comment">
 			<div class="replyTitle">Reply</div>
 			<div class="replyWrite">
-				<c:if test="${!empty authUser }">
+				<c:if test="${!empty authUser}">
 					<form method="post" id="replyForm">
 						<input type="hidden" name="boardno" value="">
 	           	  	    <input type="text" id="comment_input" name="request_reply_comment" placeholder="댓글을 입력하세요...">
@@ -177,5 +178,7 @@ $(function() {
             <ul id="replyList">
             </ul>
 		</div>
+		<div class="reply_area1"></div>
+		<div class="reply_area2"></div>
 	</div>
 </div>

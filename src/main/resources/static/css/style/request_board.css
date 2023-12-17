@@ -196,3 +196,43 @@ input:focus {outline: none;}
 	translate: 0px 2px;
 	font-weight: normal;
 }
+
+/*댓글*/
+#replyList{
+	width: 100%;
+}
+.info{
+	display: flex;
+	flex-direction: column;
+	padding-top: 20px;
+}
+#reply_profile{
+	display: flex;
+	align-items: center;
+}
+#comment_author{
+	margin-left: 5px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.comment_output{
+	width: 700px;
+	margin-top: 10px;
+	font-size: 15px;
+}
+.reply_userImg{
+	width: 35px;
+	height: 35px;
+	border: 1px solid lightgray;
+	border-radius: 100%;
+}
+#comment_date{
+	font-size: 12px;
+	color: darkgray;
+}
+.reply_btn{
+	width: 40px;
+	background: none;
+	border: none;
+	color: rgb(255,180,0);
+}

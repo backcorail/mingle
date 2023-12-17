@@ -16,11 +16,31 @@
 	    </if>
 	</insert>
 	<select id="requestSelect" resultType="com.project.mingle.vo.RequestVO">
-		select request_no, request_name, request_type, request_comment, user_id, request_writedate from request where request_no=${param1}
+	    SELECT
+	        r.request_no,
+	        r.request_name,
+	        r.request_type,
+	        r.request_comment,
+	        r.user_id,
+	        r.request_writedate,
+	        u.user_img,
+	        u.user_nick
+	    FROM
+	        request r
+	    JOIN
+	        users u ON r.user_id = u.user_id
+	    WHERE
+	        r.request_no = #{param1}
 	</select>
 	<select id="requestList" resultType="com.project.mingle.vo.RequestVO">
 	    SELECT
-	        r.request_no, r.request_name, r.user_id, r.request_writedate, u.user_img, r.request_comment
+	        r.request_no,
+	        r.request_name,
+	        r.user_id,
+	        r.request_writedate,
+	        u.user_img,
+	        u.user_nick,
+	        r.request_comment
 	    FROM
 	        request r
 	    JOIN
@@ -36,9 +56,23 @@
 		insert into request_reply (request_no, user_id, request_reply_comment) 
 		values(${request_no}, #{user_id}, #{request_reply_comment})
 	</insert>
-	<select id ="replySelect" resultType="com.project.mingle.vo.RequestVO">
-		select request_reply_no, request_no, request_reply_comment, user_id, request_reply_writedate 
-		from request_reply where request_no=${param1} order by request_reply_no desc;
+	<select id="replySelect" resultType="com.project.mingle.vo.RequestVO">
+	    SELECT
+	        rr.request_reply_no,
+	        rr.request_no,
+	        rr.request_reply_comment,
+	        rr.user_id,
+	        rr.request_reply_writedate,
+	        u.user_img,
+	        u.user_nick
+	    FROM
+	        request_reply rr
+	    JOIN
+	        users u ON rr.user_id = u.user_id
+	    WHERE
+	        rr.request_no = #{param1}
+	    ORDER BY
+	        rr.request_reply_no DESC;
 	</select>
 	<update id ="replyUpdate">
 		update request_reply set request_reply_comment=#{request_reply_comment} 

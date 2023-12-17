@@ -35,7 +35,7 @@
 						<img src="${pageContext.request.contextPath}/uploadfile/${fileList[status.index].request_datafile_dataname}" class="mainImg">
 						<div class="profile">
 							<img src="${n.user_img}" class="profileImg">
-							<div class="writer">${n.user_id}</div>
+							<div class="writer">${n.user_nick}</div>
 						</div>
 						<div class="title">${n.request_name}</div>
 					</a>
@@ -44,3 +44,4 @@
 		</div>
 	</div>
 </main>
+<a class = "fillout" href="/mingle/style/request/write">fill out</a>
