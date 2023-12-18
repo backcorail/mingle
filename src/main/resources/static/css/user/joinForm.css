@@ -1,0 +1,81 @@
+html{ font-size: 17px; }
+body{ font-size: 1rem; }
+
+#div-user-modal,#div-telaouth-modal, 
+#div-name-modal, #div-welcome-modal{
+  display: none;
+}
+
+/* 모달 백그라운드 */
+.modal-bg{
+  display: none;
+  /* 기본적으로 숨김 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* 반투명한 검은색 배경 */
+}
+.modal-inner-appear{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  opacity: 0;  /* 초기 투명도 */
+  animation: modalAppear 0.3s ease-in forwards;  /* 애니메이션 적용. 0.5s는 애니메이션의 지속 시간이며 원하는 대로 조절 가능 */
+}
+@keyframes modalAppear {
+  0% {
+      top: 48%;  /* 시작 위치 */
+      opacity: 0;
+  }
+  100% {
+      top: 50%;  /* 끝 위치 */
+      opacity: 1;
+  }
+}
+.modal-inner-disappear{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  opacity: 0;  /* 초기 투명도 */
+  animation: modalDisappear 0.3s ease-in forwards;  /* 애니메이션 적용. 0.5s는 애니메이션의 지속 시간이며 원하는 대로 조절 가능 */
+}
+@keyframes modalDisappear {
+  0% {
+      top: 50%;  /* 시작 위치 */
+      opacity: 1;
+  }
+  100% {
+      top: 48%;  /* 끝 위치 */
+      opacity: 0;
+      display: none;
+  }
+}
+
+
+/* 환영합니다 */
+.sign-modal-containder-small{
+  width: 25.35rem;
+  height: 22.7rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 3.15rem 4.5rem 3.15rem 4.5rem;
+  border-radius: 0.5rem;
+  background: #FFF;
+  box-shadow: 0px 0px 15px 0px #FFD600;
+}
+
+/* 모달 적용구간 끝 */

@@ -1,0 +1,225 @@
+@charset "UTF-8";
+
+.page {
+	margin-top : 90px;
+	display : flex;
+	justify-content: center;
+	
+}
+
+.board_list_now {
+	display : flex;
+	width : 1180px;
+	height : auto;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-top : 30px;
+}
+
+.board_list_now_hidden {
+	display : none;
+	width : 1180px;
+	height : auto;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+
+ 
+
+
+.board_list_week {
+	display : flex;
+	width : 1180px;
+	height : auto;
+}
+
+.board_list_month {
+	display : flex;
+	width : 1180px;
+	height : auto;
+	
+}
+
+.board_items {
+	width : 270px;
+	height : 449px;
+	display : inline-block;
+	justify-content: center;
+	margin-bottom : 20px;
+	
+}
+
+.heart {
+	width : 20px;
+	height : 20px; 
+    background-color: white;
+	cursor : pointer;
+	border : white;
+    float: right;
+}
+
+.like1 {
+	background-color: white;
+	cursor : pointer;
+	border : white;
+	width : 20px;
+	height : 20px;
+	margin-right : 10px;
+	margin-left : 20px;
+}
+
+.likeLink1 {
+	float : right;
+}
+
+.like2 {
+	background-color: white;
+	cursor : pointer;
+	border : white;
+	width : 20px;
+	height : 20px;
+	margin-right : 10px;
+	margin-left : 20px;
+}
+
+.img{
+	width : 270px;
+	height : 367px;
+	border-radius: 10px;
+	margin-bottom : 5px;
+	cursor : pointer;
+}
+
+.imgdiv{
+	position: relative;
+	width : 150px;
+	border-radius: 10px;
+	counter-increment: divCounter;
+}
+
+
+
+.profile-img {
+	width : 20px;
+	height : 20px;
+	border-radius: 50%;
+}
+
+.hashtag {
+	height : 50px;
+	font-size : 10px;
+	cursor : pointer;
+	margin-top : 10px;
+	font-size : 12px;
+	color : black;
+	position: relative;
+	display : flex;
+	white-space:nowrap;/*줄바꾸지 않음*/
+	overflow:hidden;/*넘친데이터 숨기기*/
+	text-overflow:ellipsis;/*넘친데이터가 있으면 ... 표시하기*/
+}
+
+.username {
+	font-size : 15px;
+	cursor : pointer;
+}
+
+
+.board-content {
+	font-size : 15px;
+	width : 270px;
+	height : auto;
+}
+
+.board-name {
+	font-size : 15px;
+}
+
+.board-wrap {
+	height : auto;
+	margin-bottom : 50px;
+}
+
+#moreview1 {
+	display: block;
+    margin: auto;
+    margin-top : 10px;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    width : 80px;
+    height : 30px;
+}
+
+#moreview2 {
+	display: block;
+    margin: auto;
+    margin-top : 10px;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    width : 80px;
+    height : 30px;
+}
+
+#moreview3 {
+	display: block;
+    margin: auto;
+    margin-top : 10px;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    width : 80px;
+    height : 30px;
+}
+
+.board_items_hidden {
+	width : 270px;
+	height : auto;
+	display : inline-block;
+	justify-content: center;
+	margin-bottom : 20px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.all_select {
+	margin-top : 20px;
+}
+
+.hashtag:hover {
+    text-decoration: underline;
+}
+
+.style_likes_check {
+	width : 20px;
+	height: 20px;
+	float : right;
+}
+
+
+/* 좋아요 */
+.like-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.like-button:focus {
+  outline: none;
+}
+
+.far.fa-heart {
+  color: gray;
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.fas.fa-heart {
+  color: red;
+  font-size: 24px;
+  margin-right: 5px;
+}

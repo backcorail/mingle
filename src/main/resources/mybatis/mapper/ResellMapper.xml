@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mingle.mapper.ResellMapper">
+	<select id="resell_totalRecord" resultType="int">
+		select count(resell_no) from resell
+		<where>
+			<if test="searchWord1 != ''">and resell_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and resell_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and resell_name like '%${searchWord3}%'</if>
+		</where>
+	</select>
+	
+	<select id="kream_totalRecord" resultType="int">
+	 	select count(item_no) from item
+		<where>
+			<if test="searchWord1 != ''">and item_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and item_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and item_name like '%${searchWord3}%'</if>
+			<choose>
+				<when test="category != 0 and category != 3">and (item_category = '${category}' or item_category = 0)</when>
+				<when test="category == 3">and item_category = '${category}'</when>
+			</choose>
+			<if test="detail != 0">
+				<if test="detail % 100 != 0">and item_detail = '${detail}'</if>
+				<if test="detail % 100 == 0">and floor(item_detail/100)*100 = '${detail}'</if>
+			</if>
+		</where>
+	</select>
+	
+	<select id="resell_boardData" resultType="com.project.mingle.vo.ResellVO">
+		select resell_no, resell_name, resell_seller, item_price, resell_addr, date_format(resell_writedate, '%Y-%m-%d %h:%i:%s') 
+		resell_writedate from resell 
+		<where>
+			<if test="searchWord1 != ''">and resell_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and resell_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and resell_name like '%${searchWord3}%'</if>
+		</where>
+		order by resell_writedate desc limit #{onePageRecord} offset ${offsetPoint};
+	</select>
+	
+	<select id="kreamData" resultType="com.project.mingle.vo.ResellVO">
+	   	select i.item_no, i.item_name, i.item_price, i.item_postdate, i.item_image, j.item_file_name, i.item_status
+		from item i left join (select item_no, min(item_file_name) as item_file_name
+    	from item_file group by item_no) j on i.item_no = j.item_no
+	    <where>
+			<if test="searchWord1 != ''">and item_name like '%${searchWord1}%'</if>
+			<if test="searchWord2 != ''">and item_name like '%${searchWord2}%'</if>
+			<if test="searchWord3 != ''">and item_name like '%${searchWord3}%'</if>
+			<choose>
+				<when test="category != 0 and category != 3">and (item_category = '${category}' or item_category = 0)</when>
+				<when test="category == 3">and item_category = '${category}'</when>
+			</choose>
+			<if test="detail != 0">
+				<if test="detail % 100 != 0">and item_detail = '${detail}'</if>
+				<if test="detail % 100 == 0">and floor(item_detail/100)*100 = '${detail}'</if>
+			</if>
+		</where>
+	    order by 
+	    <choose>
+		    <when test="sort == 'name_asc'">item_name asc</when>
+		    <when test="sort == 'price_asc'">item_price asc</when>
+		    <when test="sort == 'latest_asc'">item_postdate asc</when>
+		    <when test="sort == 'name_desc'">item_name desc</when>
+		    <when test="sort == 'price_desc'">item_price desc</when>
+		    <otherwise>item_postdate desc</otherwise>
+		</choose>
+		limit #{onePageRecord} offset ${offsetPoint};
+	</select>
+
+	<!-- 보드 페이지 데이터 받아오기 -->
+	<select id="resell_select" resultType="com.project.mingle.vo.ResellVO">
+		select resell_name, resell_seller, resell_buyer, resell_comment, resell_addr, resell_writedate from resell
+		where item_no = ${item_no}
+	</select>
+	<select id="item_select" resultType="com.project.mingle.vo.ResellVO">
+		select item_no, item_name, item_category, item_detail, item_price, item_image, item_postdate from item
+		where item_no = ${item_no}
+	</select>
+	<select id="image_select" resultType="java.lang.String">
+		select item_file_name from item_file where item_no = #{item_no}
+	</select>
+	<select id="user_select" resultType="com.project.mingle.vo.ResellVO">
+		select user_id, user_nick, user_img from users where user_id = #{user_id}
+	</select>
+	
+	<!-- 데이터 입력하기 -->
+	<insert id ="resell_insert" parameterType="com.project.mingle.vo.ResellVO">
+	    insert into resell(resell_name, resell_seller, item_no, resell_comment, resell_addr)
+	    values(#{resell_name}, #{resell_seller}, #{item_no}, #{resell_comment}, #{resell_addr})
+    </insert>
+	<insert id ="item_insert" parameterType="com.project.mingle.vo.ResellVO" useGeneratedKeys="true" keyProperty="item_no">
+	    insert into item(item_name, item_category, item_detail, item_price, item_image, item_status)
+	    values(#{item_name}, #{item_category},  #{item_detail}, #{item_price}, #{item_image}, #{item_status})
+    </insert>
+    <insert id="image_insert" parameterType="java.util.List">
+	    <if test="list != null or !list.isEmpty()">
+		    <foreach item="item" collection="list" open="insert into item_file(item_no, item_file_name) values" separator=",">
+				(#{item.item_no}, #{item.item_file_name})
+			</foreach>
+	    </if>
+	</insert>
+	
+	<!-- 데이터 수정하기 -->
+	<update id="resell_update">
+	    update resell set resell_name = #{resell_name}, resell_comment = #{resell_comment}, resell_addr = #{resell_addr}, resell_writedate = current_timestamp
+	    where item_no = #{item_no}
+	</update>
+	<update id="item_update">
+		update item set item_name = #{item_name}, item_category = #{item_category}, item_detail = #{item_detail}, item_price = #{item_price}, item_postdate = current_timestamp
+		where item_no = ${item_no}
+	</update>
+	
+	<!-- 데이터 삭제하기 -->
+	<delete id="resell_delete">
+		delete from resell where item_no = #{item_no}
+	</delete>
+	<delete id="item_delete">
+		delete from item where item_no = #{item_no}
+	</delete>
+	<delete id="image_delete">
+		delete from item_file where item_no = #{item_no}
+	</delete>
+	
+	<!-- 구매 관련 -->
+	<update id="resell_buyer">
+		update resell set resell_buyer = #{resell_buyer}
+		where item_no = #{item_no}
+	</update>
+	<update id="item_buyer">
+		update item set item_status = #{item_status}
+		where item_no = #{item_no}
+	</update>
+</mapper>

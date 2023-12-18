@@ -1,0 +1,162 @@
+@font-face {
+  font-family : 'Yaldevi-ExtraLight';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/Yaldevi-ExtraLight.ttf')
+}
+@font-face {
+  font-family : 'Yaldevi-SemiBold';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/Yaldevi-SemiBold.ttf')
+}
+@font-face {
+  font-family : 'Yaldevi-Bold';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/Yaldevi-Bold.ttf')
+}
+
+@font-face {
+  font-family : 'KeaniaOne-Regular';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/KeaniaOne-Regular.ttf')
+}
+@font-face {
+  font-family : 'Kanit-Regular';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/Kanit-Regular.ttf')
+}
+
+@font-face {
+  font-family : 'ABeeZee-Regular';
+  font-style: 'normal'; /* font 스타일 정의 (기울임, 일반) */
+  src : url('/mingle/assets/fonts/ABeeZee-Regular.ttf')
+}
+:root{
+  --default-size : 1;
+}
+html{ font-size: 17px; }
+body{ font-size: 1rem; }
+
+body{
+  font-family: 'Yaldevi', 'NanumSquare', 'sans-serif' , 'San Francisco';
+}
+header{
+	/* 일단 블럭 */
+	display: none;
+	
+}
+footer{
+	/* 일단 블럭 */
+	display: none;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+
+  /*헤더 공간 확보*/
+  /* margin-top: 90px; */
+}
+.container{      
+  /* width: 56rem; */
+  height: 35.25rem;
+  border-radius: 1rem;
+  background-size: contain;
+}
+
+/* 정리 시작 */
+.blank-102{
+  height: 5.1rem;
+}
+
+
+
+
+
+
+.div-logo:hover{
+	cursor: pointer;
+	
+}
+.div-main-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 37.05rem;
+  height: 35.25rem;
+  border-radius: 1rem 1rem 1rem 1rem;
+  background: #ffffff;
+}
+
+/* mingle */
+.div-main-form .div-logo{
+  width: 10.15rem;
+  color: #000000;
+  text-align: center;
+  font: 400 3.2rem 'KeaniaOne-Regular';
+}
+.blank-22{
+  height: 1.1rem;
+}
+/*  Mixing various fashions into one */
+.div-main-form .div-tile-desc{
+  width: 17.7rem;
+  height: 1.2rem;
+  color: #000000;
+  text-align: center;
+  font: 400 1.2rem 'Kanit-Regular';
+}
+.blank-20{
+  height: 1rem;
+}
+.div-main-form .div-login-outline{
+  width: 24.19905rem;
+  height: 10.35rem;
+}
+
+/* 아이디  */
+.div-main-form .div-id-text{
+  width: 6rem;
+  height: 1.2rem;
+  color: #000000;
+  font: 1000 0.75rem 'Yaldevi-Bold';
+}
+.in-txt{
+  width: 100%;
+  border: none;
+  border-bottom: 0.2rem solid #FFB400;
+  height: 2.05rem;
+  font: 600 1.25rem "Yaldevi-SemiBold";
+}
+.in-txt:focus{
+  outline:none;
+}
+.in-txt::placeholder{
+  color: #afafaf;
+}
+
+/* 비밀번호 */
+.div-main-form .div-pwd-text{
+  width: 4.1rem;
+  height: 1.2rem;
+  color: #000000;
+  font: 1000 0.75rem 'Yaldevi-Bold';
+}
+/* 로그인 용.div-main-form */
+.btn-login{
+  width: 24.2rem;
+  height: 3.75rem;
+  border-radius:0.25rem;
+  border-style: none;
+
+  background: #ffd600;
+  
+  color: #ffffff;
+  text-align: center;
+  font: 600 1rem "Yaldevi-SemiBold";
+}
+.btn-login:hover{
+  cursor: pointer;
+  background: #f7e175;
+}

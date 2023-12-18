@@ -1,0 +1,58 @@
+/* 폰트 */
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.reqeust_wrapper{
+	width: 1180px;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 20px;
+	grid-row-gap: 0px;
+	padding:20px;
+}
+.reqeust_content{
+	width: 270px;
+	height: 449px;
+	display: grid;
+	margin-bottom: 10px;
+}
+.mainImg{
+	width: 270px;
+	height: 367px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 1px rgb(226, 226, 226);
+}
+.profile{
+	width: 100%;
+	height: 35px;
+	display: flex;
+}
+.profileImg{
+	width: 35px;
+	height: 35px;
+	border: 1px solid lightgray;
+	border-radius: 100%;
+}
+.writer{
+	width:180px;
+	height: 35px;
+	margin-left: 5px;
+	line-height: 35px;
+	font-size: 13px;
+	white-space:nowrap;/*줄바꾸지 않음*/
+	overflow:hidden;/*넘친데이터 숨기기*/
+	text-overflow:ellipsis;/*넘친데이터가 있으면 ... 표시하기*/
+}
+.title{
+	white-space:nowrap;/*줄바꾸지 않음*/
+	overflow:hidden;/*넘친데이터 숨기기*/
+	text-overflow:ellipsis;/*넘친데이터가 있으면 ... 표시하기*/
+	font-family: 'HakgyoansimWoojuR';
+	font-size: 18px;
+}

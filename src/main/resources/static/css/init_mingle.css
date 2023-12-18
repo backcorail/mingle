@@ -1,0 +1,117 @@
+/* 1부 전체 layout */
+/* 0. 색상변수 */
+:root{
+    --text-color :#f0f4f5;
+    --background-color : #263343;
+    --accent-color: #d49466;
+    --test-wrap: rgb(235, 200, 198);
+    --test-header: rgb(25, 107, 69);
+    --test-main: #494765;
+    --test-footer: rgb(161, 105, 102);
+}
+
+/* 1. 박스 사이징 */
+* { 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* 2. 반응형을 위한 기준 
+반응형 작업할때 
+퍼센트나 픽셀 - 레이아웃구조가 바뀔때
+rem - 폰트사이즈나 패딩 
+예시)
+pc- 20px
+태블릿 - 16px
+모바일 - 12px
+*/
+html{ font-size: 20px; }
+body{ font-size: 1rem; }
+
+/* 3. 화면가득채우기 */
+body,html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'NanumSquare', 'sans-serif' , 'San Francisco';
+}
+h1,h2,h3,h4,p,ul,li{
+    margin: 0;
+    padding: 0;
+}
+/* 4. 시멘틱태그 기본 */
+.wrapper {
+    /* flexbox 시작 */
+    display: flex;
+    /* 세로 방향으로 flex 아이템 정렬 */
+    flex-direction: column;
+    /* viewport 높이를 100%로 설정 */
+    /* flex-메인축 순서를 유지한채로 센터정렬
+    margin: 0 auto; 와 동일 */    
+    align-items: center;
+	/*position: relative;*/
+    height: 100vh;
+    /*width: 100%;*/
+     min-width: 1340px;
+    
+    /* 테스트용 색깔 변수 */
+    /*background-color: var(--test-wrap);*/
+}
+
+header {
+    width: 1280px;
+    /* 테스트용 색깔 변수 */
+}
+header > nav{
+    width: 100%;
+}
+
+main {
+    flex: 1;
+    /* main 영역이 가능한 모든 공간을 차지하도록 설정 */
+    width: 100%;
+    position: relative;
+    /* 테스트용 색깔 변수 */
+    /*background-color: var(--test-main);*/
+}
+
+aside {
+    
+}
+
+footer {
+    width: 1280px;
+    /* 테스트용 색깔 변수 */
+    /*background-color: var(--test-footer);*/
+}
+
+
+/* 2부 개별 태그 */
+/* 1. a태그 가상선택자 */
+a:link{
+    text-decoration: none;
+    /* color: blue; */
+}
+a:visited {
+    text-decoration: none;
+    /* color: blue; */
+}
+
+a:hover {
+    text-decoration: none;
+    /* color: red; */
+}
+a:active {
+    text-decoration: underline;
+    /* color: green; */
+}
+
+/* 2. ul - li  */
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+input{
+    width: 150px;
+}

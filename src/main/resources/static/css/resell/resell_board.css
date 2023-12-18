@@ -1,0 +1,319 @@
+@charset "UTF-8";
+
+.wrapper {
+	padding-top:110px;
+}
+
+.resell_board_top {
+	display:flex;
+	width:1280px;
+}
+.resell_top {
+	width:1280px;
+	display:flex;
+	justify-content:right;
+	text-align:center;
+	margin-bottom:20px;
+}
+.resell_top>li {
+	width:100px;
+	text-align:center;
+	margin-top:10px;
+	padding-bottom:5px;
+}
+.resell_search {
+	position:relative;
+}
+
+
+/* 상단 밑줄 애니메이션 */
+.search_category {
+	width:1280px;
+    display:flex;
+    flex-direction:row;
+    text-decoration:none;
+    text-align:center;
+    justify-content:flex-end;
+    margin-bottom:10px;
+}
+.category_type {
+	font-family: 'Playfair Display', serif;
+	cursor: pointer;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	transition: all 0.2s ease-in-out;
+	height:40px;
+	width:115px;
+	margin:0px 5px;
+	font-size:1.3em;
+	color:black;
+}
+.category_type::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background-color: #FFC107;
+    transition: width 0.2s ease-in-out;
+}
+.category_type.select::before {
+    width: 100%;
+    transform: translateX(-50%);
+}
+.category_type:hover {
+	color:#FFC107;
+}
+
+
+
+
+
+.resell_board_img {
+	width:600px;
+	display:flex;
+	justify-content: flex-end;
+}
+
+.resell_mini_img {
+	display:flex;
+	flex-direction: column;
+}
+
+.resell_mini_img img {
+	width:65px;
+	height:65px;
+	margin:0 15px 10px;
+	border-radius:5px;
+	cursor: pointer;
+}
+
+.resell_main_img {
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+
+.main_img {
+	width:500px;
+	height:500px;
+	border-radius:10px;
+	margin-bottom:10px;
+}
+
+.select_img {
+	width:50px;
+	height:50px;
+	margin-left:20px;
+}
+
+
+
+/* 위쪽의 오른쪽 부분 */
+.resell_board_info {
+	width:600px;
+	line-height:36px;
+}
+.resell_board_info > ul {
+	height:600px;
+}
+.resell_board_info li {
+	width:600px;
+}
+.resell_board_info li:nth-child(1) {
+	display:flex;
+}
+.purchase_price {
+	width:300px;
+}
+/* 구매가 글자 */
+.purchase_price>div:nth-child(1) {
+	font-size:1.2em;
+	font-weight:bold;
+}
+/* 가격 변수 */
+.purchase_price>div:nth-child(2) {
+	font-size:1.6em;
+	font-weight:bold;
+	color:dodgerblue;
+}
+.modify_remove {
+	width:300px;
+	display:flex;
+	justify-content: flex-end;
+}
+/* 수정, 삭제 글자 */
+.modify_remove > div {
+	width:60px;
+	/*font-weight:bold;*/
+	font-size:20px;
+	color:gray;
+}
+.modify_remove > div:hover {
+	color:blue;
+	cursor:pointer;
+}
+.resell_item_name {
+	height:80px;
+	display:flex;
+	line-height:24px;
+	flex-direction: column;
+}
+.resell_item_name > div:nth-child(1) {
+	font-size:1em;
+	font-weight:bold;
+}
+.resell_item_name > div:nth-child(2) {
+	font-size:0.8em;
+}
+.seller_data {
+	height:50px;
+	margin-bottom:5px;
+	display:flex;
+	font-size:0.8em;
+}
+.seller_data img {
+	width:50px;
+	height:50px;
+	border-radius:100%;
+}
+.seller_nick {
+	padding-left:5px;
+	width:275px;
+}
+.writedate {
+	padding-right:5px;
+	width:275px;
+	text-align:right;
+}
+.seller_data > div > div {
+	height:25px;
+	line-height:25px;
+	font-weight:bold;
+}
+
+.buy_button > button {
+	width:600px;
+	height:60px;
+	border:none;
+	border-radius:10px;
+	box-shadow:0px 5px 10px gray;
+	font-size:1em;
+	background-color:#FFC107;
+	font-size:1.2em;
+	font-weight:bold;
+	color:white;
+	cursor: pointer;
+}
+.resell_locate>div {
+	font-weight:bold;
+	font-size:1.2em;
+}
+.resell_addr>div {
+	color:gray;
+	font-size:0.9em;
+}
+
+.resell_map {
+	width:600px;
+	height:160px;
+	background:lightgray;
+	border-radius:10px;
+	box-shadow:0px 5px 10px gray;
+	overflow:hidden;
+}
+.resell_map > div {
+	width:600px;
+	height:160px;
+}
+.marker_info {
+	text-align:center;
+	padding:6px 10px;
+	width:150px;
+	height:30px;
+	font-size:0.8em;
+	line-height:15px;
+	border-radius:5px;
+}
+
+/* 중간 설명 부분 */
+.resell_board_bottom {
+	width:1280px;
+	max-width:1280px;
+	display:flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	overflow-wrap: break-word;
+}
+.resell_board_bottom > div:first-child {
+	width:1280px;
+}
+.resell_board_bottom img {
+	width:100%;
+}
+
+
+
+/* 댓글 부분 */
+.resell_reply {
+	width:1280px;
+}
+.resell_reply_main {
+	display:flex;
+	justify-content: space-between;
+}
+.resell_reply_main>button {
+	width:200px;
+	font-size:1.2em;
+	border-radius:10px;
+	border:none;
+	box-shadow:0px 5px 10px gray;
+	background:#FFC107;
+}
+.resell_reply_each {
+	display:flex;
+}
+.resell_reply_each>img {
+	width:50px;
+	height:50px;
+}
+.resell_reply_each>div {
+	display:flex;
+	width:1200px;
+	margin:0 10px;
+	justify-content: space-between;
+    align-items: center;
+}
+.resell_reply_each>div>div {
+	display:flex;
+    justify-content: space-between;
+}
+.resell_reply_each>div:nth-child(3) {
+	display:flex;
+	justify-content: space-between;
+}
+
+
+
+/* 기타 */
+.opacity {
+	opacity: 0.3;
+}
+/* 공백줄 */
+.blank_line {
+	height:20px;
+}
+/* 세로선 */
+.column_line {
+	border:1px solid lightgray;
+	margin:0 40px;
+}
+/* 가로선 */
+.row_line {
+	border:1px solid lightgray;
+	margin:20px 0;
+	width:1280px;
+}

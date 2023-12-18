@@ -1,0 +1,385 @@
+@font-face {
+  font-family : 'Inika-Bold';
+  src : url('/mingle/assets/fonts/Inika-Bold.ttf')
+}
+@font-face {
+  font-family : 'Inika-Regular';
+  src : url('/mingle/assets/fonts/Inika-Regular.ttf')
+}
+
+/* 공통 설정 */
+:root{
+  --cate-back : #FFFFFF;
+  --btn-click-bg : #f0eded;
+}
+
+.div-mypage-main{
+  display: flex;
+  flex-direction: column;
+  /* width: calc(1548.35px * var(--default-size)); */
+  height: calc(1080px * var(--default-size));
+
+  padding-top: calc(18px * var(--default-size));
+  padding-right: calc(47.27px * var(--default-size));
+  /* padding-bottom: calc(69.83px * var(--default-size)); */
+  padding-left: calc(49px * var(--default-size));
+
+  background-color: var(--cate-back);
+}
+.div-underline-bold{
+  width: 100%;
+  margin-top: calc(17px * var(--default-size));
+  border-bottom: 
+    calc(3px * var(--default-size)) 
+    solid 
+    #000000;
+}
+.div-edit-area{
+	width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: calc(69px * var(--default-size));
+  margin-bottom: calc(87px * var(--default-size));
+}
+
+.div-edit-area > #img-profile{
+  
+  width: calc(194px * var(--default-size));
+  height: calc(194px * var(--default-size));
+
+  margin-right: calc(19px * var(--default-size));
+  border-radius: 50%;
+  
+  box-shadow: 
+  calc(0px * var(--default-size))
+  calc(4px * var(--default-size))
+  calc(4px * var(--default-size))
+  calc(4px * var(--default-size))
+  rgba(0, 0, 0, 0.25);
+}
+
+.div-edit-area .div-profile-area{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.div-edit-area .div-profile-area .div-my-email{
+  height: calc(42px * var(--default-size));
+  
+  margin-bottom: calc(12.75px * var(--default-size));
+  line-height: calc(42px * var(--default-size));
+  text-align: center;
+}
+.div-edit-area .div-profile-area .div-my-nickname{
+  height: calc(33.1px * var(--default-size));
+  /* width: calc(90px * var(--default-size)); */
+
+  margin-bottom: calc(9.5px * var(--default-size));
+  line-height: calc(33.1px * var(--default-size));
+  text-align: center;
+}
+
+
+.div-edit-area .div-profile-area .div-btn-area{
+
+}
+.div-edit-area .div-profile-area .div-btn-area input{
+  width: calc(130px * var(--default-size));
+  height: calc(41px * var(--default-size));
+  
+  
+  border-radius: calc(10px * var(--default-size));
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: calc(2px * var(--default-size));
+  
+  background: #ffffff;
+}
+.div-edit-area .div-profile-area .div-btn-area input:hover{
+  cursor: pointer;
+  background: var(--btn-click-bg);
+}
+
+
+.div-underline-thin{
+  width: 100%;
+  margin-bottom: calc(61px * var(--default-size));
+  border-bottom: 
+    calc(2px * var(--default-size)) 
+    solid 
+    #AFAFAF;
+}
+
+.div-profile-edit-area {
+  display: flex;
+  width: 100%;
+  height: calc(635px * var(--default-size));
+}
+
+/* 데이터 수정 공통 */
+.div-underline-thin-data{
+  width: 100%;
+  
+  padding-bottom: calc(18px * var(--default-size));
+  border-bottom: 
+    calc(2px * var(--default-size)) 
+    solid 
+    #AFAFAF;
+}
+.div-blank{
+  height: calc(45px * var(--default-size));
+}
+
+.input-userdata-commom{
+	
+  width: calc(470px * var(--default-size));
+  border-style: none;
+}
+.input-userdata-commom:focus{
+  outline:none;
+}
+.input-userdata-commom::placeholder{
+  color: #afafaf;
+  
+}
+
+.btn-userdata-common{
+  width: calc(65px * var(--default-size));
+  height: calc(34px * var(--default-size));
+  background: #ffffff;
+  border-radius: calc(10px * var(--default-size));
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: calc(2px * var(--default-size));
+}
+.btn-userdata-common:hover{
+  cursor: pointer;
+  background: var(--btn-click-bg);
+}
+
+/* 메인 데이터 수정 */
+.div-profile-edit-area .div-main-data-area{
+  width: calc(553px * var(--default-size));
+  margin-right: calc(52px * var(--default-size));
+}
+.user-out-area{
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+	
+}
+.user-out-area .user-out{
+	margin-right: 1rem;
+	width: 5rem;
+}
+
+/* 서브 데이터 수정 */
+.div-profile-edit-area .div-sub-data-area{
+  width: calc(553px * var(--default-size));
+}
+.div-sub-data-area .div-gen-area{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+.Inika-bold-25{
+  font: 700 
+  calc(25px * var(--default-size))
+  "Inika-Bold";
+  color: #000000;
+}
+
+.Inika-bold-20{
+  font: 700 
+  calc(20px * var(--default-size))
+  "Inika-Bold";
+  color: #000000;
+}
+.Inika-bold-18{
+  font: 700 
+  calc(18px * var(--default-size))
+  "Inika-Bold";
+  color: #000000;
+}
+
+.Inika-Regular-22{
+  font: 400 
+  calc(22px * var(--default-size))
+  "Inika-Regular";
+  color: #000000;
+}
+
+.Inika-Regular-20{
+  font: 400 
+  calc(20px * var(--default-size))
+  "Inika-Regular";
+  color: #000000;
+}
+
+.Inika-Regular-16{
+  font: 400 
+  calc(16px * var(--default-size))
+  "Inika-Regular";
+  color: #000000;
+}
+
+.Inika-Regular-16-af{
+  margin-bottom: calc(18px * var(--default-size));
+  font: 400 
+  calc(16px * var(--default-size))
+  "Inika-Regular";
+  color: #afafaf;
+}
+/* 외부 토글 css  */
+
+  .checkbox-wrapper-55 input[type="checkbox"] {
+    visibility: hidden;
+    display: none;
+  }
+
+  .checkbox-wrapper-55 *,
+  .checkbox-wrapper-55 ::after,
+  .checkbox-wrapper-55 ::before {
+    box-sizing: border-box;
+  }
+
+  .checkbox-wrapper-55 .rocker {
+    display: inline-block;
+    position: relative;
+    /*
+    SIZE OF SWITCH
+    ==============
+    All sizes are in em - therefore
+    changing the font-size here
+    will change the size of the switch.
+    See .rocker-small below as example.
+    */
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #888;
+    width: 7em;
+    height: 4em;
+    overflow: hidden;
+    border-bottom: 0.5em solid #eee;
+  }
+
+  .checkbox-wrapper-55 .rocker-small {
+    font-size: 0.75em;
+  }
+
+  .checkbox-wrapper-55 .rocker::before {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #999;
+    border: 0.5em solid #eee;
+    border-bottom: 0;
+  }
+
+  .checkbox-wrapper-55 .switch-left,
+  .checkbox-wrapper-55 .switch-right {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5em;
+    width: 3em;
+    transition: 0.2s;
+    user-select: none;
+  }
+
+  .checkbox-wrapper-55 .switch-left {
+    height: 2.4em;
+    width: 2.75em;
+    left: 0.85em;
+    bottom: 0.4em;
+    background-color: #ddd;
+    transform: rotate(15deg) skewX(15deg);
+  }
+
+  .checkbox-wrapper-55 .switch-right {
+    right: 0.5em;
+    bottom: 0;
+    background-color: #bd5757;
+    color: #fff;
+  }
+
+  .checkbox-wrapper-55 .switch-left::before,
+  .checkbox-wrapper-55 .switch-right::before {
+    content: "";
+    position: absolute;
+    width: 0.4em;
+    height: 2.45em;
+    bottom: -0.45em;
+    background-color: #ccc;
+    transform: skewY(-65deg);
+  }
+
+  .checkbox-wrapper-55 .switch-left::before {
+    left: -0.4em;
+  }
+
+  .checkbox-wrapper-55 .switch-right::before {
+    right: -0.375em;
+    background-color: transparent;
+    transform: skewY(65deg);
+  }
+
+  .checkbox-wrapper-55 input:checked + .switch-left {
+    background-color: #0084d0;
+    color: #fff;
+    bottom: 0px;
+    left: 0.5em;
+    height: 2.5em;
+    width: 3em;
+    transform: rotate(0deg) skewX(0deg);
+  }
+
+  .checkbox-wrapper-55 input:checked + .switch-left::before {
+    background-color: transparent;
+    width: 3.0833em;
+  }
+
+  .checkbox-wrapper-55 input:checked + .switch-left + .switch-right {
+    background-color: #ddd;
+    color: #888;
+    bottom: 0.4em;
+    right: 0.8em;
+    height: 2.4em;
+    width: 2.75em;
+    transform: rotate(-15deg) skewX(-15deg);
+  }
+
+  .checkbox-wrapper-55 input:checked + .switch-left + .switch-right::before {
+    background-color: #ccc;
+  }
+
+  /* Keyboard Users */
+  .checkbox-wrapper-55 input:focus + .switch-left {
+    color: #333;
+  }
+
+  .checkbox-wrapper-55 input:checked:focus + .switch-left {
+    color: #fff;
+  }
+
+  .checkbox-wrapper-55 input:focus + .switch-left + .switch-right {
+    color: #fff;
+  }
+
+  .checkbox-wrapper-55 input:checked:focus + .switch-left + .switch-right {
+    color: #333;
+  }
+
+  
+
+

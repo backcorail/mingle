@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.mingle.test.UserMapper">
-    <insert id="userInsert"  >
-		insert into muser( username, password, email, role, oauth )  
-		values (#{username}, #{password}, #{email}, #{role}, #{oauth})
+<mapper namespace="com.project.mingle.mapper.UserMapper">
+    <!-- 회원가입 -->
+    <insert id="save"  >
+		insert into users
+		( user_id, user_pwd, user_nick, user_status, user_tel ,user_role)  
+		values 
+		(#{user_id}, #{user_pwd}, #{user_nick}, #{user_status}, #{user_tel}, #{user_role})
 	</insert>
-	<select id="nameCheck" resultType="String">
-		select email from muser where username = #{username}
+	 <insert id="saveOauth"  >
+		insert into users
+		( user_id, user_pwd, user_nick, user_status, user_Oauth, user_role )  
+		values 
+		(#{user_id}, #{user_pwd}, #{user_nick}, #{user_status}, #{user_Oauth}, #{user_role})
+	</insert>
+	<!-- 아이디 중복체크 -->
+	<select id="iddcheck" resultType="com.project.mingle.vo.UserVO">
+		select * from users where user_id = #{checkid}
 	</select>
+	<!-- 닉네임 중복체크 -->
+	<select id="nickcheck" resultType="com.project.mingle.vo.UserVO">
+		select * from users where user_nick = #{checknick}
+	</select>
+	<!-- 닉네임 중복체크 -->
+	<select id="telcheck" resultType="com.project.mingle.vo.UserVO">
+		select * from users where user_tel = #{checktel}
+	</select>
+	
+	<!-- 사용자 전화번호 일치체크 -->
+	<select id="idTelcheck" resultType="com.project.mingle.vo.UserVO">
+		select * from users where user_id = #{user_id} and  user_tel =  #{user_tel}
+	</select>
+	
+	<!-- 로그인 -->
+	<select id="login" resultType="com.project.mingle.vo.UserVO">
+		select * from users where user_id = #{user_id} and user_pwd = #{user_pwd} 
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="pwdUpdate">
+		update users set user_pwd =  #{user_pwd} where user_id=#{user_id}
+	</update>
+	
+	<!-- 관리자 확인. -->
+	<select id="adminIddcheck" resultType="com.project.mingle.vo.AdminLoginVO">
+		select * from admin where admin_id = #{checkid}
+	</select>
+	<!-- 관리자 가입 -->
+	 <insert id="adminsave"  >
+		insert into admin
+		( admin_id, admin_pwd, admin_role )  
+		values 
+		(#{admin_id}, #{admin_pwd}, #{admin_role})
+	</insert>
+	
 </mapper>
