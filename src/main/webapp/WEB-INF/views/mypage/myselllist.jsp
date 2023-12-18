@@ -29,7 +29,7 @@
                 <div class="div-eye-item">
                   <img src="/mingle/uploadfile/${actInfo.img}" alt="" class="div-eye-itme">
                   <div class="div-eye-item-title Inika-bold-18" >${actInfo.title}</div>
-                  <div class="div-eye-item-script Inika-Regular-16">${actInfo.contents}</div>
+                 <!--  <div class="div-eye-item-script Inika-Regular-16">${actInfo.contents}</div> -->
 		            <c:choose>
 		                <c:when test="${not empty actInfo.selldone}">
 		                    <div class="div-soldout"></div>

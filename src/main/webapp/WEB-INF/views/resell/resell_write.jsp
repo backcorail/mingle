@@ -19,7 +19,6 @@ $(function() {
 <div class="page">
 	<form method="post" action="${pageContext.servletContext.contextPath}/resell/writeOk<c:if test='${not empty itemData.item_no}'>?no=${itemData.item_no}</c:if>" class="write_form" onsubmit="return validateForm()" enctype="multipart/form-data">
 	<div id="writeForm_back">
-		${itemData.item_no}
 		<div id="writeForm_title">MIXING VARIOUS FASHIONS INTO ONE</div>
 		<!-- 글 종류 선택 -->
 		<div class="writeType_select">
@@ -83,7 +82,7 @@ $(function() {
 									<c:set var="numbering" value="${(n1.index+1)*100+n2.index}"/>
 									
 									<option value="${numbering}"
-										${numbering == itemData.getItem_detail() ? 'selected' : ''}>${detail}(${numbering})</option>
+										${numbering == itemData.getItem_detail() ? 'selected' : ''}>${detail}</option>
 								</c:forEach>
 							</optgroup>
 						</c:forEach>

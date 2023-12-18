@@ -42,6 +42,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.mingle.service.ResellService;
 import com.project.mingle.vo.ResellVO;
 
+
 @Controller
 @RequestMapping("/resell")
 public class ResellController {
@@ -290,15 +291,15 @@ public class ResellController {
 			if(no == 0) { // 새로 작성할때
 				rVO.setItem_status("판매중");
 				service.item_insert(rVO); //아이템 업로드
-				System.out.println("확인중..."+rVO);
 				for(int i=0; i<uploadFileList.size(); i++) {
 					uploadFileList.get(i).setItem_no(rVO.getItem_no());
 				}
 				service.resell_insert(rVO); //글 업로드
 				service.image_insert(uploadFileList); // 이미지 업로드
 			} else if (no != 0) { // 수정할때
-				service.item_update(rVO); // 아이템 업데이트
+				rVO.setItem_no(no);
 				service.resell_update(rVO); // 글 업데이트
+				service.item_update(rVO); // 아이템 업데이트
 				service.image_delete(no); // 이미지 삭제
 				service.image_insert(uploadFileList); // 이미지 다시 추가
 			}

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<script type="text/javascript" src="/mingle/js/resell/resell_main.js"></script>
 <head>
 	<link rel="stylesheet" href="/mingle/css/home/home.css">
 	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap&family=Abril+Fatface&family=Shadows+Into+Light&display=swap&family=Lobster&display=swap&family=Montserrat:wght@700&display=swap&family=Montserrat&display=swap&family=Vina+Sans&display=swap&family=Poppins:ital@1&display=swap&family=Nanum+Pen+Script&display=swap&family=Kanit:ital,wght@1,500&family=DM+Sans:opsz@9..40&family=Noto+Sans+KR:wght@300" rel="stylesheet">
@@ -160,8 +162,10 @@
 								<img src="${firstImg}" class="homePostImg_resell"/>
 								<div class="homePostTitle_resell">${vo.item_name}</div>
 								<div class="textBottom_homePost">
-									<div class="homePostPrice_resell">${vo.item_price}</div>
-									<div class="homePostTime_resell">${vo.item_postdate}</div>
+									<c:set var="format" value="${vo.item_price}"/>
+									<fmt:formatNumber var="formatPrice" value="${format}" pattern="#,###원"/>
+									<div class="homePostPrice_resell">${formatPrice}</div>
+									<div class="homePostTime_resell"><script>document.write(timeDiff('${vo.item_postdate}'));</script></div>
 								</div>
 							</a>
 						</div>
