@@ -137,7 +137,16 @@
 			<li class="blank_line"></li>
 			<li class="blank_line"></li>
 			<li class="resell_locate"><div>판매 희망 지역</div></li>
-			<li class="resell_addr"><div>${boardData.getResell_addr()}</div></li>
+			<li class="resell_addr">
+				<c:choose>
+					<c:when test="${empty boardData.getResell_addr()}">
+						<div>지역 미지정</div>
+					</c:when>
+					<c:otherwise>
+						<div>${boardData.getResell_addr()}</div>
+					</c:otherwise>
+				</c:choose>
+			</li>
 			<li class="resell_map">
 				<div id="map"></div>
 			</li>
@@ -176,7 +185,7 @@
 							</div>
 						</c:when>
 						<c:otherwise>
-							<img src="${pageContext.request.contextPath}/uploadfile/${userData.getUser_img()}">
+							<img src="${userData.getUser_img()}">
 							<div>
 								<div>${userData.getUser_nick()}님께서 구매신청을 하였습니다.</div>
 								<div>2023.12.15 13:24</div>

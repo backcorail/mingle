@@ -57,7 +57,7 @@ let index = {
 			//$(".div-fp-s3").css("display", "none");
 			//전화번호 유효성 체크
 			if( $("#pw-userpwd").val()=="" || $("#pw-userpwd-re").val()==""){// 
-				alert("비밀번로를 입력하세요");
+				alert("비밀번호를 입력하세요");
 				return false;
 			}
 			
@@ -221,7 +221,7 @@ let index = {
 				return false;
 			}
 			if( $("#join-userpwd").val()=="" || $("#join-userpwd-re").val()==""){// 중복검사
-				alert("비밀번로를 입력하세요");
+				alert("비밀번호를 입력하세요");
 				return false;
 			}
 			// 유효성검증 일단 주석

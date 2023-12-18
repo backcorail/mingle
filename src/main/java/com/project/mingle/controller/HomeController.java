@@ -30,7 +30,6 @@ public class HomeController {
 		model.addAttribute("sVO", sVO);
 		model.addAttribute("kreamList", kreamList.subList(1, 6));
 		model.addAttribute("styles", styleInfos.subList(1, 7));
-   
 		return "home";
 	}
 }

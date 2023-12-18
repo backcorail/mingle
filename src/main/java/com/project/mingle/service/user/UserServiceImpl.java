@@ -165,9 +165,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int pwdUpdate(JoinUserVO joinUserVO) {
 		// TODO Auto-generated method stub
+		String rawPwd = joinUserVO.getUserpwd();
+		String encodedPwd = passwordEncoder.encode(rawPwd);
 		UserVO userVO = UserVO.builder()
 				.user_id(joinUserVO.getUserid())
-				.user_pwd(joinUserVO.getUserpwd())
+				.user_pwd(encodedPwd)
 				.build();
 		System.out.println("\n 서비스 레이어 idTelcheck userVO build 이후 값");
 		System.out.println(userVO.toString());

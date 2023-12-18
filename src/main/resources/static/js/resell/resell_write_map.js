@@ -77,6 +77,7 @@ function initMap(addr){
 	        var marker = $(".marker_info").parent().parent();
 			marker.css("height","30px");
 			marker.css("border-radius","5px");
+			marker.css("width","200px");
 		}
 	});
 }

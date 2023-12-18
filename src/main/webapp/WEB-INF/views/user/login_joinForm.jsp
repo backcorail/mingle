@@ -406,7 +406,7 @@
 			<div class="div-085"></div>
 			<div class="div-bt-area">
 				<div class="Yaldevi-SemiBold-20g">*비밀번호확인</div>
-				<div id="joinpwd-yes-no-text" class="div-pwd-alret2 Yaldevi-SB-20r-A">비밀번호가 다릅니다. 다시입력해주세요</div>
+				<div id="joinpwd-yes-no-text" class="div-pwd-alret2 Yaldevi-SB-20r-A">비밀번호가 다릅니다. 다시 입력해주세요.</div>
 			</div>
 			<input id="join-userpwd-re" name="join-userpwd-re" type="text" class="in-txt">
 			<!-- 전화번호 -->
@@ -440,7 +440,7 @@
 				<input class="otp2 joinotp2" type="text" maxlength="1">
 				<input class="otp3 joinotp3" type="text" maxlength="1">
 				<input class="otp4 joinotp4" type="text" maxlength="1">
-				<input class="otp5 joinotp5" type="text"	maxlength="1"> 
+				<input class="otp5 joinotp5" type="text" maxlength="1"> 
 				<input class="otp6 joinotp6" type="text" maxlength="1">
 			</div>
 			<!-- btn 취소 /  확인 -->
