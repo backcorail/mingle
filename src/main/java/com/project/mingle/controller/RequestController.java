@@ -37,14 +37,11 @@ public class RequestController {
 	private int globalRequestNo;
 	
 	@GetMapping("/list")
-	public ModelAndView boardList(RequestVO rvo, RequestFileVO rfvo, UserVO uvo) {
+	public ModelAndView boardList(RequestVO rvo) {
 		ModelAndView mav = new ModelAndView();
 		List<RequestVO> list = service.requestList(rvo);//글 리스트 불러오기
-		List<RequestFileVO> fileList = service.getImgFile(rfvo);//글 이미지 불러오기
 		System.out.println(list);
-		mav.addObject("rfvo", rfvo);
 		mav.addObject("list", list);
-		mav.addObject("fileList", fileList);
 		mav.setViewName("style/style_request");
 		return mav;
 	}
