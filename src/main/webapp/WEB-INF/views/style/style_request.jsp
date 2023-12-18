@@ -32,7 +32,7 @@
 			<div class="reqeust_wrapper">
 				<c:forEach var="n" items="${list}" varStatus="status">
 					<a  href="/mingle/style/request/${n.request_no}" class="reqeust_content">
-						<img src="${pageContext.request.contextPath}/uploadfile/${fileList[status.index].request_datafile_dataname}" class="mainImg">
+						<img src="${pageContext.request.contextPath}/uploadfile/${n.request_datafile_dataname}" class="mainImg">
 						<div class="profile">
 							<img src="${n.user_img}" class="profileImg">
 							<div class="writer">${n.user_nick}</div>
