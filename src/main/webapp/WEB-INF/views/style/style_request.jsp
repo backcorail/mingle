@@ -6,6 +6,7 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <script src="/mingle/js/style_main.js"></script>
 <script src="/mingle/js/style_styles.js"></script>
+<script src="/mingle/js/home.js"></script>
 <script src="/mingle/js/style/request_board.js"></script>
 <link rel="stylesheet" href="/mingle/css/style/style_main.css">
 <link rel="stylesheet" href="/mingle/css/style/style_request.css">
@@ -30,8 +31,8 @@
 		<div class="style_tab_content" id="tabs">
 			<!-- 탭 4의 콘텐츠 -->
 			<div class="reqeust_wrapper">
-				<c:forEach var="n" items="${list}" varStatus="status">
-					<a  href="/mingle/style/request/${n.request_no}" class="reqeust_content">
+				<c:forEach var="n" items="${list}">
+					<a href="/mingle/style/request/${n.request_no}" class="reqeust_content">
 						<img src="${pageContext.request.contextPath}/uploadfile/${n.request_datafile_dataname}" class="mainImg">
 						<div class="profile">
 							<img src="${n.user_img}" class="profileImg">
@@ -44,4 +45,9 @@
 		</div>
 	</div>
 </main>
-<a class = "fillout" href="/mingle/style/request/write">fill out</a>
+<c:if test="${empty authUser}"> 
+	<a href="javascript:goLogin()" class = "fillout">fill out</a>
+</c:if>
+<c:if test="${not empty authUser}"> 
+	<a class = "fillout" href="/mingle/style/request/write">fill out</a>
+</c:if>

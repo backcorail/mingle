@@ -49,7 +49,7 @@
 	    LEFT JOIN
 	        request_datafile rd ON r.request_no = rd.request_no
 	    ORDER BY
-	        r.request_writedate DESC
+	        r.request_no DESC
 	    LIMIT #{onePageRecord} OFFSET ${offsetPoint};
 	</select>
 	<select id="getImgFile" resultType="com.project.mingle.vo.RequestFileVO">
