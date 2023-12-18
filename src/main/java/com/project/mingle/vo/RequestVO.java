@@ -31,4 +31,7 @@ public class RequestVO {
 	private int request_reply_no;
 	private String request_reply_comment;
 	private String request_reply_writedate;
+	
+	//이미지 파일 업로드
+	private String request_datafile_dataname;//첨부파일명
 }

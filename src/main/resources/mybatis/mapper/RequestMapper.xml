@@ -40,11 +40,14 @@
 	        r.request_writedate,
 	        u.user_img,
 	        u.user_nick,
-	        r.request_comment
+	        r.request_comment,
+	        rd.request_datafile_dataname
 	    FROM
 	        request r
 	    JOIN
 	        users u ON r.user_id = u.user_id
+	    LEFT JOIN
+	        request_datafile rd ON r.request_no = rd.request_no
 	    ORDER BY
 	        r.request_writedate DESC
 	    LIMIT #{onePageRecord} OFFSET ${offsetPoint};
