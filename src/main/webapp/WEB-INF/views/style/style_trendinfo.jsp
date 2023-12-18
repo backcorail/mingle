@@ -69,34 +69,71 @@
 		<div class="tag-slider">
 			<div class="tag-slide-show">
 				<div class="tag-slide">
-					<c:forEach begin="1" end="5">
+					
 						<div class="tag-items-infobox">
-							<img class="tag-img" src="/mingle/img/style/aaa.jpg"
+							<img class="tag-img" src="/mingle/img/trend/zzz10.jpg"
 								alt="Image 3" />
-							<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
+							<div class="tag-items-info">윈터 와이드 스웨트 팬츠[그레이]
 								White</div>
 						</div>
-					</c:forEach>
+						<div class="tag-items-infobox">
+							<img class="tag-img" src="/mingle/img/trend/zzz11.jpg"
+								alt="Image 3" />
+							<div class="tag-items-info">와이드 데님 팬츠[미디엄 블루]
+								White</div>
+						</div>
+						<div class="tag-items-infobox">
+							<img class="tag-img" src="/mingle/img/trend/zzz9.jpg"
+								alt="Image 3" />
+							<div class="tag-items-info">사계절 트레이닝 팬츠
+								Gray</div>
+						</div>
+						<div class="tag-items-infobox">
+							<img class="tag-img" src="/mingle/img/trend/zzz5.jpg"
+								alt="Image 3" />
+							<div class="tag-items-info">컴포터블 벌룬핏 다운 롱 패딩 블랙 COOSJP038BLACK
+								</div>
+						</div>
+						<div class="tag-items-infobox">
+							<img class="tag-img" src="/mingle/img/trend/zzz7.jpg"
+								alt="Image 3" />
+							<div class="tag-items-info">ORIGINAL WINTER BOOTS SHORT
+								</div>
+						</div>
 				</div>
 				<div class="tag-slide">
-					<c:forEach begin="1" end="5">
+					
 						<div class="tag-items-infobox">
-							<img class="tag-img" src="/mingle/img/style/aaa.jpg"
+							<img class="tag-img" src="/mingle/img/trend/zzz1.jpg"
 								alt="Image 3" />
-							<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-								White</div>
+							<div class="tag-items-info">몬스터 다운 파카 Black
+								</div>
 						</div>
-					</c:forEach>
-				</div>
-				<div class="tag-slide">
-					<c:forEach begin="1" end="5">
 						<div class="tag-items-infobox">
-							<img class="tag-img" src="/mingle/img/style/aaa.jpg"
+							<img class="tag-img" src="/mingle/img/trend/zzz2.jpg"
 								alt="Image 3" />
-							<div class="tag-items-info">Asics x Cecilie Bahnsen GT-2160
-								White</div>
+							<div class="tag-items-info">보아퍼 롱 패딩_PHD4JP2469
+								</div>
 						</div>
-					</c:forEach>
+						<div class="tag-items-infobox">
+							<img class="tag-img" src="/mingle/img/trend/zzz3.jpg"
+								alt="Image 3" />
+							<div class="tag-items-info">클럽 팀 풋볼 벤치 롱 패딩 2color
+								</div>
+						</div>
+						<div class="tag-items-infobox">
+							<img class="tag-img" src="/mingle/img/trend/zzz6.jpg"
+								alt="Image 3" />
+							<div class="tag-items-info">크레미니 인도어 패딩 슬리퍼 FLFDDF3U01
+								</div>
+						</div>
+						<div class="tag-items-infobox">
+							<img class="tag-img" src="/mingle/img/trend/zzz4.jpg"
+								alt="Image 3" />
+							<div class="tag-items-info"> [DUCK DOWN] 몬스터 롱 파카 블랙_COOSJP028BLACK
+								</div>
+						</div>
+					
 				</div>
 			</div>
 			<button class="tag-slide-btn" id="tag-prevBtn">❮</button>
