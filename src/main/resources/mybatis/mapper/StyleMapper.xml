@@ -56,18 +56,27 @@
 	</select>
 	
 	 <select id="getAllStyleInfo" resultType="com.project.mingle.vo.StyleInfo">
-          SELECT 
-            s.style_no, 
-            s.style_name, 
-            u.user_nick,
-            u.user_img,  <!-- 유저 이미지 필드 추가 -->
-            sf.style_file_name
-        FROM 
-            mingledb.style s
-        INNER JOIN 
-            mingledb.users u ON s.user_id = u.user_id
-        INNER JOIN 
-            mingledb.style_file sf ON s.style_no = sf.style_no
+          SELECT
+		    s.style_no,
+		    s.style_name,
+		    s.user_id,
+		    u.user_img,
+		    u.user_nick,
+		    f.style_file_name
+		FROM
+		    style s
+		JOIN
+		    users u ON s.user_id = u.user_id
+		LEFT JOIN
+		    style_file f ON s.style_no = f.style_no
+		WHERE
+		    (f.style_file_no IS NULL OR f.style_file_no = (
+		        SELECT MIN(sf.style_file_no)
+		        FROM style_file sf
+		        WHERE sf.style_no = s.style_no
+		    ))
+		ORDER BY
+		    s.style_no ASC;
     </select>
 	
 	<select id="getStyleDetails" resultType="com.project.mingle.vo.StyleInfoDTO">

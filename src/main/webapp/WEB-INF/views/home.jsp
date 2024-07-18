@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="/mingle/css/home/home.css">
 	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap&family=Abril+Fatface&family=Shadows+Into+Light&display=swap&family=Lobster&display=swap&family=Montserrat:wght@700&display=swap&family=Montserrat&display=swap&family=Vina+Sans&display=swap&family=Poppins:ital@1&display=swap&family=Nanum+Pen+Script&display=swap&family=Kanit:ital,wght@1,500&family=DM+Sans:opsz@9..40&family=Noto+Sans+KR:wght@300" rel="stylesheet">
 	<script src="/mingle/js/home.js"></script>
+	<title>mingle</title>
 </head>
 <div id="page_home">
 	<!-- banner -->
@@ -206,9 +207,9 @@
 				</div>
 			</div>
 		</div>
-	<!-- bottom content -->
+		<!-- bottom content -->
 		<div class="area_homeContent">
-	<!-- list contnet -->
+			<!-- list contnet -->
 			<div class="area_ListContent">
 				<div class="homeTitle">Daily style</div>
 				<div class="homeSubtitle"">#일주일 코디 배틀</div>
@@ -232,19 +233,7 @@
 					</div>
 				</a>
 			</div>
-	<!--
-			<hr style="width:1340px;">
-		
-	<div id="area_homeStyle">
-		<div id="leftArea_homeStyle">
-			<video src="/mingle/img/home/style_bg.mp4" muted autoplay loop></video>
-			<div>비오는 날씨에 입기좋은 나일론 팬츠 스타일링 보러가기</div>
-		</div>
-		<div id="rightArea_homeStyle">
-		</div>
-	</div>
-	-->
-	<!-- adv contnet -->
+			<!-- adv contnet -->
 			<div id="advStyle_body">
 				<div id="advStyle">
 					<div id="advStyle_TEXT" data-text="TAKE IT TO">TAKE<span>IT</span><span>TO</span><br><span>THE</span><span>NEXT</span><span>LEVEL</span></div>

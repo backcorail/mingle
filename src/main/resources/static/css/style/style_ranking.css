@@ -1,5 +1,275 @@
-@charset "UTF-8";
+/*a태그 기본 효과 제거*/
+a{
+	color: black;
+}
+a:active{
+	text-decoration: none;
+}
+.ranking{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 20px 0px;
+}
+.period_rank{
+	display: flex;
+}
+.period{
+	width:80px;
+	height: 35px;
+	line-height: 35px;
+	margin-right: 10px;
+	font-family: 'Protest Guerrilla', sans-serif;
+	color: black;
+	font-size: 17.5px;
+	background: aliceblue;
+	text-align: center;
+	border-radius: 30px;
+	box-sizing: border-box;
+}
+.period:hover{
+	background: linear-gradient(90deg, rgba(255,214,0,1) 0%, rgba(155,255,0,1) 35%, rgba(0,255,184,1) 100%);
+	color: transparent;
+	-webkit-background-clip: text;
+	font-weight: bold;
+	border-bottom: 3px solid rgba(0,255,184,1);
+}
+.period:active{
+	background: linear-gradient(90deg, rgba(255,214,0,1) 0%, rgba(155,255,0,1) 35%, rgba(0,255,184,1) 100%);
+	color: white; 
+	font-weight: bold; 
+	border: none;
+}
+.text_update{
+	font-family: 'Gowun Batang', serif;
+	font-size: 13px;
+	font-weight: bold;
+}
+#nowDate{
+	margin-left: 10px;
+	font-weight: lighter;
+	color: darkgray;
+}
+.ranking_header_line{
+	border: none;
+  	height: 2px;
+  	background-color: lightgray;
+  	width: 100%;
+}
 
+/*랭킹 main content*/
+
+/*banner 공통*/
+.swiper-button-next {
+ 	background: url(/mingle/img/style/next.png) no-repeat;
+ 	background-size: 110% auto;
+ 	background-position: center;
+}
+.swiper-button-prev{
+	background: url(/mingle/img/style/prev.png) no-repeat;
+	background-size: 110% auto;
+  	background-position: center;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  	transition: filter 0.3s linear;
+	filter: invert(79%) sepia(68%) saturate(1436%) hue-rotate(358deg) brightness(103%) contrast(104%);
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  	display: none;
+}
+.swiper {
+  	width: 100%;
+  	height: auto;
+  	border-radius: 10px;
+  	border: 3px solid rgb(128, 128, 255);
+  	box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px rgb(128, 255, 255), 0 0 4px rgb(128, 255, 255), 0 0 5px rgb(128, 255, 255), 0 0 6px rgb(128, 255, 255), 0 0 7px rgb(128, 255, 255)	;
+  	background: rgb(157, 206, 255);
+  	margin-bottom: 30px;
+  	background: url(/mingle/img/style/bg_1.jpg);
+}
+.swiper-wrapper{
+	padding: 10px;
+	height: auto;
+}
+.swiper-slide {
+	width : 193px;
+	
+}
+.slider_img{
+	width : 193px;
+	height : 260px;
+	border-radius: 5px;
+	object-fit: cover;
+	box-shadow: 1px 1px 3px gray;
+}
+.slider_board-content {
+	width : 193px;
+	height : auto;
+	font-size : 10px;
+	background: white;
+}
+.slider_user{
+	width : 193px;
+	display: flex;
+	align-items: center;
+}
+.slider_profileImg{
+	width : 26px;
+	height : 26px;
+	padding: 3px;
+	border-radius: 50%;
+}
+.slider_username{
+	font-size: 12px;
+	color: gray;
+	white-space:nowrap;/*줄바꾸지 않음*/
+	overflow:hidden;/*넘친데이터 숨기기*/
+	text-overflow:ellipsis;/*넘친데이터가 있으면 ... 표시하기*/
+}
+.slider_title {
+	width : 193px;
+	height: auto;
+	font-size : 12px;
+	font-weight: bold;
+	white-space:nowrap;/*줄바꾸지 않음*/
+	overflow:hidden;/*넘친데이터 숨기기*/
+	text-overflow:ellipsis;/*넘친데이터가 있으면 ... 표시하기*/
+}
+.medal{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	border-radius: 50%;
+}
+.gold{
+	box-shadow: 2px 2px 5px rgb(166,124,0);
+}
+.silver{
+	left: 215px;
+	box-shadow: 2px 2px 5px #3f3f3f;
+}
+.bronze{
+	left: 430px;
+	box-shadow: 2px 2px 5px #4b392f;
+}
+
+/*style rank*/
+.ranking_content{
+	width: 100%;
+}
+.top{
+	height: 100px;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	text-align: right;
+}
+.top_title_1{
+	margin-right: 8px;
+	font-size: 35px;
+	font-weight: 900;
+	font-style: italic;
+	text-shadow: 1px 1px 2px rgb(0, 0, 255);
+}
+.top_title_2{
+	font-family: "Noto Sans KR", sans-serif;
+	color: gray;
+	font-size: 15px;
+}
+.left{
+	display: flex;
+}
+.left_title{
+	width: 100px;
+}
+.left_title_1{
+	width: 100px;
+	height: 400px;
+	font-family: "Anta", sans-serif;
+	font-size: 80px;
+	font-weight: 600;
+}
+.left_title_1:hover{
+	text-shadow: 3px 3px 10px rgb(128, 255, 255);
+}
+.left_title_2{
+	width: 100%;
+	text-align: center;
+	font-family: "Montserrat", sans-serif;
+	font-size: 40px;
+	color: darkgray;
+}
+.left_title_2_span{
+	font-size: 25px;
+}
+
+/* trend rank */
+#trend_rank .top_title_1{
+	text-shadow: 1px 1px 2px rgb(255, 0, 128);
+}
+#trend_rank .left_title_1:hover{
+	text-shadow: 3px 3px 10px rgb(255, 0, 128);
+}
+#trend_rank .swiper {
+  	width: 100%;
+  	height: auto;
+  	border-radius: 10px;
+  	border: 3px solid rgb(255, 128, 255);
+  	box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px rgb(255, 172, 172), 0 0 4px rgb(255, 172, 172), 0 0 5px rgb(255, 172, 172), 0 0 6px rgb(255, 172, 172), 0 0 7px rgb(255, 172, 172);
+  	margin-bottom: 30px;
+  	background: url(/mingle/img/style/bg_2.jpg);
+  	background-size: cover;
+}
+/* request rank */
+#request_rank .top_title_1{
+	text-shadow: 1px 1px 2px rgb(0, 255, 0);
+}
+#request_rank .left_title_1{
+	height: 550px;
+}
+#request_rank .left_title_1:hover{
+	text-shadow: 3px 3px 10px rgb(0, 255, 0);
+}
+#request_rank .swiper {
+  	width: 100%;
+  	height: auto;
+  	border-radius: 10px;
+  	border: 3px solid rgb(0, 255, 128);
+  	box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px rgb(128, 255, 128), 0 0 4px rgb(128, 255, 128), 0 0 5px rgb(128, 255, 128), 0 0 6px rgb(128, 255, 128), 0 0 7px rgb(128, 255, 128);
+  	margin-bottom: 30px;
+  	background: url(/mingle/img/style/bg_3.jpg);
+}
+/* 공동 .left_title_1:active */
+.left_title_1:active{
+	text-shadow: none;
+	/*filter: invert(79%) sepia(68%) saturate(1436%) hue-rotate(358deg) brightness(103%) contrast(104%);
+	background: linear-gradient(0deg, rgba(0,255,68,1) 0%, rgba(0,255,239,1) 50%, rgba(205,0,255,1) 100%);
+	color: transparent;
+    -webkit-background-clip: text;*/
+	transform: translate(1px, 1px);
+  	transition: all 0.1s linear;
+}
+#trend_rank .left_title_1:active{
+	text-shadow: none;
+}
+#request_rank .left_title_1:active{
+	text-shadow: none;
+}
+.ranking_middle_line{
+	border: none;
+  	height: 1px;
+  	background-color: rgb(238, 238, 238);
+  	width: 100%;
+}
+
+
+
+
+/* 기존 코드 */
 .page {
 	margin-top : 90px;
 	display : flex;
@@ -8,12 +278,10 @@
 }
 
 .board_list_now {
-	display : flex;
 	width : 1180px;
-	height : auto;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	margin-top : 30px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	justify-items: center;
 }
 
 .board_list_now_hidden {
@@ -23,10 +291,6 @@
 	justify-content: space-between;
 	flex-wrap: wrap;
 }
-
-
- 
-
 
 .board_list_week {
 	display : flex;
@@ -40,98 +304,6 @@
 	height : auto;
 	
 }
-
-.board_items {
-	width : 270px;
-	height : 449px;
-	display : inline-block;
-	justify-content: center;
-	margin-bottom : 20px;
-	
-}
-
-.heart {
-	width : 20px;
-	height : 20px; 
-    background-color: white;
-	cursor : pointer;
-	border : white;
-    float: right;
-}
-
-.like1 {
-	background-color: white;
-	cursor : pointer;
-	border : white;
-	width : 20px;
-	height : 20px;
-	margin-right : 10px;
-	margin-left : 20px;
-}
-
-.likeLink1 {
-	float : right;
-}
-
-.like2 {
-	background-color: white;
-	cursor : pointer;
-	border : white;
-	width : 20px;
-	height : 20px;
-	margin-right : 10px;
-	margin-left : 20px;
-}
-
-.img{
-	width : 270px;
-	height : 367px;
-	border-radius: 10px;
-	margin-bottom : 5px;
-	cursor : pointer;
-}
-
-.imgdiv{
-	position: relative;
-	width : 150px;
-	border-radius: 10px;
-	counter-increment: divCounter;
-}
-
-
-
-.profile-img {
-	width : 20px;
-	height : 20px;
-	border-radius: 50%;
-}
-
-.hashtag {
-	height : 50px;
-	font-size : 10px;
-	cursor : pointer;
-	margin-top : 10px;
-	font-size : 12px;
-	color : black;
-	position: relative;
-	display : flex;
-	white-space:nowrap;/*줄바꾸지 않음*/
-	overflow:hidden;/*넘친데이터 숨기기*/
-	text-overflow:ellipsis;/*넘친데이터가 있으면 ... 표시하기*/
-}
-
-.username {
-	font-size : 15px;
-	cursor : pointer;
-}
-
-
-.board-content {
-	font-size : 15px;
-	width : 270px;
-	height : auto;
-}
-
 .board-name {
 	font-size : 15px;
 }
@@ -140,7 +312,10 @@
 	height : auto;
 	margin-bottom : 50px;
 }
-
+.main_content{
+	display: flex;
+	justify-content: center;
+}
 #moreview1 {
 	display: block;
     margin: auto;
@@ -174,52 +349,7 @@
     height : 30px;
 }
 
-.board_items_hidden {
-	width : 270px;
-	height : auto;
-	display : inline-block;
-	justify-content: center;
-	margin-bottom : 20px;
-    opacity: 0;
-    transition: opacity 1s;
-}
 
 .all_select {
 	margin-top : 20px;
-}
-
-.hashtag:hover {
-    text-decoration: underline;
-}
-
-.style_likes_check {
-	width : 20px;
-	height: 20px;
-	float : right;
-}
-
-
-/* 좋아요 */
-.like-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.like-button:focus {
-  outline: none;
-}
-
-.far.fa-heart {
-  color: gray;
-  font-size: 24px;
-  margin-right: 5px;
-}
-
-.fas.fa-heart {
-  color: red;
-  font-size: 24px;
-  margin-right: 5px;
 }

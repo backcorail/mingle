@@ -5,7 +5,12 @@
     font-weight: normal;
     font-style: normal;
 }
-
+.grid4_list{
+	display: flex;
+	flex-direction: column;
+	justify-content: normal;
+	align-items: center;
+}
 .reqeust_wrapper{
 	width: 1180px;
 	padding: 0;
@@ -22,11 +27,15 @@
 	display: grid;
 	margin-bottom: 10px;
 }
+.reqeust_content:hover{
+	
+}
 .mainImg{
 	width: 270px;
 	height: 367px;
 	border-radius: 10px;
 	box-shadow: 1px 1px 1px rgb(226, 226, 226);
+	object-fit: cover;
 }
 .profile{
 	width: 100%;

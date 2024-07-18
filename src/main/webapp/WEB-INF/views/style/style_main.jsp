@@ -2,20 +2,27 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap&family=Righteous&display=swap&family=Protest+Guerrilla&display=swap&family=Gowun+Batang&display=swap&family=Anta&display=swap&&family=Montserrat:ital,wght@1,309&display=swap&family=Noto+Sans+KR:wght@100..900&display=swap&family=Lacquer&family=Nanum+Pen+Script&display=swap&family=Gugi&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <script src="/mingle/js/style_main.js"></script>
 <script src="/mingle/js/style_styles.js"></script>
-<script src="/mingle/js/style_ranking.js"></script>
+<script src="/mingle/js/home.js"></script>
+<script src="/mingle/js/style/request_board.js"></script>
 <link rel="stylesheet" href="/mingle/css/style/style_main.css">
 <link rel="stylesheet" href="/mingle/css/style/style_ranking.css">
+<link rel="stylesheet" href="/mingle/css/style/style_request.css">
+
+<!-- slider  -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <%@ page import="javax.servlet.http.HttpSession" %>
 
 <c:if test="${empty sessionScope.executed}">
     <c:set var="executed" value="true" scope="session"/>
     <c:if test="${empty tab}">
-        <script>location.href = 'style?tabs=1'; </script>
+        <script>location.href = 'style?tabs=1&tabs2=1'; </script>
     </c:if>
 </c:if>
 
@@ -27,10 +34,10 @@
 	</div>
 	<div id="style_tabs">
 		<ul class="style_tabs_list">
-			<li class="tab"><a href="/mingle/style?tabs=1" id="ranking_tab">RANKING</a></li>
+			<li class="tab"><a href="/mingle/style?tabs=1&tabs2=1" id="ranking_tab">RANKING</a></li>
 			<li class="tab"><a href="/mingle/style?tabs=2" id="style_tab">STYLE</a></li>
 			<li class="tab"><a href="/mingle/style?tabs=3" id="trend_tab">TREND</a></li>
-			<li class="tab"><a href="/mingle/style/request/list" id="request_tab">REQUEST</a></li>
+			<li class="tab"><a href="/mingle/style?tabs=4" id="request_tab">REQUEST</a></li>
 		</ul>
 		<hr class="style_header_line">
 		<!-- 수평선 -->
@@ -40,4 +47,9 @@
 		</div>
 	</div>
 </main>
-<a class = "fillout" href="/mingle/style/write">fill out</a>
+<c:if test="${empty authUser}"> 
+	<a href="javascript:goLogin()" class = "fillout">fill out</a>
+</c:if>
+<c:if test="${not empty authUser}"> 
+	<a class = "fillout" href="/mingle/style/request/write">fill out</a>
+</c:if>
