@@ -24,9 +24,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.mingle.service.RequestService;
 import com.project.mingle.service.StyleService;
 import com.project.mingle.vo.Comment;
 import com.project.mingle.vo.ReplyVO;
+import com.project.mingle.vo.RequestVO;
 import com.project.mingle.vo.StyleFileVO;
 import com.project.mingle.vo.StyleInfo;
 import com.project.mingle.vo.StyleInfoDTO;
@@ -39,6 +41,8 @@ import com.project.mingle.vo.Stylefile;
 public class StyleController {
 	@Autowired
 	StyleService service; // 서비스의 내용을 가져온다.
+	@Autowired
+	RequestService service2;
 	
 	@GetMapping("")
 	public ModelAndView style_main(
@@ -50,34 +54,27 @@ public class StyleController {
 		mav.setViewName("style/style_main");	
 		return mav;
 	}
-	
+	  
 	@GetMapping("/ranking")
-	  public String listStyles1(Model model) {
+	  public String listStyles1(@RequestParam(name="tabs2", defaultValue = "1") int tabs2, Model model,StyleVO sVO) {
 		 
 		 List<StyleInfo> styleInfos = service.getAllStyleInfo();
+		 sVO.setTabs(tabs2);
 		 System.out.println("listStyles");
 		 System.out.println(styleInfos.size());
 		
 		 
 		 for (StyleInfo styleInfo : styleInfos) {
-			// System.out.println("styleInfo" + styleInfo.getStyleFileName());
-			// System.out.println("styleInfo" + styleInfo.getStyleName());
 			 System.out.println("styleInfo" + styleInfo.getStyle_no());
 			// System.out.println("styleInfo" + styleInfo.getUserId());
 			// System.out.println("styleInfo" + styleInfo.getUserImg());
 			// System.out.println(styleInfo.toString());
 		}
 	        model.addAttribute("styles", styleInfos);
+	        model.addAttribute("sVO", sVO);
 	        System.out.println("실행");
 	        return "style/style_ranking"; // JSP 파일 이름
 	    }
-	
-	
-	
-	@GetMapping("/request")
-	public String style_request() {
-		return "style/style_request";
-	}
 	
 	//@GetMapping("/styles")
 	public ModelAndView style_styles(StyleVO sVO) {

@@ -1264,6 +1264,7 @@ a{
 	border-radius: 10px;
 	background: ghostwhite;
 	border: 1px solid gainsboro;
+	object-fit: cover;
 }
 .homePostTitle_resell{
 	font-family: 'Noto Sans KR', sans-serif;
@@ -1445,6 +1446,7 @@ a{
 	width: 220px;
 	height: 300px;
 	border-radius: 10px;
+	object-fit: cover;
 }
 .onContent_img{
 	height: 300px;
@@ -1454,18 +1456,26 @@ a{
 	position: absolute;
 }
 .homePostImg_profile_style{
-	width: 39px;
-	height: 39px;
-	line-height: 39px;
+	width: 42px;
+	height: 42px;
+	line-height: 42px;
 	margin: 5px;
 	border-radius: 100%;
-	background: lightgray;
+	background: white;
+	border: 0.1px solid rgb(192, 192, 192);
+	box-shadow: 0.2px 0.6px 3px rgb(128, 128, 128);
+	object-fit: cover;
 }
 .homePostImg_userid_style{
+	width: 190px;
 	margin: 5px;
 	font-family: 'Poppins', sans-serif;
-	color: white;
+	color: rgb(255, 255, 255);
+	font-size: 15px;
 	text-shadow: 1px 1px darkgray;
+	white-space:nowrap;/*줄바꾸지 않음*/
+	overflow:hidden;/*넘친데이터 숨기기*/
+	text-overflow:ellipsis;/*넘친데이터가 있으면 ... 표시하기*/
 }
 
 /*banner_style*/

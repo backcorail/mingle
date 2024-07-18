@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-	href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Keania+One&family=Nosifer&display=swap&family=Fira+Sans:ital,wght@1,900&display=swap&family=Orbitron&display=swap&family=Roboto+Slab&display=swap"
+	href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap&family=Bangers&display=swap&family=Noto+Sans+KR:wght@100..900&display=swap&family=Noto+Sans+KR:wght@100..900&display=swap&family=Do+Hyeon&display=swap&family=Abril+Fatface&family=Keania+One&family=Nosifer&display=swap&family=Fira+Sans:ital,wght@1,900&display=swap&family=Orbitron&display=swap&family=Roboto+Slab&display=swap"
 	rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="/mingle/js/header.js"></script>
@@ -31,10 +31,10 @@
 			<div id="headerDiv">
 				<!-- <div id="btn_tabMenu" onclick="toggleBtn()">hello</div> -->
 				<!-- left button -->
-				<img src="/mingle/img/home/btn_more.png" class="btn-1" onclick="toggleBtn()" />
+				<div class="headArea hd1"><img src="/mingle/img/home/btn_more.png" class="btn-1" onclick="toggleBtn()"/></div>
 				<!-- left button -->
-				<a href="/mingle" id="header_logo">mingle</a>
-				<div id="header_loginArea">
+				<div class="headArea hd2"><a href="/mingle" id="header_logo">mingle</a></div>
+				<div class="headArea hd3" id="header_loginArea">
 					<c:choose>
 						<c:when test="${empty authUser }">
 							<a href="/mingle/user/login_joinForm" id="btn_login">Login/Sign-up</a>
@@ -56,9 +56,9 @@
 			<div id="tabMenu_header">
 				<div id="tabMenu_header_content">
 					<div class="area_tabMenu" id="area_tabMenu_1" onmouseover="showSubMenu(1)" onmouseout="showSubHidden(1)">
-						<a href="/mingle/style?tabs=1" class="title_tabMenu">STYLE</a>
+						<a href="/mingle/style?tabs=1&tabs2=1" class="title_tabMenu">STYLE</a>
 						<ul class="subtitle_tabMenu" id="subMenu_1">
-							<li><a href="/mingle/style?tabs=1">ranking</a></li>
+							<li><a href="/mingle/style?tabs=1&tabs2=1">ranking</a></li>
 							<li><a href="/mingle/style?tabs=2">style</a></li>
 							<li><a href="/mingle/style?tabs=3">trend</a></li>
 							<li><a href="/mingle/style/request/list">request</a></li>

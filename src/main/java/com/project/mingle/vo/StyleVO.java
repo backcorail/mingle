@@ -17,6 +17,7 @@ public class StyleVO {
     private String item_postdate; // 아이템 작성 일자
     private int style_likes_check; // 좋아요 체크
     private int tabs;
+    private int tabs2;
     private int ktotalRecord; // 크림 총 레코드수
     private int ktotalPage; // 크림 총 페이지
     private String style_image;//게시글 이미지

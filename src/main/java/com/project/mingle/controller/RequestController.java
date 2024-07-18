@@ -25,7 +25,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.mingle.service.RequestService;
 import com.project.mingle.vo.RequestFileVO;
 import com.project.mingle.vo.RequestVO;
-import com.project.mingle.vo.UserVO;
 
 
 @Controller
@@ -36,7 +35,7 @@ public class RequestController {
 	
 	private int globalRequestNo;
 	
-	@GetMapping("/list")
+	@GetMapping("")
 	public ModelAndView boardList(RequestVO rvo) {
 		ModelAndView mav = new ModelAndView();
 		List<RequestVO> list = service.requestList(rvo);//글 리스트 불러오기

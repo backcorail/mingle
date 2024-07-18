@@ -5,6 +5,9 @@ header{
     min-width: 1340px;
     top:0;
 }
+img{
+	object-fit: cover;
+}
 #headerDiv{
 	display: flex;
 	justify-content: space-between;
@@ -14,11 +17,29 @@ header{
 	height: 90px;
 	line-height: 90px;
 }
+.headArea{
+	height: 90px;
+	display: flex;
+	align-items: center;
+}
+.hd1{
+	width: 20%;
+}
+.hd2{
+	width: 60%;
+	display: flex;
+	justify-content: center;
+}
+.hd3{
+	width: 20%;
+	display: flex;
+	justify-content: flex-end;
+}
 /*헤더 왼쪽 버튼*/
 .btn-1 {
 	background: none;
 	border:none;
-	width:60px;
+	width:65px;
 	color: white;
 	font-size: 20px;
 	font-weight: bold;

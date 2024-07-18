@@ -35,7 +35,9 @@
 }
 html{ font-size: 17px; }
 body{ font-size: 1rem; }
-
+footer{
+	display: none;
+}
 body{
   font-family: 'Yaldevi', 'NanumSquare', 'sans-serif' , 'San Francisco';
 }
