@@ -170,7 +170,13 @@ public class ResellController {
 		mav.setViewName("resell/resell_board");
 		return mav;
 	}
-
+	
+	@PostMapping("/createRoom")
+	public void createRoom(ResellVO rvo) {
+		String seller = rvo.getResell_seller();
+		String buyer = rvo.getResell_buyer();
+		System.out.println(seller + "123123" + buyer);
+	}
 	
 	
 	@GetMapping("/write")
