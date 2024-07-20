@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mingle.mapper.ChatMapper">
+    <insert id="saveMessage" parameterType="com.project.mingle.vo.ChatVO">
+        INSERT INTO chat (message, user_id, timestamp)
+        VALUES (#{message}, #{user_id}, NOW())
+    </insert>
+
+    <select id="chatList" resultType="com.project.mingle.vo.ChatVO">
+        SELECT message, user_id, timestamp
+        FROM chat
+        ORDER BY timestamp ASC
+    </select>
+</mapper>
