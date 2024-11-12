@@ -11,4 +11,46 @@
         FROM chat
         ORDER BY timestamp ASC
     </select>
+    
+    <!-- 구매 매칭 후 채팅방 관련 -->
+	<insert id="createRoom" parameterType="int" useGeneratedKeys="true" keyProperty="room_no">
+        INSERT INTO room (item_no) VALUES (#{item_no})
+    </insert>
+    
+    <insert id="insertRoomMember" parameterType="com.project.mingle.vo.RoomVO">
+        INSERT INTO roomMember (user_id, room_no) VALUES (#{user_id}, #{room_no})
+    </insert>
+    <select id="roomList" parameterType="String" resultType="com.project.mingle.vo.RoomVO">
+	    SELECT 
+		    rm.room_no, 
+		    rm.user_id, 
+		    i.item_name, 
+		    i.item_price, 
+		    i.item_image, 
+		    f.item_file_name
+		FROM 
+		    roomMember rm
+		JOIN 
+		    room r 
+		    ON rm.room_no = r.room_no
+		JOIN 
+		    item i 
+		    ON r.item_no = i.item_no
+		LEFT JOIN 
+		    item_file f 
+		    ON i.item_no = f.item_no
+		WHERE 
+		    rm.user_id = #{userId}
+	</select>
+	<select id="selectRoomData" parameterType="int" resultType="com.project.mingle.vo.RoomVO">
+		SELECT r.*, rM.*, u.*, i.*, ifile.*
+		FROM room r
+		JOIN roomMember rM ON r.room_no = rM.room_no
+		JOIN users u ON rM.user_id = u.user_id
+		JOIN item i ON i.item_no = r.item_no
+		JOIN item_file ifile ON ifile.item_no = r.item_no
+		WHERE r.room_no = #{room_no};
+	</select>
+
+
 </mapper>

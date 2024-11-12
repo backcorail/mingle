@@ -171,14 +171,6 @@ public class ResellController {
 		return mav;
 	}
 	
-	@PostMapping("/createRoom")
-	public void createRoom(ResellVO rvo) {
-		String seller = rvo.getResell_seller();
-		String buyer = rvo.getResell_buyer();
-		System.out.println(seller + "123123" + buyer);
-	}
-	
-	
 	@GetMapping("/write")
 	public ModelAndView resell_write(
 			@RequestParam(name="no", defaultValue="0") int no,

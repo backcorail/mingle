@@ -1,95 +1,497 @@
-@charset "UTF-8";
-.wrapper{
-	width: 100%;
-	height: 100%;
-	margin-top:90px;
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
 }
 
+body {
+	overflow: hidden;
+	font-family: "Mona Sans";
+}
 
+#area_sideBtn {
+	display: none;
+}
 
-.background{
-	border: 0px solid black;
-	background-color: black;
+#headerDiv {
+	background: #121212;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	background: #121212;
+}
+
+.wrapper {
 	width: 100%;
 	height: 100%;
-	display: inline-flex;
+	margin-top: 90px;
+}
+
+form {
+	width: 100%;
+	height: 100%;
+}
+
+.background,
+.background2 {
+	border: 0px solid #121212;
+	background-color: #121212;
+	width: 100%;
+	height: 60%;
+	padding-bottom: 80px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#mapSelect_title {
+	height: 60px;
+	line-height: 60px;
+	margin-top: 20px;
+	text-align: center;
+	color: rgb(235, 235, 235);
+	font-size: 30px;
+}
+
+#mapSelect_content {
+	width: 100%;
+	display: flex;
+	align-items: center;
 	justify-content: center;
 }
 
-.where{
-	width: 500px;
-	color:white;
-	font-size: 30px;
-	margin-top: 100px;
-	text-align: center;
+.korea-map-font-v1 {
+	width: 37vh;
+	margin: 0px 3vw;
+	font-size: 43vh;
+	font-size: clamp(450px, 43vh, 43vh);
+	/* 최소 16px, 최대 24px, 기본 2vw */
+	color: #f0f0f0;
 }
 
-.currentMap{
-	width: 500px;
-	height: 500px;
-	position: absolute;
-	margin-top:20px;
-	background-color: white;
-	border-radius: 10px;
+/* 체크 박스 코드 */
+#sb_container {
+	width: 300px;
+	display: flex;
+	align-items: center;
 }
 
-.today_concept{
+#selectBox {
+	width: 9vw;
+	min-width: 180px;
+	height: 25vh;
+	min-height: 300px;
+	padding: 0;
+	margin: 0;
+	background: var(--body-bg-color);
+	display: grid;
+	place-items: center;
+	font-family: "Mona Sans", sans-serif;
+}
+
+@font-face {
+	font-family: "Mona Sans";
+	src: url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2 supports variations"),
+		url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2-variations");
+	font-weight: 100 1000;
+}
+
+@layer properties {
+	@property --checkbox-color-hue {
+		syntax: '<number>';
+		inherits: true;
+		initial-value: 0;
+	}
+
+	@property --checkbox-color-saturation {
+		syntax: '<number>';
+		inherits: true;
+		initial-value: 0;
+	}
+
+	@property --checkbox-color-lightness {
+		syntax: '<number>';
+		inherits: true;
+		initial-value: 0;
+	}
+
+	@property --icon-opacity {
+		syntax: '<number>';
+		inherits: true;
+		initial-value: 0;
+	}
+
+	@property --icon-invert {
+		syntax: '<number>';
+		inherits: true;
+		initial-value: 0;
+	}
+
+	@property --icon-size {
+		syntax: '<number>';
+		inherits: true;
+		initial-value: 0;
+	}
+
+	@property --negative-shadow-offset {
+		syntax: '<number>';
+		inherits: true;
+		initial-value: 0;
+	}
+
+	@property --text-opacity {
+		syntax: '<number>';
+		inherits: true;
+		initial-value: 0;
+	}
+}
+
+:root {
+	--checkbox-color-hue: 216;
+	--checkbox-color-saturation: 17;
+	--checkbox-color-lightness: 15;
+	--checkbox-color: hsl(calc(var(--checkbox-color-hue) * 1deg), calc(var(--checkbox-color-saturation) * 1%), calc(var(--checkbox-color-lightness) * 1%));
+	--checkbox-color-light: rgba(255 255 255 / 32%);
+	--checkbox-color-dark: rgba(0 0 0 / 45%);
+	--checkbox-border-radius: 24%;
+	--checkbox-width: 36;
+	--checkbox-height: 36;
+	--text-opacity: 0.6;
+	--negative-shadow-offset: 500;
+	--active-shadow-opacity: 0;
+	--icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' class='feather feather-check'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+	--icon-opacity: 0;
+	--icon-size: 1;
+	--cubic-bezier: cubic-bezier(0.6, -1.2, 0.2, 2.2);
+	--debug: 0;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	outline: calc(var(--debug) * 1px) dashed red;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: start;
+	grid-gap: 0.8em;
+	transform: scale(1);
+}
+
+label[for*="checkbox"] {
+	cursor: pointer;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	grid-gap: 8px;
+	color: rgba(255 255 255 / var(--text-opacity));
+	font-size: 1.6em;
+	letter-spacing: 0.1em;
+	font-weight: 400;
+	transition: --text-opacity 0.2s ease;
+}
+
+label[for*="checkbox"]:hover {
+	--text-opacity: 1;
+}
+
+label[for*="checkbox"]:hover:after {
+	--icon-opacity: 0.5;
+	--icon-invert: 100;
+	--icon-size: 0.8;
+}
+
+label[for*="checkbox"]:hover input[type="checkbox"] {
+	--checkbox-color-hue: 216;
+	--checkbox-color-saturation: 14;
+	--checkbox-color-lightness: 18;
+	--checkbox-color: hsl(calc(var(--checkbox-color-hue) * 1deg), calc(var(--checkbox-color-saturation) * 1%), calc(var(--checkbox-color-lightness) * 1%));
+}
+
+label[for*="checkbox"]:after {
+	content: "";
 	display: block;
-	margin-left: 40px;
-	color:white;
-	font-size: 30px;
-	width: 500px;
-	text-align: center;
+	position: absolute;
+	width: calc(var(--checkbox-width) * 1px);
+	height: calc(var(--checkbox-height) * 1px);
+	top: 5px;
+	left: 0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 70%;
+	border-radius: var(--checkbox-border-radius);
+	pointer-events: none;
+	background-image: var(--icon-check);
+	filter: invert(100%);
+	opacity: var(--icon-opacity);
+	transform: scale(var(--icon-size));
+	transition: opacity .3s ease, filter .3s ease, transform .3s var(--cubic-bezier);
+}
+
+label[for*="checkbox"]:has(input[type="checkbox"]:checked):after {
+	opacity: 1;
+	/* 아이콘이 체크된 상태에서 보이도록 설정 */
+	filter: invert(0%);
+	/* 색상 반전 해제 */
+	transform: scale(1);
+	/* 아이콘 크기 복원 */
+}
+
+label[for*="checkbox"]:has(input[type="checkbox"]:checked):hover {
+	--text-opacity: 1;
+
+	/* 아이콘 크기 및 변형 제어 */
+	&:after {
+		--icon-opacity: .50;
+		--icon-invert: 100;
+		--icon-size: 0.8;
+		/* 아이콘 크기 변경 */
+		transform: scale(1.1);
+		/* 호버 시 체크 아이콘 확대 */
+	}
+
+	input[type="checkbox"] {
+		--checkbox-color-hue: 216;
+		--checkbox-color-saturation: 14;
+		--checkbox-color-lightness: 18;
+		--checkbox-color: hsl(calc(var(--checkbox-color-hue) * 1deg) calc(var(--checkbox-color-saturation) * 1%) calc(var(--checkbox-color-lightness) * 1%));
+	}
+}
+
+/* 체크박스가 선택되었을 때 체크 표시의 크기 조정 */
+input[type="checkbox"]:checked+label:after {
+	--icon-size: 1.2;
+	/* 체크 표시 아이콘 크기 증가 */
+	transform: scale(1);
+	/* 아이콘 크기 정상 */
+}
+
+
+
+label[for*="checkbox"] input[type="checkbox"] {
+	appearance: none;
+	cursor: pointer;
+	margin: 0;
+	background: var(--checkbox-color);
+	width: calc(var(--checkbox-width) * 1px);
+	height: calc(var(--checkbox-height) * 1px);
+	border: calc(calc(var(--checkbox-width) / 15) * 1px) solid black;
+	border-radius: var(--checkbox-border-radius);
+	box-shadow: inset 0 0 calc(calc(var(--checkbox-width) / 10) * 1px) rgba(0 0 0 / calc(var(--active-shadow-opacity))), inset 0 calc(calc(var(--checkbox-width) / 20) * 1px) calc(calc(var(--checkbox-width) / 30) * 1px) calc(calc(var(--checkbox-width) / var(--negative-shadow-offset)) * -1px) var(--checkbox-color-light), inset 0 calc(calc(var(--checkbox-width) / 20) * -1px) calc(calc(var(--checkbox-width) / 15) * 1px) calc(calc(var(--checkbox-width) / var(--negative-shadow-offset)) * -1px) var(--checkbox-color-dark);
+	transition: --checkbox-color-hue 0.1s ease, --checkbox-color-saturation 0.1s ease, --checkbox-color-lightness 0.1s ease, --checkbox-color 0s ease, --negative-shadow-offset 0.2s ease;
+}
+
+label[for*="checkbox"] input[type="checkbox"]:active,
+label[for*="checkbox"] input[type="checkbox"]:checked {
+	--checkbox-color-hue: 264;
+	--checkbox-color-saturation: 56;
+	--checkbox-color-lightness: 49;
+	--checkbox-color: hsl(calc(var(--checkbox-color-hue) * 1deg), calc(var(--checkbox-color-saturation) * 1%), calc(var(--checkbox-color-lightness) * 1%));
+}
+
+label[for*="checkbox"] input[type="checkbox"]:checked {
+	--checkbox-color-hue: 265;
+	--checkbox-color-saturation: 80;
+	--checkbox-color-lightness: 61;
+	--checkbox-color: hsl(calc(var(--checkbox-color-hue) * 1deg), calc(var(--checkbox-color-saturation) * 1%), calc(var(--checkbox-color-lightness) * 1%));
+}
+
+label[for*="checkbox"]:active {
+	--active-shadow-opacity: 0.8;
+}
+
+label[for*="checkbox"]:active:after {
+	--icon-size: 0.7;
+}
+
+label[for*="checkbox"]:active input[type="checkbox"] {
+	--negative-shadow-offset: 0;
+}
+
+/* 버튼 */
+#pageBtn {
+	width: 100%;
+	height: 40%;
+	display: flex;
 	justify-content: center;
-	color:white;
+	background: #121212;
+	color: rgb(235, 235, 235);
+	font-family: "Luckiest Guy", cursive;
+	font-size: 30px;
 }
-.today_concept span{
-	color:black;
-	font-size: 35px;
+
+#pageBtn * {
+	width: 16%;
+	text-align: center;
+	cursor: pointer;
+	color: mix(#fff, #FFD600, 85%);
 	font-weight: 900;
-	-webkit-text-stroke: 1px white;
-	letter-spacing : -2px;
-}
-.today_concept img{
-	width:230px;
-	height: 300px;
-	border-radius: 10px;	
-	border:2px solid white;
-	margin-top: 10px;
+	text-shadow:
+		-0.0075em 0.0075em 0 mix(#fff, #FFD600, 94%),
+		0.005em 0.005em 0 mix(#fff, #FFD600, 60%),
+		0.01em 0.01em 0 mix(#fff, #FFD600, 62%),
+		0.015em 0.015em mix(#fff, #FFD600, 64%),
+		0.02em 0.02em 0 mix(#fff, #FFD600, 66%),
+		0.025em 0.025em 0 mix(#fff, #FFD600, 68%),
+		0.03em 0.03em 0 mix(#fff, #FFD600, 70%),
+		0.035em 0.035em 0 mix(#fff, #FFD600, 72%);
 }
 
+#pageBtn *:hover {
+	text-shadow: 1px 1px 2px #FFD600;
+}
 
-.exercise{
+#pageBtn *:active {
+	color: #FFD600;
+	/* 클릭 시 글자 색을 #FFD600으로 변경 */
+	transform: scale(1.2);
+	/* 글자가 풍선처럼 커짐 */
+	transition: transform 0.2s ease, color 0.2s ease;
+	/* 크기 변화와 색상 변화에 애니메이션 추가 */
+	transform-origin: center;
+	/* 글자가 중앙에서 확대되도록 설정 */
+}
+
+/* concept checkbox button css*/
+#copceptSelect_container {
+	width: 100%;
+	line-height: 1.5;
+	min-height: 60%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.checkbox-group {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	user-select: none;
+	border: none;
+}
+
+.checkbox-group>* {
+	margin: 0.5rem 0.5rem;
+}
+
+.checkbox-group-legend {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #9c9c9c;
+	text-align: center;
+	line-height: 1.125;
+	margin-bottom: 1.25rem;
+}
+
+.checkbox-input {
+	/* Code to hide the input */
+	clip: rect(0 0 0 0);
+	clip-path: inset(100%);
+	height: 1px;
+	overflow: hidden;
 	position: absolute;
-	width:230px;
-	
+	white-space: nowrap;
+	width: 1px;
 }
-.wedding{
-	width:230px;
-	margin-left: 270px;
+
+.checkbox-input:checked+.checkbox-tile {
+	border-color: rgb(240, 181, 0);
+	box-shadow: 0 5px 10px rgb(216, 216, 216, 0.3);
+	color: rgba(0, 0, 0);
 }
-.business{
+
+.checkbox-input:checked+.checkbox-tile:before {
+	transform: scale(1);
+	opacity: 1;
+	background-color: rgba(0, 0, 0);
+	border-color: rgb(240, 181, 0);
+}
+
+.checkbox-input:checked+.checkbox-tile .checkbox-icon,
+.checkbox-input:checked+.checkbox-tile .checkbox-label {
+	color: rgba(0, 0, 0);
+}
+
+.checkbox-input:focus+.checkbox-tile {
+	border-color: rgb(240, 181, 0);
+	box-shadow: 0 5px 10px rgb(255, 255, 0), 0 0 0 4px rgb(255, 255, 185);
+}
+
+.checkbox-input:focus+.checkbox-tile:before {
+	transform: scale(1);
+	opacity: 1;
+}
+
+.checkbox-tile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 112px;
+	min-height: 112px;
+	border-radius: 0.5rem;
+	border: 2px solid #b5bfd9;
+	background-color: #fff;
+	box-shadow: 0 5px 10px rgb(216, 216, 216, 0.3);
+	font-size: 16px;
+	transition: 0.15s ease;
+	cursor: pointer;
+	position: relative;
+}
+
+.checkbox-tile:before {
+	content: "";
 	position: absolute;
-	width:230px;
+	display: block;
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 2px solid #b5bfd9;
+	background-color: #fff;
+	border-radius: 50%;
+	top: 0.25rem;
+	left: 0.25rem;
+	opacity: 0;
+	transform: scale(0);
+	transition: 0.25s ease;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E");
+	background-size: 12px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
 }
-.daily{
-	width:230px;
-	margin-left: 270px;
+
+.checkbox-tile:hover {
+	border-color: rgb(240, 181, 0);
 }
 
+.checkbox-tile:hover:before {
+	transform: scale(1);
+	opacity: 1;
+}
 
+.checkbox-icon {
+	transition: 0.375s ease;
+	color: #494949;
+}
 
+.checkbox-icon svg {
+	width: 3rem;
+	height: 3rem;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.checkbox-label {
+	color: #707070;
+	transition: 0.375s ease;
+	text-align: center;
+}

@@ -13,7 +13,6 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=32c66affb1cc55e17a82c794a21905ab&libraries=services,clusterer,drawing"></script>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="/mingle/js/resell/resell_board.js"></script>
 
 <!-- 위쪽 부분 -->
 <div class="search_category">
@@ -160,7 +159,33 @@
 	<div>${boardData.getResell_comment()}</div>
 	<div class="row_line"></div>
 </div>
-
+<div onclick="contac()" style="width:100px; height:50px; background:yellow;">send</div>
+<script>
+	var seller = "${boardData.getResell_seller()}";
+	var buyer = "${authUser.userVO.user_id}";
+	var item_no = "${itemData.getItem_no()}"
+	
+	// AJAX 요청을 통해 seller와 buyer 데이터를 서버로 전송
+	function contac(){
+		$.ajax({
+		    type: "POST",
+		    url: "${pageContext.request.contextPath}/createRoom",
+		    data: JSON.stringify({
+	            seller: seller,
+	            buyer: buyer,
+	            item_no: parseInt(item_no) // 숫자로 변환하여 전송
+	        }),
+		    contentType: "application/json",
+		    success: function(response) {
+		        console.log("서버로 데이터 전송 성공:"+response);
+		        loadRoom();
+		    },
+		    error: function(xhr, status, error) {
+		        console.error("서버로 데이터 전송 실패:", error);
+		    }
+		});	
+	}
+</script>
 
 <!-- 댓글 부분 -->
 
@@ -198,3 +223,4 @@
 		<div class="row_line"></div>
 	</ul>
 </div>
+<script src="/mingle/js/resell/resell_board.js"></script>
