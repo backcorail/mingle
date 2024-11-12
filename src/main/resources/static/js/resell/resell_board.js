@@ -147,32 +147,38 @@ $(document).ready(function() {
 		alert("이미 판매된 상품입니다.");
 	});
 	// 로그인 상태에서 버튼 누를때
+	function addRoomContent(room_no, room_name) {
+        var roomContentHtml = `
+            <div class="RoomContent">
+                <p>Room No: ${room_no}</p>
+                <p>Room Name: ${room_name}</p>
+            </div>
+        `;
+        $("#content_list").append(roomContentHtml);
+    }
 	$("#loginOk_buy").click(function() {
 		alert("구매 신청이 완료되었습니다.\n구매내역은 마이페이지에서 확인 가능합니다.");
 		url = url+"/itemBuy?";
 		URLData(url, no, 0, "", 0, 0, "");
+		
 		var seller = "${boardData.getResell_seller()}";
-		var buyer = "${boardData.getResell_buyer()}";
-		// AJAX 요청을 통해 seller와 buyer 데이터를 서버로 전송
-    $.ajax({
-        type: "POST",
-        url: "${pageContext.request.contextPath}/crateRoom",  // 실제 서버의 엔드포인트 URL로 변경
-        data: {
-            seller: seller,
-            buyer: buyer
-        },
-        success: function(response) {
-            console.log("서버로 데이터 전송 성공:", response);
-            // 필요시 추가 작업
-        },
-        error: function(xhr, status, error) {
-            console.error("서버로 데이터 전송 실패:", error);
-            // 필요시 추가 작업
-        }
-    });
+        var buyer = "${authUser.userVO.user_nick}";
+        var title = "${boardData.getResell_name()}";
+        // AJAX 요청을 통해 seller와 buyer 데이터를 서버로 전송
+         $.ajax({
+            type: "POST",
+            url: "${pageContext.request.contextPath}/createRoom",
+            data: JSON.stringify({ seller: seller, buyer: buyer, title: title }),
+            contentType: "application/json",
+            success: function(response) {
+                console.log("서버로 데이터 전송 성공:", response);
+                addRoomContent(response.room_no, response.room_name);
+            },
+            error: function(xhr, status, error) {
+                console.error("서버로 데이터 전송 실패:", error);
+            }
+        });
 	});
-	
-	
 });
 
 

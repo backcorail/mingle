@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- 채팅 파일 불러오기 -->
+<%@ include file="/WEB-INF/views/chat.jsp" %>
 <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-<%@ include file="/WEB-INF/views/chat.jsp" %>
 <footer>
 	<div id="area_footer">
 		<div id="areaTop_footer">

@@ -30,21 +30,34 @@ function showChat(){
 	}else{
 		chat.style.display = "block";
 	}
+	showChatlist();
 	if (!isScrollInitialized) {
         scrollToBottom();
         isScrollInitialized = true;
     }
 }
-function closeChat(){
-	const chat = document.getElementById("root");
-	chat.style.display = "none";
-}
-//채팅리스트 보이기
+//룸리스트 보이기
 function showChatlist(){
 	const room = document.getElementById("chatRoom");
 	const list = document.getElementById("chatList");
 	room.style.display = "none";
 	list.style.display = "block";
+	loadRoom();
+}
+//채팅방 보이기 
+function showChatroom(partner){
+	const room = document.getElementById("chatRoom");
+	const list = document.getElementById("chatList");
+	room.style.display = "block";
+	list.style.display = "none";
+	//상대방 프로필 보이기
+	console.log(partner);
+	document.getElementById("partnerImg");
+	//메세지 내용 불러오기(room_no에 따라서)
+}
+function closeChat(){
+	const chat = document.getElementById("root");
+	chat.style.display = "none";
 }
 //스크롤 맨아래로
 function scrollToBottom() {
